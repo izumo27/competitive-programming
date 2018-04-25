@@ -26,7 +26,6 @@ void dfs(int i, int j){
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	vector<string> a(20);
 	REP(i, 10){
 		cin>>a[i];
 	}

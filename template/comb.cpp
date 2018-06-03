@@ -28,22 +28,22 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-ll fact[364364], fact_inv[364364];
+ll fact[514514], fact_inv[514514];
 
 ll mod_pow(ll a, ll b){
 	ll res=1;
 	while(b>0){
 		if(b&1){
-			res=FIX(res*a);
+			res=res*a%MOD;
 		}
-		a=FIX(a*a);
+		a=a*a%MOD;
 		b>>=1;
 	}
 	return res;
 }
 
 ll comb(ll n, ll r){
-	return FIX(FIX(fact[n]*fact_inv[r])*fact_inv[n-r]);
+	return (fact[n]*fact_inv[r])%MOD*fact_inv[n-r]%MOD;
 }
 
 int main(){
@@ -53,11 +53,11 @@ int main(){
 	cin>>n;
 	fact[0]=1;
 	REP(i, n){
-		fact[i+1]=FIX(fact[i]*(i+1));
+		fact[i+1]=fact[i]*(i+1)%MOD;
 	}
 	fact_inv[n]=mod_pow(fact[n], MOD-2);
 	FORR(i, 0, n){
-		fact_inv[i]=FIX(fact_inv[i+1]*(i+1));
+		fact_inv[i]=fact_inv[i+1]*(i+1)%MOD;
 	}
 	return 0;
 }

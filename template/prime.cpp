@@ -27,7 +27,7 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-vector<int> Eratosthenes(int n) {
+vector<int> eratosthenes(int n) {
 	vector<bool> num(n, true);
 	vector<int> prime;
 	num[0]=false;

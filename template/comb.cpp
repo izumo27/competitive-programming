@@ -30,6 +30,19 @@ const double EPS=1e-11;
 
 ll fact[514514], fact_inv[514514];
 
+// // iの逆元も求める場合
+// ll inv[514514];
+// void COMinit(int n) {
+//     fact[0]=fact[1]=1;
+//     fact_inv[0]=fact_inv[1]=1;
+//     inv[1]=1;
+//     FOR(i, 2, n+1){
+//         fact[i]=fact[i-1]*i%MOD;
+//         inv[i]=MOD-inv[MOD%i]*(MOD/i)%MOD;
+//         fact_inv[i]=fact_inv[i-1]*inv[i]%MOD;
+//     }
+// }
+
 ll mod_pow(ll a, ll b){
 	ll res=1;
 	while(b>0){

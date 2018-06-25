@@ -20,43 +20,48 @@ typedef pair<ll, ll> pll;
 #define CHMIN(a, b) a=min((a), (b))
 #define CHMAX(a, b) a=max((a), (b))
 
-// const ll MOD=1000000007ll;
-const ll MOD=998244353ll;
+const ll MOD=1000000007ll;
+// const ll MOD=998244353ll;
 #define FIX(a) ((a)%MOD+MOD)%MOD
 
 const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-ll fact[514514], fact_inv[514514];
+int root[514514], depth[514514];
 
-// iの逆元も求める場合
-// ll inv[514514];
-// void COMinit(int n) {
-//     fact[0]=fact[1]=1;
-//     fact_inv[0]=fact_inv[1]=1;
-//     inv[1]=1;
-//     FOR(i, 2, n+1){
-//         fact[i]=fact[i-1]*i%MOD;
-//         inv[i]=MOD-inv[MOD%i]*(MOD/i)%MOD;
-//         fact_inv[i]=fact_inv[i-1]*inv[i]%MOD;
-//     }
-// }
-
-ll power(ll a, ll b){
-	ll res=1;
-	while(b>0){
-		if(b&1){
-			res=res*a%MOD;
-		}
-		a=a*a%MOD;
-		b>>=1;
+// xの根を求める
+int find(int x){
+	if(root[x]==x){
+		return x;
 	}
-	return res;
+	else{
+		return root[x]=find(root[x]);
+	}
 }
 
-ll comb(ll n, ll r){
-	return (fact[n]*fact_inv[r])%MOD*fact_inv[n-r]%MOD;
+// xとyが属する集合を併合
+void unite(int x, int y){
+	x=find(x);
+	y=find(y);
+	if(x==y){
+		return;
+	}
+	if(depth[x]<depth[y]){
+		root[x]=y;
+	}
+	else{
+		root[y]=x;
+		if(depth[x]==depth[y]){
+			++depth[x];
+		}
+	}
+	return;
+}
+
+// xとyが同じ集合に属するか判定
+bool same(int x, int y){
+	return find(x)==find(y);
 }
 
 int main(){
@@ -64,13 +69,10 @@ int main(){
 	cin.tie(0);
 	int n;
 	cin>>n;
-	fact[0]=1;
+	// 初期化
 	REP(i, n){
-		fact[i+1]=fact[i]*(i+1)%MOD;
-	}
-	fact_inv[n]=power(fact[n], MOD-2);
-	FORR(i, 0, n){
-		fact_inv[i]=fact_inv[i+1]*(i+1)%MOD;
+		root[i]=i;
+		depth[i]=0;
 	}
 	return 0;
 }

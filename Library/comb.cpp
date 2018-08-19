@@ -28,10 +28,12 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-ll fact[514514], fact_inv[514514];
+const int MAX_N=514514;
+
+ll fact[MAX_N], fact_inv[MAX_N];
 
 // iの逆元も求める場合
-// ll inv[514514];
+// ll inv[MAX_N];
 // void COMinit(int n) {
 //     fact[0]=fact[1]=1;
 //     fact_inv[0]=fact_inv[1]=1;

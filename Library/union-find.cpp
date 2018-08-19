@@ -28,7 +28,9 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-int root[514514], depth[514514];
+const int MAX_N=514514;
+
+int root[MAX_N], depth[MAX_N];
 
 // xの根を求める
 int find(int x){

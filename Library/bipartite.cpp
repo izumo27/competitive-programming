@@ -28,9 +28,14 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-vector<int> g[114514];
-int color[114514];
+const int MAX_V=114514;
 
+vector<int> g[MAX_V];
+int V;
+
+int color[MAX_V];
+
+// 二部グラフか判定
 bool dfs(int v, int c){
 	color[v]=c;
 	REP(i, g[v].size()){
@@ -47,14 +52,7 @@ bool dfs(int v, int c){
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	ll v, m;
-	int a, b;
-	cin>>v>>m;
-	REP(i, m){
-		cin>>a>>b;
-		g[a].push_back(b);
-		g[b].push_back(a);
-	}
+	
 	if(!dfs(a, 1)){
 		// 二部グラフではない
 

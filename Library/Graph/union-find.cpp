@@ -32,6 +32,14 @@ const int MAX_N=514514;
 
 int root[MAX_N], depth[MAX_N];
 
+// n要素で初期化
+void init_union_find(int n){
+	REP(i, n){
+		root[i]=i;
+		depth[i]=0;
+	}
+}
+
 // xの根を求める
 int find(int x){
 	if(root[x]==x){
@@ -69,12 +77,6 @@ bool same(int x, int y){
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	int n;
-	cin>>n;
-	// 初期化
-	REP(i, n){
-		root[i]=i;
-		depth[i]=0;
-	}
+
 	return 0;
 }

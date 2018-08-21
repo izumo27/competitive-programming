@@ -32,19 +32,6 @@ const int MAX_N=514514;
 
 ll fact[MAX_N], fact_inv[MAX_N];
 
-// iの逆元も求める場合
-// ll inv[MAX_N];
-// void COMinit(int n) {
-//     fact[0]=fact[1]=1;
-//     fact_inv[0]=fact_inv[1]=1;
-//     inv[1]=1;
-//     FOR(i, 2, n+1){
-//         fact[i]=fact[i-1]*i%MOD;
-//         inv[i]=MOD-inv[MOD%i]*(MOD/i)%MOD;
-//         fact_inv[i]=fact_inv[i-1]*inv[i]%MOD;
-//     }
-// }
-
 ll power(ll a, ll b){
 	ll res=1;
 	while(b>0){
@@ -61,11 +48,7 @@ ll comb(ll n, ll r){
 	return (fact[n]*fact_inv[r])%MOD*fact_inv[n-r]%MOD;
 }
 
-int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	cin>>n;
+void init_comb(int n){
 	fact[0]=1;
 	REP(i, n){
 		fact[i+1]=fact[i]*(i+1)%MOD;
@@ -74,5 +57,25 @@ int main(){
 	FORR(i, 0, n){
 		fact_inv[i]=fact_inv[i+1]*(i+1)%MOD;
 	}
+	return;
+}
+
+// iの逆元も求める場合
+// ll inv[MAX_N];
+// void init_comb(int n){
+//     fact[0]=fact[1]=1;
+//     fact_inv[0]=fact_inv[1]=1;
+//     inv[1]=1;
+//     FOR(i, 2, n+1){
+//         fact[i]=fact[i-1]*i%MOD;
+//         inv[i]=MOD-inv[MOD%i]*(MOD/i)%MOD;
+//         fact_inv[i]=fact_inv[i-1]*inv[i]%MOD;
+//     }
+// }
+
+int main(){
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	
 	return 0;
 }

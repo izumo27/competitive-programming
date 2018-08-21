@@ -31,36 +31,49 @@ const double EPS=1e-11;
 const INF=1e9;
 const int MAX_V=114514;
 
-struct edge{
-	int to;
-	int cost;
-};
-
-int V;
-vector<edge> g[MAX_V];
+// cost[i][j]: 辺e=(i, j)のコスト(存在しない場合はINF)
+int cost[MAX_V][MAX_V];
+// 頂点sからの最短距離
 int d[MAX_V];
+bool used[MAX_V];
+// 最短路の直前の頂点
+int prev[MAX_V];
+int V;
 
+// 最短路も求める場合
 void dijkstra(int s){
-	// piiのfirstは最短距離、secondは頂点の番号
-	priority_queue<pii, vector<pii>, greater<pii>> que;
 	fill(d, d+V, INF);
+	fill(used, used+V, false);
+	fill(prev, prev+V, -1);
 	d[s]=0;
-	que.push(pii(0, s));
-	while(!que.empty()){
-		pii p=que.top();
-		que.pop();
-		int v=p.second;
-		if(d[v]<p.first){
-			continue;
+	while(true){
+		int v=-1;
+		REP(i, V){
+			if(!used[i] && (v==-1 || d[i]<d[v])){
+				v=u;
+			}
 		}
-		REP(i, g[v].size()){
-			edge e=g[v][i];
-			if(d[e.to]>d[v]+e.cost){
-				d[e.to]=d[v]+e.cost;
-				que.push(pii(d[e.to], e.to));
+		if(v==-1){
+			break;
+		}
+		used[v]=true;
+		REP(i, V){
+			if(d[i]>d[v]+cost[v][i]){
+				d[i]=d[u]+cost[v][i];
+				prev[i]=v;
 			}
 		}
 	}
+}
+
+// 頂点tへの最短路
+vi get_path(int t){
+	vi path;
+	for(; t!=-1; t=prev[t]){
+		path.push_back(t);
+	}
+	reverse(ALL(path));
+	return path;
 }
 
 int main(){

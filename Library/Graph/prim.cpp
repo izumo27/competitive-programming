@@ -28,7 +28,7 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-const INF=1e9;
+const int INF=1e9;
 const int MAX_V=114514;
 
 struct edge{

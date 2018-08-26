@@ -29,8 +29,8 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 const int INF=1e9;
-const int MAX_N=514514;
-const int MAX_E=114514;
+const int MAX_N=1252;
+const int MAX_E=12525;
 
 struct edge{
 	int u;
@@ -93,11 +93,16 @@ int kruskal(){
 	sort(es, es+E, comp);
 	init_union_find(V);
 	int res=0;
+	int cnt=0;
 	REP(i, E){
 		edge e=es[i];
 		if(!same(e.u, e.v)){
 			unite(e.u, e.v);
-			res+=e.cost;
+			++cnt;
+			if(cnt==(V>>1)){
+				res=e.cost;
+				break;
+			}
 		}
 	}
 	return res;
@@ -106,6 +111,22 @@ int kruskal(){
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-
+	while(true){
+		int n, m, s, t;
+		cin>>n>>m;
+		if(n==0 && m==0){
+			break;
+		}
+		V=n;
+		E=m;
+		REP(i, m){
+			edge e;
+			cin>>s>>t>>e.cost;
+			e.u=s-1;
+			e.v=t-1;
+			es[i]=e;
+		}
+		cout<<kruskal()<<'\n';
+	}
 	return 0;
 }

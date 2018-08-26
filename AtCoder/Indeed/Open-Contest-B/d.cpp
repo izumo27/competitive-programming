@@ -106,6 +106,36 @@ int kruskal(){
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-
+	int h, w, sx, sy, gx, gy, p[114][114];
+	cin>>h>>w>>sx>>sy>>gx>>gy;
+	E=w*(h-1)+h*(w-1);
+	V=h*w;
+	int ans=0;
+	REP(i, h){
+		REP(j, w){
+			cin>>p[j][i];
+			ans+=p[j][i];
+		}
+	}
+	REP(i, w){
+		REP(j, h-1){
+			edge e;
+			e.u=i*h+j;
+			e.v=e.u+1;
+			e.cost=-p[i][j]*p[i][j+1];
+			es[i*(h-1)+j]=e;
+		}
+	}
+	REP(j, h){
+		REP(i, w-1){
+			edge e;
+			e.u=i*h+j;
+			e.v=e.u+h;
+			e.cost=-p[i][j]*p[i+1][j];
+			es[w*(h-1)+j*(w-1)+i]=e;
+		}
+	}
+	ans-=kruskal();
+	cout<<ans<<'\n';
 	return 0;
 }

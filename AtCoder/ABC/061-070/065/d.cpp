@@ -28,9 +28,9 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-const int INF=1e9;
-const int MAX_N=514514;
-const int MAX_E=114514;
+const ll INF=1e18;
+const int MAX_N=114514;
+const int MAX_E=214514;
 
 struct edge{
 	int u;
@@ -89,10 +89,10 @@ bool same(int x, int y){
 	return find(x)==find(y);
 }
 
-int kruskal(){
+ll kruskal(){
 	sort(es, es+E, comp);
 	init_union_find(V);
-	int res=0;
+	ll res=0;
 	REP(i, E){
 		edge e=es[i];
 		if(!same(e.u, e.v)){
@@ -106,6 +106,32 @@ int kruskal(){
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-
+	int n;
+	pii x[114514], y[114514];
+	cin>>n;
+	V=n;
+	E=2*(n-1);
+	REP(i, n){
+		cin>>x[i].first>>y[i].first;
+		x[i].second=i;
+		y[i].second=i;
+	}
+	sort(x, x+n);
+	REP(i, n-1){
+		edge e;
+		e.u=x[i].second;
+		e.v=x[i+1].second;
+		e.cost=x[i+1].first-x[i].first;
+		es[i]=e;
+	}
+	sort(y, y+n);
+	REP(i, n-1){
+		edge e;
+		e.u=y[i].second;
+		e.v=y[i+1].second;
+		e.cost=y[i+1].first-y[i].first;
+		es[n-1+i]=e;
+	}
+	cout<<kruskal()<<'\n';
 	return 0;
 }

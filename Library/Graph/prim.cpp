@@ -40,6 +40,13 @@ int V;
 vector<edge> g[MAX_V];
 int mincost[MAX_V];
 
+edge make_edge(int v, int cost){
+	edge e;
+	e.v=v;
+	e.cost=cost;
+	return e;
+}
+
 int prim(int s){
 	// piiのfirstは最小コスト、secondは頂点の番号
 	priority_queue<pii, vector<pii>, greater<pii>> que;

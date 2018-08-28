@@ -43,7 +43,15 @@ edge es[MAX_E];
 
 // 最短距離
 int d[MAX_V];
-int V,E;
+int V, E;
+
+edge make_edge(int from, int to, int cost){
+	edge e;
+	e.from=from;
+	e.to=to;
+	e.cost=cost;
+	return e;
+}
 
 void shortest_path(int s){
 	fill(d, d+V, INF);
@@ -71,7 +79,7 @@ bool find_negative_loop(){
 			edge e=es[j];
 			if(d[e.to]>d[e.from]+e.cost){
 				d[e.to]=d[e.from]+e.cost;
-				if(i==v-1){
+				if(i==V-1){
 					return true;
 				}
 			}

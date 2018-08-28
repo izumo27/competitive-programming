@@ -41,6 +41,13 @@ vector<edge> g[MAX_V];
 // 頂点sからの最短距離
 int d[MAX_V];
 
+edge make_edge(int to, int cost){
+	edge e;
+	e.to=to;
+	e.cost=cost;
+	return e;
+}
+
 void dijkstra(int s){
 	// piiのfirstは最短距離、secondは頂点の番号
 	priority_queue<pii, vector<pii>, greater<pii>> que;

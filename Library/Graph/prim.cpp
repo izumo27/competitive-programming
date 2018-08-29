@@ -65,9 +65,9 @@ int prim(int s){
 		res+=mincost[v];
 		REP(i, g[v].size()){
 			edge e=g[v][i];
-			if(mincost[e.v]>mincost[v]+e.cost){
-				mincost[e.v]=mincost[v]+e.cost;
-				que.push(pii(mincost[e.v], e.v));
+			if(mincost[e.to]>mincost[v]+e.cost){
+				mincost[e.to]=mincost[v]+e.cost;
+				que.push(pii(mincost[e.to], e.to));
 			}
 		}
 	}

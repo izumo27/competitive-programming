@@ -45,12 +45,13 @@ edge es[MAX_E];
 int d[MAX_V];
 int V, E;
 
-edge make_edge(int from, int to, int cost){
+void add_edge(int from, int to, int cost){
 	edge e;
 	e.from=from;
 	e.to=to;
 	e.cost=cost;
-	return e;
+	es[E++]=e;
+	return;
 }
 
 void shortest_path(int s){

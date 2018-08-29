@@ -41,11 +41,12 @@ vector<edge> g[MAX_V];
 // 頂点sからの最短距離
 int d[MAX_V];
 
-edge make_edge(int to, int cost){
+void add_edge(int from, int to, int cost){
 	edge e;
 	e.to=to;
 	e.cost=cost;
-	return e;
+	g[from].push_back(e);
+	return;
 }
 
 void dijkstra(int s){

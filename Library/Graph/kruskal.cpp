@@ -43,12 +43,13 @@ int root[MAX_N], depth[MAX_N];
 edge es[MAX_E];
 int V, E;
 
-edge make_edge(int u, int v, int cost){
+void add_edge(int u, int v, int cost){
 	edge e;
 	e.u=u;
 	e.v=v;
 	e.cost=cost;
-	return e;
+	es[E++]=e;
+	return;
 }
 
 bool comp(const edge& e1, const edge& e2){

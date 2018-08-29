@@ -32,7 +32,7 @@ const int INF=1e9;
 const int MAX_V=114514;
 
 struct edge{
-	int v;
+	int to;
 	int cost;
 };
 
@@ -40,10 +40,11 @@ int V;
 vector<edge> g[MAX_V];
 int mincost[MAX_V];
 
-edge make_edge(int v, int cost){
+void add_edge(int from, int to, int cost){
 	edge e;
-	e.v=v;
+	e.to=to;
 	e.cost=cost;
+	g[from].push_back(e);
 	return e;
 }
 

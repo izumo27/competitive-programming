@@ -28,20 +28,33 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
+int gcd(int a, int b){
+	if(b==0){
+		return a;
+	}
+	return gcd(b, a%b);
+}
+
+int lcm(int a, int b){
+	return a/gcd(a, b)*b;
+}
+
+int extgcd(int a, int b, int& x, int& y){
+	int d=a;
+	if(b){
+		d=extgcd(b, a%b, y, x);
+		y-=a/b*x;
+	}
+	else{
+		x=1;
+		y=0;
+	}
+	return d;
+}
+
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	// int n, i;
-	// cin>>n;
-	// cout<<abs(n)<<endl;
-	// int a[n];
-	// for(i=0; i<n; i++) cin>>a[i];
-	// sort(a, a+5);								// 昇順
-	// sort(a, a+5, greater<int>());				// 降順
 
-	// string s;
-	// cin>>s;
-	// sort(ALL(s));								// 辞書順
-	// sort(ALL(s), greater<char>());				// 逆辞書順
 	return 0;
 }

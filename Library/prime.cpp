@@ -18,32 +18,97 @@ typedef pair<ll, ll> pll;
 #define ALL(a) (a).begin(), (a).end()
 
 #define CHMIN(a, b) a=min((a), (b))
-#define CHMAX(a, b) a=min((a), (b))
+#define CHMAX(a, b) a=max((a), (b))
 
-const int MOD=1000000007;
+const ll MOD=1000000007ll;
+// const ll MOD=998244353ll;
 #define FIX(a) ((a)%MOD+MOD)%MOD
 
 const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-vector<int> eratosthenes(int n) {
-	vector<bool> num(n, true);
-	vector<int> prime;
-	num[0]=false;
-	for(int i=0; i*i<n; ++i){
-		if(num[i]){
-			for(int j=2; (i+1)*j<=n; ++j) {
-				num[(i+1)*j-1]=false;
+const int MAX_N=1e9;
+// const int MAX_SQRT_B=1e9;
+
+int prime[MAX_N];
+bool is_prime[MAX_N+1];
+// bool is_prime_small[MAX_SQRT_B];
+
+// bool is_prime(int n){
+// 	for(int i=2; i*i<=n; ++i){
+// 		if(n%i==0){
+// 			return false;
+// 		}
+// 	}
+// 	return n!=1;
+// }
+
+vi divisor(int n){
+	vi res;
+	for(int i=1; i*i<=n; ++i){
+		if(n%i==0){
+			res.push_back(i);
+			if(i!=n/i){
+				res.push_back(n/i);
 			}
 		}
 	}
-	for(int i=0; i<n; ++i) {
-		if(num[i]){
-			prime.push_back(i+1);
+	return res;
+}
+
+map<int, int> prime_factor(int n){
+	map<int, int> res;
+	for(int i=2; i*i<=n; ++i){
+		while(n%i==0){
+			++res[i];
+			n/=i;
 		}
 	}
-	return prime;
+	if(n!=1){
+		res[n]=1;
+	}
+	return res;
+}
+
+// エラトステネスの篩
+// is_prime[i]=true⇔iが素数
+int sieve(int n){
+	int res=0;
+	REP(i, n+1){
+		is_prime[i]=true;
+	}
+	is_prime[0]=is_prime[1]=false;
+	FOR(i, 2, n+1){
+		if(is_prime[i]){
+			prime[res++]=i;
+			for(int j=2*i; j<=n; j+=i){
+				is_prime[j]=false;
+			}
+		}
+	}
+	return res;
+}
+
+// [a, b)の整数についてエラトステネスの篩
+// is_prime[i-a]=true⇔iが素数
+void segment_sieve(int a, int b){
+	for(int i=0; i*i<b; ++i){
+		is_prime_small[i]=true;
+	}
+	REP(i, b-a){
+		is_prime[i]=true;
+	}
+	for(int i=2; i*i<b; ++i){
+		if(is_prime_small[i]){
+			for(int j=2*i; j*j<b; j+=i){
+				is_prime_small[j]=false;
+			}
+			for(int j=max(2, (a+i-1)/i)*i; j<b; j+=i){
+				is_prime[j-a]=false;
+			}
+		}
+	}
 }
 
 int main(){

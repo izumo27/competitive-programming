@@ -17,8 +17,6 @@
 	最小全域木(クラスカル法)
 	- prim.cpp  
 	最小全域木(プリム法)
-	- union-find.cpp  
-	Union-Find木
 	- warshall-floyd.cpp  
 	全点対最短路(ワーシャルフロイド法)
 - その他
@@ -28,3 +26,5 @@
 	最小公倍数、最大公約数、拡張ユークリッドの互除法
 	- prime.cpp  
 	素数判定、約数の列挙、素因数分解、エラトステネスの篩
+	- union-find.cpp  
+	Union-Find木

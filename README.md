@@ -20,7 +20,7 @@
 	- warshall-floyd.cpp  
 	全点対最短路(ワーシャルフロイド法)
 - その他
-	- comb.cpp  
+	- combination.cpp  
 	階乗、逆元、二項係数
 	- euclid.cpp  
 	最小公倍数、最大公約数、拡張ユークリッドの互除法

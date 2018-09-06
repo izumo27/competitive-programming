@@ -28,43 +28,27 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-const int MAX_V=114514;
-
-vector<int> g[MAX_V];
-int V;
-
-int color[MAX_V];
-
-// 二部グラフか判定
-bool bipartite(int v, int c){
-	color[v]=c;
-	REP(i, g[v].size()){
-		if(color[g[v][i]]==c){
-			return false;
-		}
-		if(color[g[v][i]]==0 && !bipartite(g[v][i], -c)){
-			return false;
-		}
-	}
-	return true;
-}
+int x[92525], y[92525] ,s[92525];
 
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-
-	if(!bipartite(a, 1)){
-		// 二部グラフではない
-
+	int h, w, d, a, q, l, r;
+	cin>>h>>w>>d;
+	REP(i, h){
+		REP(j, w){
+			cin>>a;
+			x[a]=i;
+			y[a]=j;
+		}
 	}
-	// グラフが連結でないとき
-	// REP(i, v){
-	// 	if(color[i]==0){
-	// 		if(!bipartite(i, 1)){
-	// 			// 二部グラフではない
-	//
-	// 		}
-	// 	}
-	// }
+	FOR(i, d+1, h*w+1){
+		s[i]=s[i-d]+abs(x[i-d]-x[i])+abs(y[i-d]-y[i]);
+	}
+	cin>>q;
+	REP(i, q){
+		cin>>l>>r;
+		cout<<s[r]-s[l]<<'\n';
+	}
 	return 0;
 }

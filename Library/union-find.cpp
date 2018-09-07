@@ -28,51 +28,58 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-const int MAX_N=514514;
+struct UnionFind{
+	vector<int> par;
+	vector<int> rank;
 
-int root[MAX_N], depth[MAX_N];
+	UnionFind(int n=1){
+		init(n);
+	}
 
-// n要素で初期化
-void init_union_find(int n){
-	REP(i, n){
-		root[i]=i;
-		depth[i]=0;
-	}
-}
-
-// xの根を求める
-int find(int x){
-	if(root[x]==x){
-		return x;
-	}
-	else{
-		return root[x]=find(root[x]);
-	}
-}
-
-// xとyが属する集合を併合
-void unite(int x, int y){
-	x=find(x);
-	y=find(y);
-	if(x==y){
-		return;
-	}
-	if(depth[x]<depth[y]){
-		root[x]=y;
-	}
-	else{
-		root[y]=x;
-		if(depth[x]==depth[y]){
-			++depth[x];
+	// n要素で初期化
+	void init(int n=1){
+		par.resize(n);
+		rank.resize(n);
+		REP(i, n){
+			par[i]=i;
+			rank[i]=0;
 		}
 	}
-	return;
-}
 
-// xとyが同じ集合に属するか判定
-bool same(int x, int y){
-	return find(x)==find(y);
-}
+	// xの根を求める
+	int find(int x){
+		if(par[x]==x){
+			return x;
+		}
+		else{
+			return par[x]=find(par[x]);
+		}
+	}
+
+	// xとyが属する集合を併合
+	bool unite(int x, int y){
+		x=find(x);
+		y=find(y);
+		if(x==y){
+			return false;
+		}
+		if(rank[x]<rank[y]){
+			par[x]=y;
+		}
+		else{
+			par[y]=x;
+			if(rank[x]==rank[y]){
+				++rank[x];
+			}
+		}
+		return true;
+	}
+
+	// xとyが同じ集合に属するか判定
+	bool is_same(int x, int y){
+		return find(x)==find(y);
+	}
+};
 
 int main(){
 	ios::sync_with_stdio(false);

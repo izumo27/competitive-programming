@@ -32,6 +32,59 @@ const int INF=1e9;
 const int MAX_N=514514;
 const int MAX_E=114514;
 
+struct UnionFind{
+	vector<int> par;
+	vector<int> rank;
+
+	UnionFind(int n=1){
+		init(n);
+	}
+
+	// n要素で初期化
+	void init(int n=1){
+		par.resize(n);
+		rank.resize(n);
+		REP(i, n){
+			par[i]=i;
+			rank[i]=0;
+		}
+	}
+
+	// xの根を求める
+	int find(int x){
+		if(par[x]==x){
+			return x;
+		}
+		else{
+			return par[x]=find(par[x]);
+		}
+	}
+
+	// xとyが属する集合を併合
+	bool unite(int x, int y){
+		x=find(x);
+		y=find(y);
+		if(x==y){
+			return false;
+		}
+		if(rank[x]<rank[y]){
+			par[x]=y;
+		}
+		else{
+			par[y]=x;
+			if(rank[x]==rank[y]){
+				++rank[x];
+			}
+		}
+		return true;
+	}
+
+	// xとyが同じ集合に属するか判定
+	bool is_same(int x, int y){
+		return find(x)==find(y);
+	}
+};
+
 struct edge{
 	int u;
 	int v;
@@ -56,56 +109,14 @@ bool comp(const edge& e1, const edge& e2){
 	return e1.cost<e2.cost;
 }
 
-// n要素で初期化
-void init_union_find(int n){
-	REP(i, n){
-		root[i]=i;
-		depth[i]=0;
-	}
-}
-
-// xの根を求める
-int find(int x){
-	if(root[x]==x){
-		return x;
-	}
-	else{
-		return root[x]=find(root[x]);
-	}
-}
-
-// xとyが属する集合を併合
-void unite(int x, int y){
-	x=find(x);
-	y=find(y);
-	if(x==y){
-		return;
-	}
-	if(depth[x]<depth[y]){
-		root[x]=y;
-	}
-	else{
-		root[y]=x;
-		if(depth[x]==depth[y]){
-			++depth[x];
-		}
-	}
-	return;
-}
-
-// xとyが同じ集合に属するか判定
-bool same(int x, int y){
-	return find(x)==find(y);
-}
-
 int kruskal(){
 	sort(es, es+E, comp);
-	init_union_find(V);
+	UnionFind uf(V);
 	int res=0;
 	REP(i, E){
 		edge e=es[i];
-		if(!same(e.u, e.v)){
-			unite(e.u, e.v);
+		if(!uf.is_same(e.u, e.v)){
+			uf.unite(e.u, e.v);
 			res+=e.cost;
 		}
 	}

@@ -44,6 +44,7 @@ bool is_prime[MAX_N+1];
 // 	return n!=1;
 // }
 
+// 約数を求める
 vi divisor(int n){
 	vi res;
 	for(int i=1; i*i<=n; ++i){
@@ -57,6 +58,7 @@ vi divisor(int n){
 	return res;
 }
 
+// 素因数分解
 map<int, int> prime_factor(int n){
 	map<int, int> res;
 	for(int i=2; i*i<=n; ++i){

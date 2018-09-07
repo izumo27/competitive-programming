@@ -28,3 +28,5 @@
 	素数判定、約数の列挙、素因数分解、エラトステネスの篩
 	- union-find.cpp  
 	Union-Find木
+	- weighted-union-find.cpp  
+	重み付きUnion-Find木

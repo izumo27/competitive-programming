@@ -71,10 +71,10 @@ vector<pii> prime_factor(int n){
 			++num;
 			n/=i;
 		}
-		res.push_back(pll(i, num));
+		res.push_back(pii(i, num));
 	}
 	if(n!=1){
-		res.push_back(pll(n, 1));
+		res.push_back(pii(n, 1));
 	}
 	return res;
 }

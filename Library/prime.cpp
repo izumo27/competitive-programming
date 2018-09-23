@@ -59,16 +59,21 @@ vi divisor(int n){
 }
 
 // 素因数分解
-map<int, int> prime_factor(int n){
-	map<int, int> res;
+vector<pii> prime_factor(int n){
+	vector<pii> res;
 	for(int i=2; i*i<=n; ++i){
+		if(n%i!=0){
+			continue;
+		}
+		int num=0;
 		while(n%i==0){
-			++res[i];
+			++num;
 			n/=i;
 		}
+		res.push_back(pii(i, num));
 	}
 	if(n!=1){
-		res[n]=1;
+		res.push_back(pii(n, 1));
 	}
 	return res;
 }

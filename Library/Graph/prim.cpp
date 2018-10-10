@@ -41,10 +41,7 @@ vector<edge> g[MAX_V];
 int mincost[MAX_V];
 
 void add_edge(int from, int to, int cost){
-	edge e;
-	e.to=to;
-	e.cost=cost;
-	g[from].push_back(e);
+	g[from].push_back({to, cost});
 	return e;
 }
 

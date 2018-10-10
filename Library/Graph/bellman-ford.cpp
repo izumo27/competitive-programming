@@ -46,11 +46,7 @@ int d[MAX_V];
 int V, E;
 
 void add_edge(int from, int to, int cost){
-	edge e;
-	e.from=from;
-	e.to=to;
-	e.cost=cost;
-	es[E++]=e;
+	es[E++]={from, to, cost};
 	return;
 }
 

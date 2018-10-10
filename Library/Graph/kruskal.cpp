@@ -80,7 +80,7 @@ struct UnionFind{
 	}
 
 	// xとyが同じ集合に属するか判定
-	bool is_same(int x, int y){
+	bool issame(int x, int y){
 		return find(x)==find(y);
 	}
 };
@@ -97,11 +97,7 @@ edge es[MAX_E];
 int V, E;
 
 void add_edge(int u, int v, int cost){
-	edge e;
-	e.u=u;
-	e.v=v;
-	e.cost=cost;
-	es[E++]=e;
+	es[E++]={u, v, cost};
 	return;
 }
 
@@ -115,7 +111,7 @@ int kruskal(){
 	int res=0;
 	REP(i, E){
 		edge e=es[i];
-		if(!uf.is_same(e.u, e.v)){
+		if(!uf.issame(e.u, e.v)){
 			uf.unite(e.u, e.v);
 			res+=e.cost;
 		}

@@ -20,6 +20,8 @@
 	- warshall-floyd.cpp  
 	全点対最短路(ワーシャルフロイド法)
 - その他
+	- bit-calc.cpp  
+	ビット演算
 	- combination.cpp  
 	階乗、逆元、二項係数
 	- euclid.cpp  

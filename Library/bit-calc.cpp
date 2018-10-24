@@ -38,12 +38,12 @@ int delete_element(int s, int i){
 	return s&~(1<<i);
 }
 
-// ある集合supの部分集合を列挙する
+// ある集合supの部分集合を列挙
 void subset(int sup){
 	int sub=sup;
 	do{
 		// ここに処理を書く
-		
+
 		sub=(sub-1)&sup;
 	}while(sub!=sup);
 }

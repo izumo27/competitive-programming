@@ -29,8 +29,8 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 struct UnionFind{
-	vector<int> par;
-	vector<int> rank;
+	vi par;
+	vi rank;
 
 	UnionFind(int n=1){
 		init(n);
@@ -76,7 +76,7 @@ struct UnionFind{
 	}
 
 	// xとyが同じ集合に属するか判定
-	bool is_same(int x, int y){
+	bool issame(int x, int y){
 		return find(x)==find(y);
 	}
 };

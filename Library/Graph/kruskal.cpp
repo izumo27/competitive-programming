@@ -33,8 +33,8 @@ const int MAX_N=514514;
 const int MAX_E=114514;
 
 struct UnionFind{
-	vector<int> par;
-	vector<int> rank;
+	vi par;
+	vi rank;
 
 	UnionFind(int n=1){
 		init(n);

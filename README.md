@@ -28,6 +28,8 @@
 	最小公倍数、最大公約数、拡張ユークリッドの互除法
 	- prime.cpp  
 	素数判定、約数の列挙、素因数分解、エラトステネスの篩
+	- segment-tree.cpp  
+	セグメント木（最小値）
 	- union-find.cpp  
 	Union-Find木
 	- weighted-union-find.cpp  

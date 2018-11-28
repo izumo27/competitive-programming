@@ -22,6 +22,8 @@
 - その他
 	- bit-calc.cpp  
 	ビット演算
+	- binary-indexed-tree.cpp  
+	BIT
 	- combination.cpp  
 	階乗、逆元、二項係数
 	- euclid.cpp  

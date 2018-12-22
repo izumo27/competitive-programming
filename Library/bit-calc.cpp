@@ -59,6 +59,17 @@ void subset_k(int n, int k){
 	}
 }
 
+// msb(x<<1): xより大きい最小の2冪
+ll msb(ll bits) {
+  bits=bits&0xffffffff00000000ll ? bits&0xffffffff00000000ll : bits;
+  bits=bits&0xffff0000ffff0000ll ? bits&0xffff0000ffff0000ll : bits;
+  bits=bits&0xff00ff00ff00ff00ll ? bits&0xff00ff00ff00ff00ll : bits;
+  bits=bits&0xf0f0f0f0f0f0f0f0ll ? bits&0xf0f0f0f0f0f0f0f0ll : bits;
+  bits=bits&0xccccccccccccccccll ? bits&0xccccccccccccccccll : bits;
+  bits=bits&0xaaaaaaaaaaaaaaaall ? bits&0xaaaaaaaaaaaaaaaall : bits;
+  return bits;
+}
+
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);

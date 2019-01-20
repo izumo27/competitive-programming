@@ -28,25 +28,45 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
+bool used[114514];
+
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	string s;
-	cin>>s;
-	int n=s.size();
+	int n, k;
+	pll dt[114514];
+	cin>>n>>k;
 	REP(i, n){
-		REP(j, n-i+1){
-			string tmp="";
-			if(j>0){
-				tmp+=s.substr(0, j);
-			}
-			tmp+=s.substr(j+i, n);
-			if(tmp=="keyence"){
-				cout<<"YES"<<'\n';
-				return 0;
-			}
+		cin>>dt[i].second>>dt[i].first;
+	}
+	sort(dt, dt+n, greater<pll>());
+	ll sum=0, x=0;
+	vl q;
+	REP(i, k){
+		sum+=dt[i].first;
+		if(used[dt[i].second]){
+			q.push_back(dt[i].first);
+		}
+		else{
+			used[dt[i].second]=true;
+			++x;
 		}
 	}
-	cout<<"NO"<<'\n';
+	sort(ALL(q));
+	ll ans=sum+x*x;
+	int idx=0;
+	FOR(i, k, n){
+		if(x>=k || idx>=q.size()){
+			break;
+		}
+		if(used[dt[i].second]){
+			continue;
+		}
+		used[dt[i].second]=true;
+		sum=sum-q[idx++]+dt[i].first;
+		++x;
+		CHMAX(ans, sum+x*x);
+	}
+	cout<<ans<<'\n';
 	return 0;
 }

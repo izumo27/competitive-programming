@@ -28,25 +28,28 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
+bool used[1252525];
+
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	string s;
+	int s;
 	cin>>s;
-	int n=s.size();
-	REP(i, n){
-		REP(j, n-i+1){
-			string tmp="";
-			if(j>0){
-				tmp+=s.substr(0, j);
-			}
-			tmp+=s.substr(j+i, n);
-			if(tmp=="keyence"){
-				cout<<"YES"<<'\n';
-				return 0;
-			}
+	used[s]=true;
+	REP(i, 1252525){
+		if(s&1){
+			s=3*s+1;
+		}
+		else{
+			s/=2;
+		}
+		if(used[s]){
+			cout<<i+2<<'\n';
+			return 0;
+		}
+		else{
+			used[s]=true;
 		}
 	}
-	cout<<"NO"<<'\n';
 	return 0;
 }

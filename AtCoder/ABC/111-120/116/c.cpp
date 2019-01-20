@@ -31,22 +31,25 @@ const double EPS=1e-11;
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	string s;
-	cin>>s;
-	int n=s.size();
+	int n, h[114];
+	cin>>n;
 	REP(i, n){
-		REP(j, n-i+1){
-			string tmp="";
-			if(j>0){
-				tmp+=s.substr(0, j);
-			}
-			tmp+=s.substr(j+i, n);
-			if(tmp=="keyence"){
-				cout<<"YES"<<'\n';
-				return 0;
-			}
+		cin>>h[i];
+	}
+	int ans=0;
+	REP(i, 10001){
+		int idx=0;
+		while(idx<n && !h[idx]){
+			++idx;
+		}
+		if(idx==n){
+			cout<<i<<'\n';
+			return 0;
+		}
+		while(h[idx]){
+			--h[idx];
+			++idx;
 		}
 	}
-	cout<<"NO"<<'\n';
 	return 0;
 }

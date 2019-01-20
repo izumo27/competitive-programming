@@ -31,22 +31,8 @@ const double EPS=1e-11;
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	string s;
-	cin>>s;
-	int n=s.size();
-	REP(i, n){
-		REP(j, n-i+1){
-			string tmp="";
-			if(j>0){
-				tmp+=s.substr(0, j);
-			}
-			tmp+=s.substr(j+i, n);
-			if(tmp=="keyence"){
-				cout<<"YES"<<'\n';
-				return 0;
-			}
-		}
-	}
-	cout<<"NO"<<'\n';
+	int x, y, z;
+	cin>>x>>y>>z;
+	cout<<x*y/2<<'\n';
 	return 0;
 }

@@ -28,7 +28,8 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-int bit[114514][40], kbit[40], ans[40];
+int bit[114514][40], kbit[40];
+ll dp[50][2];
 
 int main(){
 	ios::sync_with_stdio(false);
@@ -49,36 +50,30 @@ int main(){
 		kbit[kcnt++]=k&1;
 		k/=2;
 	}
-	bool lower=false;
+	REP(i, 50){
+		dp[i][0]=dp[i][1]=-1;
+	}
+	dp[40][0]=0;
+	ll beki=1ll<<40;
 	FORR(i, 0, 40){
+		beki>>=1;
 		int cnt=0;
 		REP(j, n){
 			if(bit[j][i]){
 				++cnt;
 			}
 		}
-		if(cnt*2<n){
-			if(!lower && kbit[i]==0){
-				ans[i]=cnt;
-			}
-			else{
-				ans[i]=n-cnt;
-			}
+		if(dp[i+1][1]>=0){
+			dp[i][1]=dp[i+1][1]+beki*max(cnt, n-cnt);
+		}
+		if(kbit[i]){
+			CHMAX(dp[i][1], dp[i+1][0]+beki*cnt);
+			dp[i][0]=dp[i+1][0]+beki*(n-cnt);
 		}
 		else{
-			ans[i]=cnt;
-			if(!lower && kbit[i]==1){
-				lower=true;
-			}
+			dp[i][0]=dp[i+1][0]+beki*cnt;
 		}
 	}
-	ll res=0, beki=1;
-	REP(i, 40){
-		// DEBUG(res);
-		// DEBUG(ans[i]);
-		res+=beki*ans[i];
-		beki*=2;
-	}
-	cout<<res<<'\n';
+	cout<<max(dp[0][0], dp[0][1])<<'\n';
 	return 0;
 }

@@ -29,11 +29,11 @@
 	- euclid.cpp  
 	最小公倍数、最大公約数、拡張ユークリッドの互除法
 	- lazy-segment-tree  
-	遅延評価セグメント木（和）
+	遅延評価セグメント木（最大値、最小値、区間和）
 	- prime.cpp  
 	素数判定、約数の列挙、素因数分解、エラトステネスの篩
 	- segment-tree.cpp  
-	セグメント木（最小値）
+	セグメント木（最大値、最小値、区間和）
 	- union-find.cpp  
 	Union-Find木
 	- weighted-union-find.cpp  

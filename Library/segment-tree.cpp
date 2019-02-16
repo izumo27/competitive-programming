@@ -30,17 +30,69 @@ const double EPS=1e-11;
 
 const int MAX_N=1<<17;
 
-template<typename T> struct SegmentTree{
+template<typename T> struct SegmentTree_max{
+	int n;
+	vector<T> node;
+	T MIN;
+
+	SegmentTree(const int &n_=1, const T &MIN_=0){
+		init(n_, MIN_);
+	}
+
+	// n要素で初期化
+	void init(const int &n_=1, const T &MIN_=0){
+		n=1;
+		while(n<n_){
+			n<<=1;
+		}
+		node.resize(n*2-1);
+		MIN=MIN_;
+		REP(i, n*2-1){
+			node[i]=MIN;
+		}
+	}
+
+	// k番目(0-indexed)をaに変更
+	void update(int k, const T &a){
+		k+=n-1;
+		node[k]=a;
+		while(k>0){
+			k=(k-1)/2;
+			node[k]=max(node[k*2+1], node[k*2+2]);
+		}
+	}
+
+	// [a, b)の最大値を求める
+	// k: 節点の番号、その節点は[l, r)に対応づく
+	// 外から呼び出すときはquery(a, b, 0, 0, n)
+	T query(int a, int b, int k, int l, int r){
+		// [a, b)と[l, r)が交差しなければMIN
+		if(r<=a || b<=l){
+			return MIN;
+		}
+		// [a, b)と[l, r)が完全に含んでいればこの節点の値
+		if(a<=l && r<=b){
+			return node[k];
+		}
+		// そうでなければ2つの子の最大値
+		else{
+			T v1=query(a, b, k*2+1, l, (l+r)/2), v2=query(a, b, k*2+2, (l+r)/2, r);
+			return max(v1, v2);
+		}
+	}
+};
+
+template<typename T> struct SegmentTree_min{
 	int n;
 	vector<T> node;
 	T MAX;
 
-	SegmentTree(int n_=1, T MAX_=INT_MAX){
+	SegmentTree(const int &n_=1, const T &MAX_=INT_MAX){
 		init(n_, MAX_);
 	}
 
 	// n要素で初期化
-	void init(int n_=1, T MAX_=INT_MAX){
+	void init(const int &n_=1, const T &MAX_=INT_MAX){
 		n=1;
 		while(n<n_){
 			n<<=1;
@@ -53,7 +105,7 @@ template<typename T> struct SegmentTree{
 	}
 
 	// k番目(0-indexed)をaに変更
-	void update(int k, T a){
+	void update(int k, const T &a){
 		k+=n-1;
 		node[k]=a;
 		while(k>0){
@@ -78,6 +130,58 @@ template<typename T> struct SegmentTree{
 		else{
 			T v1=query(a, b, k*2+1, l, (l+r)/2), v2=query(a, b, k*2+2, (l+r)/2, r);
 			return min(v1, v2);
+		}
+	}
+};
+
+template<typename T> struct SegmentTree_sum{
+	int n;
+	vector<T> node;
+	T ZERO;
+
+	SegmentTree(const int &n_=1, const T &ZERO_=0){
+		init(n_, ZERO_);
+	}
+
+	// n要素で初期化
+	void init(const int &n_=1, const T &ZERO_=0){
+		n=1;
+		while(n<n_){
+			n<<=1;
+		}
+		node.resize(n*2-1);
+		ZERO=ZERO_;
+		REP(i, n*2-1){
+			node[i]=ZERO;
+		}
+	}
+
+	// k番目(0-indexed)をaに変更
+	void update(int k, const T &a){
+		k+=n-1;
+		node[k]=a;
+		while(k>0){
+			k=(k-1)/2;
+			node[k]=node[k*2+1]+node[k*2+2];
+		}
+	}
+
+	// [a, b)の和を求める
+	// k: 節点の番号、その節点は[l, r)に対応づく
+	// 外から呼び出すときはquery(a, b, 0, 0, n)
+	T query(int a, int b, int k, int l, int r){
+		// [a, b)と[l, r)が交差しなければZERO
+		if(r<=a || b<=l){
+			return ZERO;
+		}
+		// [a, b)と[l, r)が完全に含んでいればこの節点の値
+		if(a<=l && r<=b){
+			return node[k];
+		}
+		// そうでなければ2つの子の和
+		else{
+			T v1=query(a, b, k*2+1, l, (l+r)/2), v2=query(a, b, k*2+2, (l+r)/2, r);
+			return v1+v2;
 		}
 	}
 };

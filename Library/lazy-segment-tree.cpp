@@ -35,7 +35,7 @@ template<typename T> struct LazySegmentTree_max{
 	vector<T> node, lazy;
 	T MIN;
 
-	LazySegmentTree(const vector<T> &v, const T &MIN_=0){
+	LazySegmentTree_max(const vector<T> &v, const T &MIN_=0){
 		init(v, MIN_);
 	}
 
@@ -130,7 +130,7 @@ template<typename T> struct LazySegmentTree_min{
 	vector<T> node, lazy;
 	T MAX;
 
-	LazySegmentTree(const vector<T> &v, const T &MAX_=INT_MAX){
+	LazySegmentTree_min(const vector<T> &v, const T &MAX_=INT_MAX){
 		init(v, MAX_);
 	}
 
@@ -225,7 +225,7 @@ template<typename T> struct LazySegmentTree_sum{
 	vector<T> node, lazy;
 	T ZERO;
 
-	LazySegmentTree(const vector<T> &v, const T &ZERO_=0){
+	LazySegmentTree_sum(const vector<T> &v, const T &ZERO_=0){
 		init(v, ZERO_);
 	}
 

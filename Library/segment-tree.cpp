@@ -35,7 +35,7 @@ template<typename T> struct SegmentTree_max{
 	vector<T> node;
 	T MIN;
 
-	SegmentTree(const int &n_=1, const T &MIN_=0){
+	SegmentTree_max(const int &n_=1, const T &MIN_=0){
 		init(n_, MIN_);
 	}
 
@@ -87,7 +87,7 @@ template<typename T> struct SegmentTree_min{
 	vector<T> node;
 	T MAX;
 
-	SegmentTree(const int &n_=1, const T &MAX_=INT_MAX){
+	SegmentTree_min(const int &n_=1, const T &MAX_=INT_MAX){
 		init(n_, MAX_);
 	}
 
@@ -139,7 +139,7 @@ template<typename T> struct SegmentTree_sum{
 	vector<T> node;
 	T ZERO;
 
-	SegmentTree(const int &n_=1, const T &ZERO_=0){
+	SegmentTree_sum(const int &n_=1, const T &ZERO_=0){
 		init(n_, ZERO_);
 	}
 

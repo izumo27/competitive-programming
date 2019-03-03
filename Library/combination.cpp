@@ -17,8 +17,8 @@ typedef pair<ll, ll> pll;
 #define DEBUG_VEC(v) cout<<#v<<":";REP(i, v.size())cout<<' '<<v[i];cout<<'\n'
 #define ALL(a) (a).begin(), (a).end()
 
-#define CHMIN(a, b) a=min((a), (b))
-#define CHMAX(a, b) a=max((a), (b))
+template<typename T> inline void CHMAX(T& a, const T b) {if(a>b) a=b;}
+template<typename T> inline void CHMIN(T& a, const T b) {if(a<b) a=b;}
 
 // const ll MOD=1000000007ll;
 const ll MOD=998244353ll;
@@ -76,6 +76,6 @@ void init_comb(int n){
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);
-	
+
 	return 0;
 }

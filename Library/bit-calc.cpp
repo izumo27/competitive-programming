@@ -91,6 +91,17 @@ inline ll bit_count(ll n) {
 	return n;
 }
 
+// [0, n]のxor
+ll xorxor(ll n) {
+	ll res=((n+1)>>1)&1;
+	REP(i, 60){
+		if(n>>i&1){
+			res|=(1^(n&1))<<i;
+		}
+	}
+	return res;
+}
+
 int main(){
 	ios::sync_with_stdio(false);
 	cin.tie(0);

@@ -17,8 +17,8 @@ typedef pair<ll, ll> pll;
 #define DEBUG_VEC(v) cout<<#v<<":";REP(i, v.size())cout<<' '<<v[i];cout<<'\n'
 #define ALL(a) (a).begin(), (a).end()
 
-template<typename T> inline void CHMAX(T& a, const T b) {if(a>b) a=b;}
-template<typename T> inline void CHMIN(T& a, const T b) {if(a<b) a=b;}
+template<typename T> inline void CHMAX(T& a, const T b) {if(a<b) a=b;}
+template<typename T> inline void CHMIN(T& a, const T b) {if(a>b) a=b;}
 
 const ll MOD=1000000007ll;
 // const ll MOD=998244353ll;

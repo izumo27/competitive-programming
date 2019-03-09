@@ -17,8 +17,8 @@ typedef pair<ll, ll> pll;
 #define DEBUG_VEC(v) cout<<#v<<":";REP(i, v.size())cout<<' '<<v[i];cout<<'\n'
 #define ALL(a) (a).begin(), (a).end()
 
-template<typename T> inline void CHMAX(T& a, const T b) {if(a>b) a=b;}
-template<typename T> inline void CHMIN(T& a, const T b) {if(a<b) a=b;}
+template<typename T> inline void CHMAX(T& a, const T b) {if(a<b) a=b;}
+template<typename T> inline void CHMIN(T& a, const T b) {if(a>b) a=b;}
 
 const ll MOD=1000000007ll;
 // const ll MOD=998244353ll;
@@ -70,7 +70,7 @@ inline ll msb(ll n) {
  	return n;
 }
 
-// n (int) で立っているビット数を求める
+// 立っているビット数を求める (int)
 inline int bit_count(int n){
 	n=((n>>1)&0x55555555)+(n&0x55555555);
 	n=((n>>2)&0x33333333)+(n&0x33333333);
@@ -80,7 +80,7 @@ inline int bit_count(int n){
 	return n;
 }
 
-// n (ll) で立っているビット数を求める
+// 立っているビット数を求める (ll)
 inline ll bit_count(ll n) {
 	n=((n>>1)&0x5555555555555555LL)+(n&0x5555555555555555LL);
 	n=((n>>2)&0x3333333333333333LL)+(n&0x3333333333333333LL);

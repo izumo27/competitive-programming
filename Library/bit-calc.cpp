@@ -92,7 +92,7 @@ inline ll bit_count(ll n) {
 }
 
 // [0, n]のxor
-ll xorxor(ll n) {
+inline ll xorxor(ll n) {
 	ll res=((n+1)>>1)&1;
 	REP(i, 60){
 		if(n>>i&1){

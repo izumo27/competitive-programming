@@ -50,7 +50,7 @@ int prim(int s){
 	priority_queue<pii, vector<pii>, greater<pii>> que;
 	fill(mincost, mincost+V, INF);
 	mincost[0]=0;
-	que.push(pii(0, s));
+	que.emplace(0, s);
 	int res=0;
 	while(!que.empty()){
 		pii p=que.top();
@@ -64,7 +64,7 @@ int prim(int s){
 			edge e=g[v][i];
 			if(mincost[e.to]>mincost[v]+e.cost){
 				mincost[e.to]=mincost[v]+e.cost;
-				que.push(pii(mincost[e.to], e.to));
+				que.emplace(mincost[e.to], e.to);
 			}
 		}
 	}

@@ -13,7 +13,8 @@ typedef pair<ll, ll> pll;
 #define FOR(i, a, b) for(int i=(a); i<(b); ++i)
 #define FORR(i, a, b) for(int i=(b)-1; i>=(a); --i)
 
-#define DEBUG(x) cout<<#x<<": "<<x<<'\n'#define DEBUG(x) cout<<#x<<": "<<(x)<<'\n'#define DEBUG_VEC(v) cout<<#v<<":";REP(i, v.size())cout<<' '<<v[i];cout<<'\n'
+#define DEBUG(x) cout<<#x<<": "<<(x)<<'\n'
+#define DEBUG_VEC(v) cout<<#v<<":";REP(i, v.size())cout<<' '<<v[i];cout<<'\n'
 #define ALL(a) (a).begin(), (a).end()
 
 template<typename T> inline void CHMAX(T& a, const T b) {if(a<b) a=b;}

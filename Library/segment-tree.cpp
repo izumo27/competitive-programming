@@ -64,7 +64,6 @@ template<typename T> struct SegmentTree_max{
 
 	// [a, b)の最大値を求める
 	// k: 節点の番号、その節点は[l, r)に対応づく
-	// 外から呼び出すときはquery(a, b, 0, 0, n)
 	T query(int a, int b, int k, int l, int r){
 		// [a, b)と[l, r)が交差しなければMIN
 		if(r<=a || b<=l){
@@ -79,6 +78,10 @@ template<typename T> struct SegmentTree_max{
 			T v1=query(a, b, k*2+1, l, (l+r)/2), v2=query(a, b, k*2+2, (l+r)/2, r);
 			return max(v1, v2);
 		}
+	}
+
+	T query(int a, int b){
+		return query(a, b, 0, 0, n);
 	}
 };
 
@@ -116,7 +119,6 @@ template<typename T> struct SegmentTree_min{
 
 	// [a, b)の最小値を求める
 	// k: 節点の番号、その節点は[l, r)に対応づく
-	// 外から呼び出すときはquery(a, b, 0, 0, n)
 	T query(int a, int b, int k, int l, int r){
 		// [a, b)と[l, r)が交差しなければMAX
 		if(r<=a || b<=l){
@@ -131,6 +133,10 @@ template<typename T> struct SegmentTree_min{
 			T v1=query(a, b, k*2+1, l, (l+r)/2), v2=query(a, b, k*2+2, (l+r)/2, r);
 			return min(v1, v2);
 		}
+	}
+
+	T query(int a, int b){
+		return query(a, b, 0, 0, n);
 	}
 };
 
@@ -168,7 +174,6 @@ template<typename T> struct SegmentTree_sum{
 
 	// [a, b)の和を求める
 	// k: 節点の番号、その節点は[l, r)に対応づく
-	// 外から呼び出すときはquery(a, b, 0, 0, n)
 	T query(int a, int b, int k, int l, int r){
 		// [a, b)と[l, r)が交差しなければZERO
 		if(r<=a || b<=l){
@@ -183,6 +188,10 @@ template<typename T> struct SegmentTree_sum{
 			T v1=query(a, b, k*2+1, l, (l+r)/2), v2=query(a, b, k*2+2, (l+r)/2, r);
 			return v1+v2;
 		}
+	}
+
+	T query(int a, int b){
+		return query(a, b, 0, 0, n);
 	}
 };
 

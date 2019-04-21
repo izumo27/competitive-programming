@@ -84,7 +84,6 @@ template<typename T> struct LazySegmentTree_max{
 
 	// [a, b)にxを加える
 	// k: 節点の番号、その節点は[l, r)に対応づく
-	// 外から呼び出すときはadd(a, b, x, 0, 0, n)
 	void add(int a, int b, const T &x, int k, int l, int r){
 		eval(k, l, r);
 		// [a, b)と[l, r)が交差しなければ何もしない
@@ -106,7 +105,6 @@ template<typename T> struct LazySegmentTree_max{
 
 	// [a, b)の最大値を求める
 	// k: 節点の番号、その節点は[l, r)に対応づく
-	// 外から呼び出すときはquery(a, b, 0, 0, n)
 	T query(int a, int b, int k, int l, int r){
 		// [a, b)と[l, r)が交差しなければMIN
 		if(r<=a || b<=l){
@@ -122,6 +120,14 @@ template<typename T> struct LazySegmentTree_max{
 			T v1=query(a, b, k*2+1, l, (l+r)/2), v2=query(a, b, k*2+2, (l+r)/2, r);
 			return max(v1, v2);
 		}
+	}
+
+	void add(int a, int b, const T &x){
+		add(a, b, x, 0, 0, n);
+	}
+
+	T query(int a, int b){
+		return query(a, b, 0, 0, n);
 	}
 };
 
@@ -179,7 +185,6 @@ template<typename T> struct LazySegmentTree_min{
 
 	// [a, b)にxを加える
 	// k: 節点の番号、その節点は[l, r)に対応づく
-	// 外から呼び出すときはadd(a, b, x, 0, 0, n)
 	void add(int a, int b, const T &x, int k, int l, int r){
 		eval(k, l, r);
 		// [a, b)と[l, r)が交差しなければ何もしない
@@ -201,7 +206,6 @@ template<typename T> struct LazySegmentTree_min{
 
 	// [a, b)の最小値を求める
 	// k: 節点の番号、その節点は[l, r)に対応づく
-	// 外から呼び出すときはquery(a, b, 0, 0, n)
 	T query(int a, int b, int k, int l, int r){
 		// [a, b)と[l, r)が交差しなければMAX
 		if(r<=a || b<=l){
@@ -217,6 +221,14 @@ template<typename T> struct LazySegmentTree_min{
 			T v1=query(a, b, k*2+1, l, (l+r)/2), v2=query(a, b, k*2+2, (l+r)/2, r);
 			return min(v1, v2);
 		}
+	}
+
+	void add(int a, int b, const T &x){
+		add(a, b, x, 0, 0, n);
+	}
+
+	T query(int a, int b){
+		return query(a, b, 0, 0, n);
 	}
 };
 
@@ -274,7 +286,6 @@ template<typename T> struct LazySegmentTree_sum{
 
 	// [a, b)にxを加える
 	// k: 節点の番号、その節点は[l, r)に対応づく
-	// 外から呼び出すときはadd(a, b, x, 0, 0, n)
 	void add(int a, int b, const T &x, int k, int l, int r){
 		eval(k, l, r);
 		// [a, b)と[l, r)が交差しなければ何もしない
@@ -296,7 +307,6 @@ template<typename T> struct LazySegmentTree_sum{
 
 	// [a, b)の和を求める
 	// k: 節点の番号、その節点は[l, r)に対応づく
-	// 外から呼び出すときはquery(a, b, 0, 0, n)
 	T query(int a, int b, int k, int l, int r){
 		// [a, b)と[l, r)が交差しなければZERO
 		if(r<=a || b<=l){
@@ -312,6 +322,14 @@ template<typename T> struct LazySegmentTree_sum{
 			T v1=query(a, b, k*2+1, l, (l+r)/2), v2=query(a, b, k*2+2, (l+r)/2, r);
 			return v1+v2;
 		}
+	}
+
+	void add(int a, int b, const T &x){
+		add(a, b, x, 0, 0, n);
+	}
+
+	T query(int a, int b){
+		return query(a, b, 0, 0, n);
 	}
 };
 

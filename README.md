@@ -24,12 +24,12 @@
 	ビット演算
 	- binary-indexed-tree.cpp  
 	BIT
-	- combination.cpp  
-	階乗、逆元、二項係数
 	- euclid.cpp  
 	最小公倍数、最大公約数、拡張ユークリッドの互除法
-	- lazy-segment-tree  
+	- lazy-segment-tree.cpp  
 	遅延評価セグメント木（最大値、最小値、区間和）
+	- modint.cpp  
+	modint、階乗、逆元、二項係数
 	- prime.cpp  
 	素数判定、約数の列挙、素因数分解、エラトステネスの篩
 	- segment-tree.cpp  

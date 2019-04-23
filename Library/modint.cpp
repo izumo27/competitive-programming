@@ -80,8 +80,8 @@ template<typename T, typename U> constexpr bool operator!=(const Modint<T>& lhs,
 template<typename T, typename U> constexpr bool operator!=(U lhs, const Modint<T>& rhs) noexcept {return !(lhs==rhs);}
 
 template<typename T> constexpr bool operator<(const Modint<T>& lhs, const Modint<T>& rhs) noexcept {return lhs.val<rhs.val;}
-template<typename T, typename U> constexpr bool operator<(const Modint<T>& lhs, U rhs) noexcept {return lhs==Modint<T>(rhs);}
-template<typename T, typename U> constexpr bool operator<(U lhs, const Modint<T>& rhs) noexcept {return Modint<T>(lhs)==rhs;}
+template<typename T, typename U> constexpr bool operator<(const Modint<T>& lhs, U rhs) noexcept {return lhs<Modint<T>(rhs);}
+template<typename T, typename U> constexpr bool operator<(U lhs, const Modint<T>& rhs) noexcept {return Modint<T>(lhs)<rhs;}
 
 template<typename T> constexpr Modint<T> operator+(const Modint<T>& lhs, const Modint<T>& rhs) noexcept {return Modint<T>(lhs)+=rhs;}
 template<typename T, typename U> constexpr Modint<T> operator+(const Modint<T>& lhs, U rhs) noexcept {return Modint<T>(lhs)+=rhs;}
@@ -103,7 +103,7 @@ template<typename T, typename U> Modint<T> constexpr power(const Modint<T>& a, c
 	Modint<T> x=a, res=1;
 	U p=b;
 	while(p>0){
-		if (p&1) res*=x;
+		if(p&1) res*=x;
 		x*=x;
 		p>>=1;
 	}

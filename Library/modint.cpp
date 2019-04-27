@@ -56,7 +56,7 @@ template<typename T> struct Modint{
 	constexpr Modint& operator--() noexcept {return *this-=1;}
 	constexpr Modint operator++(int) noexcept {Modint result(*this); *this+=1; return result;}
 	constexpr Modint operator--(int) noexcept {Modint result(*this); *this-=1; return result;}
-	constexpr Modint operator-() const noexcept {return Modint(-value);}
+	constexpr Modint operator-() const noexcept {return Modint(-val);}
 
 	constexpr Modint &operator*=(const Modint rhs) noexcept {val=val*rhs.val%mod(); return *this;}
 	constexpr Modint& operator/=(const Modint& rhs) noexcept {
@@ -135,7 +135,7 @@ template<class T> struct Combination{
 			finv_[i]=finv_[i-1]*inv_[i];
 		}
 	}
-	constexpr T inv(int n) const noexcept {
+	constexpr Modint<T> inv(int n) const noexcept {
 		if(n<0) return 0;
 		return inv_[n];
 	}

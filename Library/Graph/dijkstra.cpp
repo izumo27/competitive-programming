@@ -51,7 +51,7 @@ void dijkstra(int s){
 	priority_queue<pii, vector<pii>, greater<pii>> que;
 	fill(d, d+V, INF);
 	d[s]=0;
-	que.emplace(0, s);
+	que.push({0, s});
 	while(!que.empty()){
 		pii p=que.top();
 		que.pop();
@@ -63,7 +63,7 @@ void dijkstra(int s){
 			edge e=g[v][i];
 			if(d[e.to]>d[v]+e.cost){
 				d[e.to]=d[v]+e.cost;
-				que.emplace(d[e.to], e.to);
+				que.push({d[e.to], e.to});
 			}
 		}
 	}

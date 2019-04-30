@@ -48,12 +48,12 @@ template<typename T> struct LazySegmentTree_max{
 		}
 		node.resize(n*2-1);
 		lazy.resize(n*2-1, 0);
-		MIN=MIN_
+		MIN=MIN_;
 		REP(i, n_){
 			node[i+n-1]=v[i];
 		}
 		FORR(i, 0, n-1){
-			node[i]=node[i*2+1]+node[i*2+2];
+			node[i]=max(node[i*2+1], node[i*2+2]);
 		}
 	}
 
@@ -149,12 +149,12 @@ template<typename T> struct LazySegmentTree_min{
 		}
 		node.resize(n*2-1);
 		lazy.resize(n*2-1, 0);
-		MAX=MAX_
+		MAX=MAX_;
 		REP(i, n_){
 			node[i+n-1]=v[i];
 		}
 		FORR(i, 0, n-1){
-			node[i]=node[i*2+1]+node[i*2+2];
+			node[i]=min(node[i*2+1], node[i*2+2]);
 		}
 	}
 

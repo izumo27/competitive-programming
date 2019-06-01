@@ -43,8 +43,8 @@ template<typename T> struct Modint{
 		return v;
 	}
 
-	constexpr Type &value() noexcept {return val;}
-	constexpr const Type &value() const noexcept {return val;}
+	constexpr Type& value() noexcept {return val;}
+	constexpr const Type& value() const noexcept {return val;}
 	template <typename U> constexpr explicit operator U() const noexcept {return static_cast<U>(val);}
 	constexpr static Type mod() noexcept {return T::value;}
 
@@ -58,7 +58,7 @@ template<typename T> struct Modint{
 	constexpr Modint operator--(int) noexcept {Modint result(*this); *this-=1; return result;}
 	constexpr Modint operator-() const noexcept {return Modint(-val);}
 
-	constexpr Modint &operator*=(const Modint rhs) noexcept {val=val*rhs.val%mod(); return *this;}
+	constexpr Modint& operator*=(const Modint rhs) noexcept {val=val*rhs.val%mod(); return *this;}
 	constexpr Modint& operator/=(const Modint& rhs) noexcept {
 		Type x=rhs.val, m=mod(), u=0, v=1;
 		while(x!=0){
@@ -82,6 +82,10 @@ template<typename T, typename U> constexpr bool operator!=(U lhs, const Modint<T
 template<typename T> constexpr bool operator<(const Modint<T>& lhs, const Modint<T>& rhs) noexcept {return lhs.val<rhs.val;}
 template<typename T, typename U> constexpr bool operator<(const Modint<T>& lhs, U rhs) noexcept {return lhs<Modint<T>(rhs);}
 template<typename T, typename U> constexpr bool operator<(U lhs, const Modint<T>& rhs) noexcept {return Modint<T>(lhs)<rhs;}
+
+template<typename T> constexpr bool operator>(const Modint<T>& lhs, const Modint<T>& rhs) noexcept {return lhs.val>rhs.val;}
+template<typename T, typename U> constexpr bool operator>(const Modint<T>& lhs, U rhs) noexcept {return lhs>Modint<T>(rhs);}
+template<typename T, typename U> constexpr bool operator>(U lhs, const Modint<T>& rhs) noexcept {return Modint<T>(lhs)>rhs;}
 
 template<typename T> constexpr Modint<T> operator+(const Modint<T>& lhs, const Modint<T>& rhs) noexcept {return Modint<T>(lhs)+=rhs;}
 template<typename T, typename U> constexpr Modint<T> operator+(const Modint<T>& lhs, U rhs) noexcept {return Modint<T>(lhs)+=rhs;}

@@ -29,47 +29,47 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int q;
-	ll a, b, c;
-	cin>>q;
-	REP(i, q){
-		bool ok=false;
-		cin>>a>>b>>c;
-		if(a&1){
-			ll d=b*10+c;
-			if(d>=100){
-				if(b>=10){
-					b-=10;
-					if(b&1){
-						if(c>=10 && c%2==0){
-							ok=true;
-						}
-					}
-					else if(c%2==0){
-						ok=true;
-					}
-				}
-				else{
-					c-=100-b*10;
-					if(c>=0 && c%2==0){
-						ok=true;
-					}
-				}
-			}
-		}
-		else{
-			if(b&1){
-				if(c>=10 && c%2==0){
-					ok=true;
-				}
-			}
-			else if(c%2==0){
-				ok=true;
-			}
-		}
-		cout<<(ok ? "Yes" : "No")<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int q;
+  ll a, b, c;
+  cin>>q;
+  REP(i, q){
+    bool ok=false;
+    cin>>a>>b>>c;
+    if(a&1){
+      ll d=b*10+c;
+      if(d>=100){
+        if(b>=10){
+          b-=10;
+          if(b&1){
+            if(c>=10 && c%2==0){
+              ok=true;
+            }
+          }
+          else if(c%2==0){
+            ok=true;
+          }
+        }
+        else{
+          c-=100-b*10;
+          if(c>=0 && c%2==0){
+            ok=true;
+          }
+        }
+      }
+    }
+    else{
+      if(b&1){
+        if(c>=10 && c%2==0){
+          ok=true;
+        }
+      }
+      else if(c%2==0){
+        ok=true;
+      }
+    }
+    cout<<(ok ? "Yes" : "No")<<'\n';
+  }
+  return 0;
 }

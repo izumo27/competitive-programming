@@ -33,49 +33,49 @@ vi g[252521];
 int d[252521];
 
 void dfs(int s){
-	for(auto x : g[s]){
-		if(d[x]!=INF){
-			continue;
-		}
-		d[x]=d[s]+1;
-		dfs(x);
-	}
+  for(auto x : g[s]){
+    if(d[x]!=INF){
+      continue;
+    }
+    d[x]=d[s]+1;
+    dfs(x);
+  }
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, a, b;
-	cin>>n;
-	REP(i, n-1){
-		cin>>a>>b;
-		--a;
-		--b;
-		g[a].push_back(b);
-		g[b].push_back(a);
-	}
-	REP(i, n){
-		d[i]=INF;
-	}
-	d[0]=0;
-	dfs(0);
-	int ma=0, cand=0;
-	REP(i, n){
-		if(ma<d[i]){
-			cand=i;
-			ma=d[i];
-		}
-	}
-	REP(i, n){
-		d[i]=INF;
-	}
-	d[cand]=0;
-	dfs(cand);
-	int ans=0;
-	REP(i, n){
-		CHMAX(ans, d[i]);
-	}
-	cout<<(ans%3==1 ? "Second" : "First")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, a, b;
+  cin>>n;
+  REP(i, n-1){
+    cin>>a>>b;
+    --a;
+    --b;
+    g[a].push_back(b);
+    g[b].push_back(a);
+  }
+  REP(i, n){
+    d[i]=INF;
+  }
+  d[0]=0;
+  dfs(0);
+  int ma=0, cand=0;
+  REP(i, n){
+    if(ma<d[i]){
+      cand=i;
+      ma=d[i];
+    }
+  }
+  REP(i, n){
+    d[i]=INF;
+  }
+  d[cand]=0;
+  dfs(cand);
+  int ans=0;
+  REP(i, n){
+    CHMAX(ans, d[i]);
+  }
+  cout<<(ans%3==1 ? "Second" : "First")<<'\n';
+  return 0;
 }

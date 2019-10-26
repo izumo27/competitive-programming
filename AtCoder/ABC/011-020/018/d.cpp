@@ -29,37 +29,37 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, p, q, r, x[334], y[334], z[334], flag[334], h[334];
-	cin>>n>>m>>p>>q>>r;
-	REP(i, r){
-		cin>>x[i]>>y[i]>>z[i];
-		--x[i];
-		--y[i];
-	}
-	int ans=0, sub=(1<<p)-1;
-	while(sub<1<<n){
-		REP(i, n){
-			flag[i]=sub>>i&1;
-		}
-		REP(i, m){
-			h[i]=0;
-		}
-		REP(i, r){
-			if(flag[x[i]]){
-				h[y[i]]+=z[i];
-			}
-		}
-		sort(h, h+m, greater<int>());
-		int tmp=0;
-		REP(i, q){
-			tmp+=h[i];
-		}
-		ans=max(ans, tmp);
-		int a=sub&-sub, b=sub+a;
-		sub=((sub&~b)/a>>1)|b;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, p, q, r, x[334], y[334], z[334], flag[334], h[334];
+  cin>>n>>m>>p>>q>>r;
+  REP(i, r){
+    cin>>x[i]>>y[i]>>z[i];
+    --x[i];
+    --y[i];
+  }
+  int ans=0, sub=(1<<p)-1;
+  while(sub<1<<n){
+    REP(i, n){
+      flag[i]=sub>>i&1;
+    }
+    REP(i, m){
+      h[i]=0;
+    }
+    REP(i, r){
+      if(flag[x[i]]){
+        h[y[i]]+=z[i];
+      }
+    }
+    sort(h, h+m, greater<int>());
+    int tmp=0;
+    REP(i, q){
+      tmp+=h[i];
+    }
+    ans=max(ans, tmp);
+    int a=sub&-sub, b=sub+a;
+    sub=((sub&~b)/a>>1)|b;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

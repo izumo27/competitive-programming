@@ -32,45 +32,45 @@ vi g[214514];
 int c[214514][2];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, a, b;
-	string s;
-	cin>>n>>m;
-	cin>>s;
-	REP(i, m){
-		cin>>a>>b;
-		--a;
-		--b;
-		g[a].push_back(b);
-		g[b].push_back(a);
-		++c[a][s[b]-'A'];
-		++c[b][s[a]-'A'];
-	}
-	queue<int> q;
-	bool v[214514];
-	REP(i, n){
-		v[i]=true;
-	}
-	REP(i, n){
-		if(!c[i][0] || !c[i][1]){
-			q.push(i);
-			v[i]=false;
-		}
-	}
-	int cnt=0;
-	while(!q.empty()){
-		++cnt;
-		int i=q.front();
-		q.pop();
-		REP(j, g[i].size()){
-			--c[g[i][j]][s[i]-'A'];
-			if(!c[g[i][j]][s[i]-'A'] && v[g[i][j]]){
-				q.push(g[i][j]);
-				v[g[i][j]]=false;
-			}
-		}
-	}
-	cout<<(cnt!=n ? "Yes" : "No")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, a, b;
+  string s;
+  cin>>n>>m;
+  cin>>s;
+  REP(i, m){
+    cin>>a>>b;
+    --a;
+    --b;
+    g[a].push_back(b);
+    g[b].push_back(a);
+    ++c[a][s[b]-'A'];
+    ++c[b][s[a]-'A'];
+  }
+  queue<int> q;
+  bool v[214514];
+  REP(i, n){
+    v[i]=true;
+  }
+  REP(i, n){
+    if(!c[i][0] || !c[i][1]){
+      q.push(i);
+      v[i]=false;
+    }
+  }
+  int cnt=0;
+  while(!q.empty()){
+    ++cnt;
+    int i=q.front();
+    q.pop();
+    REP(j, g[i].size()){
+      --c[g[i][j]][s[i]-'A'];
+      if(!c[g[i][j]][s[i]-'A'] && v[g[i][j]]){
+        q.push(g[i][j]);
+        v[g[i][j]]=false;
+      }
+    }
+  }
+  cout<<(cnt!=n ? "Yes" : "No")<<'\n';
+  return 0;
 }

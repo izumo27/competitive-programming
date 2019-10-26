@@ -31,23 +31,23 @@ const double EPS=1e-11;
 double dp[3252][3252];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	double p;
-	cin>>n;
-	dp[0][0]=1;
-	REP(i, n){
-		cin>>p;
-		REP(j, i+1){
-			dp[i+1][j]+=dp[i][j]*(1-p);
-			dp[i+1][j+1]+=dp[i][j]*p;
-		}
-	}
-	double ans=0;
-	FOR(i, n/2+1, n+1){
-		ans+=dp[n][i];
-	}
-	cout<<fixed<<setprecision(12)<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  double p;
+  cin>>n;
+  dp[0][0]=1;
+  REP(i, n){
+    cin>>p;
+    REP(j, i+1){
+      dp[i+1][j]+=dp[i][j]*(1-p);
+      dp[i+1][j+1]+=dp[i][j]*p;
+    }
+  }
+  double ans=0;
+  FOR(i, n/2+1, n+1){
+    ans+=dp[n][i];
+  }
+  cout<<fixed<<setprecision(12)<<ans<<'\n';
+  return 0;
 }

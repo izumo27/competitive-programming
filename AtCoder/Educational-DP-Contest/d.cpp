@@ -31,22 +31,22 @@ const double EPS=1e-11;
 ll dp[114][114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, W, w;
-	ll v;
-	cin>>n>>W;
-	REP(i, n){
-		cin>>w>>v;
-		REP(j, W+1){
-			if(j<w){
-				dp[i+1][j]=dp[i][j];
-			}
-			else{
-				dp[i+1][j]=max(dp[i][j], dp[i][j-w]+v);
-			}
-		}
-	}
-	cout<<dp[n][W]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, W, w;
+  ll v;
+  cin>>n>>W;
+  REP(i, n){
+    cin>>w>>v;
+    REP(j, W+1){
+      if(j<w){
+        dp[i+1][j]=dp[i][j];
+      }
+      else{
+        dp[i+1][j]=max(dp[i][j], dp[i][j-w]+v);
+      }
+    }
+  }
+  cout<<dp[n][W]<<'\n';
+  return 0;
 }

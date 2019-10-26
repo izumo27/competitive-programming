@@ -35,36 +35,36 @@ vi g[MAX_V];
 ll dp[2][114514];
 
 void dfs(int x, int p){
-	ll s=1, t=1;
-	for(int i : g[x]){
-		if(i==p){
-			continue;
-		}
-		dfs(i, x);
-		s=(s*dp[1][i])%MOD;
-		t=(t*dp[0][i])%MOD;
-	}
-	dp[1][x]=t;
-	dp[0][x]=s+t;
-	if(dp[0][x]>=MOD){
-		dp[0][x]-=MOD;
-	}
-	return;
+  ll s=1, t=1;
+  for(int i : g[x]){
+    if(i==p){
+      continue;
+    }
+    dfs(i, x);
+    s=(s*dp[1][i])%MOD;
+    t=(t*dp[0][i])%MOD;
+  }
+  dp[1][x]=t;
+  dp[0][x]=s+t;
+  if(dp[0][x]>=MOD){
+    dp[0][x]-=MOD;
+  }
+  return;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a, b;
-	cin>>n;
-	REP(i, n-1){
-		cin>>a>>b;
-		--a;
-		--b;
-		g[a].push_back(b);
-		g[b].push_back(a);
-	}
-	dfs(0, 0);
-	cout<<dp[0][0]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a, b;
+  cin>>n;
+  REP(i, n-1){
+    cin>>a>>b;
+    --a;
+    --b;
+    g[a].push_back(b);
+    g[b].push_back(a);
+  }
+  dfs(0, 0);
+  cout<<dp[0][0]<<'\n';
+  return 0;
 }

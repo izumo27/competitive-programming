@@ -29,40 +29,40 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a[114514];
-	cin>>n;
-	REP(i, n){
-		cin>>a[i];
-	}
-	if(n==1){
-		cout<<1<<'\n';
-		return 0;
-	}
-	int f=0, ans=1;
-	REP(i, n-1){
-		if(f==0){
-			if(a[i]<a[i+1]){
-				++f;
-			}
-			else if(a[i]>a[i+1]){
-				--f;
-			}
-		}
-		else if(f==1){
-			if(a[i]>a[i+1]){
-				++ans;
-				--f;
-			}
-		}
-		else{
-			if(a[i]<a[i+1]){
-				++ans;
-				++f;
-			}
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a[114514];
+  cin>>n;
+  REP(i, n){
+    cin>>a[i];
+  }
+  if(n==1){
+    cout<<1<<'\n';
+    return 0;
+  }
+  int f=0, ans=1;
+  REP(i, n-1){
+    if(f==0){
+      if(a[i]<a[i+1]){
+        ++f;
+      }
+      else if(a[i]>a[i+1]){
+        --f;
+      }
+    }
+    else if(f==1){
+      if(a[i]>a[i+1]){
+        ++ans;
+        --f;
+      }
+    }
+    else{
+      if(a[i]<a[i+1]){
+        ++ans;
+        ++f;
+      }
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

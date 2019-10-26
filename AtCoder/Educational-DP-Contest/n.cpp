@@ -32,36 +32,36 @@ const double EPS=1e-11;
 ll dp[2][404][404];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	ll a[404];
-	cin>>n;
-	REP(i, n){
-		cin>>a[i];
-		dp[1][i][i]=a[i];
-	}
-	REP(i, n){
-		REP(j, n){
-			if(i!=j){
-				dp[0][i][j]=1e15;
-			}
-		}
-	}
-	FOR(d, 1, n){
-		REP(l, n-d){
-			int r=l+d;
-			FOR(i, l, r){
-				if(dp[0][l][r]>dp[0][l][i]+dp[0][i+1][r]+dp[1][l][i]+dp[1][i+1][r]){
-					dp[0][l][r]=dp[0][l][i]+dp[0][i+1][r]+dp[1][l][i]+dp[1][i+1][r];
-					dp[1][l][r]=dp[1][l][i]+dp[1][i+1][r];
-				}
-			}
-			// DEBUG(l);
-			// DEBUG(r);
-			// DEBUG(dp[0][l][r]);
-		}
-	}
-	cout<<dp[0][0][n-1]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  ll a[404];
+  cin>>n;
+  REP(i, n){
+    cin>>a[i];
+    dp[1][i][i]=a[i];
+  }
+  REP(i, n){
+    REP(j, n){
+      if(i!=j){
+        dp[0][i][j]=1e15;
+      }
+    }
+  }
+  FOR(d, 1, n){
+    REP(l, n-d){
+      int r=l+d;
+      FOR(i, l, r){
+        if(dp[0][l][r]>dp[0][l][i]+dp[0][i+1][r]+dp[1][l][i]+dp[1][i+1][r]){
+          dp[0][l][r]=dp[0][l][i]+dp[0][i+1][r]+dp[1][l][i]+dp[1][i+1][r];
+          dp[1][l][r]=dp[1][l][i]+dp[1][i+1][r];
+        }
+      }
+      // DEBUG(l);
+      // DEBUG(r);
+      // DEBUG(dp[0][l][r]);
+    }
+  }
+  cout<<dp[0][0][n-1]<<'\n';
+  return 0;
 }

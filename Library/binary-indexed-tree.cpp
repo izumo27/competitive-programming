@@ -31,44 +31,44 @@ const double EPS=1e-11;
 const int MAX_N=114514;
 
 template<typename T> struct BinaryIndexedTree{
-	// [1,n]
-	int n;
-	vector<T> bit;
+  // [1,n]
+  int n;
+  vector<T> bit;
 
-	BinaryIndexedTree(int n_=1, T d=0){
-		init(n_, d);
-	}
+  BinaryIndexedTree(int n_=1, T d=0){
+    init(n_, d);
+  }
 
-	void init(int n_=1, T d=0){
-		n=n_;
-		bit.resize(n+1);
-		REP(i, n+1){
-			bit[i]=d;
-		}
-	}
+  void init(int n_=1, T d=0){
+    n=n_;
+    bit.resize(n+1);
+    REP(i, n+1){
+      bit[i]=d;
+    }
+  }
 
-	// a_1からa_iまでの和
-	T sum(int i){
-		T s=bit[0];
-		while(i>0){
-			s+=bit[i];
-			i-=i&-i;
-		}
-		return s;
-	}
+  // a_1からa_iまでの和
+  T sum(int i){
+    T s=bit[0];
+    while(i>0){
+      s+=bit[i];
+      i-=i&-i;
+    }
+    return s;
+  }
 
-	// a_iにxを加える
-	void add(int i, T x){
-		while(i<=n){
-			bit[i]+=x;
-			i+=i&-i;
-		}
-	}
+  // a_iにxを加える
+  void add(int i, T x){
+    while(i<=n){
+      bit[i]+=x;
+      i+=i&-i;
+    }
+  }
 };
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
+  ios::sync_with_stdio(false);
+  cin.tie(0);
 
-	return 0;
+  return 0;
 }

@@ -40,57 +40,57 @@ bool d[364364];
 // エラトステネスの篩
 // is_prime[i]=true⇔iが素数
 int sieve(int n){
-	int res=0;
-	REP(i, n+1){
-		is_prime[i]=true;
-	}
-	is_prime[0]=is_prime[1]=false;
-	FOR(i, 2, n+1){
-		if(is_prime[i]){
-			prime[res++]=i;
-			for(int j=2*i; j<=n; j+=i){
-				is_prime[j]=false;
-			}
-		}
-	}
-	return res;
+  int res=0;
+  REP(i, n+1){
+    is_prime[i]=true;
+  }
+  is_prime[0]=is_prime[1]=false;
+  FOR(i, 2, n+1){
+    if(is_prime[i]){
+      prime[res++]=i;
+      for(int j=2*i; j<=n; j+=i){
+        is_prime[j]=false;
+      }
+    }
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, c;
-	cin>>n>>m;
-	REP(i, m){
-		cin>>c;
-		d[c]=true;
-	}
-	int res=sieve(n);
-	REP(i, res){
-		int pr=prime[i];
-		int j=pr;
-		while(true){
-			Exp[j]=pr;
-			ll tmp1=j, tmp2=pr, tmp3=n;
-			if(tmp1*tmp2>tmp3){
-				break;
-			}
-			j*=pr;
-		}
-	}
-	FOR(i, 2, n+1){
-		if(Exp[i]==0){
-			continue;
-		}
-		if(d[i]){
-			cout<<"No"<<'\n';
-			return 0;
-		}
-		a[i]=1e10*log(Exp[i]);
-	}
-	cout<<"Yes"<<'\n';
-	FOR(i, 1, n+1){
-		cout<<a[i]<<" \n"[i==n];
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, c;
+  cin>>n>>m;
+  REP(i, m){
+    cin>>c;
+    d[c]=true;
+  }
+  int res=sieve(n);
+  REP(i, res){
+    int pr=prime[i];
+    int j=pr;
+    while(true){
+      Exp[j]=pr;
+      ll tmp1=j, tmp2=pr, tmp3=n;
+      if(tmp1*tmp2>tmp3){
+        break;
+      }
+      j*=pr;
+    }
+  }
+  FOR(i, 2, n+1){
+    if(Exp[i]==0){
+      continue;
+    }
+    if(d[i]){
+      cout<<"No"<<'\n';
+      return 0;
+    }
+    a[i]=1e10*log(Exp[i]);
+  }
+  cout<<"Yes"<<'\n';
+  FOR(i, 1, n+1){
+    cout<<a[i]<<" \n"[i==n];
+  }
+  return 0;
 }

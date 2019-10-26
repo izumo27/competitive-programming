@@ -31,43 +31,43 @@ const double EPS=1e-11;
 int n, h, a[1333];
 
 bool is_ok(int mid){
-	int b[1333];
-	REP(i, n){
-		b[i]=a[i];
-	}
-	sort(b, b+min(mid+1, n));
-	int flag=1;
-	int tmp=0;
-	FORR(i, 0, mid+1){
-		if(flag&1){
-			tmp+=b[i];
-			if(tmp>h){
-				return false;
-			}
-		}
-		++flag;
-	}
-	return true;
+  int b[1333];
+  REP(i, n){
+    b[i]=a[i];
+  }
+  sort(b, b+min(mid+1, n));
+  int flag=1;
+  int tmp=0;
+  FORR(i, 0, mid+1){
+    if(flag&1){
+      tmp+=b[i];
+      if(tmp>h){
+        return false;
+      }
+    }
+    ++flag;
+  }
+  return true;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	cin>>n>>h;
-	REP(i, n){
-		cin>>a[i];
-	}
-	int lb=0, ub=n;
-	while(ub-lb>1){
-		int mid=(lb+ub)/2;
-		if(is_ok(mid)){
-			lb=mid;
-		}
-		else{
-			ub=mid;
-		}
-	}
-	cout<<lb+1<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  cin>>n>>h;
+  REP(i, n){
+    cin>>a[i];
+  }
+  int lb=0, ub=n;
+  while(ub-lb>1){
+    int mid=(lb+ub)/2;
+    if(is_ok(mid)){
+      lb=mid;
+    }
+    else{
+      ub=mid;
+    }
+  }
+  cout<<lb+1<<'\n';
+  return 0;
 }

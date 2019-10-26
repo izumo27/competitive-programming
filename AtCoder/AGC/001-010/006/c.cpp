@@ -29,57 +29,57 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 vi mul(vi &b, vi &a){
-	int x=a.size();
-	vi c(x);
-	iota(ALL(c), 0);
-	REP(i, x){
-		c[i]=b[a[i]];
-	}
-	return c;
+  int x=a.size();
+  vi c(x);
+  iota(ALL(c), 0);
+  REP(i, x){
+    c[i]=b[a[i]];
+  }
+  return c;
 }
 
 vi power(vi &a, ll k){
-	int x=a.size();
-	vi b(x);
-	iota(ALL(b), 0);
-	while(k>0){
-		if(k&1){
-			b=mul(b, a);
-		}
-		a=mul(a, a);
-		k>>=1;
-	}
-	return b;
+  int x=a.size();
+  vi b(x);
+  iota(ALL(b), 0);
+  while(k>0){
+    if(k&1){
+      b=mul(b, a);
+    }
+    a=mul(a, a);
+    k>>=1;
+  }
+  return b;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, x[125252], m, a[125252], d[125252];
-	ll k;
-	cin>>n;
-	cin>>x[0];
-	REP(i, n-1){
-		cin>>x[i+1];
-		d[i]=x[i+1]-x[i];
-	}
-	cin>>m>>k;
-	vi nxt(n-1);
-	iota(ALL(nxt), 0);
-	REP(i, m){
-		cin>>a[i];
-		--a[i];
-		swap(nxt[a[i]-1], nxt[a[i]]);
-	}
-	vi res=power(nxt, k);
-	ll ans[125252];
-	ans[0]=x[0];
-	REP(i, n-1){
-		ans[i+1]=ans[i]+d[res[i]];
-	}
-	REP(i, n){
-		cout<<ans[i]<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, x[125252], m, a[125252], d[125252];
+  ll k;
+  cin>>n;
+  cin>>x[0];
+  REP(i, n-1){
+    cin>>x[i+1];
+    d[i]=x[i+1]-x[i];
+  }
+  cin>>m>>k;
+  vi nxt(n-1);
+  iota(ALL(nxt), 0);
+  REP(i, m){
+    cin>>a[i];
+    --a[i];
+    swap(nxt[a[i]-1], nxt[a[i]]);
+  }
+  vi res=power(nxt, k);
+  ll ans[125252];
+  ans[0]=x[0];
+  REP(i, n-1){
+    ans[i+1]=ans[i]+d[res[i]];
+  }
+  REP(i, n){
+    cout<<ans[i]<<'\n';
+  }
+  return 0;
 }

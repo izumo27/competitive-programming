@@ -33,67 +33,67 @@ string c[12];
 bool can[12][12];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>h>>w;
-	REP(i, h){
-		cin>>c[i];
-	}
-	int x;
-	REP(i, w){
-		if(c[h-1][i]=='s'){
-			x=i;
-			break;
-		}
-	}
-	can[h-1][x]=true;
-	FORR(i, 0, h-1){
-		REP(j, w){
-			if(c[i][j]=='x'){
-				continue;
-			}
-			bool ok=false;
-			FOR(k, max(0, j-1), min(j+2, w)){
-				if(can[i+1][k]){
-					ok=true;
-				}
-			}
-			if(ok){
-				can[i][j]=true;
-			}
-		}
-	}
-	int y=-1;
-	REP(i, w){
-		if(can[0][i]){
-			y=i;
-		}
-	}
-	if(y==-1){
-		cout<<"impossible"<<'\n';
-		return 0;
-	}
-	string ans="";
-	REP(i, h-1){
-		REP(j, w){
-			if(can[i+1][j] && y-1<=j && j<=y+1){
-				if(y-1==j){
-					ans+='R';
-				}
-				else if(y==j){
-					ans+='S';
-				}
-				else{
-					ans+='L';
-				}
-				y=j;
-				break;
-			}
-		}
-	}
-	FORR(i, 0, h-1){
-		cout<<ans[i];
-	}
-	cout<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>h>>w;
+  REP(i, h){
+    cin>>c[i];
+  }
+  int x;
+  REP(i, w){
+    if(c[h-1][i]=='s'){
+      x=i;
+      break;
+    }
+  }
+  can[h-1][x]=true;
+  FORR(i, 0, h-1){
+    REP(j, w){
+      if(c[i][j]=='x'){
+        continue;
+      }
+      bool ok=false;
+      FOR(k, max(0, j-1), min(j+2, w)){
+        if(can[i+1][k]){
+          ok=true;
+        }
+      }
+      if(ok){
+        can[i][j]=true;
+      }
+    }
+  }
+  int y=-1;
+  REP(i, w){
+    if(can[0][i]){
+      y=i;
+    }
+  }
+  if(y==-1){
+    cout<<"impossible"<<'\n';
+    return 0;
+  }
+  string ans="";
+  REP(i, h-1){
+    REP(j, w){
+      if(can[i+1][j] && y-1<=j && j<=y+1){
+        if(y-1==j){
+          ans+='R';
+        }
+        else if(y==j){
+          ans+='S';
+        }
+        else{
+          ans+='L';
+        }
+        y=j;
+        break;
+      }
+    }
+  }
+  FORR(i, 0, h-1){
+    cout<<ans[i];
+  }
+  cout<<'\n';
+  return 0;
 }

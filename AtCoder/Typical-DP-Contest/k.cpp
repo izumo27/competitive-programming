@@ -33,20 +33,20 @@ const int INF=1<<30;
 int dp[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, x, r;
-	pii xr[114514];
-	cin>>n;
-	REP(i, n){
-		cin>>x>>r;
-		xr[i]=pii(x-r, x+r);
-		dp[i]=INF;
-	}
-	sort(xr, xr+n);
-	REP(i, n){
-		*lower_bound(dp, dp+n, -xr[i].second)=-xr[i].second;
-	}
-	cout<<lower_bound(dp, dp+n, INF)-dp<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, x, r;
+  pii xr[114514];
+  cin>>n;
+  REP(i, n){
+    cin>>x>>r;
+    xr[i]=pii(x-r, x+r);
+    dp[i]=INF;
+  }
+  sort(xr, xr+n);
+  REP(i, n){
+    *lower_bound(dp, dp+n, -xr[i].second)=-xr[i].second;
+  }
+  cout<<lower_bound(dp, dp+n, INF)-dp<<'\n';
+  return 0;
 }

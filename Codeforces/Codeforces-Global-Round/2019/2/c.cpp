@@ -31,38 +31,38 @@ const double EPS=1e-11;
 int row[514], col[514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, m, a[514][514], b[514][514];
-	cin>>n>>m;
-	REP(i, n){
-		REP(j, m){
-			cin>>a[i][j];
-		}
-	}
-	REP(i, n){
-		REP(j, m){
-			cin>>b[i][j];
-			if(a[i][j]!=b[i][j]){
-				++row[i];
-				++col[j];
-			}
-		}
-	}
-	bool ok=true;
-	REP(i, n){
-		if(row[i]&1){
-			cout<<"No"<<'\n';
-			return 0;
-		}
-	}
-	REP(i, m){
-		if(col[i]&1){
-			cout<<"No"<<'\n';
-			return 0;
-		}
-	}
-	cout<<"Yes"<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, m, a[514][514], b[514][514];
+  cin>>n>>m;
+  REP(i, n){
+    REP(j, m){
+      cin>>a[i][j];
+    }
+  }
+  REP(i, n){
+    REP(j, m){
+      cin>>b[i][j];
+      if(a[i][j]!=b[i][j]){
+        ++row[i];
+        ++col[j];
+      }
+    }
+  }
+  bool ok=true;
+  REP(i, n){
+    if(row[i]&1){
+      cout<<"No"<<'\n';
+      return 0;
+    }
+  }
+  REP(i, m){
+    if(col[i]&1){
+      cout<<"No"<<'\n';
+      return 0;
+    }
+  }
+  cout<<"Yes"<<'\n';
+  return 0;
 }

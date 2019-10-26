@@ -33,25 +33,25 @@ const int INF=1e9;
 int dp[114514];
 
 bool comp(pii a, pii b){
-	return (a.first!=b.first ? a.first<b.first : a.second>b.second);
+  return (a.first!=b.first ? a.first<b.first : a.second>b.second);
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	pii wh[114514];
-	cin>>n;
-	REP(i, n){
-		cin>>wh[i].first>>wh[i].second;
-	}
-	sort(wh, wh+n, comp);
-	REP(i, n){
-		dp[i]=INF;
-	}
-	REP(i, n){
-		*lower_bound(dp, dp+n, wh[i].second)=wh[i].second;
-	}
-	cout<<lower_bound(dp, dp+n, INF)-dp<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  pii wh[114514];
+  cin>>n;
+  REP(i, n){
+    cin>>wh[i].first>>wh[i].second;
+  }
+  sort(wh, wh+n, comp);
+  REP(i, n){
+    dp[i]=INF;
+  }
+  REP(i, n){
+    *lower_bound(dp, dp+n, wh[i].second)=wh[i].second;
+  }
+  cout<<lower_bound(dp, dp+n, INF)-dp<<'\n';
+  return 0;
 }

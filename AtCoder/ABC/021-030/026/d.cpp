@@ -33,23 +33,23 @@ const double pi = 3.14159265358979;
 double a, b, c;
 
 double f(double t){
-	return a*t+b*sin(c*t*pi);
+  return a*t+b*sin(c*t*pi);
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	scanf("%lf%lf%lf", &a, &b, &c);
-	double lb=0.0, ub=201.0;
-	while(abs(f(ub)-100.0)>EPS){
-		double mid=(lb+ub)/2.0;
-		if(f(mid)>100.0){
-			ub=mid;
-		}
-		else{
-			lb=mid;
-		}
-	}
-	printf("%.10lf\n", ub);
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  scanf("%lf%lf%lf", &a, &b, &c);
+  double lb=0.0, ub=201.0;
+  while(abs(f(ub)-100.0)>EPS){
+    double mid=(lb+ub)/2.0;
+    if(f(mid)>100.0){
+      ub=mid;
+    }
+    else{
+      lb=mid;
+    }
+  }
+  printf("%.10lf\n", ub);
+  return 0;
 }

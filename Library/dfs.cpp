@@ -34,37 +34,37 @@ bool reached[514][514];
 bool ok;
 
 void dfs(int x, int y){
-	if(c[x][y]=='#' || x<0 || x>=h || y<0 || y>=w) return;
-	if(reached[x][y]) return;
-	reached[x][y]=true;
-	if(c[x][y]=='g'){
-		ok=true;
-		return;
-	}
-	c[x][y]='a';
-	dfs(x-1, y);
-	dfs(x+1, y);
-	dfs(x, y-1);
-	dfs(x, y+1);
+  if(c[x][y]=='#' || x<0 || x>=h || y<0 || y>=w) return;
+  if(reached[x][y]) return;
+  reached[x][y]=true;
+  if(c[x][y]=='g'){
+    ok=true;
+    return;
+  }
+  c[x][y]='a';
+  dfs(x-1, y);
+  dfs(x+1, y);
+  dfs(x, y-1);
+  dfs(x, y+1);
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>h>>w;
-	int a, b;
-	REP(i, h){
-		REP(i, w) cin>>c[i][j];
-	}
-	REP(i, h){
-		REP(j, w){
-			if(c[i][j]=='s'){
-					a=i;
-					b=j;
-			}
-		}
-	}
-	dfs(a, b);
-	ok ? cout<<"Yes"<<'\n' : cout<<"No"<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>h>>w;
+  int a, b;
+  REP(i, h){
+    REP(i, w) cin>>c[i][j];
+  }
+  REP(i, h){
+    REP(j, w){
+      if(c[i][j]=='s'){
+          a=i;
+          b=j;
+      }
+    }
+  }
+  dfs(a, b);
+  ok ? cout<<"Yes"<<'\n' : cout<<"No"<<'\n';
+  return 0;
 }

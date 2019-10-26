@@ -31,36 +31,36 @@ const double EPS=1e-11;
 const double INF=1e9;
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout<<setprecision(10)<<fixed;
-	int n, x;
-	cin>>n;
-	int st=0;
-	REP(i, n){
-		cin>>x;
-		st|=1<<x;
-	}
-	st<<=1;
-	double dp[1<<17];
-	FOR(i, 1, 1<<17){
-		dp[i]=INF;
-		REP(j, 16){
-			int sub=i>>j&7;
-			if(!sub){
-				continue;
-			}
-			double res=0;
-			int cnt=0;
-			REP(k, 3){
-				if(sub>>k&1){
-					++cnt;
-					res+=dp[i-(1<<(j+k))];
-				}
-			}
-			CHMIN(dp[i], res/cnt+3./cnt);
-		}
-	}
-	cout<<dp[st]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout<<setprecision(10)<<fixed;
+  int n, x;
+  cin>>n;
+  int st=0;
+  REP(i, n){
+    cin>>x;
+    st|=1<<x;
+  }
+  st<<=1;
+  double dp[1<<17];
+  FOR(i, 1, 1<<17){
+    dp[i]=INF;
+    REP(j, 16){
+      int sub=i>>j&7;
+      if(!sub){
+        continue;
+      }
+      double res=0;
+      int cnt=0;
+      REP(k, 3){
+        if(sub>>k&1){
+          ++cnt;
+          res+=dp[i-(1<<(j+k))];
+        }
+      }
+      CHMIN(dp[i], res/cnt+3./cnt);
+    }
+  }
+  cout<<dp[st]<<'\n';
+  return 0;
 }

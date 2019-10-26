@@ -31,35 +31,35 @@ const double EPS=1e-11;
 int n, k, w[1333], p[1333];
 
 bool is_ok(double x){
-	double a[1333];
-	REP(i, n){
-		a[i]=(p[i]-x)*w[i];
-	}
-	sort(a, a+n, greater<double>());
-	double tmp=0;
-	REP(i, k){
-		tmp+=a[i];
-	}
-	return tmp>=0;
+  double a[1333];
+  REP(i, n){
+    a[i]=(p[i]-x)*w[i];
+  }
+  sort(a, a+n, greater<double>());
+  double tmp=0;
+  REP(i, k){
+    tmp+=a[i];
+  }
+  return tmp>=0;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n>>k;
-	REP(i, n){
-		cin>>w[i]>>p[i];
-	}
-	double lb=0, ub=100;
-	while(ub-lb>EPS){
-		double mid=(lb+ub)/2;
-		if(is_ok(mid)){
-			lb=mid;
-		}
-		else{
-			ub=mid;
-		}
-	}
-	cout<<fixed<<setprecision(10)<<lb<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n>>k;
+  REP(i, n){
+    cin>>w[i]>>p[i];
+  }
+  double lb=0, ub=100;
+  while(ub-lb>EPS){
+    double mid=(lb+ub)/2;
+    if(is_ok(mid)){
+      lb=mid;
+    }
+    else{
+      ub=mid;
+    }
+  }
+  cout<<fixed<<setprecision(10)<<lb<<'\n';
+  return 0;
 }

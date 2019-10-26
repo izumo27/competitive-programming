@@ -31,61 +31,61 @@ const double EPS=1e-11;
 typedef vector<vl> mat;
 
 mat mul(mat &a, mat &b){
-	int x=a.size(), y=b.size(), z=b[0].size();
-	mat c(x, vl(z));
-	REP(i, x)REP(k, y)REP(j, z){
-		(c[i][j]+=(a[i][k]*b[k][j]%MOD))%=MOD;
-	}
-	return c;
+  int x=a.size(), y=b.size(), z=b[0].size();
+  mat c(x, vl(z));
+  REP(i, x)REP(k, y)REP(j, z){
+    (c[i][j]+=(a[i][k]*b[k][j]%MOD))%=MOD;
+  }
+  return c;
 }
 
 mat power(mat a, ll n){
-	int x=a.size();
-	mat b(x, vl(x));
-	REP(i, x){
-		b[i][i]=1;
-	}
-	while(n>0){
-		if(n&1){
-			b=mul(b, a);
-		}
-		a=mul(a, a);
-		n>>=1;
-	}
-	return b;
+  int x=a.size();
+  mat b(x, vl(x));
+  REP(i, x){
+    b[i][i]=1;
+  }
+  while(n>0){
+    if(n&1){
+      b=mul(b, a);
+    }
+    a=mul(a, a);
+    n>>=1;
+  }
+  return b;
 }
 
 ll dp[20][20][1<<16];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int h, r, g[20][20];
-	cin>>h>>r;
-	REP(i, r)REP(j, r) cin>>g[i][j];
-	REP(i, r) dp[i][i][1<<i]=1;
-	REP(i, r){
-		REP(b, 1<<r){
-			if(!(b>>i&1)) continue;
-			REP(j, r){
-				if(!(b>>j&1)) continue;
-				REP(k, r){
-					if((b>>k&1) || !g[j][k]) continue;
-					(dp[i][k][b|(1<<k)]+=dp[i][j][b])%=MOD;
-				}
-			}
-		}
-	}
-	mat a(r, vl(r));
-	REP(i, r){
-		REP(j, r){
-			REP(b, 1<<r){
-				(a[i][j]+=dp[i][j][b])%=MOD;
-			}
-		}
-	}
-	mat A=power(a, h);
-	cout<<A[0][0]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int h, r, g[20][20];
+  cin>>h>>r;
+  REP(i, r)REP(j, r) cin>>g[i][j];
+  REP(i, r) dp[i][i][1<<i]=1;
+  REP(i, r){
+    REP(b, 1<<r){
+      if(!(b>>i&1)) continue;
+      REP(j, r){
+        if(!(b>>j&1)) continue;
+        REP(k, r){
+          if((b>>k&1) || !g[j][k]) continue;
+          (dp[i][k][b|(1<<k)]+=dp[i][j][b])%=MOD;
+        }
+      }
+    }
+  }
+  mat a(r, vl(r));
+  REP(i, r){
+    REP(j, r){
+      REP(b, 1<<r){
+        (a[i][j]+=dp[i][j][b])%=MOD;
+      }
+    }
+  }
+  mat A=power(a, h);
+  cout<<A[0][0]<<'\n';
+  return 0;
 }

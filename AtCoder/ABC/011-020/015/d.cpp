@@ -30,19 +30,19 @@ const double EPS=1e-11;
 int dp[60][60][12525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int w, n, k, a[60], b[60];
-	cin>>w>>n>>k;
-	REP(i, n) cin>>a[i]>>b[i];
-	REP(i, n){
-		REP(j, k){
-			REP(l, w+1){
-				if(l<a[i]) dp[i+1][j+1][l]=dp[i][j+1][l];
-				else dp[i+1][j+1][l]=max(dp[i][j+1][l], dp[i][j][l-a[i]]+b[i]);
-			}
-		}
-	}
-	cout<<dp[n][k][w]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int w, n, k, a[60], b[60];
+  cin>>w>>n>>k;
+  REP(i, n) cin>>a[i]>>b[i];
+  REP(i, n){
+    REP(j, k){
+      REP(l, w+1){
+        if(l<a[i]) dp[i+1][j+1][l]=dp[i][j+1][l];
+        else dp[i+1][j+1][l]=max(dp[i][j+1][l], dp[i][j][l-a[i]]+b[i]);
+      }
+    }
+  }
+  cout<<dp[n][k][w]<<'\n';
+  return 0;
 }

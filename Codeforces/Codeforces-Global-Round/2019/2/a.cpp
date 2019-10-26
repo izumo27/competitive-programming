@@ -32,36 +32,36 @@ int n, c[364364];
 int used[364364][2];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	cin>>n;
-	int cnt=0;
-	pii mi[2];
-	REP(i, n){
-		cin>>c[i];
-		if(cnt<2 && !used[c[i]][0]){
-			used[c[i]][0]=1;
-			mi[cnt++]=pii(i, c[i]);
-		}
-	}
-	cnt=0;
-	pii ma[2];
-	FORR(i, 0, n){
-		if(cnt<2 && !used[c[i]][1]){
-			used[c[i]][1]=1;
-			ma[cnt++]=pii(i, c[i]);
-		}
-	}
-	int ans=0;
-	// DEBUG(mi[0].first);
-	// DEBUG(ma[0].first);
-	if(mi[0].second!=ma[0].second){
-		ans=ma[0].first-mi[0].first;
-	}
-	else{
-		ans=max(ma[0].first-mi[1].first, ma[1].first-mi[0].first);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  cin>>n;
+  int cnt=0;
+  pii mi[2];
+  REP(i, n){
+    cin>>c[i];
+    if(cnt<2 && !used[c[i]][0]){
+      used[c[i]][0]=1;
+      mi[cnt++]=pii(i, c[i]);
+    }
+  }
+  cnt=0;
+  pii ma[2];
+  FORR(i, 0, n){
+    if(cnt<2 && !used[c[i]][1]){
+      used[c[i]][1]=1;
+      ma[cnt++]=pii(i, c[i]);
+    }
+  }
+  int ans=0;
+  // DEBUG(mi[0].first);
+  // DEBUG(ma[0].first);
+  if(mi[0].second!=ma[0].second){
+    ans=ma[0].first-mi[0].first;
+  }
+  else{
+    ans=max(ma[0].first-mi[1].first, ma[1].first-mi[0].first);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

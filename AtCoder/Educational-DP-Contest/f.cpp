@@ -32,49 +32,49 @@ string dp[2][3252];
 // int dp2[2][3252];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string s, t;
-	cin>>s>>t;
-	int n=s.size(), m=t.size();
-	REP(i, n){
-		if(i&1){
-			REP(j, m){
-				if(s[i]==t[j]){
-					dp[0][j+1]=dp[1][j]+s[i];
-					// dp2[0][j+1]=dp2[1][j]+1;
-				}
-				else{
-					if(dp[0][j].size()>dp[1][j+1].size()){
-						dp[0][j+1]=dp[0][j];
-						// dp2[0][j+1]=dp2[0][j];
-					}
-					else{
-						dp[0][j+1]=dp[1][j+1];
-						// dp2[0][j+1]=dp2[1][j+1];
-					}
-				}
-			}
-		}
-		else{
-			REP(j, m){
-				if(s[i]==t[j]){
-					dp[1][j+1]=dp[0][j]+s[i];
-					// dp2[1][j+1]=dp2[0][j]+1;
-				}
-				else{
-					if(dp[1][j].size()>dp[0][j+1].size()){
-						dp[1][j+1]=dp[1][j];
-						// dp2[1][j+1]=dp2[1][j];
-					}
-					else{
-						dp[1][j+1]=dp[0][j+1];
-						// dp2[1][j+1]=dp2[0][j+1];
-					}
-				}
-			}
-		}
-	}
-	cout<<dp[n&1][m]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s, t;
+  cin>>s>>t;
+  int n=s.size(), m=t.size();
+  REP(i, n){
+    if(i&1){
+      REP(j, m){
+        if(s[i]==t[j]){
+          dp[0][j+1]=dp[1][j]+s[i];
+          // dp2[0][j+1]=dp2[1][j]+1;
+        }
+        else{
+          if(dp[0][j].size()>dp[1][j+1].size()){
+            dp[0][j+1]=dp[0][j];
+            // dp2[0][j+1]=dp2[0][j];
+          }
+          else{
+            dp[0][j+1]=dp[1][j+1];
+            // dp2[0][j+1]=dp2[1][j+1];
+          }
+        }
+      }
+    }
+    else{
+      REP(j, m){
+        if(s[i]==t[j]){
+          dp[1][j+1]=dp[0][j]+s[i];
+          // dp2[1][j+1]=dp2[0][j]+1;
+        }
+        else{
+          if(dp[1][j].size()>dp[0][j+1].size()){
+            dp[1][j+1]=dp[1][j];
+            // dp2[1][j+1]=dp2[1][j];
+          }
+          else{
+            dp[1][j+1]=dp[0][j+1];
+            // dp2[1][j+1]=dp2[0][j+1];
+          }
+        }
+      }
+    }
+  }
+  cout<<dp[n&1][m]<<'\n';
+  return 0;
 }

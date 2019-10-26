@@ -31,28 +31,28 @@ const double EPS=1e-11;
 ll dp[114514][4];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	pii q[4];
-	ll n;
-	REP(i, 4){
-		cin>>q[i].first;
-		q[i].second=(1<<i);
-	}
-	cin>>n;
-	ll m=n*4;
-	pii x[4];
-	REP(i, 4){
-		x[i]=pii(q[i].first*(8>>i), i);
-	}
-	sort(x, x+4);
-	ll ans=0;
-	int cnt=0;
-	while(m>0){
-		ans+=(m/q[x[cnt].second].second)*q[x[cnt].second].first;
-		m=m%q[x[cnt].second].second;
-		++cnt;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  pii q[4];
+  ll n;
+  REP(i, 4){
+    cin>>q[i].first;
+    q[i].second=(1<<i);
+  }
+  cin>>n;
+  ll m=n*4;
+  pii x[4];
+  REP(i, 4){
+    x[i]=pii(q[i].first*(8>>i), i);
+  }
+  sort(x, x+4);
+  ll ans=0;
+  int cnt=0;
+  while(m>0){
+    ans+=(m/q[x[cnt].second].second)*q[x[cnt].second].first;
+    m=m%q[x[cnt].second].second;
+    ++cnt;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -31,23 +31,23 @@ const double EPS=1e-11;
 int num[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, m, a, b;
-	cin>>n>>m;
-	REP(i, m){
-		cin>>a>>b;
-		++num[a-1];
-		++num[b-1];
-	}
-	bool ok=true;
-	REP(i, n){
-		if(num[i]&1){
-			ok=false;
-			break;
-		}
-	}
-	cout<<(ok ? "YES" : "NO")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, m, a, b;
+  cin>>n>>m;
+  REP(i, m){
+    cin>>a>>b;
+    ++num[a-1];
+    ++num[b-1];
+  }
+  bool ok=true;
+  REP(i, n){
+    if(num[i]&1){
+      ok=false;
+      break;
+    }
+  }
+  cout<<(ok ? "YES" : "NO")<<'\n';
+  return 0;
 }

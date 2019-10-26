@@ -31,26 +31,26 @@ const double EPS=1e-11;
 int num[214514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, p[214514];
-	cin>>n;
-	REP(i, n){
-		cin>>p[i];
-		--p[i];
-		num[p[i]]=i;
-	}
-	int ans=1e9, a=0;
-	REP(i, n-1){
-		if(num[i]<num[i+1]){
-			continue;
-		}
-		else{
-			CHMIN(ans, a+n-i-1);
-			a=i+1;
-		}
-	}
-	CHMIN(ans, a);
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, p[214514];
+  cin>>n;
+  REP(i, n){
+    cin>>p[i];
+    --p[i];
+    num[p[i]]=i;
+  }
+  int ans=1e9, a=0;
+  REP(i, n-1){
+    if(num[i]<num[i+1]){
+      continue;
+    }
+    else{
+      CHMIN(ans, a+n-i-1);
+      a=i+1;
+    }
+  }
+  CHMIN(ans, a);
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -29,72 +29,72 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, l, t, w[114514], x[114514];
-	pii a[214514];
-	cin>>n>>l>>t;
-	REP(i, n){
-		cin>>x[i]>>w[i];
-	}
-	int cnt=0, m1=2*t/l, m2=2*t%l;
-	if(w[0]==1){
-		FOR(i, 1, n){
-			if(w[i]==2){
-				if(x[i]-x[0]<m2){
-					cnt=(cnt+m1+1)%n;
-				}
-				else{
-					cnt=(cnt+m1)%n;
-				}
-			}
-		}
-	}
-	else{
-		FOR(i, 1, n){
-			if(w[i]==1){
-				if(l-(x[i]-x[0])<m2){
-					cnt=(cnt+m1+1)%n;
-				}
-				else{
-					cnt=(cnt+m1)%n;
-				}
-			}
-		}
-	}
-	int m=t%l;
-	REP(i, n){
-		if(w[i]==1){
-			a[i]=pii((x[i]+m)%l, i);
-		}
-		else{
-			a[i]=pii((x[i]-m+l)%l, i);
-		}
-	}
-	sort(a, a+n);
-	int s;
-	REP(i, n){
-		if(a[i].second==0){
-			if(w[0]==2 && i+1<n && a[i].first==a[i+1].first){
-				s=i+1;
-			}
-			else{
-				s=i;
-			}
-			break;
-		}
-	}
-	if(w[0]==1){
-		s=(s-cnt+n)%n;
-	}
-	else{
-		s=(s+cnt)%n;
-	}
-	REP(i, n){
-		a[i+n]=a[i];
-	}
-	FOR(i, s, s+n){
-		cout<<a[i].first<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, l, t, w[114514], x[114514];
+  pii a[214514];
+  cin>>n>>l>>t;
+  REP(i, n){
+    cin>>x[i]>>w[i];
+  }
+  int cnt=0, m1=2*t/l, m2=2*t%l;
+  if(w[0]==1){
+    FOR(i, 1, n){
+      if(w[i]==2){
+        if(x[i]-x[0]<m2){
+          cnt=(cnt+m1+1)%n;
+        }
+        else{
+          cnt=(cnt+m1)%n;
+        }
+      }
+    }
+  }
+  else{
+    FOR(i, 1, n){
+      if(w[i]==1){
+        if(l-(x[i]-x[0])<m2){
+          cnt=(cnt+m1+1)%n;
+        }
+        else{
+          cnt=(cnt+m1)%n;
+        }
+      }
+    }
+  }
+  int m=t%l;
+  REP(i, n){
+    if(w[i]==1){
+      a[i]=pii((x[i]+m)%l, i);
+    }
+    else{
+      a[i]=pii((x[i]-m+l)%l, i);
+    }
+  }
+  sort(a, a+n);
+  int s;
+  REP(i, n){
+    if(a[i].second==0){
+      if(w[0]==2 && i+1<n && a[i].first==a[i+1].first){
+        s=i+1;
+      }
+      else{
+        s=i;
+      }
+      break;
+    }
+  }
+  if(w[0]==1){
+    s=(s-cnt+n)%n;
+  }
+  else{
+    s=(s+cnt)%n;
+  }
+  REP(i, n){
+    a[i+n]=a[i];
+  }
+  FOR(i, s, s+n){
+    cout<<a[i].first<<'\n';
+  }
+  return 0;
 }

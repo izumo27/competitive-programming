@@ -31,52 +31,52 @@ const double EPS=1e-11;
 ll dp[3252][3252];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	ll a[3252];
-	cin>>n;
-	REP(i, n){
-		cin>>a[i];
-	}
-	if(n&1){
-		REP(i, n){
-			dp[i][i]=a[i];
-		}
-		FOR(d, 1, n){
-			if(d&1){
-				REP(l, n-d){
-					int r=l+d;
-					dp[l][r]=min(dp[l+1][r]-a[l], dp[l][r-1]-a[r]);
-				}
-			}
-			else{
-				REP(l, n-d){
-					int r=l+d;
-					dp[l][r]=max(dp[l+1][r]+a[l], dp[l][r-1]+a[r]);
-				}
-			}
-		}
-	}
-	else{
-		REP(i, n){
-			dp[i][i]=-a[i];
-		}
-		FOR(d, 1, n){
-			if(d&1){
-				REP(l, n-d){
-					int r=l+d;
-					dp[l][r]=max(dp[l+1][r]+a[l], dp[l][r-1]+a[r]);
-				}
-			}
-			else{
-				REP(l, n-d){
-					int r=l+d;
-					dp[l][r]=min(dp[l+1][r]-a[l], dp[l][r-1]-a[r]);
-				}
-			}
-		}
-	}
-	cout<<dp[0][n-1]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  ll a[3252];
+  cin>>n;
+  REP(i, n){
+    cin>>a[i];
+  }
+  if(n&1){
+    REP(i, n){
+      dp[i][i]=a[i];
+    }
+    FOR(d, 1, n){
+      if(d&1){
+        REP(l, n-d){
+          int r=l+d;
+          dp[l][r]=min(dp[l+1][r]-a[l], dp[l][r-1]-a[r]);
+        }
+      }
+      else{
+        REP(l, n-d){
+          int r=l+d;
+          dp[l][r]=max(dp[l+1][r]+a[l], dp[l][r-1]+a[r]);
+        }
+      }
+    }
+  }
+  else{
+    REP(i, n){
+      dp[i][i]=-a[i];
+    }
+    FOR(d, 1, n){
+      if(d&1){
+        REP(l, n-d){
+          int r=l+d;
+          dp[l][r]=max(dp[l+1][r]+a[l], dp[l][r-1]+a[r]);
+        }
+      }
+      else{
+        REP(l, n-d){
+          int r=l+d;
+          dp[l][r]=min(dp[l+1][r]-a[l], dp[l][r-1]-a[r]);
+        }
+      }
+    }
+  }
+  cout<<dp[0][n-1]<<'\n';
+  return 0;
 }

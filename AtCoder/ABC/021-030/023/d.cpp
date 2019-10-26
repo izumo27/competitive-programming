@@ -32,39 +32,39 @@ int n;
 ll h[114514], s[114514], t[114514];
 
 bool is_ok(ll a){
-	REP(i, n){
-		t[i]=(a-h[i])/s[i];
-	}
-	sort(t, t+n);
-	REP(i, n){
-		if(t[i]<(ll)i){
-			return false;
-		}
-	}
-	return true;
+  REP(i, n){
+    t[i]=(a-h[i])/s[i];
+  }
+  sort(t, t+n);
+  REP(i, n){
+    if(t[i]<(ll)i){
+      return false;
+    }
+  }
+  return true;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n;
-	ll lb=0, ub=0;
-	REP(i, n){
-		cin>>h[i]>>s[i];
-		lb=max(lb, h[i]);
-		ub=max(ub, s[i]);
-	}
-	ub=lb+ub*(ll)(n-1);
-	--lb;
-	while(ub-lb>1){
-		ll mid=(lb+ub)/2;
-		if(is_ok(mid)){
-			ub=mid;
-		}
-		else{
-			lb=mid;
-		}
-	}
-	cout<<ub<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n;
+  ll lb=0, ub=0;
+  REP(i, n){
+    cin>>h[i]>>s[i];
+    lb=max(lb, h[i]);
+    ub=max(ub, s[i]);
+  }
+  ub=lb+ub*(ll)(n-1);
+  --lb;
+  while(ub-lb>1){
+    ll mid=(lb+ub)/2;
+    if(is_ok(mid)){
+      ub=mid;
+    }
+    else{
+      lb=mid;
+    }
+  }
+  cout<<ub<<'\n';
+  return 0;
 }

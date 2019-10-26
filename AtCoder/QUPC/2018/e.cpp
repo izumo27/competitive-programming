@@ -31,32 +31,32 @@ const double EPS=1e-11;
 ll cnt[214514], cnt2[214514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	ll a[214514];
-	cin>>n;
-	ll sum=0;
-	map<ll, int> mp;
-	++mp[0];
-	REP(i, n){
-		cin>>a[i];
-		sum+=a[i];
-		cnt[i+1]=cnt[i]+mp[sum];
-		++mp[sum];
-	}
-	sum=0;
-	map<ll, int> mp2;
-	++mp2[0];
-	FORR(i, 0, n){
-		sum+=a[i];
-		cnt2[i]=cnt2[i+1]+mp2[sum];
-		++mp2[sum];
-	}
-	ll ans=1e18;
-	REP(i, n){
-		ans=min(ans, cnt[i]+cnt2[i+1]);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  ll a[214514];
+  cin>>n;
+  ll sum=0;
+  map<ll, int> mp;
+  ++mp[0];
+  REP(i, n){
+    cin>>a[i];
+    sum+=a[i];
+    cnt[i+1]=cnt[i]+mp[sum];
+    ++mp[sum];
+  }
+  sum=0;
+  map<ll, int> mp2;
+  ++mp2[0];
+  FORR(i, 0, n){
+    sum+=a[i];
+    cnt2[i]=cnt2[i+1]+mp2[sum];
+    ++mp2[sum];
+  }
+  ll ans=1e18;
+  REP(i, n){
+    ans=min(ans, cnt[i]+cnt2[i+1]);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

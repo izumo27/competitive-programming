@@ -33,40 +33,40 @@ const int INF=1e9;
 int dp[2][51][12525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, W, C, w, v, c;
-	cin>>n>>W>>C;
-	vector<pii> wv[50];
-	REP(i, n){
-		cin>>w>>v>>c;
-		wv[c-1].emplace_back(w, v);
-	}
-	REP(i, 50){
-		REP(j, C){
-			REP(k, W+1){
-				dp[1][j][k]=dp[0][j][k];
-			}
-		}
-		for(auto &a : wv[i]){
-			REP(j, C){
-				FORR(k, a.first, W+1){
-					dp[1][j][k]=max(dp[1][j][k], dp[1][j][k-a.first]+a.second);
-				}
-			}
-		}
-		REP(j, C){
-			REP(k, W+1){
-				dp[0][j+1][k]=max(dp[0][j+1][k], dp[1][j][k]);
-			}
-		}
-	}
-	int ans=0;
-	REP(i, C+1){
-		REP(j, W+1){
-			ans=max(ans, dp[0][i][j]);
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, W, C, w, v, c;
+  cin>>n>>W>>C;
+  vector<pii> wv[50];
+  REP(i, n){
+    cin>>w>>v>>c;
+    wv[c-1].emplace_back(w, v);
+  }
+  REP(i, 50){
+    REP(j, C){
+      REP(k, W+1){
+        dp[1][j][k]=dp[0][j][k];
+      }
+    }
+    for(auto &a : wv[i]){
+      REP(j, C){
+        FORR(k, a.first, W+1){
+          dp[1][j][k]=max(dp[1][j][k], dp[1][j][k-a.first]+a.second);
+        }
+      }
+    }
+    REP(j, C){
+      REP(k, W+1){
+        dp[0][j+1][k]=max(dp[0][j+1][k], dp[1][j][k]);
+      }
+    }
+  }
+  int ans=0;
+  REP(i, C+1){
+    REP(j, W+1){
+      ans=max(ans, dp[0][i][j]);
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -31,43 +31,43 @@ const double EPS=1e-11;
 int dp[1333][1333];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int A, B, a[1333], b[1333];
-	cin>>A>>B;
-	REP(i, A){
-		cin>>a[i];
-	}
-	REP(i, B){
-		cin>>b[i];
-	}
-	dp[A][B]=0;
-	FORR(j, 0, B){
-		if((A+j)&1){
-			dp[A][j]=dp[A][j+1];
-		}
-		else{
-			dp[A][j]=dp[A][j+1]+b[j];
-		}
-	}
-	FORR(i, 0, A){
-		if((i+B)&1){
-			dp[i][B]=dp[i+1][B];
-		}
-		else{
-			dp[i][B]=dp[i+1][B]+a[i];
-		}
-	}
-	FORR(i, 0, A){
-		FORR(j, 0, B){
-			if((i+j)&1){
-				dp[i][j]=min(dp[i+1][j], dp[i][j+1]);
-			}
-			else{
-				dp[i][j]=max(dp[i+1][j]+a[i], dp[i][j+1]+b[j]);
-			}
-		}
-	}
-	cout<<dp[0][0]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int A, B, a[1333], b[1333];
+  cin>>A>>B;
+  REP(i, A){
+    cin>>a[i];
+  }
+  REP(i, B){
+    cin>>b[i];
+  }
+  dp[A][B]=0;
+  FORR(j, 0, B){
+    if((A+j)&1){
+      dp[A][j]=dp[A][j+1];
+    }
+    else{
+      dp[A][j]=dp[A][j+1]+b[j];
+    }
+  }
+  FORR(i, 0, A){
+    if((i+B)&1){
+      dp[i][B]=dp[i+1][B];
+    }
+    else{
+      dp[i][B]=dp[i+1][B]+a[i];
+    }
+  }
+  FORR(i, 0, A){
+    FORR(j, 0, B){
+      if((i+j)&1){
+        dp[i][j]=min(dp[i+1][j], dp[i][j+1]);
+      }
+      else{
+        dp[i][j]=max(dp[i+1][j]+a[i], dp[i][j+1]+b[j]);
+      }
+    }
+  }
+  cout<<dp[0][0]<<'\n';
+  return 0;
 }

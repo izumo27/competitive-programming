@@ -32,32 +32,32 @@ ll dp[1<<16];
 bool g[20][20];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, x, y;
-	cin>>n>>m;
-	REP(i, m){
-		cin>>x>>y;
-		g[x-1][y-1]=true;
-	}
-	dp[0]=1;
-	REP(i, 1<<n){
-		REP(j, n){
-			if(i>>j&1){
-				continue;
-			}
-			bool ok=true;
-			REP(k, n){
-				if(i>>k&1 && g[j][k]){
-					ok=false;
-					break;
-				}
-			}
-			if(ok){
-				dp[i|1<<j]+=dp[i];
-			}
-		}
-	}
-	cout<<dp[(1<<n)-1]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, x, y;
+  cin>>n>>m;
+  REP(i, m){
+    cin>>x>>y;
+    g[x-1][y-1]=true;
+  }
+  dp[0]=1;
+  REP(i, 1<<n){
+    REP(j, n){
+      if(i>>j&1){
+        continue;
+      }
+      bool ok=true;
+      REP(k, n){
+        if(i>>k&1 && g[j][k]){
+          ok=false;
+          break;
+        }
+      }
+      if(ok){
+        dp[i|1<<j]+=dp[i];
+      }
+    }
+  }
+  cout<<dp[(1<<n)-1]<<'\n';
+  return 0;
 }

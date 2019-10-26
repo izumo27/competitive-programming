@@ -31,48 +31,48 @@ const double EPS=1e-11;
 ll fact[364364], fact_inv[364364];
 
 ll mod_pow(ll a, ll b){
-	ll res=1;
-	while(b>0){
-		if(b&1){
-			res=res*a%MOD;
-		}
-		a=a*a%MOD;
-		b>>=1;
-	}
-	return res;
+  ll res=1;
+  while(b>0){
+    if(b&1){
+      res=res*a%MOD;
+    }
+    a=a*a%MOD;
+    b>>=1;
+  }
+  return res;
 }
 
 ll comb(ll n, ll r){
-	return (fact[n]*fact_inv[r])%MOD*fact_inv[n-r]%MOD;
+  return (fact[n]*fact_inv[r])%MOD*fact_inv[n-r]%MOD;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a, b;
-	ll k;
-	cin>>n>>a>>b>>k;
-	fact[0]=1;
-	REP(i, n){
-		fact[i+1]=fact[i]*(i+1)%MOD;
-	}
-	fact_inv[n]=mod_pow(fact[n], MOD-2);
-	FORR(i, 0, n){
-		fact_inv[i]=fact_inv[i+1]*(i+1)%MOD;
-	}
-	ll ans=0;
-	REP(i, n+1){
-		if((k-i*a)%b==0){
-			int j=(k-i*a)/b;
-			if(j<=n){
-				ans=(ans+comb(n, i)*comb(n, j)%MOD)%MOD;
-				// DEBUG(i);
-				// DEBUG(comb(n, i));
-				// DEBUG(j);
-				// DEBUG(comb(n, j));
-			}
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a, b;
+  ll k;
+  cin>>n>>a>>b>>k;
+  fact[0]=1;
+  REP(i, n){
+    fact[i+1]=fact[i]*(i+1)%MOD;
+  }
+  fact_inv[n]=mod_pow(fact[n], MOD-2);
+  FORR(i, 0, n){
+    fact_inv[i]=fact_inv[i+1]*(i+1)%MOD;
+  }
+  ll ans=0;
+  REP(i, n+1){
+    if((k-i*a)%b==0){
+      int j=(k-i*a)/b;
+      if(j<=n){
+        ans=(ans+comb(n, i)*comb(n, j)%MOD)%MOD;
+        // DEBUG(i);
+        // DEBUG(comb(n, i));
+        // DEBUG(j);
+        // DEBUG(comb(n, j));
+      }
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

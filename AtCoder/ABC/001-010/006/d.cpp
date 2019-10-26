@@ -33,19 +33,19 @@ const int INF=1e9;
 int dp[31333];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, c[31333];
-	cin>>n;
-	REP(i, n){
-		cin>>c[i];
-	}
-	REP(i, n){
-		dp[i]=INF;
-	}
-	REP(i, n){
-		*lower_bound(dp, dp+n, c[i])=c[i];
-	}
-	cout<<n-(lower_bound(dp, dp+n, INF)-dp)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, c[31333];
+  cin>>n;
+  REP(i, n){
+    cin>>c[i];
+  }
+  REP(i, n){
+    dp[i]=INF;
+  }
+  REP(i, n){
+    *lower_bound(dp, dp+n, c[i])=c[i];
+  }
+  cout<<n-(lower_bound(dp, dp+n, INF)-dp)<<'\n';
+  return 0;
 }

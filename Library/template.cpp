@@ -29,19 +29,19 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// int n, i;
-	// cin>>n;
-	// cout<<abs(n)<<endl;
-	// int a[n];
-	// for(i=0; i<n; i++) cin>>a[i];
-	// sort(a, a+5);								// 昇順
-	// sort(a, a+5, greater<int>());				// 降順
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // int n, i;
+  // cin>>n;
+  // cout<<abs(n)<<endl;
+  // int a[n];
+  // for(i=0; i<n; i++) cin>>a[i];
+  // sort(a, a+5);                // 昇順
+  // sort(a, a+5, greater<int>());        // 降順
 
-	// string s;
-	// cin>>s;
-	// sort(ALL(s));								// 辞書順
-	// sort(ALL(s), greater<char>());				// 逆辞書順
-	return 0;
+  // string s;
+  // cin>>s;
+  // sort(ALL(s));                // 辞書順
+  // sort(ALL(s), greater<char>());        // 逆辞書順
+  return 0;
 }

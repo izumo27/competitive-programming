@@ -32,24 +32,24 @@ ll dp[114514];
 int pre[114514], f[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m;
-	cin>>n>>m;
-	FOR(i, 1, n+1){
-		cin>>f[i];
-	}
-	dp[0]=1;
-	int l=0;
-	ll sum=0;
-	FOR(r, 1, n+1){
-		while(pre[f[r]]>l){
-			sum-=dp[l++];
-		}
-		sum+=dp[r-1];
-		dp[r]=sum%MOD;
-		pre[f[r]]=r;
-	}
-	cout<<dp[n]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m;
+  cin>>n>>m;
+  FOR(i, 1, n+1){
+    cin>>f[i];
+  }
+  dp[0]=1;
+  int l=0;
+  ll sum=0;
+  FOR(r, 1, n+1){
+    while(pre[f[r]]>l){
+      sum-=dp[l++];
+    }
+    sum+=dp[r-1];
+    dp[r]=sum%MOD;
+    pre[f[r]]=r;
+  }
+  cout<<dp[n]<<'\n';
+  return 0;
 }

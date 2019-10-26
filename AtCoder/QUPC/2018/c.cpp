@@ -38,86 +38,86 @@ int sx, sy, gx, gy, d[1333][1333], dx[4]={1, 0, -1, 0}, dy[4]={0, 1, 0, -1};
 vi ix, iy;
 
 void bfs(){
-	queue<pii> q;
-	REP(i, h){
-		REP(j, w){
-			d[i][j]=INF;
-		}
-	}
-	REP(i, ix.size()){
-		q.push(pii(ix[i], iy[i]));
-		d[ix[i]][iy[i]]=0;
-		used[ix[i]][iy[i]]=true;
-	}
-	while(q.size()){
-		pii p=q.front();
-		q.pop();
-		if(d[p.first][p.second]>=x){
-			continue;
-		}
-		REP(i, 4){
-			int nx=p.first+dx[i];
-			int ny=p.second+dy[i];
-			if(nx>=0 && nx<h && ny>=0 && ny<w && s[nx][ny]!='#' && d[nx][ny]==INF){
-				q.push(pii(nx, ny));
-				d[nx][ny]=d[p.first][p.second]+1;
-				used[nx][ny]=true;
-			}
-		}
-	}
-	return;
+  queue<pii> q;
+  REP(i, h){
+    REP(j, w){
+      d[i][j]=INF;
+    }
+  }
+  REP(i, ix.size()){
+    q.push(pii(ix[i], iy[i]));
+    d[ix[i]][iy[i]]=0;
+    used[ix[i]][iy[i]]=true;
+  }
+  while(q.size()){
+    pii p=q.front();
+    q.pop();
+    if(d[p.first][p.second]>=x){
+      continue;
+    }
+    REP(i, 4){
+      int nx=p.first+dx[i];
+      int ny=p.second+dy[i];
+      if(nx>=0 && nx<h && ny>=0 && ny<w && s[nx][ny]!='#' && d[nx][ny]==INF){
+        q.push(pii(nx, ny));
+        d[nx][ny]=d[p.first][p.second]+1;
+        used[nx][ny]=true;
+      }
+    }
+  }
+  return;
 }
 
 void bfs2(){
-	queue<pii> q;
-	REP(i, h){
-		REP(j, w){
-			d[i][j]=INF;
-		}
-	}
-	q.push(pii(sx, sy));
-	d[sx][sy]=0;
-	while(q.size()){
-		pii p=q.front();
-		q.pop();
-		if(p.first==gx && p.second==gy){
-			return;
-		}
-		REP(i, 4){
-			int nx=p.first+dx[i];
-			int ny=p.second+dy[i];
-			if(nx>=0 && nx<h && ny>=0 && ny<w && s[nx][ny]!='#' && !used[nx][ny] && d[nx][ny]==INF){
-				q.push(pii(nx, ny));
-				d[nx][ny]=d[p.first][p.second]+1;
-			}
-		}
-	}
-	return;
+  queue<pii> q;
+  REP(i, h){
+    REP(j, w){
+      d[i][j]=INF;
+    }
+  }
+  q.push(pii(sx, sy));
+  d[sx][sy]=0;
+  while(q.size()){
+    pii p=q.front();
+    q.pop();
+    if(p.first==gx && p.second==gy){
+      return;
+    }
+    REP(i, 4){
+      int nx=p.first+dx[i];
+      int ny=p.second+dy[i];
+      if(nx>=0 && nx<h && ny>=0 && ny<w && s[nx][ny]!='#' && !used[nx][ny] && d[nx][ny]==INF){
+        q.push(pii(nx, ny));
+        d[nx][ny]=d[p.first][p.second]+1;
+      }
+    }
+  }
+  return;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>h>>w>>x;
-	REP(i, h){
-		REP(j, w){
-			cin>>s[i][j];
-			if(s[i][j]=='S'){
-				sx=i;
-				sy=j;
-			}
-			if(s[i][j]=='G'){
-				gx=i;
-				gy=j;
-			}
-			if(s[i][j]=='@'){
-				ix.push_back(i);
-				iy.push_back(j);
-			}
-		}
-	}
-	bfs();
-	bfs2();
-	cout<<(d[gx][gy]!=INF ? d[gx][gy] : -1)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>h>>w>>x;
+  REP(i, h){
+    REP(j, w){
+      cin>>s[i][j];
+      if(s[i][j]=='S'){
+        sx=i;
+        sy=j;
+      }
+      if(s[i][j]=='G'){
+        gx=i;
+        gy=j;
+      }
+      if(s[i][j]=='@'){
+        ix.push_back(i);
+        iy.push_back(j);
+      }
+    }
+  }
+  bfs();
+  bfs2();
+  cout<<(d[gx][gy]!=INF ? d[gx][gy] : -1)<<'\n';
+  return 0;
 }

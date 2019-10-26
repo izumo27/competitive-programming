@@ -31,30 +31,30 @@ const double EPS=1e-11;
 ll dp[114514][2][114];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string K;
-	int d;
-	cin>>K>>d;
-	int n=K.size();
-	dp[0][0][0]=1;
-	REP(i, n){
-		REP(j, 2){
-			int x=j ? 9 : K[i]-'0';
-			REP(k, d){
-				REP(l, x+1){
-					dp[i+1][j || l<x][(k+l)%d]=(dp[i+1][j || l<x][(k+l)%d]+dp[i][j][k])%MOD;
-				}
-			}
-		}
-	}
-	ll ans=0;
-	if(dp[n][0][0]+dp[n][1][0]==0){
-		ans=(MOD-1)%MOD;
-	}
-	else{
-		ans=(dp[n][0][0]+dp[n][1][0]-1)%MOD;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string K;
+  int d;
+  cin>>K>>d;
+  int n=K.size();
+  dp[0][0][0]=1;
+  REP(i, n){
+    REP(j, 2){
+      int x=j ? 9 : K[i]-'0';
+      REP(k, d){
+        REP(l, x+1){
+          dp[i+1][j || l<x][(k+l)%d]=(dp[i+1][j || l<x][(k+l)%d]+dp[i][j][k])%MOD;
+        }
+      }
+    }
+  }
+  ll ans=0;
+  if(dp[n][0][0]+dp[n][1][0]==0){
+    ans=(MOD-1)%MOD;
+  }
+  else{
+    ans=(dp[n][0][0]+dp[n][1][0]-1)%MOD;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

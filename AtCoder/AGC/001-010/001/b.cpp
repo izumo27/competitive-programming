@@ -30,20 +30,20 @@ const double EPS=1e-11;
 
 // len(a, b)=2a+len(a, b-a)=2*2a+len(a, b-2a)=2*(b/a)*a+len(a, b%a)
 ll len(ll a, ll b){
-	if(a==0){
-		return -b;
-	}
-	if(a>b){
-		return len(b, a);
-	}
-	return 2*(b/a)*a+len(a, b%a);
+  if(a==0){
+    return -b;
+  }
+  if(a>b){
+    return len(b, a);
+  }
+  return 2*(b/a)*a+len(a, b%a);
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	ll n, x;
-	cin>>n>>x;
-	cout<<n+len(x, n-x)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  ll n, x;
+  cin>>n>>x;
+  cout<<n+len(x, n-x)<<'\n';
+  return 0;
 }

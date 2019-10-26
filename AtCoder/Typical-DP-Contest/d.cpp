@@ -30,43 +30,43 @@ const double EPS=1e-11;
 double dp[114][64][64][64];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a=0, b=0, c=0;
-	ll d;
-	cin>>n>>d;
-	while(d%2==0){
-		++a;
-		d>>=1;
-	}
-	while(d%3==0){
-		++b;
-		d/=3;
-	}
-	while(d%5==0){
-		++c;
-		d/=5;
-	}
-	if(d!=1){
-		cout<<0<<'\n';
-		return 0;
-	}
-	dp[0][0][0][0]=1;
-	REP(i, n){
-		REP(j, a+1){
-			REP(k, b+1){
-				REP(l, c+1){
-					double p=dp[i][j][k][l]/6.0;
-					dp[i+1][j][k][l]+=p;
-					dp[i+1][min(j+1, a)][k][l]+=p;
-					dp[i+1][j][min(k+1, b)][l]+=p;
-					dp[i+1][min(j+2, a)][k][l]+=p;
-					dp[i+1][j][k][min(l+1, c)]+=p;
-					dp[i+1][min(j+1, a)][min(k+1, b)][l]+=p;
-				}
-			}
-		}
-	}
-	cout<<dp[n][a][b][c]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a=0, b=0, c=0;
+  ll d;
+  cin>>n>>d;
+  while(d%2==0){
+    ++a;
+    d>>=1;
+  }
+  while(d%3==0){
+    ++b;
+    d/=3;
+  }
+  while(d%5==0){
+    ++c;
+    d/=5;
+  }
+  if(d!=1){
+    cout<<0<<'\n';
+    return 0;
+  }
+  dp[0][0][0][0]=1;
+  REP(i, n){
+    REP(j, a+1){
+      REP(k, b+1){
+        REP(l, c+1){
+          double p=dp[i][j][k][l]/6.0;
+          dp[i+1][j][k][l]+=p;
+          dp[i+1][min(j+1, a)][k][l]+=p;
+          dp[i+1][j][min(k+1, b)][l]+=p;
+          dp[i+1][min(j+2, a)][k][l]+=p;
+          dp[i+1][j][k][min(l+1, c)]+=p;
+          dp[i+1][min(j+1, a)][min(k+1, b)][l]+=p;
+        }
+      }
+    }
+  }
+  cout<<dp[n][a][b][c]<<'\n';
+  return 0;
 }

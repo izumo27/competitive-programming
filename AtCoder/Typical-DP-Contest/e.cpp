@@ -30,23 +30,23 @@ const double EPS=1e-11;
 int dp[12525][2][114];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int d;
-	string n;
-	cin>>d>>n;
-	dp[0][0][0]=1;
-	REP(i, n.size()){
-		REP(j, 2){
-			int lim=j ? 9 : n[i]-'0';
-			REP(k, d){
-				REP(l, lim+1){
-					(dp[i+1][j || l<lim][(k+l)%d]+=dp[i][j][k])%=MOD;
-				}
-			}
-		}
-	}
-	int ans=(dp[n.size()][0][0]+dp[n.size()][1][0])%MOD;
-	cout<<(ans-1+MOD)%MOD<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int d;
+  string n;
+  cin>>d>>n;
+  dp[0][0][0]=1;
+  REP(i, n.size()){
+    REP(j, 2){
+      int lim=j ? 9 : n[i]-'0';
+      REP(k, d){
+        REP(l, lim+1){
+          (dp[i+1][j || l<lim][(k+l)%d]+=dp[i][j][k])%=MOD;
+        }
+      }
+    }
+  }
+  int ans=(dp[n.size()][0][0]+dp[n.size()][1][0])%MOD;
+  cout<<(ans-1+MOD)%MOD<<'\n';
+  return 0;
 }

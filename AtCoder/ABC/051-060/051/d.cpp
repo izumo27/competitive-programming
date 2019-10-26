@@ -37,48 +37,48 @@ int d[MAX_V][MAX_V];
 int V;
 
 void warshall_floyd(){
-	REP(k, V){
-		REP(i, V){
-			REP(j, V){
-				d[i][j]=min(d[i][j], d[i][k]+d[k][j]);
-			}
-		}
-	}
+  REP(k, V){
+    REP(i, V){
+      REP(j, V){
+        d[i][j]=min(d[i][j], d[i][k]+d[k][j]);
+      }
+    }
+  }
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, a[1333], b[1333], c[1333];
-	cin>>n>>m;
-	V=n;
-	REP(i, n){
-		REP(j, n){
-			if(i!=j){
-				d[i][j]=INF;
-			}
-		}
-	}
-	REP(i, m){
-		cin>>a[i]>>b[i]>>c[i];
-		--a[i];
-		--b[i];
-		d[a[i]][b[i]]=d[b[i]][a[i]]=c[i];
-	}
-	warshall_floyd();
-	int ans=m;
-	REP(i, m){
-		bool ok=false;
-		REP(j, n){
-			if(d[j][a[i]]+c[i]==d[j][b[i]]){
-				ok=true;
-				break;
-			}
-		}
-		if(ok){
-			--ans;
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, a[1333], b[1333], c[1333];
+  cin>>n>>m;
+  V=n;
+  REP(i, n){
+    REP(j, n){
+      if(i!=j){
+        d[i][j]=INF;
+      }
+    }
+  }
+  REP(i, m){
+    cin>>a[i]>>b[i]>>c[i];
+    --a[i];
+    --b[i];
+    d[a[i]][b[i]]=d[b[i]][a[i]]=c[i];
+  }
+  warshall_floyd();
+  int ans=m;
+  REP(i, m){
+    bool ok=false;
+    REP(j, n){
+      if(d[j][a[i]]+c[i]==d[j][b[i]]){
+        ok=true;
+        break;
+      }
+    }
+    if(ok){
+      --ans;
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

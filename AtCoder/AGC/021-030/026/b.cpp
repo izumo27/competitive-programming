@@ -29,31 +29,31 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 ll gcd(ll a, ll b){
-	return b==0 ? a : gcd(b, a%b);
+  return b==0 ? a : gcd(b, a%b);
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int t;
-	ll a, b, c, d;
-	cin>>t;
-	bool can;
-	REP(i, t){
-		can=false;
-		cin>>a>>b>>c>>d;
-		if(a>=b && b<=d){
-			if(c>=b-1){
-				can=true;
-			}
-			else{
-				ll g=gcd(b, d);
-				if(c>=b-g+a%g){
-					can=true;
-				}
-			}
-		}
-		cout<<(can ? "Yes" : "No")<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int t;
+  ll a, b, c, d;
+  cin>>t;
+  bool can;
+  REP(i, t){
+    can=false;
+    cin>>a>>b>>c>>d;
+    if(a>=b && b<=d){
+      if(c>=b-1){
+        can=true;
+      }
+      else{
+        ll g=gcd(b, d);
+        if(c>=b-g+a%g){
+          can=true;
+        }
+      }
+    }
+    cout<<(can ? "Yes" : "No")<<'\n';
+  }
+  return 0;
 }

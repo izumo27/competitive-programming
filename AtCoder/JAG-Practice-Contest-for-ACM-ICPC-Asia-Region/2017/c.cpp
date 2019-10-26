@@ -35,44 +35,44 @@ int cnt[MAX_N+1];
 int num[MAX_N+1];
 
 int segment_sieve(int a, int b){
-	for(ll i=2; i*i<b; ++i){
-		is_prime_small[i]=true;
-	}
-	REP(i, b-a){
-		num[i]=i+a;
-	}
-	for(int i=2; i*i<b; ++i){
-		if(is_prime_small[i]){
-			for(ll j=2*i; j*j<b; j+=i){
-				is_prime_small[j]=false;
-			}
-			ll tmp=i;
-			while(tmp<b){
-				for(ll j=max(2ll, (a+tmp-1)/tmp)*tmp; j<b; j+=tmp){
-					++cnt[j-a];
-					num[j-a]/=i;
-				}
-				tmp*=i;
-			}
-		}
-	}
-	int res=0;
-	REP(i, b-a){
-		if(num[i]!=1){
-			++cnt[i];
-		}
-		if(is_prime_small[cnt[i]]){
-			++res;
-		}
-	}
-	return res;
+  for(ll i=2; i*i<b; ++i){
+    is_prime_small[i]=true;
+  }
+  REP(i, b-a){
+    num[i]=i+a;
+  }
+  for(int i=2; i*i<b; ++i){
+    if(is_prime_small[i]){
+      for(ll j=2*i; j*j<b; j+=i){
+        is_prime_small[j]=false;
+      }
+      ll tmp=i;
+      while(tmp<b){
+        for(ll j=max(2ll, (a+tmp-1)/tmp)*tmp; j<b; j+=tmp){
+          ++cnt[j-a];
+          num[j-a]/=i;
+        }
+        tmp*=i;
+      }
+    }
+  }
+  int res=0;
+  REP(i, b-a){
+    if(num[i]!=1){
+      ++cnt[i];
+    }
+    if(is_prime_small[cnt[i]]){
+      ++res;
+    }
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int l, r;
-	cin>>l>>r;
-	cout<<segment_sieve(l, r+1)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int l, r;
+  cin>>l>>r;
+  cout<<segment_sieve(l, r+1)<<'\n';
+  return 0;
 }

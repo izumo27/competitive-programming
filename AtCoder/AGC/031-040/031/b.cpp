@@ -31,26 +31,26 @@ const double EPS=1e-11;
 int dp[252521];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout<<setprecision(10)<<fixed;
-	int n, c[252521];
-	cin>>n;
-	REP(i, n){
-		cin>>c[i];
-	}
-	vi cc;
-	cc.push_back(c[0]);
-	REP(i, n-1){
-		if(c[i]!=c[i+1]){
-			cc.push_back(c[i+1]);
-		}
-	}
-	n=(int)cc.size();
-	dp[cc[0]]=1;
-	FOR(i, 1, n){
-		dp[cc[i]]=(dp[cc[i]]+dp[cc[i-1]])%MOD;
-	}
-	cout<<dp[cc[n-1]]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout<<setprecision(10)<<fixed;
+  int n, c[252521];
+  cin>>n;
+  REP(i, n){
+    cin>>c[i];
+  }
+  vi cc;
+  cc.push_back(c[0]);
+  REP(i, n-1){
+    if(c[i]!=c[i+1]){
+      cc.push_back(c[i+1]);
+    }
+  }
+  n=(int)cc.size();
+  dp[cc[0]]=1;
+  FOR(i, 1, n){
+    dp[cc[i]]=(dp[cc[i]]+dp[cc[i-1]])%MOD;
+  }
+  cout<<dp[cc[n-1]]<<'\n';
+  return 0;
 }

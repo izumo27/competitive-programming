@@ -31,25 +31,25 @@ const double EPS=1e-11;
 ll dp[1333][1333];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int h, w;
-	string a[1333];
-	cin>>h>>w;
-	REP(i, h){
-		cin>>a[i];
-	}
-	dp[0][0]=1;
-	REP(i, h){
-		REP(j, w){
-			if(j+1<w && a[i][j+1]!='#'){
-				dp[i][j+1]=(dp[i][j+1]+dp[i][j])%MOD;
-			}
-			if(i+1<h && a[i+1][j]!='#'){
-				dp[i+1][j]=(dp[i+1][j]+dp[i][j])%MOD;
-			}
-		}
-	}
-	cout<<dp[h-1][w-1]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int h, w;
+  string a[1333];
+  cin>>h>>w;
+  REP(i, h){
+    cin>>a[i];
+  }
+  dp[0][0]=1;
+  REP(i, h){
+    REP(j, w){
+      if(j+1<w && a[i][j+1]!='#'){
+        dp[i][j+1]=(dp[i][j+1]+dp[i][j])%MOD;
+      }
+      if(i+1<h && a[i+1][j]!='#'){
+        dp[i+1][j]=(dp[i+1][j]+dp[i][j])%MOD;
+      }
+    }
+  }
+  cout<<dp[h-1][w-1]<<'\n';
+  return 0;
 }

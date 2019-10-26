@@ -33,39 +33,39 @@ const int MAX_N=214514;
 ll fact[MAX_N], fact_inv[MAX_N];
 
 ll power(ll a, ll b){
-	ll res=1;
-	while(b>0){
-		if(b&1){
-			res=res*a%MOD;
-		}
-		a=a*a%MOD;
-		b>>=1;
-	}
-	return res;
+  ll res=1;
+  while(b>0){
+    if(b&1){
+      res=res*a%MOD;
+    }
+    a=a*a%MOD;
+    b>>=1;
+  }
+  return res;
 }
 
 ll comb(ll n, ll r){
-	return (fact[n]*fact_inv[r])%MOD*fact_inv[n-r]%MOD;
+  return (fact[n]*fact_inv[r])%MOD*fact_inv[n-r]%MOD;
 }
 
 void init_comb(int n){
-	fact[0]=1;
-	REP(i, n){
-		fact[i+1]=fact[i]*(i+1)%MOD;
-	}
-	fact_inv[n]=power(fact[n], MOD-2);
-	FORR(i, 0, n){
-		fact_inv[i]=fact_inv[i+1]*(i+1)%MOD;
-	}
-	return;
+  fact[0]=1;
+  REP(i, n){
+    fact[i+1]=fact[i]*(i+1)%MOD;
+  }
+  fact_inv[n]=power(fact[n], MOD-2);
+  FORR(i, 0, n){
+    fact_inv[i]=fact_inv[i+1]*(i+1)%MOD;
+  }
+  return;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	ll n, k;
-	cin>>n>>k;
-	init_comb(n+k);
-	cout<<comb(n+k-1, k)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  ll n, k;
+  cin>>n>>k;
+  init_comb(n+k);
+  cout<<comb(n+k-1, k)<<'\n';
+  return 0;
 }

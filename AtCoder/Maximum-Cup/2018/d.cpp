@@ -31,28 +31,28 @@ const double EPS=1e-11;
 int dp[12525][1333];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, l, x, a;
-	cin>>n>>m>>l>>x;
-	REP(i, n+1){
-		REP(j, m){
-			dp[i][j]=x+1;
-		}
-	}
-	dp[0][0]=1;
-	REP(i, n){
-		cin>>a;
-		int t=a%m, t2=a/m;
-		REP(j, m){
-			if(j>=t){
-				dp[i+1][j]=min(dp[i][j], dp[i][j-t]+t2);
-			}
-			else{
-				dp[i+1][j]=min(dp[i][j], dp[i][j-t+m]+t2+1);
-			}
-		}
-	}
-	cout<<(dp[n][l]!=0 && dp[n][l]<=x ? "Yes" : "No")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, l, x, a;
+  cin>>n>>m>>l>>x;
+  REP(i, n+1){
+    REP(j, m){
+      dp[i][j]=x+1;
+    }
+  }
+  dp[0][0]=1;
+  REP(i, n){
+    cin>>a;
+    int t=a%m, t2=a/m;
+    REP(j, m){
+      if(j>=t){
+        dp[i+1][j]=min(dp[i][j], dp[i][j-t]+t2);
+      }
+      else{
+        dp[i+1][j]=min(dp[i][j], dp[i][j-t+m]+t2+1);
+      }
+    }
+  }
+  cout<<(dp[n][l]!=0 && dp[n][l]<=x ? "Yes" : "No")<<'\n';
+  return 0;
 }

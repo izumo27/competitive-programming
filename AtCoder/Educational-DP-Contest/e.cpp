@@ -31,34 +31,34 @@ const double EPS=1e-11;
 ll dp[114][114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, W, w;
-	ll v;
-	cin>>n>>W;
-	REP(i, n+1){
-		REP(j, 1000001){
-			dp[i][j]=1e15;
-		}
-	}
-	dp[0][0]=0;
-	REP(i, n){
-		cin>>w>>v;
-		REP(j, 100001){
-			if(j<v){
-				dp[i+1][j]=dp[i][j];
-			}
-			else{
-				dp[i+1][j]=min(dp[i][j], dp[i][j-v]+w);
-			}
-		}
-	}
-	int ans=0;
-	REP(i, 100001){
-		if(dp[n][i]<=W){
-			ans=i;
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, W, w;
+  ll v;
+  cin>>n>>W;
+  REP(i, n+1){
+    REP(j, 1000001){
+      dp[i][j]=1e15;
+    }
+  }
+  dp[0][0]=0;
+  REP(i, n){
+    cin>>w>>v;
+    REP(j, 100001){
+      if(j<v){
+        dp[i+1][j]=dp[i][j];
+      }
+      else{
+        dp[i+1][j]=min(dp[i][j], dp[i][j-v]+w);
+      }
+    }
+  }
+  int ans=0;
+  REP(i, 100001){
+    if(dp[n][i]<=W){
+      ans=i;
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

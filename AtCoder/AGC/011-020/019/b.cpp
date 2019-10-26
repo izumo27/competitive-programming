@@ -31,21 +31,21 @@ const double EPS=1e-11;
 ll num[30];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	string a;
-	cin>>a;
-	ll n=a.size();
-	REP(i, n){
-		++num[a[i]-'a'];
-	}
-	ll ans=n*(n-1)/2+1;
-	REP(i, 26){
-		if(num[i]>1){
-			ans-=num[i]*(num[i]-1)/2;
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  string a;
+  cin>>a;
+  ll n=a.size();
+  REP(i, n){
+    ++num[a[i]-'a'];
+  }
+  ll ans=n*(n-1)/2+1;
+  REP(i, 26){
+    if(num[i]>1){
+      ans-=num[i]*(num[i]-1)/2;
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

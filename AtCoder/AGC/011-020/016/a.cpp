@@ -31,48 +31,48 @@ const double EPS=1e-11;
 char t[114];
 
 bool issame(int len, char c){
-	bool res=true;
-	REP(i, len){
-		if(t[i]!=c){
-			res=false;
-			break;
-		}
-	}
-	return res;
+  bool res=true;
+  REP(i, len){
+    if(t[i]!=c){
+      res=false;
+      break;
+    }
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string s;
-	cin>>s;
-	int ans=100;
-	REP(i, 26){
-		REP(j, s.size()){
-			t[j]=s[j];
-		}
-		char c='a'+i;
-		int len=s.size();
-		while(!issame(len, c)){
-			char u[114];
-			REP(j, len){
-				u[j]=t[j];
-			}
-			REP(j, len-1){
-				if(u[j]==c){
-					t[j]=u[j];
-				}
-				else if(u[j+1]==c){
-					t[j]=u[j+1];
-				}
-				else{
-					t[j]=u[j];
-				}
-			}
-			--len;
-		}
-		ans=min(ans, (int)s.size()-len);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s;
+  cin>>s;
+  int ans=100;
+  REP(i, 26){
+    REP(j, s.size()){
+      t[j]=s[j];
+    }
+    char c='a'+i;
+    int len=s.size();
+    while(!issame(len, c)){
+      char u[114];
+      REP(j, len){
+        u[j]=t[j];
+      }
+      REP(j, len-1){
+        if(u[j]==c){
+          t[j]=u[j];
+        }
+        else if(u[j+1]==c){
+          t[j]=u[j+1];
+        }
+        else{
+          t[j]=u[j];
+        }
+      }
+      --len;
+    }
+    ans=min(ans, (int)s.size()-len);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

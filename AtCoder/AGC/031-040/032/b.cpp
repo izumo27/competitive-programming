@@ -31,26 +31,26 @@ const double EPS=1e-11;
 bool used[114][114];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n;
-	cin>>n;
-	int ans[114514][2];
-	int cnt=0;
-	FOR(i, 1, n){
-		FOR(j, i+1, n+1){
-			if(j==n-i+1-(n&1)){
-				continue;
-			}
-			ans[cnt][0]=i;
-			ans[cnt][1]=j;
-			++cnt;
-		}
-	}
-	cout<<cnt<<'\n';
-	REP(i, cnt){
-		cout<<ans[i][0]<<' '<<ans[i][1]<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n;
+  cin>>n;
+  int ans[114514][2];
+  int cnt=0;
+  FOR(i, 1, n){
+    FOR(j, i+1, n+1){
+      if(j==n-i+1-(n&1)){
+        continue;
+      }
+      ans[cnt][0]=i;
+      ans[cnt][1]=j;
+      ++cnt;
+    }
+  }
+  cout<<cnt<<'\n';
+  REP(i, cnt){
+    cout<<ans[i][0]<<' '<<ans[i][1]<<'\n';
+  }
+  return 0;
 }

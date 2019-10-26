@@ -29,33 +29,33 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int k;
-	ll a[114514];
-	cin>>k;
-	REP(i, k){
-		cin>>a[i];
-	}
-	ll lb=2, ub=2;
-	bool ok=true;
-	FORR(i, 0, k){
-		ll lb2=((lb-1)/a[i]+1)*a[i];
-		ll ub2=ub/a[i]*a[i]+a[i]-1;
-		if(lb2>ub){
-			ok=false;
-			break;
-		}
-		lb=lb2;
-		ub=ub2;
-		// DEBUG(lb);
-		// DEBUG(ub);
-	}
-	if(ok){
-		cout<<lb<<' '<<ub<<'\n';
-	}
-	else{
-		cout<<-1<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int k;
+  ll a[114514];
+  cin>>k;
+  REP(i, k){
+    cin>>a[i];
+  }
+  ll lb=2, ub=2;
+  bool ok=true;
+  FORR(i, 0, k){
+    ll lb2=((lb-1)/a[i]+1)*a[i];
+    ll ub2=ub/a[i]*a[i]+a[i]-1;
+    if(lb2>ub){
+      ok=false;
+      break;
+    }
+    lb=lb2;
+    ub=ub2;
+    // DEBUG(lb);
+    // DEBUG(ub);
+  }
+  if(ok){
+    cout<<lb<<' '<<ub<<'\n';
+  }
+  else{
+    cout<<-1<<'\n';
+  }
+  return 0;
 }

@@ -29,28 +29,28 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int gcd(int a, int b){
-	if(b==0){
-		return a;
-	}
-	return gcd(b, a%b);
+  if(b==0){
+    return a;
+  }
+  return gcd(b, a%b);
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, k, a;
-	cin>>n>>k;
-	int tmp;
-	cin>>tmp;
-	int m=tmp;
-	REP(i, n-1){
-		cin>>a;
-		tmp=gcd(tmp, a);
-		m=max(m, a);
-	}
-	if(k%tmp || k>m){
-		cout<<"IM";
-	}
-	cout<<"POSSIBLE"<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, k, a;
+  cin>>n>>k;
+  int tmp;
+  cin>>tmp;
+  int m=tmp;
+  REP(i, n-1){
+    cin>>a;
+    tmp=gcd(tmp, a);
+    m=max(m, a);
+  }
+  if(k%tmp || k>m){
+    cout<<"IM";
+  }
+  cout<<"POSSIBLE"<<'\n';
+  return 0;
 }

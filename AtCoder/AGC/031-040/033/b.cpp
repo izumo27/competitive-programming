@@ -29,66 +29,66 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int h, w, n, SR, SC;
-	string s, t;
-	cin>>h>>w>>n>>SR>>SC>>s>>t;
-	--SR;
-	--SC;
-	int lb=-1, ub=w;
-	FORR(i, 0, n){
-		// DEBUG(ub);
-		if(t[i]=='L'){
-			++ub;
-		}
-		if(t[i]=='R'){
-			--lb;
-		}
-		if(s[i]=='L'){
-			lb=max(lb+1, 0);
-		}
-		if(s[i]=='R'){
-			ub=min(ub-1, w-1);
-		}
-		if(lb>=w-1 || ub<=0 || ub-lb<=1){
-			cout<<"NO"<<'\n';
-			return 0;
-		}
-	}
-	if(SC<=lb || ub<=SC){
-		cout<<"NO"<<'\n';
-		return 0;
-	}
-	// DEBUG(lb);
-	// DEBUG(ub);
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int h, w, n, SR, SC;
+  string s, t;
+  cin>>h>>w>>n>>SR>>SC>>s>>t;
+  --SR;
+  --SC;
+  int lb=-1, ub=w;
+  FORR(i, 0, n){
+    // DEBUG(ub);
+    if(t[i]=='L'){
+      ++ub;
+    }
+    if(t[i]=='R'){
+      --lb;
+    }
+    if(s[i]=='L'){
+      lb=max(lb+1, 0);
+    }
+    if(s[i]=='R'){
+      ub=min(ub-1, w-1);
+    }
+    if(lb>=w-1 || ub<=0 || ub-lb<=1){
+      cout<<"NO"<<'\n';
+      return 0;
+    }
+  }
+  if(SC<=lb || ub<=SC){
+    cout<<"NO"<<'\n';
+    return 0;
+  }
+  // DEBUG(lb);
+  // DEBUG(ub);
 
-	lb=-1, ub=h;
-	FORR(i, 0, n){
-		if(t[i]=='U'){
-			++ub;
-		}
-		if(t[i]=='D'){
-			--lb;
-		}
-		if(s[i]=='U'){
-			lb=max(lb+1, 0);
-		}
-		if(s[i]=='D'){
-			ub=min(ub-1, h-1);
-		}
-		if(lb>=h-1 || ub<=0 || ub-lb<=1){
-			cout<<"NO"<<'\n';
-			return 0;
-		}
-	}
-	if(SR<=lb || ub<=SR){
-		cout<<"NO"<<'\n';
-		return 0;
-	}
-	// DEBUG(lb);
-	// DEBUG(ub);
-	cout<<"YES"<<'\n';
-	return 0;
+  lb=-1, ub=h;
+  FORR(i, 0, n){
+    if(t[i]=='U'){
+      ++ub;
+    }
+    if(t[i]=='D'){
+      --lb;
+    }
+    if(s[i]=='U'){
+      lb=max(lb+1, 0);
+    }
+    if(s[i]=='D'){
+      ub=min(ub-1, h-1);
+    }
+    if(lb>=h-1 || ub<=0 || ub-lb<=1){
+      cout<<"NO"<<'\n';
+      return 0;
+    }
+  }
+  if(SR<=lb || ub<=SR){
+    cout<<"NO"<<'\n';
+    return 0;
+  }
+  // DEBUG(lb);
+  // DEBUG(ub);
+  cout<<"YES"<<'\n';
+  return 0;
 }

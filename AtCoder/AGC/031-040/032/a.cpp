@@ -31,35 +31,35 @@ const double EPS=1e-11;
 bool used[114];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, b[114];
-	cin>>n;
-	FOR(i, 1, n+1){
-		cin>>b[i];
-	}
-	vi ans;
-	FORR(i, 1, n+1){
-		int cnt=1, cand=-1;
-		FOR(j, 1, n+1){
-			if(used[j]){
-				continue;
-			}
-			if(cnt==b[j]){
-				cand=j;
-			}
-			++cnt;
-		}
-		if(cand==-1){
-			cout<<-1<<'\n';
-			return 0;
-		}
-		ans.push_back(b[cand]);
-		used[cand]=true;
-	}
-	FORR(i, 0, n){
-		cout<<ans[i]<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, b[114];
+  cin>>n;
+  FOR(i, 1, n+1){
+    cin>>b[i];
+  }
+  vi ans;
+  FORR(i, 1, n+1){
+    int cnt=1, cand=-1;
+    FOR(j, 1, n+1){
+      if(used[j]){
+        continue;
+      }
+      if(cnt==b[j]){
+        cand=j;
+      }
+      ++cnt;
+    }
+    if(cand==-1){
+      cout<<-1<<'\n';
+      return 0;
+    }
+    ans.push_back(b[cand]);
+    used[cand]=true;
+  }
+  FORR(i, 0, n){
+    cout<<ans[i]<<'\n';
+  }
+  return 0;
 }

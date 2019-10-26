@@ -29,36 +29,36 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int h, w;
-	string a[10];
-	cin>>h>>w;
-	REP(i, h){
-		cin>>a[i];
-	}
-	a[0][0]=a[h-1][w-1]='.';
-	int x=0, y=0;
-	while(x<h && y<w){
-		if(x+1<h && a[x+1][y]=='#'){
-			a[++x][y]='.';
-		}
-		else if(y+1<w && a[x][y+1]=='#'){
-			a[x][++y]='.';
-		}
-		else{
-			break;
-		}
-	}
-	bool ok=true;
-	REP(i, h){
-		REP(j, w){
-			if(a[i][j]!='.'){
-				ok=false;
-				break;
-			}
-		}
-	}
-	cout<<(ok ? "Possible" : "Impossible")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int h, w;
+  string a[10];
+  cin>>h>>w;
+  REP(i, h){
+    cin>>a[i];
+  }
+  a[0][0]=a[h-1][w-1]='.';
+  int x=0, y=0;
+  while(x<h && y<w){
+    if(x+1<h && a[x+1][y]=='#'){
+      a[++x][y]='.';
+    }
+    else if(y+1<w && a[x][y+1]=='#'){
+      a[x][++y]='.';
+    }
+    else{
+      break;
+    }
+  }
+  bool ok=true;
+  REP(i, h){
+    REP(j, w){
+      if(a[i][j]!='.'){
+        ok=false;
+        break;
+      }
+    }
+  }
+  cout<<(ok ? "Possible" : "Impossible")<<'\n';
+  return 0;
 }

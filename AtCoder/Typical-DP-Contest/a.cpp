@@ -31,22 +31,22 @@ int n, p[114];
 bool dp[114][11000];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n;
-	REP(i, n) cin>>p[i];
-	memset(dp, 0, sizeof(dp));
-	dp[0][0]=true;
-	REP(i, n){
-		REP(j, n*110){
-			dp[i+1][j]=dp[i][j];
-			if(j>=p[i]) dp[i+1][j]|=dp[i][j-p[i]];
-		}
-	}
-	int ans=0;
-	REP(i, n*110){
-		if(dp[n][i]) ++ans;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n;
+  REP(i, n) cin>>p[i];
+  memset(dp, 0, sizeof(dp));
+  dp[0][0]=true;
+  REP(i, n){
+    REP(j, n*110){
+      dp[i+1][j]=dp[i][j];
+      if(j>=p[i]) dp[i+1][j]|=dp[i][j-p[i]];
+    }
+  }
+  int ans=0;
+  REP(i, n*110){
+    if(dp[n][i]) ++ans;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

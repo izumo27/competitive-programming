@@ -34,22 +34,22 @@ int ans[20][2];
 int a[20];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, b;
-	cin>>n;
-	FOR(i, 1, n){
-		cin>>b;
-		a[i]=--b;
-		ans[i][1]=INF;
-	}
-	ans[0][1]=INF;
-	FORR(i, 1, n){
-		int t=ans[i][0]+(ans[i][1]==INF ? 0 : ans[i][1])+1;
-		CHMAX(ans[a[i]][0], t);
-		CHMIN(ans[a[i]][1], t);
-	}
-	cout<<ans[0][0]+ans[0][1]+1<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, b;
+  cin>>n;
+  FOR(i, 1, n){
+    cin>>b;
+    a[i]=--b;
+    ans[i][1]=INF;
+  }
+  ans[0][1]=INF;
+  FORR(i, 1, n){
+    int t=ans[i][0]+(ans[i][1]==INF ? 0 : ans[i][1])+1;
+    CHMAX(ans[a[i]][0], t);
+    CHMIN(ans[a[i]][1], t);
+  }
+  cout<<ans[0][0]+ans[0][1]+1<<'\n';
+  return 0;
 }

@@ -31,40 +31,40 @@ const double EPS=1e-11;
 int num[3], cnt[3];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, a[125252];
-	cin>>n;
-	REP(i, 3){
-		num[i]=-1;
-	}
-	REP(i, n){
-		cin>>a[i];
-		bool ok=false;
-		REP(j, 3){
-			if(num[j]==-1){
-				num[j]=a[i];
-				++cnt[j];
-				ok=true;
-				break;
-			}
-			else if(num[j]==a[i]){
-				++cnt[j];
-				ok=true;
-				break;
-			}
-		}
-		if(!ok){
-			cout<<"No"<<'\n';
-			return 0;
-		}
-	}
-	if(num[1]==-1){
-		cout<<(num[0]==0 ? "Yes" : "No")<<'\n';
-		return 0;
-	}
-	if(num[2]==-1){
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, a[125252];
+  cin>>n;
+  REP(i, 3){
+    num[i]=-1;
+  }
+  REP(i, n){
+    cin>>a[i];
+    bool ok=false;
+    REP(j, 3){
+      if(num[j]==-1){
+        num[j]=a[i];
+        ++cnt[j];
+        ok=true;
+        break;
+      }
+      else if(num[j]==a[i]){
+        ++cnt[j];
+        ok=true;
+        break;
+      }
+    }
+    if(!ok){
+      cout<<"No"<<'\n';
+      return 0;
+    }
+  }
+  if(num[1]==-1){
+    cout<<(num[0]==0 ? "Yes" : "No")<<'\n';
+    return 0;
+  }
+  if(num[2]==-1){
 		if(n%3!=0){
 			cout<<"No"<<'\n';
 			return 0;

@@ -31,47 +31,47 @@ const double EPS=1e-11;
 map<pair<string, string>, int> mp;
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	string s;
-	cin>>n>>s;
-	REP(i, 1<<n){
-		string t, u;
-		REP(j, n){
-			if((i>>j)&1){
-				t+=s[j];
-			}
-		}
-		FORR(j, 0, n){
-			if((~i>>j)&1){
-				u+=s[j];
-			}
-		}
-		// DEBUG(t);
-		// DEBUG(u);
-		++mp[make_pair(t, u)];
-	}
-	reverse(ALL(s));
-	ll ans=0;
-	REP(i, 1<<n){
-		string t, u;
-		REP(j, n){
-			if((i>>j)&1){
-				t+=s[j];
-			}
-		}
-		FORR(j, 0, n){
-			if((~i>>j)&1){
-				u+=s[j];
-			}
-		}
-		// DEBUG(t);
-		// DEBUG(u);
-		if(mp.count(make_pair(t, u))){
-			ans+=mp[make_pair(t, u)];
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  string s;
+  cin>>n>>s;
+  REP(i, 1<<n){
+    string t, u;
+    REP(j, n){
+      if((i>>j)&1){
+        t+=s[j];
+      }
+    }
+    FORR(j, 0, n){
+      if((~i>>j)&1){
+        u+=s[j];
+      }
+    }
+    // DEBUG(t);
+    // DEBUG(u);
+    ++mp[make_pair(t, u)];
+  }
+  reverse(ALL(s));
+  ll ans=0;
+  REP(i, 1<<n){
+    string t, u;
+    REP(j, n){
+      if((i>>j)&1){
+        t+=s[j];
+      }
+    }
+    FORR(j, 0, n){
+      if((~i>>j)&1){
+        u+=s[j];
+      }
+    }
+    // DEBUG(t);
+    // DEBUG(u);
+    if(mp.count(make_pair(t, u))){
+      ans+=mp[make_pair(t, u)];
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

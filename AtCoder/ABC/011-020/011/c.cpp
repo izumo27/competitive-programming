@@ -31,40 +31,40 @@ const double EPS=1e-11;
 bool ng[334];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, NG;
-	cin>>n;
-	bool ok=true;
-	REP(i, 3){
-		cin>>NG;
-		if(NG==n){
-			ok=false;
-			break;
-		}
-		ng[NG]=true;
-	}
-	REP(i, 100){
-		if(n<=0){
-			break;
-		}
-		if(n-3<0 || ng[n-3]){
-			if(n-2<0 || ng[n-2]){
-				if(ng[n-1]){
-					ok=false;
-				}
-				else{
-					--n;
-				}
-			}
-			else{
-				n-=2;
-			}
-		}
-		else{
-			n-=3;
-		}
-	}
-	cout<<(ok && n<=0 ? "YES": "NO")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, NG;
+  cin>>n;
+  bool ok=true;
+  REP(i, 3){
+    cin>>NG;
+    if(NG==n){
+      ok=false;
+      break;
+    }
+    ng[NG]=true;
+  }
+  REP(i, 100){
+    if(n<=0){
+      break;
+    }
+    if(n-3<0 || ng[n-3]){
+      if(n-2<0 || ng[n-2]){
+        if(ng[n-1]){
+          ok=false;
+        }
+        else{
+          --n;
+        }
+      }
+      else{
+        n-=2;
+      }
+    }
+    else{
+      n-=3;
+    }
+  }
+  cout<<(ok && n<=0 ? "YES": "NO")<<'\n';
+  return 0;
 }

@@ -31,41 +31,41 @@ const double EPS=1e-11;
 ll dp[60][4000][2];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, k;
-	ll a;
-	cin>>n>>k;
-	int c[60], sum=0;
-	REP(i, n){
-		cin>>a;
-		int tmp=0;
-		while(a>0){
-			a/=2;
-			++tmp;
-		}
-		c[i]=tmp;
-		sum+=c[i];
-	}
-	int m=min(sum, k);
-	dp[0][0][0]=1;
-	REP(i, n){
-		REP(j, m+1){
-			REP(k, min(c[i], j+1)){
-				dp[i+1][j][0]=(dp[i+1][j][0]+dp[i][j-k][0])%MOD;
-			}
-			REP(k, min(c[i], j)+1){
-				dp[i+1][j][1]=(dp[i+1][j][1]+dp[i][j-k][1])%MOD;
-			}
-			if(j>=c[i]){
-				dp[i+1][j][1]=(dp[i+1][j][1]+dp[i][j-c[i]][0])%MOD;
-			}
-		}
-	}
-	ll ans=dp[n][m][0];
-	REP(i, m+1){
-		ans=(ans+dp[n][i][1])%MOD;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, k;
+  ll a;
+  cin>>n>>k;
+  int c[60], sum=0;
+  REP(i, n){
+    cin>>a;
+    int tmp=0;
+    while(a>0){
+      a/=2;
+      ++tmp;
+    }
+    c[i]=tmp;
+    sum+=c[i];
+  }
+  int m=min(sum, k);
+  dp[0][0][0]=1;
+  REP(i, n){
+    REP(j, m+1){
+      REP(k, min(c[i], j+1)){
+        dp[i+1][j][0]=(dp[i+1][j][0]+dp[i][j-k][0])%MOD;
+      }
+      REP(k, min(c[i], j)+1){
+        dp[i+1][j][1]=(dp[i+1][j][1]+dp[i][j-k][1])%MOD;
+      }
+      if(j>=c[i]){
+        dp[i+1][j][1]=(dp[i+1][j][1]+dp[i][j-c[i]][0])%MOD;
+      }
+    }
+  }
+  ll ans=dp[n][m][0];
+  REP(i, m+1){
+    ans=(ans+dp[n][i][1])%MOD;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

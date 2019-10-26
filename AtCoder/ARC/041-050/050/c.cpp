@@ -29,70 +29,70 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 ll gcd(ll a, ll b){
-	if(b==0){
-		return a;
-	}
-	return gcd(b, a%b);
+  if(b==0){
+    return a;
+  }
+  return gcd(b, a%b);
 }
 
 typedef vector<vl> mat;
 ll mod;
 
 mat mul(mat &a, mat &b){
-	int x=a.size(), y=b.size(), z=b[0].size();
-	mat c(x, vl(z));
-	REP(i, x)REP(k, y)REP(j, z){
-		(c[i][j]+=(a[i][k]*b[k][j]%mod))%=mod;
-	}
-	return c;
+  int x=a.size(), y=b.size(), z=b[0].size();
+  mat c(x, vl(z));
+  REP(i, x)REP(k, y)REP(j, z){
+    (c[i][j]+=(a[i][k]*b[k][j]%mod))%=mod;
+  }
+  return c;
 }
 
 mat power(mat a, ll n){
-	int x=a.size();
-	mat b(x, vl(x));
-	REP(i, x){
-		b[i][i]=1;
-	}
-	while(n>0){
-		if(n&1){
-			b=mul(b, a);
-		}
-		a=mul(a, a);
-		n>>=1;
-	}
-	return b;
+  int x=a.size();
+  mat b(x, vl(x));
+  REP(i, x){
+    b[i][i]=1;
+  }
+  while(n>0){
+    if(n&1){
+      b=mul(b, a);
+    }
+    a=mul(a, a);
+    n>>=1;
+  }
+  return b;
 }
 
 ll power(ll a, ll b){
-	ll x=a, res=1, p=b;
-	while(p>0){
-		if(p&1) (res*=x)%=mod;
-		(x*=x)%=mod;
-		p>>=1;
-	}
-	return res;
+  ll x=a, res=1, p=b;
+  while(p>0){
+    if(p&1) (res*=x)%=mod;
+    (x*=x)%=mod;
+    p>>=1;
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	ll a, b;
-	cin>>a>>b>>mod;
-	ll c=gcd(a, b);
-	mat C(2, vl(2));
-	C[0][0]=power(10, c);C[0][1]=1;
-	C[1][0]=0;C[1][1]=1;
-	mat D=power(C, b/c);
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  ll a, b;
+  cin>>a>>b>>mod;
+  ll c=gcd(a, b);
+  mat C(2, vl(2));
+  C[0][0]=power(10, c);C[0][1]=1;
+  C[1][0]=0;C[1][1]=1;
+  mat D=power(C, b/c);
 
-	mat A(2, vl(2));
-	A[0][0]=10;A[0][1]=1;
-	A[1][0]=0;A[1][1]=1;
-	mat B=power(A, a);
+  mat A(2, vl(2));
+  A[0][0]=10;A[0][1]=1;
+  A[1][0]=0;A[1][1]=1;
+  mat B=power(A, a);
 
-	ll ans=B[0][1]*D[0][1]%mod;
-	// DEBUG(B[0][1]);
-	// DEBUG(C[0][1]);
-	cout<<ans<<'\n';
-	return 0;
+  ll ans=B[0][1]*D[0][1]%mod;
+  // DEBUG(B[0][1]);
+  // DEBUG(C[0][1]);
+  cout<<ans<<'\n';
+  return 0;
 }

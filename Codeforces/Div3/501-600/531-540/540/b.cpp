@@ -31,28 +31,28 @@ const double EPS=1e-11;
 int sum1[252521], sum2[252521];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a[252521];
-	cin>>n;
-	REP(i, n){
-		cin>>a[i];
-		sum1[i+1]=sum1[i];
-		sum2[i+1]=sum2[i];
-		if(i&1){
-			sum1[i+1]+=a[i];
-		}
-		else{
-			sum2[i+1]+=a[i];
-		}
-	}
-	int ans=0;
-	REP(i, n){
-		if(sum2[i]+sum1[n]-sum1[i+1]==sum1[i]+sum2[n]-sum2[i+1]){
-			++ans;
-			// DEBUG(i);
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a[252521];
+  cin>>n;
+  REP(i, n){
+    cin>>a[i];
+    sum1[i+1]=sum1[i];
+    sum2[i+1]=sum2[i];
+    if(i&1){
+      sum1[i+1]+=a[i];
+    }
+    else{
+      sum2[i+1]+=a[i];
+    }
+  }
+  int ans=0;
+  REP(i, n){
+    if(sum2[i]+sum1[n]-sum1[i+1]==sum1[i]+sum2[n]-sum2[i+1]){
+      ++ans;
+      // DEBUG(i);
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

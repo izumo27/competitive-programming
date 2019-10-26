@@ -31,25 +31,25 @@ const double EPS=1e-11;
 int cnt[252521], cnt2[252521];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	string s;
-	cin>>n>>s;
-	int ans=1e9;
-	FORR(i, 0, n){
-		cnt[i]=cnt[i+1]+(s[i]=='.' ? 1 : 0);
-		// DEBUG(cnt[i]);
-	}
-	REP(i, n){
-		cnt2[i+1]=cnt2[i]+(s[i]=='#' ? 1 : 0);
-	}
-	REP(i, n){
-		// DEBUG(ans);
-		CHMIN(ans, cnt2[i]+cnt[i+1]);
-		// DEBUG(cnt[i+1]);
-		// DEBUG(cnt2[i]);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  string s;
+  cin>>n>>s;
+  int ans=1e9;
+  FORR(i, 0, n){
+    cnt[i]=cnt[i+1]+(s[i]=='.' ? 1 : 0);
+    // DEBUG(cnt[i]);
+  }
+  REP(i, n){
+    cnt2[i+1]=cnt2[i]+(s[i]=='#' ? 1 : 0);
+  }
+  REP(i, n){
+    // DEBUG(ans);
+    CHMIN(ans, cnt2[i]+cnt[i+1]);
+    // DEBUG(cnt[i+1]);
+    // DEBUG(cnt2[i]);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

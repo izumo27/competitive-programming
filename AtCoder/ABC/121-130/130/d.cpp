@@ -31,27 +31,27 @@ const double EPS=1e-11;
 ll sum[125252];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n;
-	ll k, a[125252];
-	cin>>n>>k;
-	REP(i, n){
-		cin>>a[i];
-		sum[i+1]=sum[i]+a[i];
-	}
-	ll ans=0;
-	int l=n;
-	FORR(r, 1, n+1){
-		while(l>=0 && sum[r]-sum[l]<k){
-			--l;
-		}
-		if(l<0){
-			break;
-		}
-		ans+=l+1;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n;
+  ll k, a[125252];
+  cin>>n>>k;
+  REP(i, n){
+    cin>>a[i];
+    sum[i+1]=sum[i]+a[i];
+  }
+  ll ans=0;
+  int l=n;
+  FORR(r, 1, n+1){
+    while(l>=0 && sum[r]-sum[l]<k){
+      --l;
+    }
+    if(l<0){
+      break;
+    }
+    ans+=l+1;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

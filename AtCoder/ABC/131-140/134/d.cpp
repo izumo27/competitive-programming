@@ -30,44 +30,44 @@ const double EPS=1e-11;
 
 // 約数を求める
 vi divisor(int n){
-	vi res;
-	for(int i=1; i*i<=n; ++i){
-		if(n%i==0){
-			res.push_back(i);
-			if(i!=n/i){
-				res.push_back(n/i);
-			}
-		}
-	}
-	return res;
+  vi res;
+  for(int i=1; i*i<=n; ++i){
+    if(n%i==0){
+      res.push_back(i);
+      if(i!=n/i){
+        res.push_back(n/i);
+      }
+    }
+  }
+  return res;
 }
 
 int cnt[252525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, a[252525];
-	cin>>n;
-	FOR(i, 1, n+1){
-		cin>>a[i];
-	}
-	vi ans;
-	FORR(i, 1, n+1){
-		if((cnt[i]&1)==a[i]){
-			continue;
-		}
-		ans.push_back(i);
-		vi v=divisor(i);
-		for(auto &x : v){
-			++cnt[x];
-		}
-	}
-	int sz=ans.size();
-	cout<<sz<<'\n';
-	for(auto &x : ans){
-		cout<<x<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, a[252525];
+  cin>>n;
+  FOR(i, 1, n+1){
+    cin>>a[i];
+  }
+  vi ans;
+  FORR(i, 1, n+1){
+    if((cnt[i]&1)==a[i]){
+      continue;
+    }
+    ans.push_back(i);
+    vi v=divisor(i);
+    for(auto &x : v){
+      ++cnt[x];
+    }
+  }
+  int sz=ans.size();
+  cout<<sz<<'\n';
+  for(auto &x : ans){
+    cout<<x<<'\n';
+  }
+  return 0;
 }

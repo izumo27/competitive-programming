@@ -30,74 +30,74 @@ const double EPS=1e-11;
 
 // 約数を求める
 vl divisor(ll n){
-	vl res;
-	for(ll i=1; i*i<=n; ++i){
-		if(n%i==0){
-			res.push_back(i);
-			if(i!=n/i){
-				res.push_back(n/i);
-			}
-		}
-	}
-	return res;
+  vl res;
+  for(ll i=1; i*i<=n; ++i){
+    if(n%i==0){
+      res.push_back(i);
+      if(i!=n/i){
+        res.push_back(n/i);
+      }
+    }
+  }
+  return res;
 }
 
 const ll INF=1e18;
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n;
-	ll k, a[525];
-	cin>>n>>k;
-	ll sum=0, ma=0;
-	REP(i, n){
-		cin>>a[i];
-		sum+=a[i];
-		CHMAX(ma, a[i]);
-	}
-	sort(a, a+n);
-	vl v=divisor(sum);
-	ll ans=1;
-	for(auto &x : v){
-		if(x==1){
-			continue;
-		}
-		if(x==sum){
-			if(sum-ma<=k){
-				ans=x;
-			}
-			continue;
-		}
-		vl b;
-		REP(i, n){
-			if(a[i]%x==0){
-				continue;
-			}
-			b.push_back(a[i]%x);
-		}
-		sort(ALL(b));
-		int m=b.size();
-		ll sum[2][525];
-		sum[0][0]=0;
-		REP(i, m){
-			sum[0][i+1]=sum[0][i]+b[i];
-		}
-		sum[1][m]=0;
-		FORR(i, 0, m){
-			sum[1][i]=sum[1][i+1]+x-b[i];
-		}
-		ll tmp=INF;
-		REP(i, m+1){
-			if(abs(sum[0][i]-sum[1][i])%x==0){
-				CHMIN(tmp, max(sum[0][i], sum[1][i]));
-			}
-		}
-		if(tmp<=k){
-			CHMAX(ans, x);
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n;
+  ll k, a[525];
+  cin>>n>>k;
+  ll sum=0, ma=0;
+  REP(i, n){
+    cin>>a[i];
+    sum+=a[i];
+    CHMAX(ma, a[i]);
+  }
+  sort(a, a+n);
+  vl v=divisor(sum);
+  ll ans=1;
+  for(auto &x : v){
+    if(x==1){
+      continue;
+    }
+    if(x==sum){
+      if(sum-ma<=k){
+        ans=x;
+      }
+      continue;
+    }
+    vl b;
+    REP(i, n){
+      if(a[i]%x==0){
+        continue;
+      }
+      b.push_back(a[i]%x);
+    }
+    sort(ALL(b));
+    int m=b.size();
+    ll sum[2][525];
+    sum[0][0]=0;
+    REP(i, m){
+      sum[0][i+1]=sum[0][i]+b[i];
+    }
+    sum[1][m]=0;
+    FORR(i, 0, m){
+      sum[1][i]=sum[1][i+1]+x-b[i];
+    }
+    ll tmp=INF;
+    REP(i, m+1){
+      if(abs(sum[0][i]-sum[1][i])%x==0){
+        CHMIN(tmp, max(sum[0][i], sum[1][i]));
+      }
+    }
+    if(tmp<=k){
+      CHMAX(ans, x);
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

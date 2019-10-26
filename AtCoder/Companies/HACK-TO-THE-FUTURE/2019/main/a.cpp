@@ -32,54 +32,54 @@ int T, N, M, a[31333], b[31333], s[31333][10], skill_level[10];
 ll c[31333], money;
 
 ll score(int t, int i){
-	double add_money=(double)c[i];
-	add_money*=(1+9*(double)(t-a[i])/(b[i]-a[i]));
-	int skill_lack=0;
-	REP(j, N){
-		skill_lack+=max(0, s[i][j]-skill_level[j]);
-	}
-	if(skill_lack){
-		add_money*=pow(0.5, skill_lack);
-	}
-	else{
-		add_money*=10;
-	}
-	return (ll)add_money;
+  double add_money=(double)c[i];
+  add_money*=(1+9*(double)(t-a[i])/(b[i]-a[i]));
+  int skill_lack=0;
+  REP(j, N){
+    skill_lack+=max(0, s[i][j]-skill_level[j]);
+  }
+  if(skill_lack){
+    add_money*=pow(0.5, skill_lack);
+  }
+  else{
+    add_money*=10;
+  }
+  return (ll)add_money;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>T>>N>>M;
-	REP(i, M){
-		cin>>a[i]>>b[i]>>c[i];
-		--a[i];
-		--b[i];
-		REP(j, N){
-			cin>>s[i][j];
-		}
-	}
-	REP(i, T){
-		ll reward=0;
-		int ind=0;
-		REP(j, M){
-			if(i!=b[j]){
-				continue;
-			}
-			ll tmp=score(i, j);
-			if(reward<tmp){
-				reward=tmp;
-				ind=j;
-			}
-		}
-		if(reward>1000){
-			cout<<2<<' '<<ind+1<<'\n';
-			money+=reward;
-		}
-		else{
-			cout<<3<<'\n';
-			money+=1000;
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>T>>N>>M;
+  REP(i, M){
+    cin>>a[i]>>b[i]>>c[i];
+    --a[i];
+    --b[i];
+    REP(j, N){
+      cin>>s[i][j];
+    }
+  }
+  REP(i, T){
+    ll reward=0;
+    int ind=0;
+    REP(j, M){
+      if(i!=b[j]){
+        continue;
+      }
+      ll tmp=score(i, j);
+      if(reward<tmp){
+        reward=tmp;
+        ind=j;
+      }
+    }
+    if(reward>1000){
+      cout<<2<<' '<<ind+1<<'\n';
+      money+=reward;
+    }
+    else{
+      cout<<3<<'\n';
+      money+=1000;
+    }
+  }
+  return 0;
 }

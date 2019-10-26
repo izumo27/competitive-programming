@@ -32,64 +32,64 @@ const int MAX_N=114514;
 ll fact[MAX_N], fact_inv[MAX_N];
 
 ll power(ll a, ll b){
-	ll res=1;
-	while(b>0){
-		if(b&1){
-			res=res*a%MOD;
-		}
-		a=a*a%MOD;
-		b>>=1;
-	}
-	return res;
+  ll res=1;
+  while(b>0){
+    if(b&1){
+      res=res*a%MOD;
+    }
+    a=a*a%MOD;
+    b>>=1;
+  }
+  return res;
 }
 
 ll comb(ll n, ll r){
-	return (fact[n]*fact_inv[r])%MOD*fact_inv[n-r]%MOD;
+  return (fact[n]*fact_inv[r])%MOD*fact_inv[n-r]%MOD;
 }
 
 void init_comb(int n){
-	fact[0]=1;
-	REP(i, n){
-		fact[i+1]=fact[i]*(i+1)%MOD;
-	}
-	fact_inv[n]=power(fact[n], MOD-2);
-	FORR(i, 0, n){
-		fact_inv[i]=fact_inv[i+1]*(i+1)%MOD;
-	}
-	return;
+  fact[0]=1;
+  REP(i, n){
+    fact[i+1]=fact[i]*(i+1)%MOD;
+  }
+  fact_inv[n]=power(fact[n], MOD-2);
+  FORR(i, 0, n){
+    fact_inv[i]=fact_inv[i+1]*(i+1)%MOD;
+  }
+  return;
 }
 
 // 素因数分解
 vector<pii> prime_factor(int n){
-	vector<pii> res;
-	for(int i=2; i*i<=n; ++i){
-		if(n%i!=0){
-			continue;
-		}
-		int num=0;
-		while(n%i==0){
-			++num;
-			n/=i;
-		}
-		res.push_back(pii(i, num));
-	}
-	if(n!=1){
-		res.push_back(pii(n, 1));
-	}
-	return res;
+  vector<pii> res;
+  for(int i=2; i*i<=n; ++i){
+    if(n%i!=0){
+      continue;
+    }
+    int num=0;
+    while(n%i==0){
+      ++num;
+      n/=i;
+    }
+    res.push_back(pii(i, num));
+  }
+  if(n!=1){
+    res.push_back(pii(n, 1));
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m;
-	cin>>n>>m;
-	vector<pii> f=prime_factor(m);
-	init_comb(n+30);
-	ll ans=1;
-	for(auto i : f){
-		ans=(ans*comb((i.second+n-1), n-1))%MOD;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m;
+  cin>>n>>m;
+  vector<pii> f=prime_factor(m);
+  init_comb(n+30);
+  ll ans=1;
+  for(auto i : f){
+    ans=(ans*comb((i.second+n-1), n-1))%MOD;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

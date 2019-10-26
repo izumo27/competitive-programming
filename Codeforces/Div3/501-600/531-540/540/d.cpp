@@ -33,50 +33,50 @@ ll a[252521];
 ll sum[252521];
 
 bool is_ok(ll mid){
-	if(n<=mid){
-		return true;
-	}
-	vl v[mid];
-	REP(i, n){
-		v[i%mid].push_back(a[i]);
-	}
-	ll cnt=0;
-	REP(i, mid){
-		REP(j, v[i].size()){
-			cnt+=max(0ll, v[i][j]-j);
-		}
-	}
-	// if(mid==2){
-	// 	DEBUG(cnt);
-	// }
-	return cnt>=m;
+  if(n<=mid){
+    return true;
+  }
+  vl v[mid];
+  REP(i, n){
+    v[i%mid].push_back(a[i]);
+  }
+  ll cnt=0;
+  REP(i, mid){
+    REP(j, v[i].size()){
+      cnt+=max(0ll, v[i][j]-j);
+    }
+  }
+  // if(mid==2){
+  //   DEBUG(cnt);
+  // }
+  return cnt>=m;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n>>m;
-	REP(i, n){
-		cin>>a[i];
-	}
-	sort(a, a+n, greater<ll>());
-	REP(i, n){
-		sum[i+1]=sum[i]+a[i];
-	}
-	if(sum[n]<m){
-		cout<<-1<<'\n';
-		return 0;
-	}
-	ll lb=0, ub=1e10;
-	while(ub-lb>1){
-		ll mid=(lb+ub)/2;
-		if(is_ok(mid)){
-			ub=mid;
-		}
-		else{
-			lb=mid;
-		}
-	}
-	cout<<ub<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n>>m;
+  REP(i, n){
+    cin>>a[i];
+  }
+  sort(a, a+n, greater<ll>());
+  REP(i, n){
+    sum[i+1]=sum[i]+a[i];
+  }
+  if(sum[n]<m){
+    cout<<-1<<'\n';
+    return 0;
+  }
+  ll lb=0, ub=1e10;
+  while(ub-lb>1){
+    ll mid=(lb+ub)/2;
+    if(is_ok(mid)){
+      ub=mid;
+    }
+    else{
+      lb=mid;
+    }
+  }
+  cout<<ub<<'\n';
+  return 0;
 }

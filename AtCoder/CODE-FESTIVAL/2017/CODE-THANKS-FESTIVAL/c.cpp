@@ -29,23 +29,23 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, k;
-	ll a, b[114514];
-	cin>>n>>k;
-	priority_queue<pll, vector<pll>, greater<pll>> pq;
-	REP(i, n){
-		cin>>a>>b[i];
-		pq.push(pll(a, i));
-	}
-	ll ans=0;
-	REP(i, k){
-		pll tmp=pq.top();
-		ans+=tmp.first;
-		pq.pop();
-		pq.push(pll(tmp.first+b[(tmp.second)], tmp.second));
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, k;
+  ll a, b[114514];
+  cin>>n>>k;
+  priority_queue<pll, vector<pll>, greater<pll>> pq;
+  REP(i, n){
+    cin>>a>>b[i];
+    pq.push(pll(a, i));
+  }
+  ll ans=0;
+  REP(i, k){
+    pll tmp=pq.top();
+    ans+=tmp.first;
+    pq.pop();
+    pq.push(pll(tmp.first+b[(tmp.second)], tmp.second));
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

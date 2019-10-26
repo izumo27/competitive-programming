@@ -31,33 +31,33 @@ const double EPS=1e-11;
 int x[30];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int l;
-	cin>>l;
-	int m=l;
-	int cnt=0;
-	int cnt2=0;
-	while(m){
-		if(m&1){
-			x[cnt]=1;
-			++cnt2;
-		}
-		++cnt;
-		m>>=1;
-	}
-	cout<<20<<' '<<19+cnt-1+cnt2-1<<'\n';
-	REP(i, 19){
-		cout<<i+1<<' '<<i+2<<' '<<0<<'\n';
-	}
-	REP(i, cnt-1){
-		cout<<i+1<<' '<<i+2<<' '<<(1<<i)<<'\n';
-	}
-	FORR(i, 0, cnt-1){
-		if(x[i]){
-			l-=(1<<i);
-			cout<<i+1<<' '<<20<<' '<<l<<'\n';
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int l;
+  cin>>l;
+  int m=l;
+  int cnt=0;
+  int cnt2=0;
+  while(m){
+    if(m&1){
+      x[cnt]=1;
+      ++cnt2;
+    }
+    ++cnt;
+    m>>=1;
+  }
+  cout<<20<<' '<<19+cnt-1+cnt2-1<<'\n';
+  REP(i, 19){
+    cout<<i+1<<' '<<i+2<<' '<<0<<'\n';
+  }
+  REP(i, cnt-1){
+    cout<<i+1<<' '<<i+2<<' '<<(1<<i)<<'\n';
+  }
+  FORR(i, 0, cnt-1){
+    if(x[i]){
+      l-=(1<<i);
+      cout<<i+1<<' '<<20<<' '<<l<<'\n';
+    }
+  }
+  return 0;
 }

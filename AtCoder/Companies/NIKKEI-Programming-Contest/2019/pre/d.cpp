@@ -34,64 +34,64 @@ bool used[114514], used2[114514];
 pii ans[114514];
 
 void dfs(int u){
-	if(g[u].size()>1){
-		for(auto v : g[u]){
-			bool ok=true;
-			for(auto v2 : g2[v]){
-				if(ans[v2].first==0){
-					ok=false;
-					break;
-				}
-			}
-			if(ok && ans[v].second<ans[u].second+1){
-				ans[v]=pii(u, ans[u].second+1);
-				dfs(v);
-			}
-		}
-	}
-	else{
-		if(g[u].size()==0){
-			return;
-		}
-		ans[g[u][0]]=pii(u, ans[u].second+1);
-		dfs(g[u][0]);
-	}
-	return;
+  if(g[u].size()>1){
+    for(auto v : g[u]){
+      bool ok=true;
+      for(auto v2 : g2[v]){
+        if(ans[v2].first==0){
+          ok=false;
+          break;
+        }
+      }
+      if(ok && ans[v].second<ans[u].second+1){
+        ans[v]=pii(u, ans[u].second+1);
+        dfs(v);
+      }
+    }
+  }
+  else{
+    if(g[u].size()==0){
+      return;
+    }
+    ans[g[u][0]]=pii(u, ans[u].second+1);
+    dfs(g[u][0]);
+  }
+  return;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, a, b;
-	cin>>n>>m;
-	REP(i, n+m){
-		cin>>a>>b;
-		g[a].push_back(b);
-		g2[b].push_back(a);
-		used[b]=true;
-		used2[a]=true;
-	}
-	FOR(i, 1, n+1){
-		if(!used[i]){
-			root=i;
-			break;
-		}
-	}
-	FOR(i, 1, n+1){
-		if(!used2[i]){
-			child=i;
-			break;
-		}
-	}
-	ans[root]=pii(-1, 0);
-	dfs(root);
-	FOR(i, 1, n+1){
-		if(ans[i].first!=-1){
-			cout<<ans[i].first<<'\n';
-		}
-		else{
-			cout<<0<<'\n';
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, a, b;
+  cin>>n>>m;
+  REP(i, n+m){
+    cin>>a>>b;
+    g[a].push_back(b);
+    g2[b].push_back(a);
+    used[b]=true;
+    used2[a]=true;
+  }
+  FOR(i, 1, n+1){
+    if(!used[i]){
+      root=i;
+      break;
+    }
+  }
+  FOR(i, 1, n+1){
+    if(!used2[i]){
+      child=i;
+      break;
+    }
+  }
+  ans[root]=pii(-1, 0);
+  dfs(root);
+  FOR(i, 1, n+1){
+    if(ans[i].first!=-1){
+      cout<<ans[i].first<<'\n';
+    }
+    else{
+      cout<<0<<'\n';
+    }
+  }
+  return 0;
 }

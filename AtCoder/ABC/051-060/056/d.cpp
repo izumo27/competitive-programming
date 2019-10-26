@@ -32,56 +32,56 @@ int n, k;
 int a[5252], dp[5252];
 
 bool is_need(int mid){
-	REP(i, k){
-		dp[i]=0;
-	}
-	int cnt=0;
-	dp[0]=1;
-	REP(i, n){
-		if(i==mid){
-			continue;
-		}
-		FORR(j, 0, k){
-			if(dp[j] && j+a[i]<k){
-				dp[j+a[i]]=1;
-			}
-		}
-	}
-	// DEBUG(mid);
-	// REP(i, k){
-	// 	DEBUG(dp[cnt][i]);
-	// }
-	FOR(i, max(0, k-a[mid]), k){
-		if(dp[i]){
-			return true;
-		}
-	}
-	return false;
+  REP(i, k){
+    dp[i]=0;
+  }
+  int cnt=0;
+  dp[0]=1;
+  REP(i, n){
+    if(i==mid){
+      continue;
+    }
+    FORR(j, 0, k){
+      if(dp[j] && j+a[i]<k){
+        dp[j+a[i]]=1;
+      }
+    }
+  }
+  // DEBUG(mid);
+  // REP(i, k){
+  //   DEBUG(dp[cnt][i]);
+  // }
+  FOR(i, max(0, k-a[mid]), k){
+    if(dp[i]){
+      return true;
+    }
+  }
+  return false;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	cin>>n>>k;
-	REP(i, n){
-		cin>>a[i];
-	}
-	if(n==1){
-		cout<<(a[0]>=k ? 0 : 1)<<'\n';
-		return 0;
-	}
-	sort(a, a+n);
-	int lb=-1, ub=n;
-	while(ub-lb>1){
-		int mid=(lb+ub)/2;
-		if(is_need(mid)){
-			ub=mid;
-		}
-		else{
-			lb=mid;
-		}
-	}
-	cout<<ub<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  cin>>n>>k;
+  REP(i, n){
+    cin>>a[i];
+  }
+  if(n==1){
+    cout<<(a[0]>=k ? 0 : 1)<<'\n';
+    return 0;
+  }
+  sort(a, a+n);
+  int lb=-1, ub=n;
+  while(ub-lb>1){
+    int mid=(lb+ub)/2;
+    if(is_need(mid)){
+      ub=mid;
+    }
+    else{
+      lb=mid;
+    }
+  }
+  cout<<ub<<'\n';
+  return 0;
 }

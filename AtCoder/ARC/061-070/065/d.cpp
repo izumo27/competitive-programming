@@ -32,67 +32,67 @@ int root[425252], depth[425252];
 
 // xの根を求める
 int find(int x){
-	if(root[x]==x){
-		return x;
-	}
-	else{
-		return root[x]=find(root[x]);
-	}
+  if(root[x]==x){
+    return x;
+  }
+  else{
+    return root[x]=find(root[x]);
+  }
 }
 
 // xとyが属する集合を併合
 void unite(int x, int y){
-	x=find(x);
-	y=find(y);
-	if(x==y){
-		return;
-	}
-	if(depth[x]<depth[y]){
-		root[x]=y;
-	}
-	else{
-		root[y]=x;
-		if(depth[x]==depth[y]){
-			++depth[x];
-		}
-	}
-	return;
+  x=find(x);
+  y=find(y);
+  if(x==y){
+    return;
+  }
+  if(depth[x]<depth[y]){
+    root[x]=y;
+  }
+  else{
+    root[y]=x;
+    if(depth[x]==depth[y]){
+      ++depth[x];
+    }
+  }
+  return;
 }
 
 // xとyが同じ集合に属するか判定
 bool same(int x, int y){
-	return find(x)==find(y);
+  return find(x)==find(y);
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, k, l, p, q, r, s;
-	cin>>n>>k>>l;
-	// 初期化
-	REP(i, n*2){
-		root[i]=i;
-		depth[i]=0;
-	}
-	REP(i, k){
-		cin>>p>>q;
-		--p;
-		--q;
-		unite(p, q);
-	}
-	REP(i, l){
-		cin>>r>>s;
-		--r;
-		--s;
-		unite(r+n, s+n);
-	}
-	pii pqrs1[252525], pqrs2[252525];
-	REP(i, n){
-		pqrs1[i]=pqrs2[i]=pii(find(i), find(i+n));
-	}
-	sort(pqrs1, pqrs1+n);
-	REP(i, n){
-		cout<<upper_bound(pqrs1, pqrs1+n, pqrs2[i])-lower_bound(pqrs1, pqrs1+n, pqrs2[i])<<' ';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, k, l, p, q, r, s;
+  cin>>n>>k>>l;
+  // 初期化
+  REP(i, n*2){
+    root[i]=i;
+    depth[i]=0;
+  }
+  REP(i, k){
+    cin>>p>>q;
+    --p;
+    --q;
+    unite(p, q);
+  }
+  REP(i, l){
+    cin>>r>>s;
+    --r;
+    --s;
+    unite(r+n, s+n);
+  }
+  pii pqrs1[252525], pqrs2[252525];
+  REP(i, n){
+    pqrs1[i]=pqrs2[i]=pii(find(i), find(i+n));
+  }
+  sort(pqrs1, pqrs1+n);
+  REP(i, n){
+    cout<<upper_bound(pqrs1, pqrs1+n, pqrs2[i])-lower_bound(pqrs1, pqrs1+n, pqrs2[i])<<' ';
+  }
+  return 0;
 }

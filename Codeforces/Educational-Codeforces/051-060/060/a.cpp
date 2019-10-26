@@ -29,33 +29,33 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	int a[114514];
-	cin>>n;
-	int ma=0;
-	REP(i, n){
-		cin>>a[i];
-		CHMAX(ma, a[i]);
-	}
-	int ans=0;
-	REP(i, n){
-		int cnt=0;
-		if(a[i]==ma){
-			while(i<n){
-				if(a[i++]==ma){
-					++cnt;
-				}
-				else{
-					break;
-				}
-			}
-			// DEBUG(cnt);
-			--i;
-			CHMAX(ans, cnt);
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  int a[114514];
+  cin>>n;
+  int ma=0;
+  REP(i, n){
+    cin>>a[i];
+    CHMAX(ma, a[i]);
+  }
+  int ans=0;
+  REP(i, n){
+    int cnt=0;
+    if(a[i]==ma){
+      while(i<n){
+        if(a[i++]==ma){
+          ++cnt;
+        }
+        else{
+          break;
+        }
+      }
+      // DEBUG(cnt);
+      --i;
+      CHMAX(ans, cnt);
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

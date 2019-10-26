@@ -37,24 +37,24 @@ int d[MAX_V][MAX_V];
 int V;
 
 void warshall_floyd(){
-	REP(k, V){
-		REP(i, V){
-			REP(j, V){
-				d[i][j]=min(d[i][j], d[i][k]+d[k][j]);
-			}
-		}
-	}
+  REP(k, V){
+    REP(i, V){
+      REP(j, V){
+        d[i][j]=min(d[i][j], d[i][k]+d[k][j]);
+      }
+    }
+  }
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	REP(i, V){
-		REP(j, V){
-			if(i!=j){
-				d[i][j]=INF;
-			}
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  REP(i, V){
+    REP(j, V){
+      if(i!=j){
+        d[i][j]=INF;
+      }
+    }
+  }
+  return 0;
 }

@@ -31,66 +31,66 @@ const double EPS=1e-11;
 string w[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	ll x[1333], y[1333];
-	cin>>n;
-	bool odd=false, even=false;
-	ll ma=-1;
-	REP(i, n){
-		cin>>x[i]>>y[i];
-		if(abs(x[i])+abs(y[i])&1){
-			odd=true;
-		}
-		else{
-			even=true;
-		}
-	}
-	if(odd && even){
-		cout<<-1<<'\n';
-		return 0;
-	}
-	int m=31, d[40];
-	if(even){
-		cout<<32<<'\n';
-		cout<<1<<' ';
-		REP(i, n){
-			w[i]="R";
-			--x[i];
-		}
-	}
-	else{
-		cout<<31<<'\n';
-	}
-	REP(i, m){
-		d[i]=1<<i;
-	}
-	REP(i, n){
-		FORR(j, 0, m){
-			if(x[i]+y[i]<0 && x[i]-y[i]<0){
-				w[i]+="L";
-				x[i]+=d[j];
-			}
-			else if(x[i]+y[i]>0 && x[i]-y[i]>0){
-				w[i]+="R";
-				x[i]-=d[j];
-			}
-			else if(x[i]+y[i]<0 && x[i]-y[i]>0){
-				w[i]+="D";
-				y[i]+=d[j];
-			}
-			else{
-				w[i]+="U";
-				y[i]-=d[j];
-			}
-		}
-	}
-	FORR(i, 0, m){
-		cout<<d[i]<<" \n"[i==m-1];
-	}
-	REP(i, n){
-		cout<<w[i]<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  ll x[1333], y[1333];
+  cin>>n;
+  bool odd=false, even=false;
+  ll ma=-1;
+  REP(i, n){
+    cin>>x[i]>>y[i];
+    if(abs(x[i])+abs(y[i])&1){
+      odd=true;
+    }
+    else{
+      even=true;
+    }
+  }
+  if(odd && even){
+    cout<<-1<<'\n';
+    return 0;
+  }
+  int m=31, d[40];
+  if(even){
+    cout<<32<<'\n';
+    cout<<1<<' ';
+    REP(i, n){
+      w[i]="R";
+      --x[i];
+    }
+  }
+  else{
+    cout<<31<<'\n';
+  }
+  REP(i, m){
+    d[i]=1<<i;
+  }
+  REP(i, n){
+    FORR(j, 0, m){
+      if(x[i]+y[i]<0 && x[i]-y[i]<0){
+        w[i]+="L";
+        x[i]+=d[j];
+      }
+      else if(x[i]+y[i]>0 && x[i]-y[i]>0){
+        w[i]+="R";
+        x[i]-=d[j];
+      }
+      else if(x[i]+y[i]<0 && x[i]-y[i]>0){
+        w[i]+="D";
+        y[i]+=d[j];
+      }
+      else{
+        w[i]+="U";
+        y[i]-=d[j];
+      }
+    }
+  }
+  FORR(i, 0, m){
+    cout<<d[i]<<" \n"[i==m-1];
+  }
+  REP(i, n){
+    cout<<w[i]<<'\n';
+  }
+  return 0;
 }

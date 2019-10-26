@@ -34,39 +34,39 @@ ll ans[252525];
 bool used[252525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, Q, a, b, p[252525], x[252525];
-	cin>>n>>Q;
-	REP(i, n-1){
-		cin>>a>>b;
-		--a;--b;
-		g[a].push_back(b);
-		g[b].push_back(a);
-	}
-	REP(i, Q){
-		cin>>p[i]>>x[i];
-		--p[i];
-		num[p[i]]+=x[i];
-	}
-	queue<pll> q;
-	q.push(pll(0ll, 0ll));
-	used[0]=true;
-	while(q.size()){
-		pll y=q.front();
-		q.pop();
-		ans[y.first]=y.second+num[y.first];
-		for(auto &z : g[y.first]){
-			if(used[z]){
-				continue;
-			}
-			used[z]=true;
-			q.push(pll(z, ans[y.first]));
-		}
-	}
-	REP(i, n){
-		cout<<ans[i]<<" \n"[i==n-1];
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, Q, a, b, p[252525], x[252525];
+  cin>>n>>Q;
+  REP(i, n-1){
+    cin>>a>>b;
+    --a;--b;
+    g[a].push_back(b);
+    g[b].push_back(a);
+  }
+  REP(i, Q){
+    cin>>p[i]>>x[i];
+    --p[i];
+    num[p[i]]+=x[i];
+  }
+  queue<pll> q;
+  q.push(pll(0ll, 0ll));
+  used[0]=true;
+  while(q.size()){
+    pll y=q.front();
+    q.pop();
+    ans[y.first]=y.second+num[y.first];
+    for(auto &z : g[y.first]){
+      if(used[z]){
+        continue;
+      }
+      used[z]=true;
+      q.push(pll(z, ans[y.first]));
+    }
+  }
+  REP(i, n){
+    cout<<ans[i]<<" \n"[i==n-1];
+  }
+  return 0;
 }

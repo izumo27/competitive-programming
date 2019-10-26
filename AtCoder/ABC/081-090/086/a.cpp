@@ -3,9 +3,9 @@ using namespace std;
 typedef long long int llint;
 
 int main(){
-	int a, b;
-	cin>>a>>b;
-	if(a*b%2==0) cout<<"Even"<<endl;
-	else cout<<"Odd"<<endl;
-	return 0;
+  int a, b;
+  cin>>a>>b;
+  if(a*b%2==0) cout<<"Even"<<endl;
+  else cout<<"Odd"<<endl;
+  return 0;
 }

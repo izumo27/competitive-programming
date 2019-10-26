@@ -29,32 +29,32 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	string a, b, c;
-	cin>>n>>a>>b>>c;
-	int ans=0;
-	REP(i, n){
-		if(a[i]==b[i]){
-			if(b[i]!=c[i]){
-				++ans;
-			}
-		}
-		else{
-			if(b[i]!=c[i]){
-				if(a[i]!=c[i]){
-					ans+=2;
-				}
-				else{
-					++ans;
-				}
-			}
-			else{
-				++ans;
-			}
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  string a, b, c;
+  cin>>n>>a>>b>>c;
+  int ans=0;
+  REP(i, n){
+    if(a[i]==b[i]){
+      if(b[i]!=c[i]){
+        ++ans;
+      }
+    }
+    else{
+      if(b[i]!=c[i]){
+        if(a[i]!=c[i]){
+          ans+=2;
+        }
+        else{
+          ++ans;
+        }
+      }
+      else{
+        ++ans;
+      }
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

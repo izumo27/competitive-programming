@@ -29,43 +29,43 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, k, q, a[2525];
-	cin>>n>>k>>q;
-	REP(i, n){
-		cin>>a[i];
-	}
-	int ans=MOD;
-	REP(i, n){
-		int mi=a[i];
-		vi cand;
-		int idx=0;
-		while(idx<n){
-			vi v;
-			int cnt=0;
-			for(;;){
-				int tmp=a[idx++];
-				if(tmp>=mi){
-					v.push_back(tmp);
-					++cnt;
-				}
-				if(tmp<mi || idx==n){
-					if(cnt-k+1>0){
-						sort(ALL(v));
-						REP(j, cnt-k+1){
-							cand.push_back(v[j]);
-						}
-					}
-					break;
-				}
-			}
-		}
-		if(cand.size()>=q){
-			sort(ALL(cand));
-			CHMIN(ans, cand[q-1]-mi);
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, k, q, a[2525];
+  cin>>n>>k>>q;
+  REP(i, n){
+    cin>>a[i];
+  }
+  int ans=MOD;
+  REP(i, n){
+    int mi=a[i];
+    vi cand;
+    int idx=0;
+    while(idx<n){
+      vi v;
+      int cnt=0;
+      for(;;){
+        int tmp=a[idx++];
+        if(tmp>=mi){
+          v.push_back(tmp);
+          ++cnt;
+        }
+        if(tmp<mi || idx==n){
+          if(cnt-k+1>0){
+            sort(ALL(v));
+            REP(j, cnt-k+1){
+              cand.push_back(v[j]);
+            }
+          }
+          break;
+        }
+      }
+    }
+    if(cand.size()>=q){
+      sort(ALL(cand));
+      CHMIN(ans, cand[q-1]-mi);
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

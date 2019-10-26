@@ -37,43 +37,43 @@ int d[MAX_V][MAX_V];
 int V;
 
 void warshall_floyd(){
-	REP(k, V){
-		REP(i, V){
-			REP(j, V){
-				d[i][j]=min(d[i][j], d[i][k]+d[k][j]);
-			}
-		}
-	}
+  REP(k, V){
+    REP(i, V){
+      REP(j, V){
+        d[i][j]=min(d[i][j], d[i][k]+d[k][j]);
+      }
+    }
+  }
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, R, r, rr[10], a, b, c;
-	cin>>n>>m>>R;
-	V=n;
-	fill(d[0], d[n], INF);
-	REP(i, n){
-		d[i][i]=0;
-	}
-	REP(i, R){
-		cin>>r;
-		rr[i]=r-1;
-	}
-	REP(i, m){
-		cin>>a>>b>>c;
-		d[a-1][b-1]=d[b-1][a-1]=c;
-	}
-	warshall_floyd();
-	sort(rr, rr+R);
-	ll ans=1e18;
-	do{
-		ll tmp=0;
-		REP(i, R-1){
-			tmp+=d[rr[i]][rr[i+1]];
-		}
-		ans=min(ans, tmp);
-	}while(next_permutation(rr, rr+R));
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, R, r, rr[10], a, b, c;
+  cin>>n>>m>>R;
+  V=n;
+  fill(d[0], d[n], INF);
+  REP(i, n){
+    d[i][i]=0;
+  }
+  REP(i, R){
+    cin>>r;
+    rr[i]=r-1;
+  }
+  REP(i, m){
+    cin>>a>>b>>c;
+    d[a-1][b-1]=d[b-1][a-1]=c;
+  }
+  warshall_floyd();
+  sort(rr, rr+R);
+  ll ans=1e18;
+  do{
+    ll tmp=0;
+    REP(i, R-1){
+      tmp+=d[rr[i]][rr[i+1]];
+    }
+    ans=min(ans, tmp);
+  }while(next_permutation(rr, rr+R));
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -33,42 +33,42 @@ vi g[1252];
 int h[1252][1252];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	cin>>n>>m;
-	REP(i, m){
-		cin>>a>>b;
-		--a;--b;
-		g[a].push_back(b);
-		h[a][b]=1;
-	}
-	REP(i, n){
-		vi v;
-		queue<pair<int, vi>> q;
-		q.push(make_pair(i, v));
-		while(q.size()){
-			auto t=q.front();
-			q.pop();
-			int s=t.first;
-			vi u=t.second;
-			u.push_back(s);
-			FORR(j, 0, u.size()){
-				for(auto t : g[s]){
-					if(t==u[j]){
-						cout<<u.size()-j<<'\n';
-						REP(k, u.size()-j){
-							cout<<u[j+k]+1<<'\n';
-						}
-						return 0;
-					}
-				}
-			}
-			for(auto t : g[s]){
-				q.push(make_pair(t, u));
-			}
-		}
-	}
-	cout<<-1<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  cin>>n>>m;
+  REP(i, m){
+    cin>>a>>b;
+    --a;--b;
+    g[a].push_back(b);
+    h[a][b]=1;
+  }
+  REP(i, n){
+    vi v;
+    queue<pair<int, vi>> q;
+    q.push(make_pair(i, v));
+    while(q.size()){
+      auto t=q.front();
+      q.pop();
+      int s=t.first;
+      vi u=t.second;
+      u.push_back(s);
+      FORR(j, 0, u.size()){
+        for(auto t : g[s]){
+          if(t==u[j]){
+            cout<<u.size()-j<<'\n';
+            REP(k, u.size()-j){
+              cout<<u[j+k]+1<<'\n';
+            }
+            return 0;
+          }
+        }
+      }
+      for(auto t : g[s]){
+        q.push(make_pair(t, u));
+      }
+    }
+  }
+  cout<<-1<<'\n';
+  return 0;
 }

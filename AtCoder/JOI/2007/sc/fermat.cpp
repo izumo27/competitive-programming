@@ -31,33 +31,33 @@ const double EPS=1e-11;
 int p, n, s[12525];
 
 ll power(ll a, ll b){
-	ll res=1;
-	while(b>0){
-		if(b&1){
-			res=res*a%p;
-		}
-		a=a*a%p;
-		b>>=1;
-	}
-	return res;
+  ll res=1;
+  while(b>0){
+    if(b&1){
+      res=res*a%p;
+    }
+    a=a*a%p;
+    b>>=1;
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>p>>n;
-	REP(i, p){
-		++s[power(i, n)];
-	}
-	int ans=0;
-	REP(i, p){
-		if(!s[i]){
-			continue;
-		}
-		REP(j, p){
-			ans+=s[i]*s[j]*s[(i+j)%p];
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>p>>n;
+  REP(i, p){
+    ++s[power(i, n)];
+  }
+  int ans=0;
+  REP(i, p){
+    if(!s[i]){
+      continue;
+    }
+    REP(j, p){
+      ans+=s[i]*s[j]*s[(i+j)%p];
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

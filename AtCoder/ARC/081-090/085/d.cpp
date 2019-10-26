@@ -31,18 +31,18 @@ const double EPS=1e-11;
 int dp[2525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, z, w, a[2525];
-	cin>>n>>z>>w;
-	REP(i, n){
-		cin>>a[i];
-	}
-	if(n==1){
-		cout<<abs(a[0]-w)<<'\n';
-	}
-	else{
-		cout<<max(abs(a[n-1]-w), abs(a[n-2]-a[n-1]))<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, z, w, a[2525];
+  cin>>n>>z>>w;
+  REP(i, n){
+    cin>>a[i];
+  }
+  if(n==1){
+    cout<<abs(a[0]-w)<<'\n';
+  }
+  else{
+    cout<<max(abs(a[n-1]-w), abs(a[n-2]-a[n-1]))<<'\n';
+  }
+  return 0;
 }

@@ -31,31 +31,31 @@ const double EPS=1e-11;
 bool can[1252525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, d, x[20][20];
-	cin>>n>>d;
-	REP(i, n){
-		REP(j, d){
-			cin>>x[i][j];
-		}
-	}
-	REP(i, 1000){
-		can[i*i]=true;
-	}
-	int ans=0;
-	REP(i, n){
-		REP(j, i){
-			int tmp=0;
-			REP(k, d){
-				tmp+=(x[i][k]-x[j][k])*(x[i][k]-x[j][k]);
-			}
-			if(can[tmp]){
-				++ans;
-			}
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, d, x[20][20];
+  cin>>n>>d;
+  REP(i, n){
+    REP(j, d){
+      cin>>x[i][j];
+    }
+  }
+  REP(i, 1000){
+    can[i*i]=true;
+  }
+  int ans=0;
+  REP(i, n){
+    REP(j, i){
+      int tmp=0;
+      REP(k, d){
+        tmp+=(x[i][k]-x[j][k])*(x[i][k]-x[j][k]);
+      }
+      if(can[tmp]){
+        ++ans;
+      }
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

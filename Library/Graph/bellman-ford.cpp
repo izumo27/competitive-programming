@@ -33,9 +33,9 @@ const int MAX_E=114514;
 const int MAX_V=114514;
 
 struct edge {
-	int from;
-	int to;
-	int cost;
+  int from;
+  int to;
+  int cost;
 };
 
 // 辺
@@ -46,48 +46,48 @@ int d[MAX_V];
 int V, E;
 
 void add_edge(int from, int to, int cost){
-	es[E++]={from, to, cost};
-	return;
+  es[E++]={from, to, cost};
+  return;
 }
 
 void shortest_path(int s){
-	fill(d, d+V, INF);
-	d[s]=0;
-	while(true){
-		bool update=false;
-		REP(i, E){
-			edge e=es[i];
-			if(d[e.from]!=INF && d[e.to]>d[e.from]+e.cost){
-				d[e.to]=d[e.from]+e.cost;
-				update=true;
-			}
-		}
-		if(!update){
-			break;
-		}
-	}
+  fill(d, d+V, INF);
+  d[s]=0;
+  while(true){
+    bool update=false;
+    REP(i, E){
+      edge e=es[i];
+      if(d[e.from]!=INF && d[e.to]>d[e.from]+e.cost){
+        d[e.to]=d[e.from]+e.cost;
+        update=true;
+      }
+    }
+    if(!update){
+      break;
+    }
+  }
 }
 
 // 負の閉路があるか判定
 bool find_negative_loop(){
-	memset(d, 0, sizeof(d));
-	REP(i, V){
-		REP(j, E){
-			edge e=es[j];
-			if(d[e.to]>d[e.from]+e.cost){
-				d[e.to]=d[e.from]+e.cost;
-				if(i==V-1){
-					return true;
-				}
-			}
-		}
-	}
-	return false;
+  memset(d, 0, sizeof(d));
+  REP(i, V){
+    REP(j, E){
+      edge e=es[j];
+      if(d[e.to]>d[e.from]+e.cost){
+        d[e.to]=d[e.from]+e.cost;
+        if(i==V-1){
+          return true;
+        }
+      }
+    }
+  }
+  return false;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
+  ios::sync_with_stdio(false);
+  cin.tie(0);
 
-	return 0;
+  return 0;
 }

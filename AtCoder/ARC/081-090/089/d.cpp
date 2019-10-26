@@ -31,38 +31,38 @@ const double EPS=1e-11;
 int b[2525][2525], s[4334][4334];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, k, x, y;
-	char c;
-	cin>>n>>k;
-	int l=k<<1;
-	REP(i, n){
-		cin>>x>>y>>c;
-		if(c=='W'){
-			y+=k;
-		}
-		++b[x%l][y%l];
-	}
-	int m=l<<1;
-	REP(i, m){
-		REP(j, m){
-			s[i+1][j+1]=s[i+1][j]+b[i%l][j%l];
-		}
-	}
-	REP(j, m){
-		REP(i, m){
-			s[i+1][j+1]+=s[i][j+1];
-		}
-	}
-	int ans=0;
-	REP(i, l){
-		REP(j, l){
-			int cnt1=s[i+k][j+k]-s[i][j+k]-s[i+k][j]+s[i][j];
-			int cnt2=s[i+l][j+l]-s[i+k][j+l]-s[i+l][j+k]+s[i+k][j+k];
-			CHMAX(ans, cnt1+cnt2);
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, k, x, y;
+  char c;
+  cin>>n>>k;
+  int l=k<<1;
+  REP(i, n){
+    cin>>x>>y>>c;
+    if(c=='W'){
+      y+=k;
+    }
+    ++b[x%l][y%l];
+  }
+  int m=l<<1;
+  REP(i, m){
+    REP(j, m){
+      s[i+1][j+1]=s[i+1][j]+b[i%l][j%l];
+    }
+  }
+  REP(j, m){
+    REP(i, m){
+      s[i+1][j+1]+=s[i][j+1];
+    }
+  }
+  int ans=0;
+  REP(i, l){
+    REP(j, l){
+      int cnt1=s[i+k][j+k]-s[i][j+k]-s[i+k][j]+s[i][j];
+      int cnt2=s[i+l][j+l]-s[i+k][j+l]-s[i+l][j+k]+s[i+k][j+k];
+      CHMAX(ans, cnt1+cnt2);
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -31,26 +31,26 @@ const double EPS=1e-11;
 int y[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, x[114514];
-	cin>>n>>m;
-	REP(i, m){
-		cin>>x[i];
-	}
-	if(n>=m){
-		cout<<0<<'\n';
-		return 0;
-	}
-	sort(x, x+m);
-	REP(i, m-1){
-		y[i]=x[i+1]-x[i];
-	}
-	sort(y, y+m-1);
-	int ans=0;
-	REP(i, m-n){
-		ans+=y[i];
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, x[114514];
+  cin>>n>>m;
+  REP(i, m){
+    cin>>x[i];
+  }
+  if(n>=m){
+    cout<<0<<'\n';
+    return 0;
+  }
+  sort(x, x+m);
+  REP(i, m-1){
+    y[i]=x[i+1]-x[i];
+  }
+  sort(y, y+m-1);
+  int ans=0;
+  REP(i, m-n){
+    ans+=y[i];
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -34,54 +34,54 @@ vi g[125252];
 constexpr int INF=1e9;
 
 void bfs(){
-	queue<int> q;
-	q.push(s);
-	while(q.size()){
-		int x=q.front();
-		q.pop();
-		for(auto y : g[x]){
-			REP(i, 3){
-				if(d[x][i]+1<d[y][(i+1)%3]){
-					d[y][(i+1)%3]=d[x][i]+1;
-					q.push(y);
-				}
-			}
-		}
-	}
-	return;
+  queue<int> q;
+  q.push(s);
+  while(q.size()){
+    int x=q.front();
+    q.pop();
+    for(auto y : g[x]){
+      REP(i, 3){
+        if(d[x][i]+1<d[y][(i+1)%3]){
+          d[y][(i+1)%3]=d[x][i]+1;
+          q.push(y);
+        }
+      }
+    }
+  }
+  return;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	cin>>n>>m;
-	REP(i, m){
-		cin>>u>>v;
-		--u;
-		--v;
-		g[u].push_back(v);
-	}
-	cin>>s>>t;
-	--s;
-	--t;
-	REP(i, n){
-		REP(j, 3){
-			d[i][j]=INF;
-		}
-	}
-	d[s][0]=0;
-	bfs();
-	// REP(i, n){
-	// 	REP(j, 3){
-	// 		cout<<d[i][j]<<" \n"[j==2];
-	// 	}
-	// }
-	if(d[t][0]!=INF){
-		cout<<d[t][0]/3<<'\n';
-	}
-	else{
-		cout<<-1<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  cin>>n>>m;
+  REP(i, m){
+    cin>>u>>v;
+    --u;
+    --v;
+    g[u].push_back(v);
+  }
+  cin>>s>>t;
+  --s;
+  --t;
+  REP(i, n){
+    REP(j, 3){
+      d[i][j]=INF;
+    }
+  }
+  d[s][0]=0;
+  bfs();
+  // REP(i, n){
+  //   REP(j, 3){
+  //     cout<<d[i][j]<<" \n"[j==2];
+  //   }
+  // }
+  if(d[t][0]!=INF){
+    cout<<d[t][0]/3<<'\n';
+  }
+  else{
+    cout<<-1<<'\n';
+  }
+  return 0;
 }

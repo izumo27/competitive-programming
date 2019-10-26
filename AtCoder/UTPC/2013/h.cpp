@@ -33,9 +33,9 @@ const int MAX_E=252525;
 const int MAX_V=2525;
 
 struct edge {
-	int from;
-	int to;
-	int cost;
+  int from;
+  int to;
+  int cost;
 };
 
 // 辺
@@ -46,73 +46,73 @@ ll d[MAX_V];
 int V, E;
 
 edge make_edge(int from, int to, int cost){
-	edge e;
-	e.from=from;
-	e.to=to;
-	e.cost=cost;
-	return e;
+  edge e;
+  e.from=from;
+  e.to=to;
+  e.cost=cost;
+  return e;
 }
 
 void shortest_path(int s){
-	fill(d, d+V, INF);
-	d[s]=0;
-	while(true){
-		bool update=false;
-		REP(i, E){
-			edge e=es[i];
-			if(d[e.from]!=INF && d[e.to]>d[e.from]+e.cost){
-				d[e.to]=d[e.from]+e.cost;
-				update=true;
-			}
-		}
-		if(!update){
-			break;
-		}
-	}
+  fill(d, d+V, INF);
+  d[s]=0;
+  while(true){
+    bool update=false;
+    REP(i, E){
+      edge e=es[i];
+      if(d[e.from]!=INF && d[e.to]>d[e.from]+e.cost){
+        d[e.to]=d[e.from]+e.cost;
+        update=true;
+      }
+    }
+    if(!update){
+      break;
+    }
+  }
 }
 
 // 負の閉路があるか判定
 bool find_negative_loop(){
-	memset(d, 0, sizeof(d));
-	REP(i, V){
-		REP(j, E){
-			edge e=es[j];
-			if(d[e.to]>d[e.from]+e.cost){
-				d[e.to]=d[e.from]+e.cost;
-				if(i==V-1){
-					return true;
-				}
-			}
-		}
-	}
-	return false;
+  memset(d, 0, sizeof(d));
+  REP(i, V){
+    REP(j, E){
+      edge e=es[j];
+      if(d[e.to]>d[e.from]+e.cost){
+        d[e.to]=d[e.from]+e.cost;
+        if(i==V-1){
+          return true;
+        }
+      }
+    }
+  }
+  return false;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, p, q, x, y, a, b;
-	cin>>n>>m;
-	int z=n*2;
-	V=n*2+1;
-	E=n*4+m*2;
-	REP(i, n){
-		cin>>p;
-		es[i*2]=make_edge(z, i, p);
-		es[i*2+1]=make_edge(i, z, 0);
-	}
-	REP(i, n){
-		cin>>q;
-		es[n*2+i*2]=make_edge(i+n, z, q);
-		es[n*2+i*2+1]=make_edge(z, i+n, 0);
-	}
-	REP(i, m){
-		cin>>x>>y>>a>>b;
-		--x;
-		--y;
-		es[n*4+i*2]=make_edge(x, y+n, -a);
-		es[n*4+i*2+1]=make_edge(y+n, x, b);
-	}
-	cout<<(find_negative_loop() ? "no" : "yes")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, p, q, x, y, a, b;
+  cin>>n>>m;
+  int z=n*2;
+  V=n*2+1;
+  E=n*4+m*2;
+  REP(i, n){
+    cin>>p;
+    es[i*2]=make_edge(z, i, p);
+    es[i*2+1]=make_edge(i, z, 0);
+  }
+  REP(i, n){
+    cin>>q;
+    es[n*2+i*2]=make_edge(i+n, z, q);
+    es[n*2+i*2+1]=make_edge(z, i+n, 0);
+  }
+  REP(i, m){
+    cin>>x>>y>>a>>b;
+    --x;
+    --y;
+    es[n*4+i*2]=make_edge(x, y+n, -a);
+    es[n*4+i*2+1]=make_edge(y+n, x, b);
+  }
+  cout<<(find_negative_loop() ? "no" : "yes")<<'\n';
+  return 0;
 }

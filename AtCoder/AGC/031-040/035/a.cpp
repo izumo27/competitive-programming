@@ -65,40 +65,40 @@ int main(){
     return 0;
   }
   if(num[2]==-1){
-		if(n%3!=0){
-			cout<<"No"<<'\n';
-			return 0;
-		}
-		if(!(cnt[0]*2==cnt[1]) && !(cnt[0]==cnt[1]*2)){
-			cout<<"No"<<'\n';
-			return 0;
-		}
-		int idx=0;
-		if(cnt[0]*2==cnt[1]){
-			idx=1;
-		}
-		bool can=false;
-		if(0==num[(idx+1)&1]){
-			can=true;
-		}
-		cout<<(can ? "Yes" : "No")<<'\n';
-	}
-	else{
-		if(n%3!=0){
-			cout<<"No"<<'\n';
-			return 0;
-		}
-		REP(i, 2){
-			if(cnt[i]!=cnt[i+1]){
-				cout<<"No"<<'\n';
-				return 0;
-			}
-		}
-		bool can=false;
-		if((num[0]^num[1])==num[2]){
-			can=true;
-		}
-		cout<<(can ? "Yes" : "No")<<'\n';
-	}
-	return 0;
+    if(n%3!=0){
+      cout<<"No"<<'\n';
+      return 0;
+    }
+    if(!(cnt[0]*2==cnt[1]) && !(cnt[0]==cnt[1]*2)){
+      cout<<"No"<<'\n';
+      return 0;
+    }
+    int idx=0;
+    if(cnt[0]*2==cnt[1]){
+      idx=1;
+    }
+    bool can=false;
+    if(0==num[(idx+1)&1]){
+      can=true;
+    }
+    cout<<(can ? "Yes" : "No")<<'\n';
+  }
+  else{
+    if(n%3!=0){
+      cout<<"No"<<'\n';
+      return 0;
+    }
+    REP(i, 2){
+      if(cnt[i]!=cnt[i+1]){
+        cout<<"No"<<'\n';
+        return 0;
+      }
+    }
+    bool can=false;
+    if((num[0]^num[1])==num[2]){
+      can=true;
+    }
+    cout<<(can ? "Yes" : "No")<<'\n';
+  }
+  return 0;
 }

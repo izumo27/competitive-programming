@@ -31,38 +31,38 @@ const double EPS=1e-11;
 int r, c, a[20][12525], flip[20][12525], ans;
 
 void calc(){
-	int tmp=0;
-	REP(i, c){
-		int cnt=0;
-		REP(j, r){
-			if((a[j][i]+flip[j][i])&1){
-				++cnt;
-			}
-		}
-		tmp+=max(cnt, r-cnt);
-	}
-	ans=max(ans, tmp);
+  int tmp=0;
+  REP(i, c){
+    int cnt=0;
+    REP(j, r){
+      if((a[j][i]+flip[j][i])&1){
+        ++cnt;
+      }
+    }
+    tmp+=max(cnt, r-cnt);
+  }
+  ans=max(ans, tmp);
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>r>>c;
-	REP(i, r){
-		REP(j, c){
-			cin>>a[i][j];
-		}
-	}
-	ans=0;
-	REP(i, 1<<r){
-		REP(j, r){
-			int b=i>>j&1;
-			REP(k, c){
-				flip[j][k]=b;
-			}
-		}
-		calc();
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>r>>c;
+  REP(i, r){
+    REP(j, c){
+      cin>>a[i][j];
+    }
+  }
+  ans=0;
+  REP(i, 1<<r){
+    REP(j, r){
+      int b=i>>j&1;
+      REP(k, c){
+        flip[j][k]=b;
+      }
+    }
+    calc();
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

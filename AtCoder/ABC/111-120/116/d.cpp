@@ -31,42 +31,42 @@ const double EPS=1e-11;
 bool used[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, k;
-	pll dt[114514];
-	cin>>n>>k;
-	REP(i, n){
-		cin>>dt[i].second>>dt[i].first;
-	}
-	sort(dt, dt+n, greater<pll>());
-	ll sum=0, x=0;
-	vl q;
-	REP(i, k){
-		sum+=dt[i].first;
-		if(used[dt[i].second]){
-			q.push_back(dt[i].first);
-		}
-		else{
-			used[dt[i].second]=true;
-			++x;
-		}
-	}
-	sort(ALL(q));
-	ll ans=sum+x*x;
-	int idx=0;
-	FOR(i, k, n){
-		if(x>=k || idx>=q.size()){
-			break;
-		}
-		if(used[dt[i].second]){
-			continue;
-		}
-		used[dt[i].second]=true;
-		sum=sum-q[idx++]+dt[i].first;
-		++x;
-		CHMAX(ans, sum+x*x);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, k;
+  pll dt[114514];
+  cin>>n>>k;
+  REP(i, n){
+    cin>>dt[i].second>>dt[i].first;
+  }
+  sort(dt, dt+n, greater<pll>());
+  ll sum=0, x=0;
+  vl q;
+  REP(i, k){
+    sum+=dt[i].first;
+    if(used[dt[i].second]){
+      q.push_back(dt[i].first);
+    }
+    else{
+      used[dt[i].second]=true;
+      ++x;
+    }
+  }
+  sort(ALL(q));
+  ll ans=sum+x*x;
+  int idx=0;
+  FOR(i, k, n){
+    if(x>=k || idx>=q.size()){
+      break;
+    }
+    if(used[dt[i].second]){
+      continue;
+    }
+    used[dt[i].second]=true;
+    sum=sum-q[idx++]+dt[i].first;
+    ++x;
+    CHMAX(ans, sum+x*x);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

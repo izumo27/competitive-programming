@@ -32,46 +32,46 @@ int n;
 ll a[60];
 
 bool is_ok(ll mid){
-	ll sum=0;
-	// x*n-(mid-x)>=a[i]-(n-1)
-	REP(i, n){
-		if(a[i]-(n-1)+mid-1>=0){
-			sum+=(a[i]-(n-1)+mid-1)/(n+1)+1;
-		}
-		if(sum>mid){
-			return false;
-		}
-	}
-	return sum<=mid;
+  ll sum=0;
+  // x*n-(mid-x)>=a[i]-(n-1)
+  REP(i, n){
+    if(a[i]-(n-1)+mid-1>=0){
+      sum+=(a[i]-(n-1)+mid-1)/(n+1)+1;
+    }
+    if(sum>mid){
+      return false;
+    }
+  }
+  return sum<=mid;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	cin>>n;
-	REP(i, n){
-		cin>>a[i];
-	}
-	ll lb=-1, ub=1e18;
-	while(ub-lb>1){
-		ll mid=(lb+ub)/2;
-		if(is_ok(mid)){
-			ub=mid;
-		}
-		else{
-			lb=mid;
-		}
-	}
-	// DEBUG(ub);
-	ll ans=0;
-	// ubの近いところが答えだと信じて適当にループを回す
-	for(ll i=max(0ll, ub-500); i<ub+1; ++i){
-		if(is_ok(i)){
-			ans=i;
-			break;
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  cin>>n;
+  REP(i, n){
+    cin>>a[i];
+  }
+  ll lb=-1, ub=1e18;
+  while(ub-lb>1){
+    ll mid=(lb+ub)/2;
+    if(is_ok(mid)){
+      ub=mid;
+    }
+    else{
+      lb=mid;
+    }
+  }
+  // DEBUG(ub);
+  ll ans=0;
+  // ubの近いところが答えだと信じて適当にループを回す
+  for(ll i=max(0ll, ub-500); i<ub+1; ++i){
+    if(is_ok(i)){
+      ans=i;
+      break;
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

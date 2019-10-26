@@ -32,35 +32,35 @@ bool visited[60];
 bool g[60][60];
 
 void dfs(int i){
-	visited[i]=true;
-	REP(j, n){
-		if(visited[j] || !g[i][j]) continue;
-		dfs(j);
-	}
+  visited[i]=true;
+  REP(j, n){
+    if(visited[j] || !g[i][j]) continue;
+    dfs(j);
+  }
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n>>m;
-	REP(i, m){
-		cin>>a[i]>>b[i];
-		--a[i];
-		--b[i];
-		g[a[i]][b[i]]=g[b[i]][a[i]]=true;
-	}
-	int ans=0;
-	REP(i, m){
-		g[a[i]][b[i]]=g[b[i]][a[i]]=false;
-		REP(j, n) visited[j]=false;
-		dfs(0);
-		bool ok=false;
-		REP(j, n){
-			if(!visited[j]) ok=true;
-		}
-		if(ok) ++ans;
-		g[a[i]][b[i]]=g[b[i]][a[i]]=true;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n>>m;
+  REP(i, m){
+    cin>>a[i]>>b[i];
+    --a[i];
+    --b[i];
+    g[a[i]][b[i]]=g[b[i]][a[i]]=true;
+  }
+  int ans=0;
+  REP(i, m){
+    g[a[i]][b[i]]=g[b[i]][a[i]]=false;
+    REP(j, n) visited[j]=false;
+    dfs(0);
+    bool ok=false;
+    REP(j, n){
+      if(!visited[j]) ok=true;
+    }
+    if(ok) ++ans;
+    g[a[i]][b[i]]=g[b[i]][a[i]]=true;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

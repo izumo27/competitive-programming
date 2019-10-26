@@ -31,23 +31,23 @@ const double EPS=1e-11;
 int sum[514][514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, Q, l, r, p, q;
-	cin>>n>>m>>Q;
-	REP(i, m){
-		cin>>l>>r;
-		FOR(j, r, n+1){
-			++sum[l][j];
-		}
-	}
-	REP(i, Q){
-		cin>>p>>q;
-		int ans=0;
-		FOR(j, p, q+1){
-			ans+=sum[j][q]-sum[j][p-1];
-		}
-		cout<<ans<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, Q, l, r, p, q;
+  cin>>n>>m>>Q;
+  REP(i, m){
+    cin>>l>>r;
+    FOR(j, r, n+1){
+      ++sum[l][j];
+    }
+  }
+  REP(i, Q){
+    cin>>p>>q;
+    int ans=0;
+    FOR(j, p, q+1){
+      ans+=sum[j][q]-sum[j][p-1];
+    }
+    cout<<ans<<'\n';
+  }
+  return 0;
 }

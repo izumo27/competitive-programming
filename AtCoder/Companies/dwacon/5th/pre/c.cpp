@@ -29,47 +29,47 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, q, k;
-	string s;
-	cin>>n>>s>>q;
-	REP(i, q){
-		cin>>k;
-		int sumd=0, summ=0;
-		ll ans=0, sum=0;
-		REP(j, k){
-			if(s[j]=='D'){
-				++sumd;
-			}
-			else if(s[j]=='M'){
-				++summ;
-				sum+=sumd;
-			}
-			else if(s[j]=='C'){
-				ans+=sum;
-			}
-		}
-		FOR(j, k, n){
-			if(s[j-k]=='D'){
-				--sumd;
-				sum-=summ;
-			}
-			else if(s[j-k]=='M'){
-				--summ;
-			}
-			if(s[j]=='D'){
-				++sumd;
-			}
-			else if(s[j]=='M'){
-				++summ;
-				sum+=sumd;
-			}
-			else if(s[j]=='C'){
-				ans+=sum;
-			}
-		}
-		cout<<ans<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, q, k;
+  string s;
+  cin>>n>>s>>q;
+  REP(i, q){
+    cin>>k;
+    int sumd=0, summ=0;
+    ll ans=0, sum=0;
+    REP(j, k){
+      if(s[j]=='D'){
+        ++sumd;
+      }
+      else if(s[j]=='M'){
+        ++summ;
+        sum+=sumd;
+      }
+      else if(s[j]=='C'){
+        ans+=sum;
+      }
+    }
+    FOR(j, k, n){
+      if(s[j-k]=='D'){
+        --sumd;
+        sum-=summ;
+      }
+      else if(s[j-k]=='M'){
+        --summ;
+      }
+      if(s[j]=='D'){
+        ++sumd;
+      }
+      else if(s[j]=='M'){
+        ++summ;
+        sum+=sumd;
+      }
+      else if(s[j]=='C'){
+        ans+=sum;
+      }
+    }
+    cout<<ans<<'\n';
+  }
+  return 0;
 }

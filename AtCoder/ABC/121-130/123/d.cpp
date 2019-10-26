@@ -29,37 +29,37 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int x, y, z, k;
-	ll a[1333], b[1333], c[1333];
-	cin>>x>>y>>z>>k;
-	REP(i, x){
-		cin>>a[i];
-	}
-	REP(i, y){
-		cin>>b[i];
-	}
-	REP(i, z){
-		cin>>c[i];
-	}
-	ll ab[1252525];
-	REP(i, x){
-		REP(j, y){
-			ab[i*y+j]=a[i]+b[j];
-		}
-	}
-	sort(ab, ab+(x*y), greater<ll>());
-	ll abc[3252525];
-	REP(i, k){
-		REP(j, z){
-			abc[i*z+j]=ab[i]+c[j];
-		}
-	}
-	sort(abc, abc+(k*z), greater<ll>());
-	REP(i, k){
-		cout<<abc[i]<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int x, y, z, k;
+  ll a[1333], b[1333], c[1333];
+  cin>>x>>y>>z>>k;
+  REP(i, x){
+    cin>>a[i];
+  }
+  REP(i, y){
+    cin>>b[i];
+  }
+  REP(i, z){
+    cin>>c[i];
+  }
+  ll ab[1252525];
+  REP(i, x){
+    REP(j, y){
+      ab[i*y+j]=a[i]+b[j];
+    }
+  }
+  sort(ab, ab+(x*y), greater<ll>());
+  ll abc[3252525];
+  REP(i, k){
+    REP(j, z){
+      abc[i*z+j]=ab[i]+c[j];
+    }
+  }
+  sort(abc, abc+(k*z), greater<ll>());
+  REP(i, k){
+    cout<<abc[i]<<'\n';
+  }
+  return 0;
 }

@@ -32,49 +32,49 @@ int n, m;
 ll x[114514];
 
 bool is_ok(ll a){
-	ll l=-1;
-	REP(i, m){
-		if(l+1<x[i]-a){
-			return false;
-		}
-		if(l+1>=x[i]){
-			if(x[i]+a>=n-1){
-				l=n-1;
-			}
-			else{
-				l=max(l, x[i]+a);
-			}
-		}
-		else{
-			ll d=x[i]-l-1;
-			l=max(l, x[i]+max(a-2*d, (a-d)/2));
-		}
-		if(l<x[i]){
-			return false;
-		}
-	}
-	return l>=n-1;
+  ll l=-1;
+  REP(i, m){
+    if(l+1<x[i]-a){
+      return false;
+    }
+    if(l+1>=x[i]){
+      if(x[i]+a>=n-1){
+        l=n-1;
+      }
+      else{
+        l=max(l, x[i]+a);
+      }
+    }
+    else{
+      ll d=x[i]-l-1;
+      l=max(l, x[i]+max(a-2*d, (a-d)/2));
+    }
+    if(l<x[i]){
+      return false;
+    }
+  }
+  return l>=n-1;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n>>m;
-	REP(i, m){
-		cin>>x[i];
-		--x[i];
-	}
-	sort(x, x+m);
-	ll lb=-1, ub=1e18;
-	while(ub-lb>1){
-		ll mid=(lb+ub)/2;
-		if(is_ok(mid)){
-			ub=mid;
-		}
-		else{
-			lb=mid;
-		}
-	}
-	cout<<ub<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n>>m;
+  REP(i, m){
+    cin>>x[i];
+    --x[i];
+  }
+  sort(x, x+m);
+  ll lb=-1, ub=1e18;
+  while(ub-lb>1){
+    ll mid=(lb+ub)/2;
+    if(is_ok(mid)){
+      ub=mid;
+    }
+    else{
+      lb=mid;
+    }
+  }
+  cout<<ub<<'\n';
+  return 0;
 }

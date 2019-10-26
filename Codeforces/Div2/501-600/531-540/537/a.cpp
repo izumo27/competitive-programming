@@ -29,27 +29,27 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string s, t;
-	cin>>s>>t;
-	if(s.size()!=t.size()){
-		cout<<"No"<<'\n';
-		return 0;
-	}
-	bool ok=true;
-	REP(i, s.size()){
-		if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u'){
-			if(t[i]!='a' && t[i]!='e' && t[i]!='i' && t[i]!='o' && t[i]!='u'){
-				ok=false;
-				break;
-			}
-		}
-		else if(t[i]=='a' || t[i]=='e' || t[i]=='i' || t[i]=='o' || t[i]=='u'){
-			ok=false;
-			break;
-		}
-	}
-	cout<<(ok ? "Yes" : "No")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s, t;
+  cin>>s>>t;
+  if(s.size()!=t.size()){
+    cout<<"No"<<'\n';
+    return 0;
+  }
+  bool ok=true;
+  REP(i, s.size()){
+    if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u'){
+      if(t[i]!='a' && t[i]!='e' && t[i]!='i' && t[i]!='o' && t[i]!='u'){
+        ok=false;
+        break;
+      }
+    }
+    else if(t[i]=='a' || t[i]=='e' || t[i]=='i' || t[i]=='o' || t[i]=='u'){
+      ok=false;
+      break;
+    }
+  }
+  cout<<(ok ? "Yes" : "No")<<'\n';
+  return 0;
 }

@@ -29,34 +29,34 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string s;
-	cin>>s;
-	int n=s.size();
-	bool ok=true;
-	if(s[0]!='1' || s[n-1]!='0'){
-		ok=false;
-	}
-	REP(i, (n-1)/2){
-		if(s[i]!=s[n-2-i]){
-			ok=false;
-			break;
-		}
-	}
-	if(!ok){
-		cout<<-1<<'\n';
-		return 0;
-	}
-	int num=0;
-	FOR(i, 1, n){
-		if(s[i]=='1'){
-			FOR(j, num+1, i+1){
-				cout<<num+1<<' '<<j+1<<'\n';
-			}
-			cout<<num+1<<' '<<i+2<<'\n';
-			num=i+1;
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s;
+  cin>>s;
+  int n=s.size();
+  bool ok=true;
+  if(s[0]!='1' || s[n-1]!='0'){
+    ok=false;
+  }
+  REP(i, (n-1)/2){
+    if(s[i]!=s[n-2-i]){
+      ok=false;
+      break;
+    }
+  }
+  if(!ok){
+    cout<<-1<<'\n';
+    return 0;
+  }
+  int num=0;
+  FOR(i, 1, n){
+    if(s[i]=='1'){
+      FOR(j, num+1, i+1){
+        cout<<num+1<<' '<<j+1<<'\n';
+      }
+      cout<<num+1<<' '<<i+2<<'\n';
+      num=i+1;
+    }
+  }
+  return 0;
 }

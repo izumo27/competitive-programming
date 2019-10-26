@@ -31,27 +31,27 @@ const double EPS=1e-11;
 int two, four, odd;
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a;
-	cin>>n;
-	REP(i, n){
-		cin>>a;
-		if(a%4==0){
-			++four;
-		}
-		else if(a&1){
-			++odd;
-		}
-		else{
-			++two;
-		}
-	}
-	if(two){
-		cout<<(odd<=four ? "Yes" : "No")<<'\n';
-	}
-	else{
-		cout<<(odd<=four+1 ? "Yes" : "No")<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a;
+  cin>>n;
+  REP(i, n){
+    cin>>a;
+    if(a%4==0){
+      ++four;
+    }
+    else if(a&1){
+      ++odd;
+    }
+    else{
+      ++two;
+    }
+  }
+  if(two){
+    cout<<(odd<=four ? "Yes" : "No")<<'\n';
+  }
+  else{
+    cout<<(odd<=four+1 ? "Yes" : "No")<<'\n';
+  }
+  return 0;
 }

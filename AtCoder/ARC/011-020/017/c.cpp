@@ -29,36 +29,36 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, x, w[40];
-	cin>>n>>x;
-	REP(i, n){
-		cin>>w[i];
-	}
-	int m=n/2;
-	vi v;
-	REP(i, 1<<m){
-		int tmp=0;
-		REP(j, m){
-			if(i>>j&1){
-				tmp+=w[j];
-			}
-		}
-		v.push_back(tmp);
-	}
-	sort(ALL(v));
-	int m2=n-m;
-	ll ans=0;
-	REP(i, 1<<m2){
-		int tmp=0;
-		REP(j, m2){
-			if(i>>j&1){
-				tmp+=w[j+m];
-			}
-		}
-		ans+=(ll)(upper_bound(ALL(v), x-tmp)-lower_bound(ALL(v), x-tmp));
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, x, w[40];
+  cin>>n>>x;
+  REP(i, n){
+    cin>>w[i];
+  }
+  int m=n/2;
+  vi v;
+  REP(i, 1<<m){
+    int tmp=0;
+    REP(j, m){
+      if(i>>j&1){
+        tmp+=w[j];
+      }
+    }
+    v.push_back(tmp);
+  }
+  sort(ALL(v));
+  int m2=n-m;
+  ll ans=0;
+  REP(i, 1<<m2){
+    int tmp=0;
+    REP(j, m2){
+      if(i>>j&1){
+        tmp+=w[j+m];
+      }
+    }
+    ans+=(ll)(upper_bound(ALL(v), x-tmp)-lower_bound(ALL(v), x-tmp));
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

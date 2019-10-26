@@ -32,25 +32,25 @@ ll dp[4334][4334];
 int blew[2525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string s;
-	cin>>s;
-	int n=s.size();
-	REP(i, n){
-		blew[i+1]=blew[i]+(s[i]-'0');
-	}
-	dp[0][0]=1;
-	REP(i, n<<1){
-		int bnum=blew[min(i+1, n)];
-		int rnum=min(i+1, n)*2-bnum;
-		FOR(j, max(1, i+1-rnum), min(bnum, i+1)+1){
-			dp[i+1][j]=(dp[i+1][j]+dp[i][j-1])%MOD;
-		}
-		FOR(j, max(1, i+1-bnum), min(rnum, i+1)+1){
-			dp[i+1][i+1-j]=(dp[i+1][i+1-j]+dp[i][i+1-j])%MOD;
-		}
-	}
-	cout<<dp[n<<1][blew[n]]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s;
+  cin>>s;
+  int n=s.size();
+  REP(i, n){
+    blew[i+1]=blew[i]+(s[i]-'0');
+  }
+  dp[0][0]=1;
+  REP(i, n<<1){
+    int bnum=blew[min(i+1, n)];
+    int rnum=min(i+1, n)*2-bnum;
+    FOR(j, max(1, i+1-rnum), min(bnum, i+1)+1){
+      dp[i+1][j]=(dp[i+1][j]+dp[i][j-1])%MOD;
+    }
+    FOR(j, max(1, i+1-bnum), min(rnum, i+1)+1){
+      dp[i+1][i+1-j]=(dp[i+1][i+1-j]+dp[i][i+1-j])%MOD;
+    }
+  }
+  cout<<dp[n<<1][blew[n]]<<'\n';
+  return 0;
 }

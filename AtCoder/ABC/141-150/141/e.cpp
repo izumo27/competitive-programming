@@ -32,43 +32,43 @@ int n;
 string s;
 
 bool is_ok(int mid){
-	vector<pair<string, int>> v;
-	REP(i, n-mid+1){
-		v.push_back(make_pair(s.substr(i, mid), i));
-	}
-	sort(ALL(v));
-	int i=n-mid;
-	bool res=false;
-	while(i>0){
-		auto x=v[i];
-		string t=x.first;
-		int u=x.second;
-		while(i>=0 && v[i].first==t){
-			--i;
-		}
-		if(i<n-1 && v[i+1].second+mid<=u){
-			res=true;
-			break;
-		}
-	}
-	return res;
+  vector<pair<string, int>> v;
+  REP(i, n-mid+1){
+    v.push_back(make_pair(s.substr(i, mid), i));
+  }
+  sort(ALL(v));
+  int i=n-mid;
+  bool res=false;
+  while(i>0){
+    auto x=v[i];
+    string t=x.first;
+    int u=x.second;
+    while(i>=0 && v[i].first==t){
+      --i;
+    }
+    if(i<n-1 && v[i+1].second+mid<=u){
+      res=true;
+      break;
+    }
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	cin>>n>>s;
-	int lb=0, ub=n;
-	while(ub-lb>1){
-		int mid=(lb+ub)/2;
-		if(is_ok(mid)){
-			lb=mid;
-		}
-		else{
-			ub=mid;
-		}
-	}
-	cout<<lb<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  cin>>n>>s;
+  int lb=0, ub=n;
+  while(ub-lb>1){
+    int mid=(lb+ub)/2;
+    if(is_ok(mid)){
+      lb=mid;
+    }
+    else{
+      ub=mid;
+    }
+  }
+  cout<<lb<<'\n';
+  return 0;
 }

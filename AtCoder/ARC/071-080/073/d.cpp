@@ -31,43 +31,43 @@ const double EPS=1e-11;
 int sum[4][110], sz[4];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, W, v[110];
-	ll w[110];
-	cin>>n>>W;
-	REP(i, n){
-		cin>>w[i]>>v[i];
-	}
-	vi cnt[4];
-	cnt[0].push_back(v[0]);
-	sz[0]=1;
-	REP(i, n-1){
-		cnt[w[i+1]-w[0]].push_back(v[i+1]);
-		++sz[w[i+1]-w[0]];
-	}
-	REP(i, 4){
-		sort(ALL(cnt[i]), greater<int>());
-	}
-	REP(i, 4){
-		REP(j, sz[i]){
-			sum[i][j+1]=sum[i][j]+cnt[i][j];
-		}
-	}
-	int ans=0;
-	REP(i, sz[0]+1){
-		REP(j, sz[1]+1){
-			REP(k, sz[2]+1){
-				REP(l, sz[3]+1){
-					ll tmp=(i+j+k+l)*w[0]+j+k*2+l*3;
-					if(tmp<=W){
-						CHMAX(ans, sum[0][i]+sum[1][j]+sum[2][k]+sum[3][l]);
-					}
-				}
-			}
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, W, v[110];
+  ll w[110];
+  cin>>n>>W;
+  REP(i, n){
+    cin>>w[i]>>v[i];
+  }
+  vi cnt[4];
+  cnt[0].push_back(v[0]);
+  sz[0]=1;
+  REP(i, n-1){
+    cnt[w[i+1]-w[0]].push_back(v[i+1]);
+    ++sz[w[i+1]-w[0]];
+  }
+  REP(i, 4){
+    sort(ALL(cnt[i]), greater<int>());
+  }
+  REP(i, 4){
+    REP(j, sz[i]){
+      sum[i][j+1]=sum[i][j]+cnt[i][j];
+    }
+  }
+  int ans=0;
+  REP(i, sz[0]+1){
+    REP(j, sz[1]+1){
+      REP(k, sz[2]+1){
+        REP(l, sz[3]+1){
+          ll tmp=(i+j+k+l)*w[0]+j+k*2+l*3;
+          if(tmp<=W){
+            CHMAX(ans, sum[0][i]+sum[1][j]+sum[2][k]+sum[3][l]);
+          }
+        }
+      }
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

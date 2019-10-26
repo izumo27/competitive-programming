@@ -31,26 +31,26 @@ const double EPS=1e-11;
 int s[1252][1252];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int h, w, a, b;
-	cin>>h>>w>>a>>b;
-	REP(i, b){
-		REP(j, a){
-			s[i][j]=1;
-		}
-	}
-	FOR(i, b, h){
-		FOR(j, a, w){
-			s[i][j]=1;
-		}
-	}
-	REP(i, h){
-		REP(j, w){
-			cout<<s[i][j];
-		}
-		cout<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int h, w, a, b;
+  cin>>h>>w>>a>>b;
+  REP(i, b){
+    REP(j, a){
+      s[i][j]=1;
+    }
+  }
+  FOR(i, b, h){
+    FOR(j, a, w){
+      s[i][j]=1;
+    }
+  }
+  REP(i, h){
+    REP(j, w){
+      cout<<s[i][j];
+    }
+    cout<<'\n';
+  }
+  return 0;
 }

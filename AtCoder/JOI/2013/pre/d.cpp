@@ -30,36 +30,36 @@ const double EPS=1e-11;
 int dp[210][110];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int d, n, t[210], a[210], b[210], c[210];
-	cin>>d>>n;
-	REP(i, d){
-		cin>>t[i];
-	}
-	REP(i, n){
-		cin>>a[i]>>b[i]>>c[i];
-	}
-	memset(dp, -1, sizeof(dp));
-	REP(i, n){
-		if(a[i]<=t[0] && t[0]<=b[i]){
-			dp[1][c[i]]=0;
-		}
-	}
-	FOR(i, 1, d){
-		REP(j, 101){
-			if(dp[i][j]<0) continue;
-			REP(k, n){
-				if(a[k]<=t[i] && t[i]<=b[k]){
-					dp[i+1][c[k]]=max(dp[i+1][c[k]], dp[i][j]+abs(j-c[k]));
-				}
-			}
-		}
-	}
-	int ans=0;
-	REP(i, 101){
-		ans=max(ans, dp[d][i]);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int d, n, t[210], a[210], b[210], c[210];
+  cin>>d>>n;
+  REP(i, d){
+    cin>>t[i];
+  }
+  REP(i, n){
+    cin>>a[i]>>b[i]>>c[i];
+  }
+  memset(dp, -1, sizeof(dp));
+  REP(i, n){
+    if(a[i]<=t[0] && t[0]<=b[i]){
+      dp[1][c[i]]=0;
+    }
+  }
+  FOR(i, 1, d){
+    REP(j, 101){
+      if(dp[i][j]<0) continue;
+      REP(k, n){
+        if(a[k]<=t[i] && t[i]<=b[k]){
+          dp[i+1][c[k]]=max(dp[i+1][c[k]], dp[i][j]+abs(j-c[k]));
+        }
+      }
+    }
+  }
+  int ans=0;
+  REP(i, 101){
+    ans=max(ans, dp[d][i]);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

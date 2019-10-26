@@ -29,43 +29,43 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int m, k;
-	cin>>m>>k;
-	int mask=1;
-	REP(i, m){
-		mask<<=1;
-	}
-	if(k>=mask){
-		cout<<-1<<'\n';
-		return 0;
-	}
-	if(m==0){
-		cout<<0<<' '<<0<<'\n';
-		return 0;
-	}
-	if(m==1){
-		if(k==0){
-			cout<<0<<' '<<0<<' '<<1<<' '<<1<<'\n';
-		}
-		else{
-			cout<<-1<<'\n';
-		}
-		return 0;
-	}
-	REP(i, mask){
-		if(i!=k){
-			cout<<i<<' ';
-		}
-	}
-	cout<<k<<' ';
-	FORR(i, 0, mask){
-		if(i!=k){
-			cout<<i<<' ';
-		}
-	}
-	cout<<k<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int m, k;
+  cin>>m>>k;
+  int mask=1;
+  REP(i, m){
+    mask<<=1;
+  }
+  if(k>=mask){
+    cout<<-1<<'\n';
+    return 0;
+  }
+  if(m==0){
+    cout<<0<<' '<<0<<'\n';
+    return 0;
+  }
+  if(m==1){
+    if(k==0){
+      cout<<0<<' '<<0<<' '<<1<<' '<<1<<'\n';
+    }
+    else{
+      cout<<-1<<'\n';
+    }
+    return 0;
+  }
+  REP(i, mask){
+    if(i!=k){
+      cout<<i<<' ';
+    }
+  }
+  cout<<k<<' ';
+  FORR(i, 0, mask){
+    if(i!=k){
+      cout<<i<<' ';
+    }
+  }
+  cout<<k<<'\n';
+  return 0;
 }

@@ -31,48 +31,48 @@ const double EPS=1e-11;
 int n, a[252521];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	cin>>n;
-	int one=0;
-	REP(i, n){
-		cin>>a[i];
-		if(a[i]==1){
-			++one;
-		}
-	}
-	if(one==0 || one==n){
-		REP(i, n){
-			cout<<a[i]<<" \n"[i==n-1];
-		}
-		return 0;
-	}
-	if(one&1){
-		cout<<2<<' ';
-		if(one==n-1){
-			REP(i, one){
-				cout<<1<<" \n"[i==one-1];
-			}
-		}
-		else{
-			REP(i, one){
-				cout<<1<<' ';
-			}
-			REP(i, n-one-1){
-				cout<<2<<" \n"[i==n-one-2];
-			}
-		}
-	}
-	else{
-		cout<<2<<' ';
-		REP(i, one-1){
-			cout<<1<<' ';
-		}
-		REP(i, n-one-1){
-			cout<<2<<' ';
-		}
-		cout<<1<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  cin>>n;
+  int one=0;
+  REP(i, n){
+    cin>>a[i];
+    if(a[i]==1){
+      ++one;
+    }
+  }
+  if(one==0 || one==n){
+    REP(i, n){
+      cout<<a[i]<<" \n"[i==n-1];
+    }
+    return 0;
+  }
+  if(one&1){
+    cout<<2<<' ';
+    if(one==n-1){
+      REP(i, one){
+        cout<<1<<" \n"[i==one-1];
+      }
+    }
+    else{
+      REP(i, one){
+        cout<<1<<' ';
+      }
+      REP(i, n-one-1){
+        cout<<2<<" \n"[i==n-one-2];
+      }
+    }
+  }
+  else{
+    cout<<2<<' ';
+    REP(i, one-1){
+      cout<<1<<' ';
+    }
+    REP(i, n-one-1){
+      cout<<2<<' ';
+    }
+    cout<<1<<'\n';
+  }
+  return 0;
 }

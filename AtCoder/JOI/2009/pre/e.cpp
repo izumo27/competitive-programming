@@ -29,46 +29,46 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, p, q, r, x, y, a[12525], b[12525];
-	cin>>n>>m>>p>>q>>r;
-	a[0]=1;
-	b[0]=r;
-	int sz=1;
-	REP(i, m){
-		cin>>x>>y;
-		REP(i, sz){
-			if(a[i]<=x && x<b[i]){
-				a[sz]=x+1;
-				b[sz]=b[i];
-				b[i]=x;
-				++sz;
-			}
-			else if(a[i]<=y && y<b[i]){
-				a[sz]=y+1;
-				b[sz]=b[i];
-				b[i]=y;
-				++sz;
-			}
-			int d;
-			if(b[i]<=x){
-				d=n-x;
-			}
-			else if(b[i]<=y){
-				d=n-x-y;
-			}
-			else{
-				d=-y;
-			}
-			a[i]+=d;
-			b[i]+=d;
-		}
-	}
-	int ans=0;
-	REP(i, sz){
-		ans+=max(0, min(q, b[i])-max(p, a[i])+1);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, p, q, r, x, y, a[12525], b[12525];
+  cin>>n>>m>>p>>q>>r;
+  a[0]=1;
+  b[0]=r;
+  int sz=1;
+  REP(i, m){
+    cin>>x>>y;
+    REP(i, sz){
+      if(a[i]<=x && x<b[i]){
+        a[sz]=x+1;
+        b[sz]=b[i];
+        b[i]=x;
+        ++sz;
+      }
+      else if(a[i]<=y && y<b[i]){
+        a[sz]=y+1;
+        b[sz]=b[i];
+        b[i]=y;
+        ++sz;
+      }
+      int d;
+      if(b[i]<=x){
+        d=n-x;
+      }
+      else if(b[i]<=y){
+        d=n-x-y;
+      }
+      else{
+        d=-y;
+      }
+      a[i]+=d;
+      b[i]+=d;
+    }
+  }
+  int ans=0;
+  REP(i, sz){
+    ans+=max(0, min(q, b[i])-max(p, a[i])+1);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

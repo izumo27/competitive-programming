@@ -31,16 +31,16 @@ const double EPS=1e-11;
 
 // 時刻取得（ミリ秒）
 ull current_time_mills(){
-	struct timeval _time;
-	gettimeofday(&_time, NULL);
-	return _time.tv_sec*1000+_time.tv_usec/1000;
+  struct timeval _time;
+  gettimeofday(&_time, NULL);
+  return _time.tv_sec*1000+_time.tv_usec/1000;
 }
 
 // 乱数
 unsigned int xor32(){
-	static unsigned int x=2463534242;
-	x=x^(x<<13);x=x^(x>>17);
-	return x=x^(x<<15);
+  static unsigned int x=2463534242;
+  x=x^(x<<13);x=x^(x>>17);
+  return x=x^(x<<15);
 }
 
 int n;
@@ -51,67 +51,67 @@ bool used[252];
 
 // 分散のn倍
 double var(){
-	double ave=0;
-	REP(i, n){
-		ave+=d[ans_sub[i]][ans_sub[i+1]];
-	}
-	ave/=n;
-	double res=0;
-	REP(i, n){
-		res+=(d[ans_sub[i]][ans_sub[i+1]]-ave)*(d[ans_sub[i]][ans_sub[i+1]]-ave);
-	}
-	return res;
+  double ave=0;
+  REP(i, n){
+    ave+=d[ans_sub[i]][ans_sub[i+1]];
+  }
+  ave/=n;
+  double res=0;
+  REP(i, n){
+    res+=(d[ans_sub[i]][ans_sub[i+1]]-ave)*(d[ans_sub[i]][ans_sub[i+1]]-ave);
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n;
-	REP(i, n){
-		cin>>xy[i].first>>xy[i].second;
-	}
-	REP(i, n-1){
-		FOR(j, i+1, n){
-			d[i][j]=d[j][i]=sqrt((xy[i].first-xy[j].first)*(xy[i].first-xy[j].first)+(xy[i].second-xy[j].second)*(xy[i].second-xy[j].second));
-		}
-	}
-	double variance=1e9;
-	// 探索
-	for(double dis=0; dis<400; dis+=10){
-		REP(i, n){
-			REP(j, n){
-				used[j]=false;
-			}
-			ans_sub[0]=ans_sub[n]=i;
-			used[i]=true;
-			REP(j, n-1){
-				int cand=-1;
-				double cand_dis=5000;
-				REP(k, n){
-					if(used[k]){
-						continue;
-					}
-					if(abs(cand_dis-dis)>abs(d[ans_sub[j]][k]-dis)){
-						cand_dis=d[ans_sub[j]][k];
-						cand=k;
-					}
-				}
-				ans_sub[j+1]=cand;
-				used[cand]=true;
-			}
-			double tmp=var();
-			if(variance>tmp){
-				variance=tmp;
-				REP(j, n+1){
-					ans[j]=ans_sub[j];
-				}
-			}
-		}
-	}
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n;
+  REP(i, n){
+    cin>>xy[i].first>>xy[i].second;
+  }
+  REP(i, n-1){
+    FOR(j, i+1, n){
+      d[i][j]=d[j][i]=sqrt((xy[i].first-xy[j].first)*(xy[i].first-xy[j].first)+(xy[i].second-xy[j].second)*(xy[i].second-xy[j].second));
+    }
+  }
+  double variance=1e9;
+  // 探索
+  for(double dis=0; dis<400; dis+=10){
+    REP(i, n){
+      REP(j, n){
+        used[j]=false;
+      }
+      ans_sub[0]=ans_sub[n]=i;
+      used[i]=true;
+      REP(j, n-1){
+        int cand=-1;
+        double cand_dis=5000;
+        REP(k, n){
+          if(used[k]){
+            continue;
+          }
+          if(abs(cand_dis-dis)>abs(d[ans_sub[j]][k]-dis)){
+            cand_dis=d[ans_sub[j]][k];
+            cand=k;
+          }
+        }
+        ans_sub[j+1]=cand;
+        used[cand]=true;
+      }
+      double tmp=var();
+      if(variance>tmp){
+        variance=tmp;
+        REP(j, n+1){
+          ans[j]=ans_sub[j];
+        }
+      }
+    }
+  }
 
-	// 出力
-	REP(i, n){
-		cout<<ans[i]<<'\n';
-	}
-	return 0;
+  // 出力
+  REP(i, n){
+    cout<<ans[i]<<'\n';
+  }
+  return 0;
 }

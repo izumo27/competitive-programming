@@ -32,29 +32,29 @@ int ans[1252][1252];
 bool used[1252];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n;
-	cin>>n;
-	if(~n&1){
-		cout<<"No"<<'\n';
-		return 0;
-	}
-	cout<<"Yes"<<'\n';
-	REP(i, n){
-		FOR(j, 1, n){
-			ans[i][j]=i*n+j;
-		}
-		ans[i][0]=(i+1)*n;
-	}
-	FOR(i, 1, n/2+1){
-		swap(ans[i][i], ans[n-i][n-i]);
-	}
-	REP(i, n){
-		REP(j, n){
-			cout<<ans[i][j]<<" \n"[j==n-1];
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n;
+  cin>>n;
+  if(~n&1){
+    cout<<"No"<<'\n';
+    return 0;
+  }
+  cout<<"Yes"<<'\n';
+  REP(i, n){
+    FOR(j, 1, n){
+      ans[i][j]=i*n+j;
+    }
+    ans[i][0]=(i+1)*n;
+  }
+  FOR(i, 1, n/2+1){
+    swap(ans[i][i], ans[n-i][n-i]);
+  }
+  REP(i, n){
+    REP(j, n){
+      cout<<ans[i][j]<<" \n"[j==n-1];
+    }
+  }
+  return 0;
 }

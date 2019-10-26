@@ -35,49 +35,49 @@ int bit[MAX_N+1], n;
 
 // a_1からa_iまでの和
 int bit_sum(int i){
-	int s=0;
-	while(i>0){
-		s+=bit[i];
-		i-=i&-i;
-	}
-	return s;
+  int s=0;
+  while(i>0){
+    s+=bit[i];
+    i-=i&-i;
+  }
+  return s;
 }
 
 // a_iにxを加える
 void bit_add(int i, int x){
-	while(i<=n){
-		bit[i]+=x;
-		i+=i&-i;
-	}
+  while(i<=n){
+    bit[i]+=x;
+    i+=i&-i;
+  }
 }
 
 int hh[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	ll h[114514];
-	cin>>n;
-	vl H;
-	REP(i, n){
-		cin>>h[i];
-		H.push_back(h[i]);
-	}
-	sort(ALL(H));
-	H.erase(unique(ALL(H)), H.end());
-	if(H.size()!=n){
-		cout<<-1<<'\n';
-		return 0;
-	}
-	REP(i, n){
-		hh[i]=lower_bound(ALL(H), h[i])-H.begin()+1;
-	}
-	ll ans=0;
-	REP(i, n){
-		ans+=h[i]*(i-bit_sum(hh[i]));
-		// DEBUG(ans);
-		bit_add(hh[i], 1);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  ll h[114514];
+  cin>>n;
+  vl H;
+  REP(i, n){
+    cin>>h[i];
+    H.push_back(h[i]);
+  }
+  sort(ALL(H));
+  H.erase(unique(ALL(H)), H.end());
+  if(H.size()!=n){
+    cout<<-1<<'\n';
+    return 0;
+  }
+  REP(i, n){
+    hh[i]=lower_bound(ALL(H), h[i])-H.begin()+1;
+  }
+  ll ans=0;
+  REP(i, n){
+    ans+=h[i]*(i-bit_sum(hh[i]));
+    // DEBUG(ans);
+    bit_add(hh[i], 1);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

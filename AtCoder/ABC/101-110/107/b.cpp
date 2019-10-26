@@ -31,51 +31,51 @@ const double EPS=1e-11;
 bool b[114][114];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int h, w;
-	string a[114];
-	cin>>h>>w;
-	REP(i, h){
-		cin>>a[i];
-		bool ok=true;
-		REP(j, w){
-			if(a[i][j]!='.'){
-				ok=false;
-				break;
-			}
-		}
-		if(ok){
-			REP(j, w){
-				b[i][j]=true;
-			}
-		}
-	}
-	REP(i, w){
-		bool ok=true;
-		REP(j, h){
-			if(a[j][i]!='.'){
-				ok=false;
-				break;
-			}
-		}
-		if(ok){
-			REP(j, h){
-				b[j][i]=true;
-			}
-		}
-	}
-	REP(i, h){
-		bool ok=false;
-		REP(j, w){
-			if(!b[i][j]){
-				cout<<a[i][j];
-				ok=true;
-			}
-		}
-		if(ok){
-			cout<<'\n';
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int h, w;
+  string a[114];
+  cin>>h>>w;
+  REP(i, h){
+    cin>>a[i];
+    bool ok=true;
+    REP(j, w){
+      if(a[i][j]!='.'){
+        ok=false;
+        break;
+      }
+    }
+    if(ok){
+      REP(j, w){
+        b[i][j]=true;
+      }
+    }
+  }
+  REP(i, w){
+    bool ok=true;
+    REP(j, h){
+      if(a[j][i]!='.'){
+        ok=false;
+        break;
+      }
+    }
+    if(ok){
+      REP(j, h){
+        b[j][i]=true;
+      }
+    }
+  }
+  REP(i, h){
+    bool ok=false;
+    REP(j, w){
+      if(!b[i][j]){
+        cout<<a[i][j];
+        ok=true;
+      }
+    }
+    if(ok){
+      cout<<'\n';
+    }
+  }
+  return 0;
 }

@@ -33,61 +33,61 @@ int b[1252][1252];
 int idx[1252];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, a[1252][1252];
-	cin>>n;
-	REP(i, n)REP(j, n-1){
-		cin>>a[i][j];
-		--a[i][j];
-	}
-	REP(i, n)FOR(j, 1, n){
-		b[i][j]=INF;
-	}
-	queue<pii> q;
-	REP(i, n-1){
-		int t=a[i][0];
-		if(i==a[t][0] && i<t){
-			q.push(pii(i, t));
-			++idx[i];
-			++idx[t];
-		}
-	}
-	while(q.size()){
-		auto x=q.front();
-		q.pop();
-		int y=x.first;
-		// DEBUG(y);
-		if(idx[y]<n-1 && b[y][idx[y]]==INF){
-			int t=a[y][idx[y]];
-			if(y==a[t][idx[t]]){
-				// DEBUG(t);
-				q.push(pii(y, t));
-				b[y][idx[y]]=b[t][idx[t]]=max(b[y][idx[y]-1], b[t][idx[t]-1])+1;
-				// DEBUG(b[y][idx[y]]);
-				++idx[y];
-				++idx[t];
-			}
-		}
-		y=x.second;
-		// DEBUG(y);
-		if(idx[y]<n-1 && b[y][idx[y]]==INF){
-			int t=a[y][idx[y]];
-			if(y==a[t][idx[t]]){
-				// DEBUG(t);
-				q.push(pii(y, t));
-				b[y][idx[y]]=b[t][idx[t]]=max(b[y][idx[y]-1], b[t][idx[t]-1])+1;
-				// DEBUG(b[y][idx[y]]);
-				++idx[y];
-				++idx[t];
-			}
-		}
-	}
-	int ans=0;
-	REP(i, n){
-		CHMAX(ans, b[i][n-2]);
-	}
-	cout<<(ans!=INF ? ans+1 : -1)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, a[1252][1252];
+  cin>>n;
+  REP(i, n)REP(j, n-1){
+    cin>>a[i][j];
+    --a[i][j];
+  }
+  REP(i, n)FOR(j, 1, n){
+    b[i][j]=INF;
+  }
+  queue<pii> q;
+  REP(i, n-1){
+    int t=a[i][0];
+    if(i==a[t][0] && i<t){
+      q.push(pii(i, t));
+      ++idx[i];
+      ++idx[t];
+    }
+  }
+  while(q.size()){
+    auto x=q.front();
+    q.pop();
+    int y=x.first;
+    // DEBUG(y);
+    if(idx[y]<n-1 && b[y][idx[y]]==INF){
+      int t=a[y][idx[y]];
+      if(y==a[t][idx[t]]){
+        // DEBUG(t);
+        q.push(pii(y, t));
+        b[y][idx[y]]=b[t][idx[t]]=max(b[y][idx[y]-1], b[t][idx[t]-1])+1;
+        // DEBUG(b[y][idx[y]]);
+        ++idx[y];
+        ++idx[t];
+      }
+    }
+    y=x.second;
+    // DEBUG(y);
+    if(idx[y]<n-1 && b[y][idx[y]]==INF){
+      int t=a[y][idx[y]];
+      if(y==a[t][idx[t]]){
+        // DEBUG(t);
+        q.push(pii(y, t));
+        b[y][idx[y]]=b[t][idx[t]]=max(b[y][idx[y]-1], b[t][idx[t]-1])+1;
+        // DEBUG(b[y][idx[y]]);
+        ++idx[y];
+        ++idx[t];
+      }
+    }
+  }
+  int ans=0;
+  REP(i, n){
+    CHMAX(ans, b[i][n-2]);
+  }
+  cout<<(ans!=INF ? ans+1 : -1)<<'\n';
+  return 0;
 }

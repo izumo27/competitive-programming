@@ -32,43 +32,43 @@ bool used[5];
 bool g[5][5];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int a[5], b[5];
-	REP(i, 3){
-		cin>>a[i]>>b[i];
-		--a[i];
-		--b[i];
-		g[a[i]][b[i]]=g[b[i]][a[i]]=true;
-	}
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int a[5], b[5];
+  REP(i, 3){
+    cin>>a[i]>>b[i];
+    --a[i];
+    --b[i];
+    g[a[i]][b[i]]=g[b[i]][a[i]]=true;
+  }
 
-	REP(i, 4){
-		REP(j, 4){
-			used[j]=false;
-		}
-		used[i]=true;
-		int now=i;
-		REP(i, 3){
-			REP(j, 4){
-				if(g[now][j] && !used[j]){
-					now=j;
-					used[now]=true;
-					break;
-				}
-			}
-		}
-		bool ok=true;
-		REP(i, 4){
-			if(!used[i]){
-				ok=false;
-				break;
-			}
-		}
-		if(ok){
-			cout<<"YES"<<'\n';
-			return 0;
-		}
-	}
-	cout<<"NO"<<'\n';
-	return 0;
+  REP(i, 4){
+    REP(j, 4){
+      used[j]=false;
+    }
+    used[i]=true;
+    int now=i;
+    REP(i, 3){
+      REP(j, 4){
+        if(g[now][j] && !used[j]){
+          now=j;
+          used[now]=true;
+          break;
+        }
+      }
+    }
+    bool ok=true;
+    REP(i, 4){
+      if(!used[i]){
+        ok=false;
+        break;
+      }
+    }
+    if(ok){
+      cout<<"YES"<<'\n';
+      return 0;
+    }
+  }
+  cout<<"NO"<<'\n';
+  return 0;
 }

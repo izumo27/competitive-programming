@@ -29,26 +29,26 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, a[252525];
-	cin>>n;
-	REP(i, n){
-		cin>>a[i];
-	}
-	priority_queue<int> que;
-	int ans=0, cur=n-1;
-	while(cur>=0){
-		que.push(a[cur]);
-		int tmp=que.top();
-		que.pop();
-		FOR(i, max(0, cur-tmp+1), cur){
-			que.push(a[i]);
-		}
-		++ans;
-		cur-=tmp;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, a[252525];
+  cin>>n;
+  REP(i, n){
+    cin>>a[i];
+  }
+  priority_queue<int> que;
+  int ans=0, cur=n-1;
+  while(cur>=0){
+    que.push(a[cur]);
+    int tmp=que.top();
+    que.pop();
+    FOR(i, max(0, cur-tmp+1), cur){
+      que.push(a[i]);
+    }
+    ++ans;
+    cur-=tmp;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

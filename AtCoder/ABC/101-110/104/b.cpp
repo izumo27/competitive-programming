@@ -29,32 +29,32 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string s;
-	cin>>s;
-	if(s[0]!='A'){
-		cout<<"WA"<<'\n';
-		return 0;
-	}
-	int ok=0;
-	int tmp;
-	FOR(i, 2, s.size()-1){
-		if(s[i]=='C'){
-			++ok;
-			tmp=i;
-		}
-	}
-	if(ok==1){
-		FOR(i, 1, s.size()){
-			if(i!=tmp && s[i]-'a'<0 || s[i]-'a'>26){
-					cout<<"WA"<<'\n';
-					return 0;
-			}
-		}
-		cout<<"AC"<<'\n';
-	}else{
-		cout<<"WA"<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s;
+  cin>>s;
+  if(s[0]!='A'){
+    cout<<"WA"<<'\n';
+    return 0;
+  }
+  int ok=0;
+  int tmp;
+  FOR(i, 2, s.size()-1){
+    if(s[i]=='C'){
+      ++ok;
+      tmp=i;
+    }
+  }
+  if(ok==1){
+    FOR(i, 1, s.size()){
+      if(i!=tmp && s[i]-'a'<0 || s[i]-'a'>26){
+          cout<<"WA"<<'\n';
+          return 0;
+      }
+    }
+    cout<<"AC"<<'\n';
+  }else{
+    cout<<"WA"<<'\n';
+  }
+  return 0;
 }

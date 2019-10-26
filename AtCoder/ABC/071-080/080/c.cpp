@@ -28,26 +28,26 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, f[114][20], p[114][20];
-	cin>>n;
-	REP(i, n){
-		REP(j, 10) cin>>f[i][j];
-	}
-	REP(i, n){
-		REP(j, 11) cin>>p[i][j];
-	}
-	int ans=-(1<<30);
-	for(int i=1; i<1<<10; ++i){
-		int tmp=0;
-		REP(j, n){
-			int tmp1=0;
-			REP(k, 10) if((i>>k&1) && f[j][k]) ++tmp1;
-			tmp+=p[j][tmp1];
-		}
-		ans=max(ans, tmp);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, f[114][20], p[114][20];
+  cin>>n;
+  REP(i, n){
+    REP(j, 10) cin>>f[i][j];
+  }
+  REP(i, n){
+    REP(j, 11) cin>>p[i][j];
+  }
+  int ans=-(1<<30);
+  for(int i=1; i<1<<10; ++i){
+    int tmp=0;
+    REP(j, n){
+      int tmp1=0;
+      REP(k, 10) if((i>>k&1) && f[j][k]) ++tmp1;
+      tmp+=p[j][tmp1];
+    }
+    ans=max(ans, tmp);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

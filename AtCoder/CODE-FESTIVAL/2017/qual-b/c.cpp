@@ -33,32 +33,32 @@ int color[114514];
 ll w;
 
 bool dfs(int v, int c){
-	if(c==-1){
-		++w;
-	}
-	color[v]=c;
-	REP(i, g[v].size()){
-		if(color[g[v][i]]==c){
-			return false;
-		}
-		if(color[g[v][i]]==0 && !dfs(g[v][i], -c)){
-			return false;
-		}
-	}
-	return true;
+  if(c==-1){
+    ++w;
+  }
+  color[v]=c;
+  REP(i, g[v].size()){
+    if(color[g[v][i]]==c){
+      return false;
+    }
+    if(color[g[v][i]]==0 && !dfs(g[v][i], -c)){
+      return false;
+    }
+  }
+  return true;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	ll n, m;
-	int a, b;
-	cin>>n>>m;
-	REP(i, m){
-		cin>>a>>b;
-		g[a].push_back(b);
-		g[b].push_back(a);
-	}
-	cout<<(dfs(a, 1) ? w*(n-w)-m : n*(n-1)/2-m)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  ll n, m;
+  int a, b;
+  cin>>n>>m;
+  REP(i, m){
+    cin>>a>>b;
+    g[a].push_back(b);
+    g[b].push_back(a);
+  }
+  cout<<(dfs(a, 1) ? w*(n-w)-m : n*(n-1)/2-m)<<'\n';
+  return 0;
 }

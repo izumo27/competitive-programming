@@ -29,16 +29,16 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a;
-	ll sum=1;
-	cin>>n;
-	REP(i, n){
-		cin>>a;
-		sum=sum*(a+2)%MOD;
-	}
-	sum+=1e9+5;
-	cout<<sum%MOD<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a;
+  ll sum=1;
+  cin>>n;
+  REP(i, n){
+    cin>>a;
+    sum=sum*(a+2)%MOD;
+  }
+  sum+=1e9+5;
+  cout<<sum%MOD<<'\n';
+  return 0;
 }

@@ -30,34 +30,34 @@ const double EPS=1e-11;
 
 // 約数を求める
 vl divisor(ll n){
-	vl res;
-	for(ll i=1; i*i<=n; ++i){
-		if(n%i==0){
-			res.push_back(i);
-			if(i!=n/i){
-				res.push_back(n/i);
-			}
-		}
-	}
-	return res;
+  vl res;
+  for(ll i=1; i*i<=n; ++i){
+    if(n%i==0){
+      res.push_back(i);
+      if(i!=n/i){
+        res.push_back(n/i);
+      }
+    }
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	ll n;
-	cin>>n;
-	vl res=divisor(n);
-	ll ans=0;
-	for(auto x : res){
-		if(x==1){
-			continue;
-		}
-		if(x*(n/(x-1))==n){
-			ans+=x-1;
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  ll n;
+  cin>>n;
+  vl res=divisor(n);
+  ll ans=0;
+  for(auto x : res){
+    if(x==1){
+      continue;
+    }
+    if(x*(n/(x-1))==n){
+      ans+=x-1;
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

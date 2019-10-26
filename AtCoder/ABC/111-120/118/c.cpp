@@ -29,23 +29,23 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int gcd(int a, int b){
-	if(b==0){
-		return a;
-	}
-	return gcd(b, a%b);
+  if(b==0){
+    return a;
+  }
+  return gcd(b, a%b);
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a;
-	cin>>n;
-	cin>>a;
-	int ans=a;
-	REP(i, n-1){
-		cin>>a;
-		ans=gcd(ans, a);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a;
+  cin>>n;
+  cin>>a;
+  int ans=a;
+  REP(i, n-1){
+    cin>>a;
+    ans=gcd(ans, a);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

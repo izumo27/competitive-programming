@@ -29,53 +29,53 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int Q, q, a, b;
-	cin>>Q;
-	priority_queue<ll> pq1;
-	priority_queue<ll, vl, greater<ll>> pq2;
-	cin>>q>>a>>b;
-	pq1.push(a);
-	ll sum=b-a;
-	REP(i, Q-1){
-		cin>>q;
-		if(q==1){
-			cin>>a>>b;
-			sum+=b;
-			if(pq1.size()==pq2.size()){
-				if(a<=pq2.top()){
-					pq1.push(a);
-					sum-=a;
-				}
-				else{
-					ll tmp=pq2.top();
-					pq2.pop();
-					pq1.push(tmp);
-					pq2.push(a);
-					sum=sum-tmp*2+a;
-				}
-			}
-			else{
-				if(a>=pq1.top()){
-					pq2.push(a);
-					sum+=a;
-				}
-				else{
-					ll tmp=pq1.top();
-					pq1.pop();
-					pq2.push(tmp);
-					pq1.push(a);
-					sum=sum+tmp*2-a;
-				}
-			}
-		}
-		else{
-			ll tmp=pq1.top();
-			cout<<tmp<<' ';
-			cout<<(ll)pq1.size()*tmp-(ll)pq2.size()*tmp+sum<<'\n';
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int Q, q, a, b;
+  cin>>Q;
+  priority_queue<ll> pq1;
+  priority_queue<ll, vl, greater<ll>> pq2;
+  cin>>q>>a>>b;
+  pq1.push(a);
+  ll sum=b-a;
+  REP(i, Q-1){
+    cin>>q;
+    if(q==1){
+      cin>>a>>b;
+      sum+=b;
+      if(pq1.size()==pq2.size()){
+        if(a<=pq2.top()){
+          pq1.push(a);
+          sum-=a;
+        }
+        else{
+          ll tmp=pq2.top();
+          pq2.pop();
+          pq1.push(tmp);
+          pq2.push(a);
+          sum=sum-tmp*2+a;
+        }
+      }
+      else{
+        if(a>=pq1.top()){
+          pq2.push(a);
+          sum+=a;
+        }
+        else{
+          ll tmp=pq1.top();
+          pq1.pop();
+          pq2.push(tmp);
+          pq1.push(a);
+          sum=sum+tmp*2-a;
+        }
+      }
+    }
+    else{
+      ll tmp=pq1.top();
+      cout<<tmp<<' ';
+      cout<<(ll)pq1.size()*tmp-(ll)pq2.size()*tmp+sum<<'\n';
+    }
+  }
+  return 0;
 }

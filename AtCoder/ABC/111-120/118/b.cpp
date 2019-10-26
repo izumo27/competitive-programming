@@ -31,30 +31,30 @@ const double EPS=1e-11;
 bool a[40][40];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, k, A;
-	cin>>n>>m;
-	REP(i, n){
-		cin>>k;
-		REP(j, k){
-			cin>>A;
-			a[i][A-1]=true;
-		}
-	}
-	int ans=0;
-	REP(i, m){
-		bool ok=true;
-		REP(j, n){
-			if(!a[j][i]){
-				ok=false;
-				break;
-			}
-		}
-		if(ok){
-			++ans;
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, k, A;
+  cin>>n>>m;
+  REP(i, n){
+    cin>>k;
+    REP(j, k){
+      cin>>A;
+      a[i][A-1]=true;
+    }
+  }
+  int ans=0;
+  REP(i, m){
+    bool ok=true;
+    REP(j, n){
+      if(!a[j][i]){
+        ok=false;
+        break;
+      }
+    }
+    if(ok){
+      ++ans;
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

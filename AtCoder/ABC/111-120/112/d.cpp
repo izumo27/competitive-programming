@@ -29,42 +29,42 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 ll gcd(ll a, ll b){
-	if(b==0){
-		return a;
-	}
-	return gcd(b, a%b);
+  if(b==0){
+    return a;
+  }
+  return gcd(b, a%b);
 }
 
 // 約数を求める
 vl divisor(ll n){
-	vl res;
-	for(ll i=1; i*i<=n; ++i){
-		if(n%i==0){
-			res.push_back(i);
-			if(i!=n/i){
-				res.push_back(n/i);
-			}
-		}
-	}
-	return res;
+  vl res;
+  for(ll i=1; i*i<=n; ++i){
+    if(n%i==0){
+      res.push_back(i);
+      if(i!=n/i){
+        res.push_back(n/i);
+      }
+    }
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	ll n, m;
-	cin>>n>>m;
-	if(n==1){
-		cout<<m<<'\n';
-		return 0;
-	}
-	ll ans=0;
-	vl a=divisor(m);
-	REP(i, a.size()){
-		if(a[i]*n<=m){
-			ans=max(ans, a[i]);
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  ll n, m;
+  cin>>n>>m;
+  if(n==1){
+    cout<<m<<'\n';
+    return 0;
+  }
+  ll ans=0;
+  vl a=divisor(m);
+  REP(i, a.size()){
+    if(a[i]*n<=m){
+      ans=max(ans, a[i]);
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

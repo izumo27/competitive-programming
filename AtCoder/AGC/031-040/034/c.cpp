@@ -34,58 +34,58 @@ ll b[125252], l[125252], u[125252];
 pair<ll, int> a[125252];
 
 bool is_ok(ll mid){
-	ll k=mid/x, k2=mid%x, tmp=0;
-	FORR(i, max(0ll, n-k), n){
-		tmp+=a[i].first;
-	}
-	ll ma=0;
-	FORR(i, 0, max(0ll, n-k)){
-		int j=a[i].second;
-		CHMAX(ma, u[j]*k2-(u[j]-l[j])*b[j]);
-		CHMAX(ma, l[j]*k2);
-	}
-	if(tmp+ma>=sum){
-		return true;
-	}
-	ll mi=1e12;
-	FORR(i, max(0ll, n-k), n){
-		int j=a[i].second;
-		CHMIN(mi, u[j]*(x-k2));
-		CHMIN(mi, u[j]*x-l[j]*k2-(u[j]-l[j])*b[j]);
-	}
-	tmp-=mi;
-	if(n-k>0){
-		tmp+=a[n-k-1].first;
-	}
-	return tmp>=sum;
+  ll k=mid/x, k2=mid%x, tmp=0;
+  FORR(i, max(0ll, n-k), n){
+    tmp+=a[i].first;
+  }
+  ll ma=0;
+  FORR(i, 0, max(0ll, n-k)){
+    int j=a[i].second;
+    CHMAX(ma, u[j]*k2-(u[j]-l[j])*b[j]);
+    CHMAX(ma, l[j]*k2);
+  }
+  if(tmp+ma>=sum){
+    return true;
+  }
+  ll mi=1e12;
+  FORR(i, max(0ll, n-k), n){
+    int j=a[i].second;
+    CHMIN(mi, u[j]*(x-k2));
+    CHMIN(mi, u[j]*x-l[j]*k2-(u[j]-l[j])*b[j]);
+  }
+  tmp-=mi;
+  if(n-k>0){
+    tmp+=a[n-k-1].first;
+  }
+  return tmp>=sum;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	cin>>n>>x;
-	REP(i, n){
-		cin>>b[i]>>l[i]>>u[i];
-	}
-	sum=0;
-	REP(i, n){
-		sum+=b[i]*l[i];
-	}
-	REP(i, n){
-		a[i]=make_pair(u[i]*x-(u[i]-l[i])*b[i], i);
-	}
-	sort(a, a+n);
-	ll lb=-1, ub=1e12;
-	while(ub-lb>1){
-		ll mid=(lb+ub)/2;
-		if(is_ok(mid)){
-			ub=mid;
-		}
-		else{
-			lb=mid;
-		}
-	}
-	cout<<ub<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  cin>>n>>x;
+  REP(i, n){
+    cin>>b[i]>>l[i]>>u[i];
+  }
+  sum=0;
+  REP(i, n){
+    sum+=b[i]*l[i];
+  }
+  REP(i, n){
+    a[i]=make_pair(u[i]*x-(u[i]-l[i])*b[i], i);
+  }
+  sort(a, a+n);
+  ll lb=-1, ub=1e12;
+  while(ub-lb>1){
+    ll mid=(lb+ub)/2;
+    if(is_ok(mid)){
+      ub=mid;
+    }
+    else{
+      lb=mid;
+    }
+  }
+  cout<<ub<<'\n';
+  return 0;
 }

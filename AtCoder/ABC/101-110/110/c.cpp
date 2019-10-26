@@ -32,34 +32,34 @@ char alf1[30];
 char alf2[30];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string s, t;
-	cin>>s>>t;
-	REP(i, 30){
-		alf1[i]='#';
-		alf2[i]='#';
-	}
-	REP(i, s.size()){
-		if(alf1[s[i]-'a']!='#'){
-			if(t[i]!=alf1[s[i]-'a']){
-				cout<<"No"<<'\n';
-				return 0;
-			}
-		}
-		else{
-			alf1[s[i]-'a']=t[i];
-		}
-		if(alf2[t[i]-'a']!='#'){
-			if(s[i]!=alf2[t[i]-'a']){
-				cout<<"No"<<'\n';
-				return 0;
-			}
-		}
-		else{
-			alf2[t[i]-'a']=s[i];
-		}
-	}
-	cout<<"Yes"<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s, t;
+  cin>>s>>t;
+  REP(i, 30){
+    alf1[i]='#';
+    alf2[i]='#';
+  }
+  REP(i, s.size()){
+    if(alf1[s[i]-'a']!='#'){
+      if(t[i]!=alf1[s[i]-'a']){
+        cout<<"No"<<'\n';
+        return 0;
+      }
+    }
+    else{
+      alf1[s[i]-'a']=t[i];
+    }
+    if(alf2[t[i]-'a']!='#'){
+      if(s[i]!=alf2[t[i]-'a']){
+        cout<<"No"<<'\n';
+        return 0;
+      }
+    }
+    else{
+      alf2[t[i]-'a']=s[i];
+    }
+  }
+  cout<<"Yes"<<'\n';
+  return 0;
 }

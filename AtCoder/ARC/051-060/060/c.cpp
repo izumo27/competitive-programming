@@ -31,25 +31,25 @@ const double EPS=1e-11;
 ll dp[60][5334];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a, x[60];
-	cin>>n>>a;
-	REP(i, n){
-		cin>>x[i];
-		x[i]-=a;
-	}
-	dp[0][2500]=1;
-	REP(i, n){
-		REP(j, 5000){
-			if(j-x[i]>=0 && j-x[i]<5000){
-				dp[i+1][j]=dp[i][j]+dp[i][j-x[i]];
-			}
-			else{
-				dp[i+1][j]=dp[i][j];
-			}
-		}
-	}
-	cout<<dp[n][2500]-1<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a, x[60];
+  cin>>n>>a;
+  REP(i, n){
+    cin>>x[i];
+    x[i]-=a;
+  }
+  dp[0][2500]=1;
+  REP(i, n){
+    REP(j, 5000){
+      if(j-x[i]>=0 && j-x[i]<5000){
+        dp[i+1][j]=dp[i][j]+dp[i][j-x[i]];
+      }
+      else{
+        dp[i+1][j]=dp[i][j];
+      }
+    }
+  }
+  cout<<dp[n][2500]-1<<'\n';
+  return 0;
 }

@@ -31,63 +31,63 @@ const double EPS=1e-11;
 int cnt[2525][2525], cnt2[2525][2525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int h, w;
-	char s[2525][2525];
-	cin>>h>>w;
-	FOR(i, 1, h+1){
-		FOR(j, 1, w+1){
-			cin>>s[i][j];
-		}
-	}
-	REP(i, h+2){
-		s[i][0]=s[i][w+1]='#';
-	}
-	REP(i, w+2){
-		s[0][i]=s[h+1][i]='#';
-	}
-	h+=2;
-	w+=2;
-	REP(i, h){
-		int tmp=0, fst=0;
-		REP(j, w){
-			if(s[i][j]=='.'){
-				++tmp;
-			}
-			if(s[i][j]=='#'){
-				FOR(k, fst, j){
-					cnt[i][k]=tmp;
-				}
-				tmp=0;
-				fst=j+1;
-			}
-		}
-	}
-	REP(i, w){
-		int tmp=0, fst=0;
-		REP(j, h){
-			if(s[j][i]=='.'){
-				++tmp;
-			}
-			if(s[j][i]=='#'){
-				FOR(k, fst, j){
-					cnt2[k][i]=tmp;
-				}
-				tmp=0;
-				fst=j+1;
-			}
-		}
-	}
-	int ans=0;
-	REP(i, h){
-		REP(j, w){
-			if(cnt[i][j]>0 && cnt[i][j]>0){
-				CHMAX(ans, cnt[i][j]+cnt2[i][j]-1);
-			}
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int h, w;
+  char s[2525][2525];
+  cin>>h>>w;
+  FOR(i, 1, h+1){
+    FOR(j, 1, w+1){
+      cin>>s[i][j];
+    }
+  }
+  REP(i, h+2){
+    s[i][0]=s[i][w+1]='#';
+  }
+  REP(i, w+2){
+    s[0][i]=s[h+1][i]='#';
+  }
+  h+=2;
+  w+=2;
+  REP(i, h){
+    int tmp=0, fst=0;
+    REP(j, w){
+      if(s[i][j]=='.'){
+        ++tmp;
+      }
+      if(s[i][j]=='#'){
+        FOR(k, fst, j){
+          cnt[i][k]=tmp;
+        }
+        tmp=0;
+        fst=j+1;
+      }
+    }
+  }
+  REP(i, w){
+    int tmp=0, fst=0;
+    REP(j, h){
+      if(s[j][i]=='.'){
+        ++tmp;
+      }
+      if(s[j][i]=='#'){
+        FOR(k, fst, j){
+          cnt2[k][i]=tmp;
+        }
+        tmp=0;
+        fst=j+1;
+      }
+    }
+  }
+  int ans=0;
+  REP(i, h){
+    REP(j, w){
+      if(cnt[i][j]>0 && cnt[i][j]>0){
+        CHMAX(ans, cnt[i][j]+cnt2[i][j]-1);
+      }
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

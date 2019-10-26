@@ -31,68 +31,68 @@ const double EPS=1e-11;
 const int MAX_N=1<<17;
 
 struct SegmentTree{
-	int n;
-	vl dat;
+  int n;
+  vl dat;
 
-	SegmentTree(int n_=1){
-		init(n_);
-	}
+  SegmentTree(int n_=1){
+    init(n_);
+  }
 
-	// n要素で初期化
-	void init(int n_=1){
-		n=1;
-		while(n<n_){
-			n<<=1;
-		}
-		dat.resize(n*2-1);
-		REP(i, n*2-1){
-			dat[i]=0;
-		}
-	}
+  // n要素で初期化
+  void init(int n_=1){
+    n=1;
+    while(n<n_){
+      n<<=1;
+    }
+    dat.resize(n*2-1);
+    REP(i, n*2-1){
+      dat[i]=0;
+    }
+  }
 
-	void update(int k, ll a){
-		k+=n-1;
-		dat[k]=a;
-		while(k>0){
-			k=(k-1)/2;
-			dat[k]=max(dat[k*2+1], dat[k*2+2]);
-		}
-	}
+  void update(int k, ll a){
+    k+=n-1;
+    dat[k]=a;
+    while(k>0){
+      k=(k-1)/2;
+      dat[k]=max(dat[k*2+1], dat[k*2+2]);
+    }
+  }
 
-	// [a, b)の最大値を求める
-	// k: 節点の番号、その節点は[l, r)に対応づく
-	// 外から呼び出すときはquery(a, b, 0, 0, n)
-	ll query(int a, int b, int k, int l, int r){
-		if(r<=a || b<=l){
-			return 0;
-		}
-		if(a<=l && r<=b){
-			return dat[k];
-		}
-		else{
-			ll v1=query(a, b, k*2+1, l, (l+r)/2), v2=query(a, b, k*2+2, (l+r)/2, r);
-			return max(v1, v2);
-		}
-	}
+  // [a, b)の最大値を求める
+  // k: 節点の番号、その節点は[l, r)に対応づく
+  // 外から呼び出すときはquery(a, b, 0, 0, n)
+  ll query(int a, int b, int k, int l, int r){
+    if(r<=a || b<=l){
+      return 0;
+    }
+    if(a<=l && r<=b){
+      return dat[k];
+    }
+    else{
+      ll v1=query(a, b, k*2+1, l, (l+r)/2), v2=query(a, b, k*2+2, (l+r)/2, r);
+      return max(v1, v2);
+    }
+  }
 };
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, num;
-	ll a[114514];
-	cin>>n;
-	ll sum=0;
-	REP(i, n){
-		cin>>a[i];
-		sum+=a[i];
-	}
-	SegmentTree st(n);
-	REP(i, n){
-		cin>>num;
-		--num;
-		st.update(num, st.query(0, num, 0, 0, st.n)+a[num]);
-	}
-	cout<<(sum-st.query(0, n, 0, 0, st.n))*2<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, num;
+  ll a[114514];
+  cin>>n;
+  ll sum=0;
+  REP(i, n){
+    cin>>a[i];
+    sum+=a[i];
+  }
+  SegmentTree st(n);
+  REP(i, n){
+    cin>>num;
+    --num;
+    st.update(num, st.query(0, num, 0, 0, st.n)+a[num]);
+  }
+  cout<<(sum-st.query(0, n, 0, 0, st.n))*2<<'\n';
+  return 0;
 }

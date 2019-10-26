@@ -32,8 +32,8 @@ const int INF=1e9;
 const int MAX_V=114514;
 
 struct edge{
-	int to;
-	int cost;
+  int to;
+  int cost;
 };
 
 int V;
@@ -41,39 +41,39 @@ vector<edge> g[MAX_V];
 int mincost[MAX_V];
 
 void add_edge(int from, int to, int cost){
-	g[from].push_back({to, cost});
-	return e;
+  g[from].push_back({to, cost});
+  return e;
 }
 
 int prim(int s){
-	// piiのfirstは最小コスト、secondは頂点の番号
-	priority_queue<pii, vector<pii>, greater<pii>> que;
-	fill(mincost, mincost+V, INF);
-	mincost[0]=0;
-	que.push({0, s});
-	int res=0;
-	while(!que.empty()){
-		pii p=que.top();
-		que.pop();
-		int v=p.second;
-		if(mincost[v]<p.first){
-			continue;
-		}
-		res+=mincost[v];
-		REP(i, g[v].size()){
-			edge e=g[v][i];
-			if(mincost[e.to]>mincost[v]+e.cost){
-				mincost[e.to]=mincost[v]+e.cost;
-				que.push({mincost[e.to], e.to});
-			}
-		}
-	}
-	return res;
+  // piiのfirstは最小コスト、secondは頂点の番号
+  priority_queue<pii, vector<pii>, greater<pii>> que;
+  fill(mincost, mincost+V, INF);
+  mincost[0]=0;
+  que.push({0, s});
+  int res=0;
+  while(!que.empty()){
+    pii p=que.top();
+    que.pop();
+    int v=p.second;
+    if(mincost[v]<p.first){
+      continue;
+    }
+    res+=mincost[v];
+    REP(i, g[v].size()){
+      edge e=g[v][i];
+      if(mincost[e.to]>mincost[v]+e.cost){
+        mincost[e.to]=mincost[v]+e.cost;
+        que.push({mincost[e.to], e.to});
+      }
+    }
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
+  ios::sync_with_stdio(false);
+  cin.tie(0);
 
-	return 0;
+  return 0;
 }

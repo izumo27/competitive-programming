@@ -29,33 +29,33 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m;
-	ll x, y, z, xyz[10][1252];
-	cin>>n>>m;
-	REP(i, n){
-		cin>>x>>y>>z;
-		xyz[0][i]=x+y+z;
-		xyz[1][i]=x+y-z;
-		xyz[2][i]=x-y+z;
-		xyz[3][i]=-x+y+z;
-		xyz[4][i]=x-y-z;
-		xyz[5][i]=-x+y-z;
-		xyz[6][i]=-x-y+z;
-		xyz[7][i]=-x-y-z;
-	}
-	REP(i, 8){
-		sort(xyz[i], xyz[i]+n, greater<ll>());
-	}
-	ll ans=0;
-	REP(i, 8){
-		ll tmp=0;
-		REP(j, m){
-			tmp+=xyz[i][j];
-		}
-		ans=max(ans, tmp);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m;
+  ll x, y, z, xyz[10][1252];
+  cin>>n>>m;
+  REP(i, n){
+    cin>>x>>y>>z;
+    xyz[0][i]=x+y+z;
+    xyz[1][i]=x+y-z;
+    xyz[2][i]=x-y+z;
+    xyz[3][i]=-x+y+z;
+    xyz[4][i]=x-y-z;
+    xyz[5][i]=-x+y-z;
+    xyz[6][i]=-x-y+z;
+    xyz[7][i]=-x-y-z;
+  }
+  REP(i, 8){
+    sort(xyz[i], xyz[i]+n, greater<ll>());
+  }
+  ll ans=0;
+  REP(i, 8){
+    ll tmp=0;
+    REP(j, m){
+      tmp+=xyz[i][j];
+    }
+    ans=max(ans, tmp);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

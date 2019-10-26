@@ -30,41 +30,41 @@ const double EPS=1e-11;
 bool used[113];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a, b, c, d;
-	pii ab[114], cd[114];
-	cin>>n;
-	REP(i, n){
-		cin>>a>>b;
-		ab[i]=pii(a, b);
-	}
-	REP(i, n){
-		cin>>c>>d;
-		cd[i]=pii(c, d);
-	}
-	sort(ab, ab+n);
-	sort(cd, cd+n);
-	REP(i, n){
-		int cd1=cd[i].first, cd2=cd[i].second;
-		int cnt=0;
-		int cnt2=110;
-		int y=-1;
-		while(cd1>ab[cnt].first && cnt<n){
-			if(y<ab[cnt].second  && cd2>ab[cnt].second && used[cnt]==false){
-				y=ab[cnt].second;
-				cnt2=cnt;
-			}
-			++cnt;
-		}
-		used[cnt2]=true;
-		// DEBUG(cnt);
-		// DEBUG(cnt2);
-	}
-	int ans=0;
-	REP(i, n){
-		if(used[i]) ++ans;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a, b, c, d;
+  pii ab[114], cd[114];
+  cin>>n;
+  REP(i, n){
+    cin>>a>>b;
+    ab[i]=pii(a, b);
+  }
+  REP(i, n){
+    cin>>c>>d;
+    cd[i]=pii(c, d);
+  }
+  sort(ab, ab+n);
+  sort(cd, cd+n);
+  REP(i, n){
+    int cd1=cd[i].first, cd2=cd[i].second;
+    int cnt=0;
+    int cnt2=110;
+    int y=-1;
+    while(cd1>ab[cnt].first && cnt<n){
+      if(y<ab[cnt].second  && cd2>ab[cnt].second && used[cnt]==false){
+        y=ab[cnt].second;
+        cnt2=cnt;
+      }
+      ++cnt;
+    }
+    used[cnt2]=true;
+    // DEBUG(cnt);
+    // DEBUG(cnt2);
+  }
+  int ans=0;
+  REP(i, n){
+    if(used[i]) ++ans;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

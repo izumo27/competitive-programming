@@ -32,36 +32,36 @@ int n, k;
 ll a[364364], b[364364];
 
 bool is_ok(ll x){
-	int res=0;
-	REP(i, n){
-		res+=(upper_bound(b, b+n, x/a[i])-b);
-	}
-	return res>=k;
+  int res=0;
+  REP(i, n){
+    res+=(upper_bound(b, b+n, x/a[i])-b);
+  }
+  return res>=k;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n>>k;
-	ll m=0;
-	REP(i, n){
-		cin>>a[i];
-		m=max(m, a[i]);
-	}
-	REP(i, n){
-		cin>>b[i];
-	}
-	sort(b, b+n);
-	ll lb=0, ub=m*b[n-1];
-	while(ub-lb>1){
-		ll mid=(lb+ub)/2;
-		if(is_ok(mid)){
-			ub=mid;
-		}
-		else{
-			lb=mid;
-		}
-	}
-	cout<<ub<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n>>k;
+  ll m=0;
+  REP(i, n){
+    cin>>a[i];
+    m=max(m, a[i]);
+  }
+  REP(i, n){
+    cin>>b[i];
+  }
+  sort(b, b+n);
+  ll lb=0, ub=m*b[n-1];
+  while(ub-lb>1){
+    ll mid=(lb+ub)/2;
+    if(is_ok(mid)){
+      ub=mid;
+    }
+    else{
+      lb=mid;
+    }
+  }
+  cout<<ub<<'\n';
+  return 0;
 }

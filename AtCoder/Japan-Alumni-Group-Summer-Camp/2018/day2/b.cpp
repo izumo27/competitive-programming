@@ -32,25 +32,25 @@ ll n;
 int num[5]={5, 2, 5, 2, 5};
 
 int dfs(int a, int cnt){
-	if(a==5){
-		return cnt<=n;
-	}
-	int res=0;
-	REP(i, num[a]){
-		res+=dfs(a+1, cnt);
-		++cnt;
-	}
-	return res;
+  if(a==5){
+    return cnt<=n;
+  }
+  int res=0;
+  REP(i, num[a]){
+    res+=dfs(a+1, cnt);
+    ++cnt;
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout<<setprecision(10)<<fixed;
-	cin>>n;
-	if(n>=14){
-		n=14;
-	}
-	cout<<dfs(0, 0)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout<<setprecision(10)<<fixed;
+  cin>>n;
+  if(n>=14){
+    n=14;
+  }
+  cout<<dfs(0, 0)<<'\n';
+  return 0;
 }

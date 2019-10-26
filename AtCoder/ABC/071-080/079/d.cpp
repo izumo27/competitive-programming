@@ -37,38 +37,38 @@ int d[MAX_V][MAX_V];
 int V;
 
 void warshall_floyd(){
-	REP(k, V){
-		REP(i, V){
-			REP(j, V){
-				d[i][j]=min(d[i][j], d[i][k]+d[k][j]);
-			}
-		}
-	}
+  REP(k, V){
+    REP(i, V){
+      REP(j, V){
+        d[i][j]=min(d[i][j], d[i][k]+d[k][j]);
+      }
+    }
+  }
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int h, w, c, a;
-	cin>>h>>w;
-	V=10;
-	REP(i, 10){
-		REP(j, 10){
-			cin>>c;
-			d[i][j]=c;
-		}
-	}
-	warshall_floyd();
-	int ans=0;
-	REP(i, h){
-		REP(j, w){
-			cin>>a;
-			if(a==-1){
-				continue;
-			}
-			ans+=d[a][1];
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int h, w, c, a;
+  cin>>h>>w;
+  V=10;
+  REP(i, 10){
+    REP(j, 10){
+      cin>>c;
+      d[i][j]=c;
+    }
+  }
+  warshall_floyd();
+  int ans=0;
+  REP(i, h){
+    REP(j, w){
+      cin>>a;
+      if(a==-1){
+        continue;
+      }
+      ans+=d[a][1];
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

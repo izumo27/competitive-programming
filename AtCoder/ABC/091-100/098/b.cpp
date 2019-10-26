@@ -30,25 +30,25 @@ const double EPS=1e-11;
 bool a[30], b[30];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	string s;
-	cin>>n>>s;
-	int ans=0;
-	REP(i, n-1){
-		REP(j, 26){
-			a[j]=false;
-			b[j]=false;
-		}
-		int tmp=0;
-		REP(j, i+1) a[s[j]-'a']=true;
-		FOR(j, i+1, n) b[s[j]-'a']=true;
-		REP(j, 26){
-			if(a[j] && b[j]) ++tmp;
-		}
-		ans=max(ans, tmp);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  string s;
+  cin>>n>>s;
+  int ans=0;
+  REP(i, n-1){
+    REP(j, 26){
+      a[j]=false;
+      b[j]=false;
+    }
+    int tmp=0;
+    REP(j, i+1) a[s[j]-'a']=true;
+    FOR(j, i+1, n) b[s[j]-'a']=true;
+    REP(j, 26){
+      if(a[j] && b[j]) ++tmp;
+    }
+    ans=max(ans, tmp);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

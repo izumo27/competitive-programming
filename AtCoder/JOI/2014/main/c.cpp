@@ -32,52 +32,52 @@ int n;
 ll a[214514], sum[214514];
 
 bool is_ok(ll x){
-	int m=0, r=0;
-	REP(l, n){
-		if(m<=l){
-			m=l+1;
-		}
-		while(m<l+n-1 && sum[m]-sum[l]<x){
-			++m;
-		}
-		if(r<=m){
-			r=m+1;
-		}
-		if(r>=l+n+1){
-			continue;
-		}
-		while(r<l+n && sum[r]-sum[m]<x){
-			++r;
-		}
-		if(sum[n]-sum[r]+sum[l]>=x){
-			return true;
-		}
-	}
-	return false;
+  int m=0, r=0;
+  REP(l, n){
+    if(m<=l){
+      m=l+1;
+    }
+    while(m<l+n-1 && sum[m]-sum[l]<x){
+      ++m;
+    }
+    if(r<=m){
+      r=m+1;
+    }
+    if(r>=l+n+1){
+      continue;
+    }
+    while(r<l+n && sum[r]-sum[m]<x){
+      ++r;
+    }
+    if(sum[n]-sum[r]+sum[l]>=x){
+      return true;
+    }
+  }
+  return false;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n;
-	ll A;
-	REP(i, n){
-		cin>>A;
-		a[i]=a[i+n]=A;
-	}
-	REP(i, 2*n){
-		sum[i+1]=sum[i]+a[i];
-	}
-	ll lb=1, ub=1e15;
-	while(ub-lb>1){
-		ll mid=(lb+ub)/2;
-		if(is_ok(mid)){
-			lb=mid;
-		}
-		else{
-			ub=mid;
-		}
-	}
-	cout<<lb<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n;
+  ll A;
+  REP(i, n){
+    cin>>A;
+    a[i]=a[i+n]=A;
+  }
+  REP(i, 2*n){
+    sum[i+1]=sum[i]+a[i];
+  }
+  ll lb=1, ub=1e15;
+  while(ub-lb>1){
+    ll mid=(lb+ub)/2;
+    if(is_ok(mid)){
+      lb=mid;
+    }
+    else{
+      ub=mid;
+    }
+  }
+  cout<<lb<<'\n';
+  return 0;
 }

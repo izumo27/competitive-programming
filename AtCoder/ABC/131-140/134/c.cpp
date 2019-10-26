@@ -29,41 +29,41 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, a[252525];
-	cin>>n;
-	int ma=0;
-	REP(i, n){
-		cin>>a[i];
-		CHMAX(ma, a[i]);
-	}
-	int cnt=0;
-	REP(i, n){
-		if(a[i]==ma){
-			++cnt;
-		}
-	}
-	if(cnt>=2){
-		REP(i, n){
-			cout<<ma<<'\n';
-		}
-	}
-	else{
-		int b[252525];
-		REP(i, n){
-			b[i]=a[i];
-		}
-		sort(b, b+n);
-		REP(i, n){
-			if(a[i]==ma){
-				cout<<b[n-2]<<'\n';
-			}
-			else{
-				cout<<ma<<'\n';
-			}
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, a[252525];
+  cin>>n;
+  int ma=0;
+  REP(i, n){
+    cin>>a[i];
+    CHMAX(ma, a[i]);
+  }
+  int cnt=0;
+  REP(i, n){
+    if(a[i]==ma){
+      ++cnt;
+    }
+  }
+  if(cnt>=2){
+    REP(i, n){
+      cout<<ma<<'\n';
+    }
+  }
+  else{
+    int b[252525];
+    REP(i, n){
+      b[i]=a[i];
+    }
+    sort(b, b+n);
+    REP(i, n){
+      if(a[i]==ma){
+        cout<<b[n-2]<<'\n';
+      }
+      else{
+        cout<<ma<<'\n';
+      }
+    }
+  }
+  return 0;
 }

@@ -33,9 +33,9 @@ const int MAX_E=2525;
 const int MAX_V=1252;
 
 struct edge {
-	int from;
-	int to;
- 	ll cost;
+  int from;
+  int to;
+   ll cost;
 };
 
 // 辺
@@ -46,48 +46,48 @@ ll d[MAX_V];
 int V, E;
 
 bool shortest_path(int s){
-	fill(d, d+V, INF);
-	d[s]=0;
-	REP(i, V){
-		bool update=false;
-		REP(j, E){
-			edge e=es[j];
-			if(d[e.from]!=INF && d[e.to]>d[e.from]+e.cost){
-				d[e.to]=d[e.from]+e.cost;
-				update=true;
-				if(i==V-1 && e.to==V-1){
-					return false;
-				}
-			}
-		}
-		if(!update){
-			break;
-		}
-	}
-	return true;
+  fill(d, d+V, INF);
+  d[s]=0;
+  REP(i, V){
+    bool update=false;
+    REP(j, E){
+      edge e=es[j];
+      if(d[e.from]!=INF && d[e.to]>d[e.from]+e.cost){
+        d[e.to]=d[e.from]+e.cost;
+        update=true;
+        if(i==V-1 && e.to==V-1){
+          return false;
+        }
+      }
+    }
+    if(!update){
+      break;
+    }
+  }
+  return true;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, a, b;
-	ll c;
-	cin>>n>>m;
-	V=n;
-	E=m;
-	REP(i, m){
-		edge e;
-		cin>>a>>b>>c;
-		e.from=a-1;
-		e.to=b-1;
-		e.cost=-c;
-		es[i]=e;
-	}
-	if(shortest_path(0)){
-		cout<<-d[n-1]<<'\n';
-	}
-	else{
-		cout<<"inf"<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, a, b;
+  ll c;
+  cin>>n>>m;
+  V=n;
+  E=m;
+  REP(i, m){
+    edge e;
+    cin>>a>>b>>c;
+    e.from=a-1;
+    e.to=b-1;
+    e.cost=-c;
+    es[i]=e;
+  }
+  if(shortest_path(0)){
+    cout<<-d[n-1]<<'\n';
+  }
+  else{
+    cout<<"inf"<<'\n';
+  }
+  return 0;
 }

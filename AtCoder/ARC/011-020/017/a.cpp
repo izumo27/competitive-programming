@@ -29,19 +29,19 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 bool is_prime(int n){
-	for(int i=2; i*i<=n; ++i){
-		if(n%i==0){
-			return false;
-		}
-	}
-	return n!=1;
+  for(int i=2; i*i<=n; ++i){
+    if(n%i==0){
+      return false;
+    }
+  }
+  return n!=1;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	cin>>n;
-	cout<<(is_prime(n) ? "YES" : "NO")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  cin>>n;
+  cout<<(is_prime(n) ? "YES" : "NO")<<'\n';
+  return 0;
 }

@@ -30,26 +30,26 @@ const double EPS=1e-11;
 int a[364364], b[364364];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	string s;
-	cin>>n>>s;
-	REP(i, n){
-		if(s[i]=='E'){
-			a[i+1]=a[i]+1;
-			b[i+1]=b[i];
-		}
-		else{
-			a[i+1]=a[i];
-			b[i+1]=b[i]+1;
-		}
-	}
-	int ans=1<<30;
-	REP(i, n){
-		int e=a[n]-a[i+1];
-		ans=min(ans, e+b[i]);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  string s;
+  cin>>n>>s;
+  REP(i, n){
+    if(s[i]=='E'){
+      a[i+1]=a[i]+1;
+      b[i+1]=b[i];
+    }
+    else{
+      a[i+1]=a[i];
+      b[i+1]=b[i]+1;
+    }
+  }
+  int ans=1<<30;
+  REP(i, n){
+    int e=a[n]-a[i+1];
+    ans=min(ans, e+b[i]);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

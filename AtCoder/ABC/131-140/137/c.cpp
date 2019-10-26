@@ -29,34 +29,34 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n;
-	string s[125252];
-	cin>>n;
-	REP(i, n){
-		cin>>s[i];
-		sort(ALL(s[i]));
-	}
-	sort(s, s+n);
-	// REP(i, n){
-	// 	cout<<s[i]<<'\n';
-	// }
-	int i=0;
-	ll ans=0;
-	while(i<n){
-		ll cnt=1;
-		while(i<n && s[i]==s[i+1]){
-			++i;
-			++cnt;
-			// DEBUG(i);
-		}
-		// DEBUG(cnt);
-		// DEBUG(s[i]);
-		ans+=cnt*(cnt-1)/2;
-		++i;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n;
+  string s[125252];
+  cin>>n;
+  REP(i, n){
+    cin>>s[i];
+    sort(ALL(s[i]));
+  }
+  sort(s, s+n);
+  // REP(i, n){
+  //   cout<<s[i]<<'\n';
+  // }
+  int i=0;
+  ll ans=0;
+  while(i<n){
+    ll cnt=1;
+    while(i<n && s[i]==s[i+1]){
+      ++i;
+      ++cnt;
+      // DEBUG(i);
+    }
+    // DEBUG(cnt);
+    // DEBUG(s[i]);
+    ans+=cnt*(cnt-1)/2;
+    ++i;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

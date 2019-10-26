@@ -31,19 +31,19 @@ const double EPS=1e-11;
 int sum[110];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, w[110];
-	cin>>n;
-	REP(i, n){
-		cin>>w[i];
-		sum[i+1]=sum[i]+w[i];
-	}
-	int ans=1e9;
-	REP(i, n-1){
-		CHMIN(ans, abs(sum[i+1]-(sum[n]-sum[i+1])));
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, w[110];
+  cin>>n;
+  REP(i, n){
+    cin>>w[i];
+    sum[i+1]=sum[i]+w[i];
+  }
+  int ans=1e9;
+  REP(i, n-1){
+    CHMIN(ans, abs(sum[i+1]-(sum[n]-sum[i+1])));
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

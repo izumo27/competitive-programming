@@ -31,49 +31,49 @@ const double EPS=1e-11;
 int h[114][114];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, m, H, a[114], b[114], c[114][114];
-	cin>>n>>m>>H;
-	REP(i, m){
-		cin>>a[i];
-	}
-	REP(i, n){
-		cin>>b[i];
-	}
-	REP(i, n){
-		REP(j, m){
-			cin>>c[i][j];
-		}
-	}
-	REP(i, n){
-		REP(j, m){
-			if(c[i][j] && b[i]<=a[j]){
-				h[i][j]=b[i];
-				break;
-			}
-		}
-	}
-	REP(j, m){
-		REP(i, n){
-			if(c[i][j] && !h[i][j] && a[j]<=b[i]){
-				h[i][j]=a[j];
-				break;
-			}
-		}
-	}
-	REP(i, n){
-		REP(j, m){
-			if(c[i][j] && !h[i][j]){
-				h[i][j]=1;
-			}
-		}
-	}
-	REP(i, n){
-		REP(j, m){
-			cout<<h[i][j]<<" \n"[j==m-1];
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, m, H, a[114], b[114], c[114][114];
+  cin>>n>>m>>H;
+  REP(i, m){
+    cin>>a[i];
+  }
+  REP(i, n){
+    cin>>b[i];
+  }
+  REP(i, n){
+    REP(j, m){
+      cin>>c[i][j];
+    }
+  }
+  REP(i, n){
+    REP(j, m){
+      if(c[i][j] && b[i]<=a[j]){
+        h[i][j]=b[i];
+        break;
+      }
+    }
+  }
+  REP(j, m){
+    REP(i, n){
+      if(c[i][j] && !h[i][j] && a[j]<=b[i]){
+        h[i][j]=a[j];
+        break;
+      }
+    }
+  }
+  REP(i, n){
+    REP(j, m){
+      if(c[i][j] && !h[i][j]){
+        h[i][j]=1;
+      }
+    }
+  }
+  REP(i, n){
+    REP(j, m){
+      cout<<h[i][j]<<" \n"[j==m-1];
+    }
+  }
+  return 0;
 }

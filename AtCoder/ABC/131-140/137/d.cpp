@@ -29,35 +29,35 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, m;
-	ll a[125252], b[125252];
-	cin>>n>>m;
-	REP(i, n){
-		cin>>a[i]>>b[i];
-	}
-	vi ord(n);
-	iota(ALL(ord), 0);
-	sort(ALL(ord), [&](int x, int y){return a[x]<a[y];});
-	// DEBUG_VEC(ord);
-	priority_queue<int> pq;
-	ll ans=0;
-	int j=0;
-	FORR(i, 0, m){
-		while(j<n && i+a[ord[j]]<=m){
-			pq.push(b[ord[j]]);
-			++j;
-		}
-		if(pq.size()>0){
-			// DEBUG(i);
-			// DEBUG(pq.top());
-			// DEBUG(j);
-			ans+=pq.top();
-			pq.pop();
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, m;
+  ll a[125252], b[125252];
+  cin>>n>>m;
+  REP(i, n){
+    cin>>a[i]>>b[i];
+  }
+  vi ord(n);
+  iota(ALL(ord), 0);
+  sort(ALL(ord), [&](int x, int y){return a[x]<a[y];});
+  // DEBUG_VEC(ord);
+  priority_queue<int> pq;
+  ll ans=0;
+  int j=0;
+  FORR(i, 0, m){
+    while(j<n && i+a[ord[j]]<=m){
+      pq.push(b[ord[j]]);
+      ++j;
+    }
+    if(pq.size()>0){
+      // DEBUG(i);
+      // DEBUG(pq.top());
+      // DEBUG(j);
+      ans+=pq.top();
+      pq.pop();
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -31,40 +31,40 @@ const double EPS=1e-11;
 ll a[60];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	ll x;
-	cin>>n>>x;
-	a[0]=1;
-	REP(i, n){
-		a[i+1]=a[i]*2+3;
-	}
-	ll ans=0;
-	int ind=n;
-	bool ok=true;
-	while(x>0){
-		while(x>0 && a[ind]>x){
-			--ind;
-			--x;
-			if(x==0){
-				ok=false;
-			}
-		}
-		if(!ok){
-			break;
-		}
-		if(a[ind]==x){
-			ans+=(a[ind]+1)/2;
-			break;
-		}
-		if(a[ind]==x+1){
-			ans+=(a[ind]+1)/2+1;
-			break;
-		}
-		ans+=(a[ind]+1)/2+1;
-		x-=a[ind]+1;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  ll x;
+  cin>>n>>x;
+  a[0]=1;
+  REP(i, n){
+    a[i+1]=a[i]*2+3;
+  }
+  ll ans=0;
+  int ind=n;
+  bool ok=true;
+  while(x>0){
+    while(x>0 && a[ind]>x){
+      --ind;
+      --x;
+      if(x==0){
+        ok=false;
+      }
+    }
+    if(!ok){
+      break;
+    }
+    if(a[ind]==x){
+      ans+=(a[ind]+1)/2;
+      break;
+    }
+    if(a[ind]==x+1){
+      ans+=(a[ind]+1)/2+1;
+      break;
+    }
+    ans+=(a[ind]+1)/2+1;
+    x-=a[ind]+1;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

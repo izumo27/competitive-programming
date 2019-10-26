@@ -33,45 +33,45 @@ const ll INF=1e18;
 ll dp[2525][2525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, k, a[2525];
-	ll s[2525];
-	cin>>n>>k;
-	s[0]=0ll;
-	REP(i, n){
-		cin>>a[i];
-		s[i+1]=s[i]+(ll)a[i];
-	}
-	if(s[n]==k){
-		cout<<1<<'\n';
-		return 0;
-	}
-	REP(i, n+1){
-		FOR(j, 1, n+1){
-			if(j==1){
-				dp[i][j]=1;
-			}
-			else{
-				dp[i][j]=INF;
-			}
-		}
-	}
-	REP(i, n){
-		FOR(j, 2, i+2){
-			if(dp[i][j-1]>=s[i]){
-				dp[i+1][j]=dp[i][j];
-			}
-			else{
-				dp[i+1][j]=min(dp[i][j], dp[i][j-1]+dp[i][j-1]*a[i]/s[i]+1);
-			}
-		}
-	}
-	FORR(i, 0, n+1){
-		if(dp[n][i]<=(ll)k){
-			cout<<i<<'\n';
-			return 0;
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, k, a[2525];
+  ll s[2525];
+  cin>>n>>k;
+  s[0]=0ll;
+  REP(i, n){
+    cin>>a[i];
+    s[i+1]=s[i]+(ll)a[i];
+  }
+  if(s[n]==k){
+    cout<<1<<'\n';
+    return 0;
+  }
+  REP(i, n+1){
+    FOR(j, 1, n+1){
+      if(j==1){
+        dp[i][j]=1;
+      }
+      else{
+        dp[i][j]=INF;
+      }
+    }
+  }
+  REP(i, n){
+    FOR(j, 2, i+2){
+      if(dp[i][j-1]>=s[i]){
+        dp[i+1][j]=dp[i][j];
+      }
+      else{
+        dp[i+1][j]=min(dp[i][j], dp[i][j-1]+dp[i][j-1]*a[i]/s[i]+1);
+      }
+    }
+  }
+  FORR(i, 0, n+1){
+    if(dp[n][i]<=(ll)k){
+      cout<<i<<'\n';
+      return 0;
+    }
+  }
+  return 0;
 }

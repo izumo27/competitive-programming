@@ -31,39 +31,39 @@ const double EPS=1e-11;
 int ans[50];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout<<setprecision(10)<<fixed;
-	ll a, b;
-	cin>>a>>b;
-	if(a&1){
-		ans[0]=((b-a)%4>=2 ? 0 : 1);
-	}
-	else{
-		ll tmp=(b-a)%4;
-		ans[0]=(tmp==0 || tmp==3 ? 0 : 1);
-	}
-	ll mask=2;
-	FOR(i, 1, 40){
-		mask<<=1;
-		ll c=a%mask, d=b%mask;
-		if(c<mask/2){
-			ans[i]=(d<mask/2 || d&1 ? 0 : 1);
-		}
-		else{
-			if(c&1){
-				ans[i]=(d>=mask/2 && ~d&1 ? 0 : 1);
-			}
-			else{
-				ans[i]=(d<mask/2 || d&1 ? 0 : 1);
-			}
-		}
-	}
-	ll res=0;
-	FORR(i, 0, 40){
-		res<<=1;
-		res+=ans[i];
-	}
-	cout<<res<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout<<setprecision(10)<<fixed;
+  ll a, b;
+  cin>>a>>b;
+  if(a&1){
+    ans[0]=((b-a)%4>=2 ? 0 : 1);
+  }
+  else{
+    ll tmp=(b-a)%4;
+    ans[0]=(tmp==0 || tmp==3 ? 0 : 1);
+  }
+  ll mask=2;
+  FOR(i, 1, 40){
+    mask<<=1;
+    ll c=a%mask, d=b%mask;
+    if(c<mask/2){
+      ans[i]=(d<mask/2 || d&1 ? 0 : 1);
+    }
+    else{
+      if(c&1){
+        ans[i]=(d>=mask/2 && ~d&1 ? 0 : 1);
+      }
+      else{
+        ans[i]=(d<mask/2 || d&1 ? 0 : 1);
+      }
+    }
+  }
+  ll res=0;
+  FORR(i, 0, 40){
+    res<<=1;
+    res+=ans[i];
+  }
+  cout<<res<<'\n';
+  return 0;
 }

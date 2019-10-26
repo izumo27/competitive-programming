@@ -13,10 +13,10 @@ typedef pair<ll, ll> pll;
 #define FORR(i, a, b) for(int i=b-1; i>=a; --i)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int r, g;
-	cin>>r>>g;
-	cout<<r+(g-r)*2<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int r, g;
+  cin>>r>>g;
+  cout<<r+(g-r)*2<<'\n';
+  return 0;
 }

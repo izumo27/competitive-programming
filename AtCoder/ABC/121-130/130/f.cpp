@@ -31,53 +31,53 @@ const double EPS=1e-11;
 constexpr ll INF=1e9;
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout<<setprecision(10)<<fixed;
-	int n;
-	double x, y;
-	char d;
-	cin>>n;
-	double LL=INF, L=INF, LR=INF;
-	double RL=-INF, R=-INF, RR=-INF;
-	double DD=INF, D=INF, DU=INF;
-	double UD=-INF, U=-INF, UU=-INF;
-	REP(i, n){
-		cin>>x>>y>>d;
-		if(d=='R'){
-			CHMIN(LR, x);
-			CHMAX(RR, x);
-			CHMIN(D, y);
-			CHMAX(U, y);
-		}
-		if(d=='L'){
-			CHMIN(LL, x);
-			CHMAX(RL, x);
-			CHMIN(D, y);
-			CHMAX(U, y);
-		}
-		if(d=='U'){
-			CHMIN(DU, y);
-			CHMAX(UU, y);
-			CHMIN(L, x);
-			CHMAX(R, x);
-		}
-		if(d=='D'){
-			CHMIN(DD, y);
-			CHMAX(UD, y);
-			CHMIN(L, x);
-			CHMAX(R, x);
-		}
-	}
-	double ans=4*INF*INF;
-	REP(i, 4e8){
-		double t=i*0.5;
-		double xmi=min({L, LL-t, LR+t});
-		double xma=max({R, RL-t, RR+t});
-		double ymi=min({D, DD-t, DU+t});
-		double yma=max({U, UD-t, UU+t});
-		CHMIN(ans, (xma-xmi)*(yma-ymi));
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout<<setprecision(10)<<fixed;
+  int n;
+  double x, y;
+  char d;
+  cin>>n;
+  double LL=INF, L=INF, LR=INF;
+  double RL=-INF, R=-INF, RR=-INF;
+  double DD=INF, D=INF, DU=INF;
+  double UD=-INF, U=-INF, UU=-INF;
+  REP(i, n){
+    cin>>x>>y>>d;
+    if(d=='R'){
+      CHMIN(LR, x);
+      CHMAX(RR, x);
+      CHMIN(D, y);
+      CHMAX(U, y);
+    }
+    if(d=='L'){
+      CHMIN(LL, x);
+      CHMAX(RL, x);
+      CHMIN(D, y);
+      CHMAX(U, y);
+    }
+    if(d=='U'){
+      CHMIN(DU, y);
+      CHMAX(UU, y);
+      CHMIN(L, x);
+      CHMAX(R, x);
+    }
+    if(d=='D'){
+      CHMIN(DD, y);
+      CHMAX(UD, y);
+      CHMIN(L, x);
+      CHMAX(R, x);
+    }
+  }
+  double ans=4*INF*INF;
+  REP(i, 4e8){
+    double t=i*0.5;
+    double xmi=min({L, LL-t, LR+t});
+    double xma=max({R, RL-t, RR+t});
+    double ymi=min({D, DD-t, DU+t});
+    double yma=max({U, UD-t, UU+t});
+    CHMIN(ans, (xma-xmi)*(yma-ymi));
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -36,44 +36,44 @@ bool is_prime[MAX_N+1];
 // エラトステネスの篩
 // is_prime[i]=true⇔iが素数
 int sieve(int n){
-	int res=0;
-	REP(i, n+1){
-		is_prime[i]=true;
-	}
-	is_prime[0]=is_prime[1]=false;
-	FOR(i, 2, n+1){
-		if(is_prime[i]){
-			prime[res++]=i;
-			for(int j=2*i; j<=n; j+=i){
-				is_prime[j]=false;
-			}
-		}
-	}
-	return res;
+  int res=0;
+  REP(i, n+1){
+    is_prime[i]=true;
+  }
+  is_prime[0]=is_prime[1]=false;
+  FOR(i, 2, n+1){
+    if(is_prime[i]){
+      prime[res++]=i;
+      for(int j=2*i; j<=n; j+=i){
+        is_prime[j]=false;
+      }
+    }
+  }
+  return res;
 }
 
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, X;
-	cin>>n;
-	sieve(MAX_N);
-	int ans=0;
-	REP(i, n){
-		cin>>X;
-		if(X==7){
-			ans^=3;
-			continue;
-		}
-		if(is_prime[X-2]){
-			ans^=2;
-		}
-		else{
-			ans^=1;
-		}
-	}
-	cout<<(ans ? "An" : "Ai")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, X;
+  cin>>n;
+  sieve(MAX_N);
+  int ans=0;
+  REP(i, n){
+    cin>>X;
+    if(X==7){
+      ans^=3;
+      continue;
+    }
+    if(is_prime[X-2]){
+      ans^=2;
+    }
+    else{
+      ans^=1;
+    }
+  }
+  cout<<(ans ? "An" : "Ai")<<'\n';
+  return 0;
 }

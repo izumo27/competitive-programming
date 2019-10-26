@@ -41,201 +41,201 @@ double force_line;
 
 // 時刻取得（ミリ秒）
 ull current_time_mills(){
-	struct timeval _time;
-	gettimeofday(&_time, NULL);
-	return _time.tv_sec*1000+_time.tv_usec/1000;
+  struct timeval _time;
+  gettimeofday(&_time, NULL);
+  return _time.tv_sec*1000+_time.tv_usec/1000;
 }
 
 // 乱数
 unsigned int xor32(){
-	static unsigned int x=2463534242;
-	x=x^(x<<13);x=x^(x>>17);
-	return x=x^(x<<15);
+  static unsigned int x=2463534242;
+  x=x^(x<<13);x=x^(x>>17);
+  return x=x^(x<<15);
 }
 
 // 得点計算
 int eval(){
-	int used[29][29];
-	REP(i, m){
-		REP(j, m){
-			used[i][j]=0;
-		}
-	}
-	REP(i, n){
-		int x=14, y=14, d=0;
-		REP(j, l){
-			if(s[i][j]=='S'){
-				if(board_sub[x][y]=='D' || board_sub[x][y]=='T'){
-					int r;
-					if(board_sub[x][y]=='D') r=2;
-					else r=3;
-					REP(k, r){
-						if(board_sub[x+dx[d]][y+dy[d]]=='#'){
-							break;
-						}
-						x+=dx[d];
-						y+=dy[d];
-					}
-				}
-				else if(board_sub[x+dx[d]][y+dy[d]]!='#'){
-					x+=dx[d];
-					y+=dy[d];
-				}
-			}
-			else if(s[i][j]=='L'){
-				if(board_sub[x][y]=='D'){
-					d+=2;
-					if(d>=4) d-=4;
-				}
-				else if(board_sub[x][y]=='T'){
-					d+=3;
-					if(d>=4) d-=4;
-				}
-				else if(board_sub[x][y]=='R'){
-					--d;
-					if(d<0) d+=4;
-				}
-				else{
-					++d;
-					if(d>=4) d-=4;
-				}
-			}
-			else{
-				if(board_sub[x][y]=='D'){
-					d-=2;
-					if(d<0) d+=4;
-				}
-				else if(board_sub[x][y]=='T'){
-					d-=3;
-					if(d<0) d+=4;
-				}
-				else if(board_sub[x][y]=='L'){
-					++d;
-					if(d>=4) d-=4;
-				}
-				else{
-					--d;
-					if(d<0) d+=4;
-				}
-			}
-		}
-		++used[x][y];
-	}
-	int res=0;
-	REP(i, m){
-		REP(j, m){
-			if(used[i][j]==1){
-				res+=10;
-			}
-			else if(used[i][j]==2){
-				res+=3;
-			}
-			else if(used[i][j]==3){
-				++res;
-			}
-		}
-	}
-	return res;
+  int used[29][29];
+  REP(i, m){
+    REP(j, m){
+      used[i][j]=0;
+    }
+  }
+  REP(i, n){
+    int x=14, y=14, d=0;
+    REP(j, l){
+      if(s[i][j]=='S'){
+        if(board_sub[x][y]=='D' || board_sub[x][y]=='T'){
+          int r;
+          if(board_sub[x][y]=='D') r=2;
+          else r=3;
+          REP(k, r){
+            if(board_sub[x+dx[d]][y+dy[d]]=='#'){
+              break;
+            }
+            x+=dx[d];
+            y+=dy[d];
+          }
+        }
+        else if(board_sub[x+dx[d]][y+dy[d]]!='#'){
+          x+=dx[d];
+          y+=dy[d];
+        }
+      }
+      else if(s[i][j]=='L'){
+        if(board_sub[x][y]=='D'){
+          d+=2;
+          if(d>=4) d-=4;
+        }
+        else if(board_sub[x][y]=='T'){
+          d+=3;
+          if(d>=4) d-=4;
+        }
+        else if(board_sub[x][y]=='R'){
+          --d;
+          if(d<0) d+=4;
+        }
+        else{
+          ++d;
+          if(d>=4) d-=4;
+        }
+      }
+      else{
+        if(board_sub[x][y]=='D'){
+          d-=2;
+          if(d<0) d+=4;
+        }
+        else if(board_sub[x][y]=='T'){
+          d-=3;
+          if(d<0) d+=4;
+        }
+        else if(board_sub[x][y]=='L'){
+          ++d;
+          if(d>=4) d-=4;
+        }
+        else{
+          --d;
+          if(d<0) d+=4;
+        }
+      }
+    }
+    ++used[x][y];
+  }
+  int res=0;
+  REP(i, m){
+    REP(j, m){
+      if(used[i][j]==1){
+        res+=10;
+      }
+      else if(used[i][j]==2){
+        res+=3;
+      }
+      else if(used[i][j]==3){
+        ++res;
+      }
+    }
+  }
+  return res;
 }
 
 // ランダムにマスを選んで山登り
 // 徐々に選ぶマスを減らす
 void simulate(double size){
-	int num_size=(int)size;
-	pair<unsigned int, unsigned int> num[50];
-	REP(i, num_size){
-		num[i].first=xor32()%27+1;
-		num[i].second=xor32()%27+1;
-	}
-	REP(i, num_size){
-		unsigned int random=xor32();
-		if(random%16==0){
-			random=xor32();
-			if(random%32==0){
-				random=xor32();
-				if(random&1){
-					board_sub[num[i].first][num[i].second]='D';
-				}
-				else{
-					board_sub[num[i].first][num[i].second]='T';
-				}
-			}
-			else{
-				random=xor32();
-				if(random&1){
-					board_sub[num[i].first][num[i].second]='L';
-				}
-				else{
-					board_sub[num[i].first][num[i].second]='R';
-				}
-			}
-		}
-		else{
-			board_sub[num[i].first][num[i].second]='.';
-		}
-	}
+  int num_size=(int)size;
+  pair<unsigned int, unsigned int> num[50];
+  REP(i, num_size){
+    num[i].first=xor32()%27+1;
+    num[i].second=xor32()%27+1;
+  }
+  REP(i, num_size){
+    unsigned int random=xor32();
+    if(random%16==0){
+      random=xor32();
+      if(random%32==0){
+        random=xor32();
+        if(random&1){
+          board_sub[num[i].first][num[i].second]='D';
+        }
+        else{
+          board_sub[num[i].first][num[i].second]='T';
+        }
+      }
+      else{
+        random=xor32();
+        if(random&1){
+          board_sub[num[i].first][num[i].second]='L';
+        }
+        else{
+          board_sub[num[i].first][num[i].second]='R';
+        }
+      }
+    }
+    else{
+      board_sub[num[i].first][num[i].second]='.';
+    }
+  }
 
-	int score_sub=eval();
-	// 更新
-	if(score<score_sub){
-		score=score_sub;
-		REP(i, num_size){
-			board[num[i].first][num[i].second]=board_sub[num[i].first][num[i].second];
-		}
-	}
-	// 更新しなければsubを戻す
-	else{
-		REP(i, num_size){
-			board_sub[num[i].first][num[i].second]=board[num[i].first][num[i].second];
-		}
-	}
-	return;
+  int score_sub=eval();
+  // 更新
+  if(score<score_sub){
+    score=score_sub;
+    REP(i, num_size){
+      board[num[i].first][num[i].second]=board_sub[num[i].first][num[i].second];
+    }
+  }
+  // 更新しなければsubを戻す
+  else{
+    REP(i, num_size){
+      board_sub[num[i].first][num[i].second]=board[num[i].first][num[i].second];
+    }
+  }
+  return;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n>>m>>l;
-	REP(i, n){
-		cin>>s[i];
-	}
-	// 初期化、外側のマスはこれ以降変更しない
-	REP(i, m){
-		REP(j, m){
-			if(i==0 || i==m-1 || j==0 || j==m-1){
-				board[i][j]='#';
-				board_sub[i][j]='#';
-			}
-			else{
-				board[i][j]='.';
-				board_sub[i][j]='.';
-			}
-		}
-	}
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n>>m>>l;
+  REP(i, n){
+    cin>>s[i];
+  }
+  // 初期化、外側のマスはこれ以降変更しない
+  REP(i, m){
+    REP(j, m){
+      if(i==0 || i==m-1 || j==0 || j==m-1){
+        board[i][j]='#';
+        board_sub[i][j]='#';
+      }
+      else{
+        board[i][j]='.';
+        board_sub[i][j]='.';
+      }
+    }
+  }
 
-	score=eval();
-	ull time_limit=2965;
-	ull st=current_time_mills();
-	ull et=st+time_limit;
-	ull current_time=st;
-	// 確率定数
-	double C=time_limit;
-	double size;
-	while(current_time<et){
-		current_time=current_time_mills();
-		// force_line=(et-current_time)/C;
-		size=(et-current_time)/C*20+10;
-		REP(i, 10){
-			simulate(size);
-		}
-	}
+  score=eval();
+  ull time_limit=2965;
+  ull st=current_time_mills();
+  ull et=st+time_limit;
+  ull current_time=st;
+  // 確率定数
+  double C=time_limit;
+  double size;
+  while(current_time<et){
+    current_time=current_time_mills();
+    // force_line=(et-current_time)/C;
+    size=(et-current_time)/C*20+10;
+    REP(i, 10){
+      simulate(size);
+    }
+  }
 
-	// 出力
-	REP(i, m){
-		REP(j, m){
-			cout<<board[i][j];
-		}
-		cout<<'\n';
-	}
-	return 0;
+  // 出力
+  REP(i, m){
+    REP(j, m){
+      cout<<board[i][j];
+    }
+    cout<<'\n';
+  }
+  return 0;
 }

@@ -32,31 +32,31 @@ ll sum[252521], dp1[252521], dp2[252521], dp3[252521];
 ll INF=1e16;
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int l;
-	ll a[252521];
-	cin>>l;
-	bool ok=false;
-	REP(i, l){
-		cin>>a[i];
-		if(a[i]){
-			ok=true;
-		}
-		sum[i+1]=sum[i]+a[i];
-	}
-	if(!ok){
-		cout<<0<<'\n';
-		return 0;
-	}
-	dp1[0]=dp2[0]=dp3[0]=INF;
-	ll ans=INF;
-	REP(i, l){
-		dp1[i+1]=min(dp1[i], sum[i])+(a[i]==0 ? 2 : a[i]&1);
-		dp2[i+1]=min({dp1[i], dp2[i], sum[i]})+(~a[i]&1);
-		dp3[i+1]=min({dp1[i], dp2[i], dp3[i], sum[i]})+(a[i]==0 ? 2 : a[i]&1);
-		CHMIN(ans, min({dp1[i+1], dp2[i+1], dp3[i+1]})+sum[l]-sum[i+1]);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int l;
+  ll a[252521];
+  cin>>l;
+  bool ok=false;
+  REP(i, l){
+    cin>>a[i];
+    if(a[i]){
+      ok=true;
+    }
+    sum[i+1]=sum[i]+a[i];
+  }
+  if(!ok){
+    cout<<0<<'\n';
+    return 0;
+  }
+  dp1[0]=dp2[0]=dp3[0]=INF;
+  ll ans=INF;
+  REP(i, l){
+    dp1[i+1]=min(dp1[i], sum[i])+(a[i]==0 ? 2 : a[i]&1);
+    dp2[i+1]=min({dp1[i], dp2[i], sum[i]})+(~a[i]&1);
+    dp3[i+1]=min({dp1[i], dp2[i], dp3[i], sum[i]})+(a[i]==0 ? 2 : a[i]&1);
+    CHMIN(ans, min({dp1[i+1], dp2[i+1], dp3[i+1]})+sum[l]-sum[i+1]);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

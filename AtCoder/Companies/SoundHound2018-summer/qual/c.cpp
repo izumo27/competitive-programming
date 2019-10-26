@@ -29,10 +29,10 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	// ios::sync_with_stdio(false);
-	// cin.tie(0);
-	double n, m, d;
-	scanf("%lf%lf%lf", &n, &m, &d);
-	printf("%0.10lf\n", (d==0 ? n : 2*(n-d))*(m-1)/(n*n));
-	return 0;
+  // ios::sync_with_stdio(false);
+  // cin.tie(0);
+  double n, m, d;
+  scanf("%lf%lf%lf", &n, &m, &d);
+  printf("%0.10lf\n", (d==0 ? n : 2*(n-d))*(m-1)/(n*n));
+  return 0;
 }

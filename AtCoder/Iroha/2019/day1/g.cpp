@@ -31,49 +31,49 @@ const double EPS=1e-11;
 ll dp[2][400][400];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, m, k;
-	ll a[400];
-	cin>>n>>m>>k;
-	REP(i, n){
-		cin>>a[i];
-	}
-	REP(x, 2){
-		REP(y, m+1){
-			REP(z, k+1){
-				dp[x][y][z]=-1;
-			}
-		}
-	}
-	dp[0][0][0]=0;
-	REP(x, n){
-		REP(y, m+1){
-			REP(z, k){
-				dp[(x+1)&1][y][z]=-1;
-			}
-		}
-		REP(y, m+1){
-			REP(z, k){
-				if(dp[x&1][y][z]<0){
-					continue;
-				}
-				if(z!=k-1){
-					CHMAX(dp[(x+1)&1][y][z+1], dp[x&1][y][z]);
-					// DEBUG(dp[x&1][y][z]);
-				}
-				if(y!=m){
-					CHMAX(dp[(x+1)&1][y+1][0], dp[x&1][y][z]+a[x]);
-					// DEBUG(dp[(x+1)&1][y+1][0]);
-				}
-			}
-		}
-	}
-	ll ans=-1;
-	REP(z, k){
-		CHMAX(ans, dp[n&1][m][z]);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, m, k;
+  ll a[400];
+  cin>>n>>m>>k;
+  REP(i, n){
+    cin>>a[i];
+  }
+  REP(x, 2){
+    REP(y, m+1){
+      REP(z, k+1){
+        dp[x][y][z]=-1;
+      }
+    }
+  }
+  dp[0][0][0]=0;
+  REP(x, n){
+    REP(y, m+1){
+      REP(z, k){
+        dp[(x+1)&1][y][z]=-1;
+      }
+    }
+    REP(y, m+1){
+      REP(z, k){
+        if(dp[x&1][y][z]<0){
+          continue;
+        }
+        if(z!=k-1){
+          CHMAX(dp[(x+1)&1][y][z+1], dp[x&1][y][z]);
+          // DEBUG(dp[x&1][y][z]);
+        }
+        if(y!=m){
+          CHMAX(dp[(x+1)&1][y+1][0], dp[x&1][y][z]+a[x]);
+          // DEBUG(dp[(x+1)&1][y+1][0]);
+        }
+      }
+    }
+  }
+  ll ans=-1;
+  REP(z, k){
+    CHMAX(ans, dp[n&1][m][z]);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

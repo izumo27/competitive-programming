@@ -31,20 +31,20 @@ const double EPS=1e-11;
 int used[114514][2525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, a, b, l;
-	cin>>n>>m;
-	ll ans=0;
-	REP(i, m){
-		cin>>a>>b>>l;
-		--a;
-		--b;
-		ans+=used[a][2540-l]+used[b][2540-l];
-		// DEBUG(ans);
-		++used[a][l];
-		++used[b][l];
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, a, b, l;
+  cin>>n>>m;
+  ll ans=0;
+  REP(i, m){
+    cin>>a>>b>>l;
+    --a;
+    --b;
+    ans+=used[a][2540-l]+used[b][2540-l];
+    // DEBUG(ans);
+    ++used[a][l];
+    ++used[b][l];
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

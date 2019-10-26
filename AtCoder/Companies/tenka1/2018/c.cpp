@@ -31,31 +31,31 @@ const double EPS=1e-11;
 ll sum[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	ll a[114514];
-	cin>>n;
-	REP(i, n){
-		cin>>a[i];
-	}
-	sort(a, a+n);
-	REP(i, n){
-		sum[i+1]=sum[i]+a[i];
-	}
-	ll ans;
-	if(n==2){
-		ans=a[1]-a[0];
-	}
-	if(n==3){
-		ans=max(2*a[2]-a[0]-a[1], a[1]+a[2]-2*a[0]);
-	}
-	else if(n&1){
-		ans=max(2*(sum[n]-sum[n/2+1])-2*sum[n/2+1]+a[n/2]+a[n/2-1], 2*(sum[n]-sum[n/2])-a[n/2]-a[n/2+1]-2*sum[n/2]);
-	}
-	else{
-		ans=2*(sum[n]-sum[n/2])-a[n/2]-2*sum[n/2]+a[n/2-1];
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  ll a[114514];
+  cin>>n;
+  REP(i, n){
+    cin>>a[i];
+  }
+  sort(a, a+n);
+  REP(i, n){
+    sum[i+1]=sum[i]+a[i];
+  }
+  ll ans;
+  if(n==2){
+    ans=a[1]-a[0];
+  }
+  if(n==3){
+    ans=max(2*a[2]-a[0]-a[1], a[1]+a[2]-2*a[0]);
+  }
+  else if(n&1){
+    ans=max(2*(sum[n]-sum[n/2+1])-2*sum[n/2+1]+a[n/2]+a[n/2-1], 2*(sum[n]-sum[n/2])-a[n/2]-a[n/2+1]-2*sum[n/2]);
+  }
+  else{
+    ans=2*(sum[n]-sum[n/2])-a[n/2]-2*sum[n/2]+a[n/2-1];
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -29,29 +29,29 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int power(int a, int b){
-	int res=1;
-	while(b>0){
-		if(b&1){
-			res=res*a%MOD;
-		}
-		a=a*a%MOD;
-		b>>=1;
-	}
-	return res;
+  int res=1;
+  while(b>0){
+    if(b&1){
+      res=res*a%MOD;
+    }
+    a=a*a%MOD;
+    b>>=1;
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a;
-	cin>>n;
-	int ans=1;
-	REP(i, n){
-		cin>>a;
-		if(a%2==0){
-			ans*=2;
-		}
-	}
-	cout<<power(3, n)-ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a;
+  cin>>n;
+  int ans=1;
+  REP(i, n){
+    cin>>a;
+    if(a%2==0){
+      ans*=2;
+    }
+  }
+  cout<<power(3, n)-ans<<'\n';
+  return 0;
 }

@@ -32,28 +32,28 @@ int dp[20][20];
 bool used[20][20];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int a, b, n, x, y;
-	cin>>a>>b>>n;
-	REP(i, n){
-		cin>>x>>y;
-		used[x-1][y-1]=true;
-	}
-	dp[0][0]=1;
-	REP(i, a){
-		REP(j, b){
-			if(used[i][j]){
-				continue;
-			}
-			if(i-1>=0){
-				dp[i][j]+=dp[i-1][j];
-			}
-			if(j-1>=0){
-				dp[i][j]+=dp[i][j-1];
-			}
-		}
-	}
-	cout<<dp[a-1][b-1]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int a, b, n, x, y;
+  cin>>a>>b>>n;
+  REP(i, n){
+    cin>>x>>y;
+    used[x-1][y-1]=true;
+  }
+  dp[0][0]=1;
+  REP(i, a){
+    REP(j, b){
+      if(used[i][j]){
+        continue;
+      }
+      if(i-1>=0){
+        dp[i][j]+=dp[i-1][j];
+      }
+      if(j-1>=0){
+        dp[i][j]+=dp[i][j-1];
+      }
+    }
+  }
+  cout<<dp[a-1][b-1]<<'\n';
+  return 0;
 }

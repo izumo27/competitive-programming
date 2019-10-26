@@ -31,25 +31,25 @@ const double EPS=1e-11;
 map<int, int> mp;
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, d, m, t;
-	cin>>n;
-	REP(i, n){
-		cin>>d;
-		++mp[d];
-	}
-	cin>>m;
-	REP(i, m){
-		cin>>t;
-		if(mp[t]<=0){
-			cout<<"NO"<<'\n';
-				return 0;
-		}
-		else{
-			--mp[t];
-		}
-	}
-	cout<<"YES"<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, d, m, t;
+  cin>>n;
+  REP(i, n){
+    cin>>d;
+    ++mp[d];
+  }
+  cin>>m;
+  REP(i, m){
+    cin>>t;
+    if(mp[t]<=0){
+      cout<<"NO"<<'\n';
+        return 0;
+    }
+    else{
+      --mp[t];
+    }
+  }
+  cout<<"YES"<<'\n';
+  return 0;
 }

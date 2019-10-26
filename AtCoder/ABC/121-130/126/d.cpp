@@ -29,66 +29,66 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 struct edge{
-	int to;
-	int cost;
+  int to;
+  int cost;
 };
 
 vector<edge> g[114514];
 
 void add_edge(int from, int to, int cost){
-	g[from].push_back({to, cost});
-	return;
+  g[from].push_back({to, cost});
+  return;
 }
 
 int ans[114514];
 
 void dfs(int s){
-	for(auto x : g[s]){
-		if(ans[x.to]!=-1){
-			continue;
-		}
-		if(x.cost&1){
-			if(ans[s]){
-				ans[x.to]=0;
-			}
-			else{
-				ans[x.to]=1;
-			}
-			dfs(x.to);
-		}
-		else{
-			if(ans[s]){
-				ans[x.to]=1;
-			}
-			else{
-				ans[x.to]=0;
-			}
-			dfs(x.to);
-		}
-	}
-	return;
+  for(auto x : g[s]){
+    if(ans[x.to]!=-1){
+      continue;
+    }
+    if(x.cost&1){
+      if(ans[s]){
+        ans[x.to]=0;
+      }
+      else{
+        ans[x.to]=1;
+      }
+      dfs(x.to);
+    }
+    else{
+      if(ans[s]){
+        ans[x.to]=1;
+      }
+      else{
+        ans[x.to]=0;
+      }
+      dfs(x.to);
+    }
+  }
+  return;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, u, v, w;
-	cin>>n;
-	REP(i, n-1){
-		cin>>u>>v>>w;
-		--u;
-		--v;
-		add_edge(u, v, w);
-		add_edge(v, u, w);
-	}
-	REP(i, n){
-		ans[i]=-1;
-	}
-	ans[0]=0;
-	dfs(0);
-	REP(i, n){
-		cout<<ans[i]<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, u, v, w;
+  cin>>n;
+  REP(i, n-1){
+    cin>>u>>v>>w;
+    --u;
+    --v;
+    add_edge(u, v, w);
+    add_edge(v, u, w);
+  }
+  REP(i, n){
+    ans[i]=-1;
+  }
+  ans[0]=0;
+  dfs(0);
+  REP(i, n){
+    cout<<ans[i]<<'\n';
+  }
+  return 0;
 }

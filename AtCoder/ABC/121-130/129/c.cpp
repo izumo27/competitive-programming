@@ -32,23 +32,23 @@ ll dp[125252];
 bool ng[125252];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, m, a;
-	cin>>n>>m;
-	REP(i, m){
-		cin>>a;
-		ng[a]=true;
-	}
-	dp[0]=1;
-	REP(i, n){
-		if(ng[i]){
-			continue;
-		}
-		dp[i+1]=(dp[i+1]+dp[i])%MOD;
-		dp[i+2]=(dp[i+2]+dp[i])%MOD;
-	}
-	cout<<dp[n]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, m, a;
+  cin>>n>>m;
+  REP(i, m){
+    cin>>a;
+    ng[a]=true;
+  }
+  dp[0]=1;
+  REP(i, n){
+    if(ng[i]){
+      continue;
+    }
+    dp[i+1]=(dp[i+1]+dp[i])%MOD;
+    dp[i+2]=(dp[i+2]+dp[i])%MOD;
+  }
+  cout<<dp[n]<<'\n';
+  return 0;
 }

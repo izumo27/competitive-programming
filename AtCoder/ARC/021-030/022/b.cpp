@@ -30,22 +30,22 @@ const double EPS=1e-11;
 int used[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a[114514];
-	cin>>n;
-	REP(i, n){
-		cin>>a[i];
-	}
-	int r=0, ans=0;
-	REP(l, n){
-		while(r<n && used[a[r]]==0){
-			++used[a[r]];
-			++r;
-		}
-		ans=max(ans, r-l);
-		--used[a[l]];
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a[114514];
+  cin>>n;
+  REP(i, n){
+    cin>>a[i];
+  }
+  int r=0, ans=0;
+  REP(l, n){
+    while(r<n && used[a[r]]==0){
+      ++used[a[r]];
+      ++r;
+    }
+    ans=max(ans, r-l);
+    --used[a[l]];
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

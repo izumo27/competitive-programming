@@ -31,32 +31,32 @@ const double EPS=1e-11;
 int dp[114][114][114];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, a, b, c, w, x, y, z;
-	cin>>n>>m;
-	REP(i, n){
-		cin>>a>>b>>c>>w;
-		dp[a][b][c]=max(dp[a][b][c], w);
-	}
-	REP(i, 101){
-		REP(j, 101){
-			REP(k, 101){
-				if(i>0){
-					dp[i][j][k]=max(dp[i][j][k], dp[i-1][j][k]);
-				}
-				if(j>0){
-					dp[i][j][k]=max(dp[i][j][k], dp[i][j-1][k]);
-				}
-				if(k>0){
-					dp[i][j][k]=max(dp[i][j][k], dp[i][j][k-1]);
-				}
-			}
-		}
-	}
-	REP(i, m){
-		cin>>x>>y>>z;
-		cout<<dp[x][y][z]<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, a, b, c, w, x, y, z;
+  cin>>n>>m;
+  REP(i, n){
+    cin>>a>>b>>c>>w;
+    dp[a][b][c]=max(dp[a][b][c], w);
+  }
+  REP(i, 101){
+    REP(j, 101){
+      REP(k, 101){
+        if(i>0){
+          dp[i][j][k]=max(dp[i][j][k], dp[i-1][j][k]);
+        }
+        if(j>0){
+          dp[i][j][k]=max(dp[i][j][k], dp[i][j-1][k]);
+        }
+        if(k>0){
+          dp[i][j][k]=max(dp[i][j][k], dp[i][j][k-1]);
+        }
+      }
+    }
+  }
+  REP(i, m){
+    cin>>x>>y>>z;
+    cout<<dp[x][y][z]<<'\n';
+  }
+  return 0;
 }

@@ -31,20 +31,20 @@ const double EPS=1e-11;
 ll aa[252525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a;
-	cin>>n;
-	REP(i, n){
-		cin>>a;
-		aa[i]=a-i-1;
-	}
-	sort(aa, aa+n);
-	ll b=aa[n/2];
-	ll ans=0;
-	REP(i, n){
-		ans+=abs(aa[i]-b);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a;
+  cin>>n;
+  REP(i, n){
+    cin>>a;
+    aa[i]=a-i-1;
+  }
+  sort(aa, aa+n);
+  ll b=aa[n/2];
+  ll ans=0;
+  REP(i, n){
+    ans+=abs(aa[i]-b);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

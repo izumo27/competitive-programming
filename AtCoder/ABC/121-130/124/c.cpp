@@ -29,38 +29,38 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	string s;
-	cin>>s;
-	int n=s.size();
-	int cnt1=0;
-	REP(i, n){
-		if(i&1){
-			if(s[i]!='0'){
-				++cnt1;
-			}
-		}
-		else{
-			if(s[i]!='1'){
-				++cnt1;
-			}
-		}
-	}
-	int cnt2=0;
-	REP(i, n){
-		if(i&1){
-			if(s[i]!='1'){
-				++cnt2;
-			}
-		}
-		else{
-			if(s[i]!='0'){
-				++cnt2;
-			}
-		}
-	}
-	cout<<min(cnt1, cnt2)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  string s;
+  cin>>s;
+  int n=s.size();
+  int cnt1=0;
+  REP(i, n){
+    if(i&1){
+      if(s[i]!='0'){
+        ++cnt1;
+      }
+    }
+    else{
+      if(s[i]!='1'){
+        ++cnt1;
+      }
+    }
+  }
+  int cnt2=0;
+  REP(i, n){
+    if(i&1){
+      if(s[i]!='1'){
+        ++cnt2;
+      }
+    }
+    else{
+      if(s[i]!='0'){
+        ++cnt2;
+      }
+    }
+  }
+  cout<<min(cnt1, cnt2)<<'\n';
+  return 0;
 }

@@ -29,21 +29,21 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int a, b, k;
-	cin>>a>>b>>k;
-	int cnt=0;
-	FORR(i, 1, min(a, b)+1){
-		if(a%i==0 && b%i==0){
-			if(cnt+1==k){
-				cout<<i<<'\n';
-				return 0;
-			}
-			else{
-				++cnt;
-			}
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int a, b, k;
+  cin>>a>>b>>k;
+  int cnt=0;
+  FORR(i, 1, min(a, b)+1){
+    if(a%i==0 && b%i==0){
+      if(cnt+1==k){
+        cout<<i<<'\n';
+        return 0;
+      }
+      else{
+        ++cnt;
+      }
+    }
+  }
+  return 0;
 }

@@ -28,25 +28,25 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int POW(int a, int b){
-	int ans=1;
-	REP(i, b){
-		ans*=a;
-	}
-	return ans;
+  int ans=1;
+  REP(i, b){
+    ans*=a;
+  }
+  return ans;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int x;
-	cin>>x;
-	int ans=1;
-	FOR(i, 1, x){
-		FOR(j, 2, x){
-			if(pow(i, j)>x) break;
-			ans=max(ans, POW(i, j));
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int x;
+  cin>>x;
+  int ans=1;
+  FOR(i, 1, x){
+    FOR(j, 2, x){
+      if(pow(i, j)>x) break;
+      ans=max(ans, POW(i, j));
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

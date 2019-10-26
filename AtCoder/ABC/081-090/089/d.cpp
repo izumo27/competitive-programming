@@ -31,24 +31,24 @@ const double EPS=1e-11;
 int x[92525], y[92525] ,s[92525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int h, w, d, a, q, l, r;
-	cin>>h>>w>>d;
-	REP(i, h){
-		REP(j, w){
-			cin>>a;
-			x[a]=i;
-			y[a]=j;
-		}
-	}
-	FOR(i, d+1, h*w+1){
-		s[i]=s[i-d]+abs(x[i-d]-x[i])+abs(y[i-d]-y[i]);
-	}
-	cin>>q;
-	REP(i, q){
-		cin>>l>>r;
-		cout<<s[r]-s[l]<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int h, w, d, a, q, l, r;
+  cin>>h>>w>>d;
+  REP(i, h){
+    REP(j, w){
+      cin>>a;
+      x[a]=i;
+      y[a]=j;
+    }
+  }
+  FOR(i, d+1, h*w+1){
+    s[i]=s[i-d]+abs(x[i-d]-x[i])+abs(y[i-d]-y[i]);
+  }
+  cin>>q;
+  REP(i, q){
+    cin>>l>>r;
+    cout<<s[r]-s[l]<<'\n';
+  }
+  return 0;
 }

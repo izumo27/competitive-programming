@@ -33,71 +33,71 @@ string s;
 char t[252521], d[252521];
 
 bool is_ok1(int mid){
-	REP(i, q){
-		if(mid==0 && s[mid]==t[i] && d[i]=='L'){
-			return true;
-		}
-		if(s[mid]==t[i]){
-			if(d[i]=='L'){
-				--mid;
-			}
-			else{
-				++mid;
-			}
-		}
-	}
-	return false;
+  REP(i, q){
+    if(mid==0 && s[mid]==t[i] && d[i]=='L'){
+      return true;
+    }
+    if(s[mid]==t[i]){
+      if(d[i]=='L'){
+        --mid;
+      }
+      else{
+        ++mid;
+      }
+    }
+  }
+  return false;
 }
 
 bool is_ok2(int mid){
-	REP(i, q){
-		if(mid==n-1 && s[mid]==t[i] && d[i]=='R'){
-			return true;
-		}
-		if(s[mid]==t[i]){
-			if(d[i]=='L'){
-				--mid;
-			}
-			else{
-				++mid;
-			}
-		}
-	}
-	return false;
+  REP(i, q){
+    if(mid==n-1 && s[mid]==t[i] && d[i]=='R'){
+      return true;
+    }
+    if(s[mid]==t[i]){
+      if(d[i]=='L'){
+        --mid;
+      }
+      else{
+        ++mid;
+      }
+    }
+  }
+  return false;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	cin>>n>>q>>s;
-	REP(i, q){
-		cin>>t[i]>>d[i];
-	}
-	int lb1=-1, ub1=n+1;
-	while(ub1-lb1>1){
-		int mid=(lb1+ub1)/2;
-		if(is_ok1(mid)){
-			lb1=mid;
-		}
-		else{
-			ub1=mid;
-		}
-	}
-	int lb2=-1, ub2=n;
-	while(ub2-lb2>1){
-		int mid=(lb2+ub2)/2;
-		if(is_ok2(mid)){
-			ub2=mid;
-		}
-		else{
-			lb2=mid;
-		}
-	}
-	// DEBUG(lb1);
-	// DEBUG(ub1);
-	// DEBUG(lb2);
-	// DEBUG(ub2);
-	cout<<n-min(n, lb1+1+n-ub2)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  cin>>n>>q>>s;
+  REP(i, q){
+    cin>>t[i]>>d[i];
+  }
+  int lb1=-1, ub1=n+1;
+  while(ub1-lb1>1){
+    int mid=(lb1+ub1)/2;
+    if(is_ok1(mid)){
+      lb1=mid;
+    }
+    else{
+      ub1=mid;
+    }
+  }
+  int lb2=-1, ub2=n;
+  while(ub2-lb2>1){
+    int mid=(lb2+ub2)/2;
+    if(is_ok2(mid)){
+      ub2=mid;
+    }
+    else{
+      lb2=mid;
+    }
+  }
+  // DEBUG(lb1);
+  // DEBUG(ub1);
+  // DEBUG(lb2);
+  // DEBUG(ub2);
+  cout<<n-min(n, lb1+1+n-ub2)<<'\n';
+  return 0;
 }

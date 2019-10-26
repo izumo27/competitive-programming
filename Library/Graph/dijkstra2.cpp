@@ -42,43 +42,43 @@ int V;
 
 // 最短路も求める場合
 void dijkstra(int s){
-	fill(d, d+V, INF);
-	fill(used, used+V, false);
-	fill(prev, prev+V, -1);
-	d[s]=0;
-	while(true){
-		int v=-1;
-		REP(i, V){
-			if(!used[i] && (v==-1 || d[i]<d[v])){
-				v=u;
-			}
-		}
-		if(v==-1){
-			break;
-		}
-		used[v]=true;
-		REP(i, V){
-			if(d[i]>d[v]+cost[v][i]){
-				d[i]=d[u]+cost[v][i];
-				prev[i]=v;
-			}
-		}
-	}
+  fill(d, d+V, INF);
+  fill(used, used+V, false);
+  fill(prev, prev+V, -1);
+  d[s]=0;
+  while(true){
+    int v=-1;
+    REP(i, V){
+      if(!used[i] && (v==-1 || d[i]<d[v])){
+        v=u;
+      }
+    }
+    if(v==-1){
+      break;
+    }
+    used[v]=true;
+    REP(i, V){
+      if(d[i]>d[v]+cost[v][i]){
+        d[i]=d[u]+cost[v][i];
+        prev[i]=v;
+      }
+    }
+  }
 }
 
 // 頂点tへの最短路
 vi get_path(int t){
-	vi path;
-	for(; t!=-1; t=prev[t]){
-		path.push_back(t);
-	}
-	reverse(ALL(path));
-	return path;
+  vi path;
+  for(; t!=-1; t=prev[t]){
+    path.push_back(t);
+  }
+  reverse(ALL(path));
+  return path;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
+  ios::sync_with_stdio(false);
+  cin.tie(0);
 
-	return 0;
+  return 0;
 }

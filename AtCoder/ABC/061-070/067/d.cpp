@@ -32,49 +32,49 @@ vi g[114514];
 int d[114514], d2[114514];
 
 void dfs(int x, int a){
-	if(d[x]!=-1){
-		return;
-	}
-	d[x]=a;
-	for(int y : g[x]){
-		dfs(y, a+1);
-	}
+  if(d[x]!=-1){
+    return;
+  }
+  d[x]=a;
+  for(int y : g[x]){
+    dfs(y, a+1);
+  }
 }
 
 void dfs2(int x, int a){
-	if(d2[x]!=-1){
-		return;
-	}
-	d2[x]=a;
-	for(int y : g[x]){
-		dfs2(y, a+1);
-	}
+  if(d2[x]!=-1){
+    return;
+  }
+  d2[x]=a;
+  for(int y : g[x]){
+    dfs2(y, a+1);
+  }
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a, b;
-	cin>>n;
-	REP(i, n-1){
-		cin>>a>>b;
-		--a;
-		--b;
-		g[a].push_back(b);
-		g[b].push_back(a);
-	}
-	REP(i, n){
-		d[i]=-1;
-		d2[i]=-1;
-	}
-	dfs(0, 0);
-	dfs2(n-1, 0);
-	int cnt=0;
-	REP(i, n){
-		if(d[i]<=d2[i]){
-			++cnt;
-		}
-	}
-	cout<<(cnt*2>n ? "Fennec" : "Snuke")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a, b;
+  cin>>n;
+  REP(i, n-1){
+    cin>>a>>b;
+    --a;
+    --b;
+    g[a].push_back(b);
+    g[b].push_back(a);
+  }
+  REP(i, n){
+    d[i]=-1;
+    d2[i]=-1;
+  }
+  dfs(0, 0);
+  dfs2(n-1, 0);
+  int cnt=0;
+  REP(i, n){
+    if(d[i]<=d2[i]){
+      ++cnt;
+    }
+  }
+  cout<<(cnt*2>n ? "Fennec" : "Snuke")<<'\n';
+  return 0;
 }

@@ -33,51 +33,51 @@ int ans[12525];
 vi g[12525];
 
 void bfs(int s){
-	queue<int> q;
-	q.push(s);
-	int cnt=n-1;
-	ans[s]=c[cnt];
-	while(q.size()){
-		int p=q.front();
-		q.pop();
-		for(auto& x : g[p]){
-			if(ans[x]!=-1){
-				continue;
-			}
-			ans[x]=c[--cnt];
-			// DEBUG(cnt);
-			q.push(x);
-		}
-	}
-	return;
+  queue<int> q;
+  q.push(s);
+  int cnt=n-1;
+  ans[s]=c[cnt];
+  while(q.size()){
+    int p=q.front();
+    q.pop();
+    for(auto& x : g[p]){
+      if(ans[x]!=-1){
+        continue;
+      }
+      ans[x]=c[--cnt];
+      // DEBUG(cnt);
+      q.push(x);
+    }
+  }
+  return;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	cin>>n;
-	REP(i, n-1){
-		cin>>a>>b;
-		--a;
-		--b;
-		g[a].push_back(b);
-		g[b].push_back(a);
-	}
-	int sum=0;
-	REP(i, n){
-		cin>>c[i];
-		sum+=c[i];
-	}
-	sort(c, c+n);
-	int ma=c[n-1];
-	REP(i, n){
-		ans[i]=-1;
-	}
-	bfs(0);
-	cout<<sum-ma<<'\n';
-	REP(i, n){
-		cout<<ans[i]<<" \n"[i==n-1];
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  cin>>n;
+  REP(i, n-1){
+    cin>>a>>b;
+    --a;
+    --b;
+    g[a].push_back(b);
+    g[b].push_back(a);
+  }
+  int sum=0;
+  REP(i, n){
+    cin>>c[i];
+    sum+=c[i];
+  }
+  sort(c, c+n);
+  int ma=c[n-1];
+  REP(i, n){
+    ans[i]=-1;
+  }
+  bfs(0);
+  cout<<sum-ma<<'\n';
+  REP(i, n){
+    cout<<ans[i]<<" \n"[i==n-1];
+  }
+  return 0;
 }

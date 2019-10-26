@@ -29,27 +29,27 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, x, y, a[114];
-	cin>>n>>x>>y;
-	REP(i, n){
-		cin>>a[i];
-	}
-	sort(a, a+n);
-	FORR(i, 0, n){
-		if((n-i)&1){
-			x+=a[i];
-		}
-		else{
-			y+=a[i];
-		}
-	}
-	if(x==y){
-		cout<<"Draw"<<'\n';
-		return 0;
-	}
-	cout<<(x>y ? "Takahashi" : "Aoki")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, x, y, a[114];
+  cin>>n>>x>>y;
+  REP(i, n){
+    cin>>a[i];
+  }
+  sort(a, a+n);
+  FORR(i, 0, n){
+    if((n-i)&1){
+      x+=a[i];
+    }
+    else{
+      y+=a[i];
+    }
+  }
+  if(x==y){
+    cout<<"Draw"<<'\n';
+    return 0;
+  }
+  cout<<(x>y ? "Takahashi" : "Aoki")<<'\n';
+  return 0;
 }

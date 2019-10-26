@@ -31,29 +31,29 @@ const double EPS=1e-11;
 int alf[30];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string s;
-	cin>>s;
-	int l=0, r=s.size()-1, ans=0;
-	while(l<=r && l<s.size() && r>=0){
-		if(s[l]==s[r]){
-			++l;
-			--r;
-		}
-		else if(s[l]=='x'){
-			++l;
-			++ans;
-		}
-		else if(s[r]=='x'){
-			--r;
-			++ans;
-		}
-		else{
-			cout<<-1<<'\n';
-			return 0;
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s;
+  cin>>s;
+  int l=0, r=s.size()-1, ans=0;
+  while(l<=r && l<s.size() && r>=0){
+    if(s[l]==s[r]){
+      ++l;
+      --r;
+    }
+    else if(s[l]=='x'){
+      ++l;
+      ++ans;
+    }
+    else if(s[r]=='x'){
+      --r;
+      ++ans;
+    }
+    else{
+      cout<<-1<<'\n';
+      return 0;
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

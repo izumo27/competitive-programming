@@ -37,34 +37,34 @@ int color[MAX_V];
 
 // 二部グラフか判定
 bool bipartite(int v, int c){
-	color[v]=c;
-	REP(i, g[v].size()){
-		if(color[g[v][i]]==c){
-			return false;
-		}
-		if(color[g[v][i]]==0 && !bipartite(g[v][i], -c)){
-			return false;
-		}
-	}
-	return true;
+  color[v]=c;
+  REP(i, g[v].size()){
+    if(color[g[v][i]]==c){
+      return false;
+    }
+    if(color[g[v][i]]==0 && !bipartite(g[v][i], -c)){
+      return false;
+    }
+  }
+  return true;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
+  ios::sync_with_stdio(false);
+  cin.tie(0);
 
-	if(!bipartite(a, 1)){
-		// 二部グラフではない
+  if(!bipartite(a, 1)){
+    // 二部グラフではない
 
-	}
-	// グラフが連結でないとき
-	// REP(i, v){
-	// 	if(color[i]==0){
-	// 		if(!bipartite(i, 1)){
-	// 			// 二部グラフではない
-	//
-	// 		}
-	// 	}
-	// }
-	return 0;
+  }
+  // グラフが連結でないとき
+  // REP(i, v){
+  //   if(color[i]==0){
+  //     if(!bipartite(i, 1)){
+  //       // 二部グラフではない
+  //
+  //     }
+  //   }
+  // }
+  return 0;
 }

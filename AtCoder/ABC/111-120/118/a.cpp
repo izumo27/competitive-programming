@@ -29,10 +29,10 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int a, b;
-	cin>>a>>b;
-	cout<<(b%a==0 ? a+b : b-a)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int a, b;
+  cin>>a>>b;
+  cout<<(b%a==0 ? a+b : b-a)<<'\n';
+  return 0;
 }

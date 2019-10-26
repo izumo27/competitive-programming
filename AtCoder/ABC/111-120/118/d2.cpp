@@ -32,39 +32,39 @@ int num[10]={0, 2, 5, 5, 4, 5, 6, 3, 7, 6};
 int dp[12525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, a[10];
-	cin>>n>>m;
-	REP(i, m){
-		cin>>a[i];
-	}
-	sort(a, a+m);
-	FOR(i, 1, n+1){
-		dp[i]=-1;
-	}
-	REP(i, n+1){
-		int ma=-1;
-		REP(j, m){
-			if(i>=num[a[j]]){
-				CHMAX(ma, dp[i-num[a[j]]]);
-			}
-		}
-		if(ma>=0){
-			dp[i]=ma+1;
-		}
-	}
-	int x=n;
-	string ans="";
-	while(x>0){
-		FORR(i, 0, m){
-			if(x>=num[a[i]] && dp[x-num[a[i]]]==dp[x]-1){
-				ans+=to_string(a[i]);
-				x-=num[a[i]];
-				break;
-			}
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, a[10];
+  cin>>n>>m;
+  REP(i, m){
+    cin>>a[i];
+  }
+  sort(a, a+m);
+  FOR(i, 1, n+1){
+    dp[i]=-1;
+  }
+  REP(i, n+1){
+    int ma=-1;
+    REP(j, m){
+      if(i>=num[a[j]]){
+        CHMAX(ma, dp[i-num[a[j]]]);
+      }
+    }
+    if(ma>=0){
+      dp[i]=ma+1;
+    }
+  }
+  int x=n;
+  string ans="";
+  while(x>0){
+    FORR(i, 0, m){
+      if(x>=num[a[i]] && dp[x-num[a[i]]]==dp[x]-1){
+        ans+=to_string(a[i]);
+        x-=num[a[i]];
+        break;
+      }
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

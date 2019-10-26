@@ -31,43 +31,43 @@ const double EPS=1e-11;
 int num1[114514], num2[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, v;
-	cin>>n;
-	REP(i, n){
-		cin>>v;
-		if(i&1){
-			++num1[v];
-		}
-		else{
-			++num2[v];
-		}
-	}
-	int ma1=0, ma2=0, ma3=0, ma4=0, a, b;
-	REP(i, 114514){
-		if(ma1<num1[i]){
-			a=i;
-			ma3=ma1;
-			ma1=num1[i];
-		}
-		else{
-			ma3=max(ma3, num1[i]);
-		}
-		if(ma2<num2[i]){
-			b=i;
-			ma4=ma2;
-			ma2=num2[i];
-		}
-		else{
-			ma4=max(ma4, num2[i]);
-		}
-	}
-	if(a!=b){
-		cout<<n-ma1-ma2<<'\n';
-	}
-	else{
-		cout<<min(n-ma1-ma4, n-ma3-ma2)<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, v;
+  cin>>n;
+  REP(i, n){
+    cin>>v;
+    if(i&1){
+      ++num1[v];
+    }
+    else{
+      ++num2[v];
+    }
+  }
+  int ma1=0, ma2=0, ma3=0, ma4=0, a, b;
+  REP(i, 114514){
+    if(ma1<num1[i]){
+      a=i;
+      ma3=ma1;
+      ma1=num1[i];
+    }
+    else{
+      ma3=max(ma3, num1[i]);
+    }
+    if(ma2<num2[i]){
+      b=i;
+      ma4=ma2;
+      ma2=num2[i];
+    }
+    else{
+      ma4=max(ma4, num2[i]);
+    }
+  }
+  if(a!=b){
+    cout<<n-ma1-ma2<<'\n';
+  }
+  else{
+    cout<<min(n-ma1-ma4, n-ma3-ma2)<<'\n';
+  }
+  return 0;
 }

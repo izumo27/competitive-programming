@@ -30,10 +30,10 @@ const double EPS=1e-11;
 bool used[113];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a;
-	cin>>n>>a;
-	cout<<n*n-a<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a;
+  cin>>n>>a;
+  cout<<n*n-a<<'\n';
+  return 0;
 }

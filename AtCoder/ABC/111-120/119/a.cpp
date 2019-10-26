@@ -32,27 +32,27 @@ string s;
 int y, m, d;
 
 bool solve(){
-	if(y<2019){
-		return true;
-	}
-	if(y>2019){
-		return false;
-	}
-	if(m<=4){
-		return true;
-	}
-	return false;
+  if(y<2019){
+    return true;
+  }
+  if(y>2019){
+    return false;
+  }
+  if(m<=4){
+    return true;
+  }
+  return false;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string s;
-	cin>>s;
-	y=stoi(s.substr(0, 4));
-	m=stoi(s.substr(5, 2));
-	d=stoi(s.substr(8, 2));
-	bool ok=solve();
-	cout<<(ok ? "Heisei" : "TBD")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s;
+  cin>>s;
+  y=stoi(s.substr(0, 4));
+  m=stoi(s.substr(5, 2));
+  d=stoi(s.substr(8, 2));
+  bool ok=solve();
+  cout<<(ok ? "Heisei" : "TBD")<<'\n';
+  return 0;
 }

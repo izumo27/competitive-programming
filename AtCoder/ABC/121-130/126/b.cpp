@@ -29,33 +29,33 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	string s;
-	cin>>s;
-	int a=0, b=0;
-	a=(s[0]-'0')*10+(s[1]-'0');
-	b=(s[2]-'0')*10+(s[3]-'0');
-	bool ok=false, ok2=false;
-	if(a>0 && a<=12){
-		ok=true;
-	}
-	if(b>0 && b<=12){
-		ok2=true;
-	}
-	if(ok && ok2){
-		cout<<"AMBIGUOUS"<<'\n';
-		return 0;
-	}
-	if(ok){
-		cout<<"MMYY"<<'\n';
-		return 0;
-	}
-	if(ok2){
-		cout<<"YYMM"<<'\n';
-		return 0;
-	}
-	cout<<"NA"<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  string s;
+  cin>>s;
+  int a=0, b=0;
+  a=(s[0]-'0')*10+(s[1]-'0');
+  b=(s[2]-'0')*10+(s[3]-'0');
+  bool ok=false, ok2=false;
+  if(a>0 && a<=12){
+    ok=true;
+  }
+  if(b>0 && b<=12){
+    ok2=true;
+  }
+  if(ok && ok2){
+    cout<<"AMBIGUOUS"<<'\n';
+    return 0;
+  }
+  if(ok){
+    cout<<"MMYY"<<'\n';
+    return 0;
+  }
+  if(ok2){
+    cout<<"YYMM"<<'\n';
+    return 0;
+  }
+  cout<<"NA"<<'\n';
+  return 0;
 }

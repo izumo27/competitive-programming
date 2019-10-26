@@ -29,90 +29,90 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 struct UnionFind{
-	vi par;
-	vi rank;
+  vi par;
+  vi rank;
 
-	UnionFind(int n=1){
-		init(n);
-	}
+  UnionFind(int n=1){
+    init(n);
+  }
 
-	// n要素で初期化
-	void init(int n=1){
-		par.resize(n);
-		rank.resize(n);
-		REP(i, n){
-			par[i]=i;
-			rank[i]=0;
-		}
-	}
+  // n要素で初期化
+  void init(int n=1){
+    par.resize(n);
+    rank.resize(n);
+    REP(i, n){
+      par[i]=i;
+      rank[i]=0;
+    }
+  }
 
-	// xの根を求める
-	int find(int x){
-		if(par[x]==x){
-			return x;
-		}
-		else{
-			return par[x]=find(par[x]);
-		}
-	}
+  // xの根を求める
+  int find(int x){
+    if(par[x]==x){
+      return x;
+    }
+    else{
+      return par[x]=find(par[x]);
+    }
+  }
 
-	// xとyが属する集合を併合
-	bool unite(int x, int y){
-		x=find(x);
-		y=find(y);
-		if(x==y){
-			return false;
-		}
-		if(rank[x]<rank[y]){
-			par[x]=y;
-		}
-		else{
-			par[y]=x;
-			if(rank[x]==rank[y]){
-				++rank[x];
-			}
-		}
-		return true;
-	}
+  // xとyが属する集合を併合
+  bool unite(int x, int y){
+    x=find(x);
+    y=find(y);
+    if(x==y){
+      return false;
+    }
+    if(rank[x]<rank[y]){
+      par[x]=y;
+    }
+    else{
+      par[y]=x;
+      if(rank[x]==rank[y]){
+        ++rank[x];
+      }
+    }
+    return true;
+  }
 
-	// xとyが同じ集合に属するか判定
-	bool issame(int x, int y){
-		return find(x)==find(y);
-	}
+  // xとyが同じ集合に属するか判定
+  bool issame(int x, int y){
+    return find(x)==find(y);
+  }
 };
 
 int sz[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	ll n;
-	int m, a[114514], b[114514];
-	cin>>n>>m;
-	REP(i, m){
-		cin>>a[i]>>b[i];
-		--a[i];
-		--b[i];
-	}
-	REP(i, n){
-		sz[i]=1;
-	}
-	UnionFind uf(n);
-	ll ans[114514];
-	ans[m-1]=n*(n-1)/2;
-	FORR(i, 1, m){
-		if(uf.issame(a[i], b[i])){
-			ans[i-1]=ans[i];
-		}
-		else{
-			ll asz=sz[uf.find(a[i])], bsz=sz[uf.find(b[i])];
-			ans[i-1]=ans[i]-asz*bsz;
-			uf.unite(a[i], b[i]);
-			sz[uf.find(a[i])]=asz+bsz;
-		}
-	}
-	REP(i, m){
-		cout<<ans[i]<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  ll n;
+  int m, a[114514], b[114514];
+  cin>>n>>m;
+  REP(i, m){
+    cin>>a[i]>>b[i];
+    --a[i];
+    --b[i];
+  }
+  REP(i, n){
+    sz[i]=1;
+  }
+  UnionFind uf(n);
+  ll ans[114514];
+  ans[m-1]=n*(n-1)/2;
+  FORR(i, 1, m){
+    if(uf.issame(a[i], b[i])){
+      ans[i-1]=ans[i];
+    }
+    else{
+      ll asz=sz[uf.find(a[i])], bsz=sz[uf.find(b[i])];
+      ans[i-1]=ans[i]-asz*bsz;
+      uf.unite(a[i], b[i]);
+      sz[uf.find(a[i])]=asz+bsz;
+    }
+  }
+  REP(i, m){
+    cout<<ans[i]<<'\n';
+  }
+  return 0;
 }

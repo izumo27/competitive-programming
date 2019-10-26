@@ -31,45 +31,45 @@ const double EPS=1e-11;
 ll dp[114][10];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int h, w, k;
-	cin>>h>>w>>k;
-	dp[0][0]=1;
-	REP(i, h){
-		REP(j, 1<<(w-1)){
-			int a[10];
-			REP(p, w-1){
-				a[p]=0;
-			}
-			REP(p, w-1){
-				if(j>>p&1){
-					a[p]=1;
-				}
-			}
-			bool ok=true;
-			REP(p, w-2){
-				if(a[p]==1 && a[p+1]){
-					ok=false;
-					break;
-				}
-			}
-			if(!ok){
-				continue;
-			}
-			REP(p, w){
-				if(p+1<w && a[p]==1){
-					dp[i+1][p]=(dp[i+1][p]+dp[i][p+1])%MOD;
-				}
-				else if(p-1>=0 && a[p-1]==1){
-					dp[i+1][p]=(dp[i+1][p]+dp[i][p-1])%MOD;
-				}
-				else{
-					dp[i+1][p]=(dp[i+1][p]+dp[i][p])%MOD;
-				}
-			}
-		}
-	}
-	cout<<dp[h][k-1]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int h, w, k;
+  cin>>h>>w>>k;
+  dp[0][0]=1;
+  REP(i, h){
+    REP(j, 1<<(w-1)){
+      int a[10];
+      REP(p, w-1){
+        a[p]=0;
+      }
+      REP(p, w-1){
+        if(j>>p&1){
+          a[p]=1;
+        }
+      }
+      bool ok=true;
+      REP(p, w-2){
+        if(a[p]==1 && a[p+1]){
+          ok=false;
+          break;
+        }
+      }
+      if(!ok){
+        continue;
+      }
+      REP(p, w){
+        if(p+1<w && a[p]==1){
+          dp[i+1][p]=(dp[i+1][p]+dp[i][p+1])%MOD;
+        }
+        else if(p-1>=0 && a[p-1]==1){
+          dp[i+1][p]=(dp[i+1][p]+dp[i][p-1])%MOD;
+        }
+        else{
+          dp[i+1][p]=(dp[i+1][p]+dp[i][p])%MOD;
+        }
+      }
+    }
+  }
+  cout<<dp[h][k-1]<<'\n';
+  return 0;
 }

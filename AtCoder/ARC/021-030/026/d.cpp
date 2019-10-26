@@ -35,62 +35,62 @@ const int MAX_E=12525;
 int n, m, a[12525], b[12525], c[12525], t[12525];
 
 struct UnionFind{
-	vector<int> par;
-	vector<int> rank;
+  vector<int> par;
+  vector<int> rank;
 
-	UnionFind(int n=1){
-		init(n);
-	}
+  UnionFind(int n=1){
+    init(n);
+  }
 
-	// n要素で初期化
-	void init(int n=1){
-		par.resize(n);
-		rank.resize(n);
-		REP(i, n){
-			par[i]=i;
-			rank[i]=0;
-		}
-	}
+  // n要素で初期化
+  void init(int n=1){
+    par.resize(n);
+    rank.resize(n);
+    REP(i, n){
+      par[i]=i;
+      rank[i]=0;
+    }
+  }
 
-	// xの根を求める
-	int find(int x){
-		if(par[x]==x){
-			return x;
-		}
-		else{
-			return par[x]=find(par[x]);
-		}
-	}
+  // xの根を求める
+  int find(int x){
+    if(par[x]==x){
+      return x;
+    }
+    else{
+      return par[x]=find(par[x]);
+    }
+  }
 
-	// xとyが属する集合を併合
-	bool unite(int x, int y){
-		x=find(x);
-		y=find(y);
-		if(x==y){
-			return false;
-		}
-		if(rank[x]<rank[y]){
-			par[x]=y;
-		}
-		else{
-			par[y]=x;
-			if(rank[x]==rank[y]){
-				++rank[x];
-			}
-		}
-		return true;
-	}
+  // xとyが属する集合を併合
+  bool unite(int x, int y){
+    x=find(x);
+    y=find(y);
+    if(x==y){
+      return false;
+    }
+    if(rank[x]<rank[y]){
+      par[x]=y;
+    }
+    else{
+      par[y]=x;
+      if(rank[x]==rank[y]){
+        ++rank[x];
+      }
+    }
+    return true;
+  }
 
-	// xとyが同じ集合に属するか判定
-	bool issame(int x, int y){
-		return find(x)==find(y);
-	}
+  // xとyが同じ集合に属するか判定
+  bool issame(int x, int y){
+    return find(x)==find(y);
+  }
 };
 
 struct edge{
-	int u;
-	int v;
-	double cost;
+  int u;
+  int v;
+  double cost;
 };
 
 int root[MAX_N], depth[MAX_N];
@@ -99,50 +99,50 @@ edge es[MAX_E];
 int V, E;
 
 void add_edge(int index, double x){
-	es[index]={a[index], b[index], c[index]-t[index]*x};
-	return;
+  es[index]={a[index], b[index], c[index]-t[index]*x};
+  return;
 }
 
 bool comp(const edge& e1, const edge& e2){
-	return e1.cost<e2.cost;
+  return e1.cost<e2.cost;
 }
 
 double kruskal(double x){
-	REP(i, m){
-		add_edge(i, x);
-	}
-	sort(es, es+E, comp);
-	UnionFind uf(V);
-	double res=0;
-	REP(i, E){
-		edge e=es[i];
-		if(!uf.issame(e.u, e.v) || e.cost<=0){
-			uf.unite(e.u, e.v);
-			res+=e.cost;
-		}
-	}
-	return res;
+  REP(i, m){
+    add_edge(i, x);
+  }
+  sort(es, es+E, comp);
+  UnionFind uf(V);
+  double res=0;
+  REP(i, E){
+    edge e=es[i];
+    if(!uf.issame(e.u, e.v) || e.cost<=0){
+      uf.unite(e.u, e.v);
+      res+=e.cost;
+    }
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n>>m;
-	V=n;
-	E=m;
-	REP(i, m){
-		cin>>a[i]>>b[i]>>c[i]>>t[i];
-	}
-	double lb=0, ub=1e7;
-	REP(i, 100){
-		double mid=(lb+ub)/2;
-		if(kruskal(mid)<=0){
-			ub=mid;
-		}
-		else{
-			lb=mid;
-		}
-	}
-	cout<<fixed<<setprecision(10)<<ub<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n>>m;
+  V=n;
+  E=m;
+  REP(i, m){
+    cin>>a[i]>>b[i]>>c[i]>>t[i];
+  }
+  double lb=0, ub=1e7;
+  REP(i, 100){
+    double mid=(lb+ub)/2;
+    if(kruskal(mid)<=0){
+      ub=mid;
+    }
+    else{
+      lb=mid;
+    }
+  }
+  cout<<fixed<<setprecision(10)<<ub<<'\n';
+  return 0;
 }

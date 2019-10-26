@@ -29,50 +29,50 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	ll x[114], y[114], h[114];
-	cin>>n;
-	REP(i, n){
-		cin>>x[i]>>y[i]>>h[i];
-	}
-	for(ll c1=0; c1<=100; ++c1){
-		for(ll c2=0; c2<=100; ++c2){
-			bool f=false, ok=true;
-			ll H=1e18;
-			REP(i, n){
-				if(f){
-					if(h[i]==0){
-						if(H>abs(x[i]-c1)+abs(y[i]-c2)){
-							ok=false;
-							i=n;
-						}
-					}
-					else if(H!=h[i]+abs(x[i]-c1)+abs(y[i]-c2)){
-						ok=false;
-						i=n;
-					}
-				}
-				else{
-					if(h[i]==0){
-						H=min(H, abs(x[i]-c1)+abs(y[i]-c2));
-					}
-					else if(H<h[i]+abs(x[i]-c1)+abs(y[i]-c2)){
-						ok=false;
-						i=n;
-					}
-					else{
-						H=h[i]+abs(x[i]-c1)+abs(y[i]-c2);
-						f=true;
-					}
-				}
-			}
-			if(ok && H>=1){
-				cout<<c1<<' '<<c2<<' '<<H<<'\n';
-				return 0;
-			}
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  ll x[114], y[114], h[114];
+  cin>>n;
+  REP(i, n){
+    cin>>x[i]>>y[i]>>h[i];
+  }
+  for(ll c1=0; c1<=100; ++c1){
+    for(ll c2=0; c2<=100; ++c2){
+      bool f=false, ok=true;
+      ll H=1e18;
+      REP(i, n){
+        if(f){
+          if(h[i]==0){
+            if(H>abs(x[i]-c1)+abs(y[i]-c2)){
+              ok=false;
+              i=n;
+            }
+          }
+          else if(H!=h[i]+abs(x[i]-c1)+abs(y[i]-c2)){
+            ok=false;
+            i=n;
+          }
+        }
+        else{
+          if(h[i]==0){
+            H=min(H, abs(x[i]-c1)+abs(y[i]-c2));
+          }
+          else if(H<h[i]+abs(x[i]-c1)+abs(y[i]-c2)){
+            ok=false;
+            i=n;
+          }
+          else{
+            H=h[i]+abs(x[i]-c1)+abs(y[i]-c2);
+            f=true;
+          }
+        }
+      }
+      if(ok && H>=1){
+        cout<<c1<<' '<<c2<<' '<<H<<'\n';
+        return 0;
+      }
+    }
+  }
+  return 0;
 }

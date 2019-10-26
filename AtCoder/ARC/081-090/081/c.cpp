@@ -28,35 +28,35 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a[114514];
-	cin>>n;
-	REP(i, n){
-		cin>>a[i];
-	}
-	sort(a, a+n);
-	bool ok=false;
-	ll b=0, c=0;
-	FORR(i, 0, n){
-		int cnt=1;
-		while(i>0 && a[i-1]==a[i]){
-			++cnt;
-			--i;
-		}
-		if(cnt>=2 && ok){
-			c=a[i];
-			break;
-		}
-		else if(cnt>=4){
-			b=c=a[i];
-			break;
-		}
-		else if(cnt>=2){
-			b=a[i];
-			ok=true;
-		}
-	}
-	cout<<b*c<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a[114514];
+  cin>>n;
+  REP(i, n){
+    cin>>a[i];
+  }
+  sort(a, a+n);
+  bool ok=false;
+  ll b=0, c=0;
+  FORR(i, 0, n){
+    int cnt=1;
+    while(i>0 && a[i-1]==a[i]){
+      ++cnt;
+      --i;
+    }
+    if(cnt>=2 && ok){
+      c=a[i];
+      break;
+    }
+    else if(cnt>=4){
+      b=c=a[i];
+      break;
+    }
+    else if(cnt>=2){
+      b=a[i];
+      ok=true;
+    }
+  }
+  cout<<b*c<<'\n';
+  return 0;
 }

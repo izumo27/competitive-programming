@@ -13,18 +13,18 @@ typedef pair<ll, ll> pll;
 #define FORR(i, a, b) for(int i=b-1; i>=a; --i)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	cin>>n;
-	int cnt=1;
-	while(true){
-		if(cnt*cnt>n){
-			--cnt;
-			break;
-		}
-		++cnt;
-	}
-	cout<<cnt*cnt<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  cin>>n;
+  int cnt=1;
+  while(true){
+    if(cnt*cnt>n){
+      --cnt;
+      break;
+    }
+    ++cnt;
+  }
+  cout<<cnt*cnt<<'\n';
+  return 0;
 }

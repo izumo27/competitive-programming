@@ -29,38 +29,38 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n;
-	string s[60];
-	cin>>n;
-	REP(i, n){
-		cin>>s[i];
-	}
-	bool ok=true;
-	[&]{
-		REP(i, n){
-			REP(j, n){
-				if(s[i][j]=='#'){
-					continue;
-				}
-				s[i][j]='#';
-				if(i+2>=n || j-1<0 || j+1>=n){
-					ok=false;
-					return;
-				}
-				if(s[i+1][j-1]=='#' || s[i+1][j]=='#' || s[i+1][j+1]=='#' || s[i+2][j]=='#'){
-					ok=false;
-					return;
-				}
-				s[i+1][j-1]='#';
-				s[i+1][j]='#';
-				s[i+1][j+1]='#';
-				s[i+2][j]='#';
-			}
-		}
-	}();
-	cout<<(ok ? "YES" : "NO")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n;
+  string s[60];
+  cin>>n;
+  REP(i, n){
+    cin>>s[i];
+  }
+  bool ok=true;
+  [&]{
+    REP(i, n){
+      REP(j, n){
+        if(s[i][j]=='#'){
+          continue;
+        }
+        s[i][j]='#';
+        if(i+2>=n || j-1<0 || j+1>=n){
+          ok=false;
+          return;
+        }
+        if(s[i+1][j-1]=='#' || s[i+1][j]=='#' || s[i+1][j+1]=='#' || s[i+2][j]=='#'){
+          ok=false;
+          return;
+        }
+        s[i+1][j-1]='#';
+        s[i+1][j]='#';
+        s[i+1][j+1]='#';
+        s[i+2][j]='#';
+      }
+    }
+  }();
+  cout<<(ok ? "YES" : "NO")<<'\n';
+  return 0;
 }

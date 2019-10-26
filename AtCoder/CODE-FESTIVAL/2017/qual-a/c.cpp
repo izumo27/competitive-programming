@@ -31,47 +31,47 @@ const double EPS=1e-11;
 int alf[30];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int h, w;
-	char a;
-	cin>>h>>w;
-	REP(i, h){
-		REP(j, w){
-			cin>>a;
-			++alf[a-'a'];
-		}
-	}
-	int cnt=0, cnt2=0;
-	REP(i, 26){
-		if(alf[i]%2!=0){
-			++cnt;
-		}
-		if(alf[i]%4!=0){
-			++cnt2;
-		}
-	}
-	bool ok=false;
-	if(h&1 && w&1){
-		if(cnt2<=(h+w)/2 && cnt==1){
-			ok=true;
-		}
-	}
-	else if(h&1){
-		if(cnt2<=w/2 && cnt==0){
-			ok=true;
-		}
-	}
-	else if(w&1){
-		if(cnt2<=h/2 && cnt==0){
-			ok=true;
-		}
-	}
-	else{
-		if(cnt2==0){
-			ok=true;
-		}
-	}
-	cout<<(ok ? "Yes" : "No")<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int h, w;
+  char a;
+  cin>>h>>w;
+  REP(i, h){
+    REP(j, w){
+      cin>>a;
+      ++alf[a-'a'];
+    }
+  }
+  int cnt=0, cnt2=0;
+  REP(i, 26){
+    if(alf[i]%2!=0){
+      ++cnt;
+    }
+    if(alf[i]%4!=0){
+      ++cnt2;
+    }
+  }
+  bool ok=false;
+  if(h&1 && w&1){
+    if(cnt2<=(h+w)/2 && cnt==1){
+      ok=true;
+    }
+  }
+  else if(h&1){
+    if(cnt2<=w/2 && cnt==0){
+      ok=true;
+    }
+  }
+  else if(w&1){
+    if(cnt2<=h/2 && cnt==0){
+      ok=true;
+    }
+  }
+  else{
+    if(cnt2==0){
+      ok=true;
+    }
+  }
+  cout<<(ok ? "Yes" : "No")<<'\n';
+  return 0;
 }

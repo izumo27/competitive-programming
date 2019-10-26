@@ -28,25 +28,25 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string s;
-	int k;
-	cin>>s>>k;
-	int len=s.size();
-	vector<string> t;
-	REP(i, min(len, k)){
-		REP(j, len-i){
-			t.push_back(s.substr(j, i+1));
-		}
-	}
-	sort(ALL(t));
-	REP(i, t.size()){
-		if(k==1){
-			cout<<t[i]<<'\n';
-			return 0;
-		}
-		if(t[i]!=t[i+1]) --k;
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s;
+  int k;
+  cin>>s>>k;
+  int len=s.size();
+  vector<string> t;
+  REP(i, min(len, k)){
+    REP(j, len-i){
+      t.push_back(s.substr(j, i+1));
+    }
+  }
+  sort(ALL(t));
+  REP(i, t.size()){
+    if(k==1){
+      cout<<t[i]<<'\n';
+      return 0;
+    }
+    if(t[i]!=t[i+1]) --k;
+  }
+  return 0;
 }

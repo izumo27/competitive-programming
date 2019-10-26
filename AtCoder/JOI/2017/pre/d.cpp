@@ -31,39 +31,39 @@ const double EPS=1e-11;
 int dp[1<<20], sum[25][114514], num[25];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, m, a[114514];
-	cin>>n>>m;
-	REP(i, n){
-		cin>>a[i];
-		--a[i];
-		++num[a[i]];
-		REP(j, m){
-			sum[j][i+1]=sum[j][i];
-		}
-		++sum[a[i]][i+1];
-	}
-	REP(i, 1<<m){
-		dp[i]=1e8;
-	}
-	dp[0]=0;
-	REP(i, 1<<m){
-		REP(j, m){
-			if(i>>j&1){
-				continue;
-			}
-			int cnt=0;
-			REP(k, m){
-				if(i>>k&1){
-					cnt+=num[k];
-				}
-			}
-			dp[i|1<<j]=min(dp[i|1<<j], dp[i]+num[j]-(sum[j][cnt+num[j]]-sum[j][cnt]));
-			// DEBUG(dp[i|1<<j]);
-			// DEBUG(sum[j][cnt+num[j]]-sum[j][cnt]);
-		}
-	}
-	cout<<dp[(1<<m)-1]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, m, a[114514];
+  cin>>n>>m;
+  REP(i, n){
+    cin>>a[i];
+    --a[i];
+    ++num[a[i]];
+    REP(j, m){
+      sum[j][i+1]=sum[j][i];
+    }
+    ++sum[a[i]][i+1];
+  }
+  REP(i, 1<<m){
+    dp[i]=1e8;
+  }
+  dp[0]=0;
+  REP(i, 1<<m){
+    REP(j, m){
+      if(i>>j&1){
+        continue;
+      }
+      int cnt=0;
+      REP(k, m){
+        if(i>>k&1){
+          cnt+=num[k];
+        }
+      }
+      dp[i|1<<j]=min(dp[i|1<<j], dp[i]+num[j]-(sum[j][cnt+num[j]]-sum[j][cnt]));
+      // DEBUG(dp[i|1<<j]);
+      // DEBUG(sum[j][cnt+num[j]]-sum[j][cnt]);
+    }
+  }
+  cout<<dp[(1<<m)-1]<<'\n';
+  return 0;
 }

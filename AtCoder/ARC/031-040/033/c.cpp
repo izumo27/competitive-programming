@@ -35,46 +35,46 @@ int bit[MAX_N+1], n=MAX_N;
 
 // a_1からa_iまでの和
 int bit_sum(int i){
-	int s=0;
-	while(i>0){
-		s+=bit[i];
-		i-=i&-i;
-	}
-	return s;
+  int s=0;
+  while(i>0){
+    s+=bit[i];
+    i-=i&-i;
+  }
+  return s;
 }
 
 // a_iにxを加える
 void bit_add(int i, int x){
-	while(i<=n){
-		bit[i]+=x;
-		i+=i&-i;
-	}
+  while(i<=n){
+    bit[i]+=x;
+    i+=i&-i;
+  }
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int q, t, x;
-	cin>>q;
-	REP(i, q){
-		cin>>t>>x;
-		if(t==1){
-			bit_add(x, 1);
-		}
-		else{
-			int lb=0, ub=214514;
-			while(ub-lb>1){
-				int mid=(lb+ub)/2;
-				if(bit_sum(mid)>=x){
-					ub=mid;
-				}
-				else{
-					lb=mid;
-				}
-			}
-			cout<<ub<<'\n';
-			bit_add(ub, -1);
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int q, t, x;
+  cin>>q;
+  REP(i, q){
+    cin>>t>>x;
+    if(t==1){
+      bit_add(x, 1);
+    }
+    else{
+      int lb=0, ub=214514;
+      while(ub-lb>1){
+        int mid=(lb+ub)/2;
+        if(bit_sum(mid)>=x){
+          ub=mid;
+        }
+        else{
+          lb=mid;
+        }
+      }
+      cout<<ub<<'\n';
+      bit_add(ub, -1);
+    }
+  }
+  return 0;
 }

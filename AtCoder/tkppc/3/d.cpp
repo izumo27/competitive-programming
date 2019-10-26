@@ -29,24 +29,24 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int h, w, q, a, b, px, py, qx, qy;
-	ll sumx[114514], sumy[114514];
-	cin>>h>>w>>q;
-	sumx[0]=0;
-	sumy[0]=0;
-	REP(i, h){
-		cin>>a;
-		i&1 ? sumx[i+1]+=sumx[i]-a : sumx[i+1]+=sumx[i]+a;
-	}
-	REP(i, w){
-		cin>>b;
-		i&1 ? sumy[i+1]+=sumy[i]-b : sumy[i+1]+=sumy[i]+b;
-	}
-	REP(i, q){
-		cin>>px>>py>>qx>>qy;
-		cout<<(sumx[qx]-sumx[px-1])*(sumy[qy]-sumy[py-1])<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int h, w, q, a, b, px, py, qx, qy;
+  ll sumx[114514], sumy[114514];
+  cin>>h>>w>>q;
+  sumx[0]=0;
+  sumy[0]=0;
+  REP(i, h){
+    cin>>a;
+    i&1 ? sumx[i+1]+=sumx[i]-a : sumx[i+1]+=sumx[i]+a;
+  }
+  REP(i, w){
+    cin>>b;
+    i&1 ? sumy[i+1]+=sumy[i]-b : sumy[i+1]+=sumy[i]+b;
+  }
+  REP(i, q){
+    cin>>px>>py>>qx>>qy;
+    cout<<(sumx[qx]-sumx[px-1])*(sumy[qy]-sumy[py-1])<<'\n';
+  }
+  return 0;
 }

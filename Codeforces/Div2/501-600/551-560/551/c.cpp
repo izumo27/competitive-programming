@@ -31,59 +31,59 @@ const double EPS=1e-11;
 int lb[364364], ub[364364];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n;
-	string s;
-	cin>>n>>s;
-	if(n&1){
-		cout<<":("<<'\n';
-		return 0;
-	}
-	int x=0, y=0, z=0;
-	REP(i, n){
-		if(s[i]=='('){
-			++x;
-		}
-		else if(s[i]==')'){
-			++y;
-		}
-		else{
-			++z;
-		}
-	}
-	if(x>n/2 || y>n/2){
-		cout<<":("<<'\n';
-		return 0;
-	}
-	int cnt=0;
-	string ans="";
-	REP(i, n){
-		if(s[i]=='('){
-			ans+='(';
-			++cnt;
-		}
-		else if(s[i]==')'){
-			ans+=')';
-			--cnt;
-		}
-		else{
-			if(x<n/2){
-				ans+='(';
-				++x;
-				++cnt;
-			}
-			else{
-				ans+=')';
-				--cnt;
-			}
-		}
-		if(i!=n-1 && cnt<=0){
-			cout<<":("<<'\n';
-			return 0;
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n;
+  string s;
+  cin>>n>>s;
+  if(n&1){
+    cout<<":("<<'\n';
+    return 0;
+  }
+  int x=0, y=0, z=0;
+  REP(i, n){
+    if(s[i]=='('){
+      ++x;
+    }
+    else if(s[i]==')'){
+      ++y;
+    }
+    else{
+      ++z;
+    }
+  }
+  if(x>n/2 || y>n/2){
+    cout<<":("<<'\n';
+    return 0;
+  }
+  int cnt=0;
+  string ans="";
+  REP(i, n){
+    if(s[i]=='('){
+      ans+='(';
+      ++cnt;
+    }
+    else if(s[i]==')'){
+      ans+=')';
+      --cnt;
+    }
+    else{
+      if(x<n/2){
+        ans+='(';
+        ++x;
+        ++cnt;
+      }
+      else{
+        ans+=')';
+        --cnt;
+      }
+    }
+    if(i!=n-1 && cnt<=0){
+      cout<<":("<<'\n';
+      return 0;
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

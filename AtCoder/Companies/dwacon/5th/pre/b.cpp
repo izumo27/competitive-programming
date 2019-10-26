@@ -32,56 +32,56 @@ ll sum[1333];
 bool abit[1252525][43], sum_bit[43];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, k;
-	ll a[1333];
-	cin>>n>>k;
-	REP(i, n){
-		cin>>a[i];
-		sum[i+1]=sum[i]+a[i];
-	}
-	int cnt=0;
-	REP(i, n-1){
-		FOR(j, i+1, n){
-			ll tmp=sum[j+1]-sum[i];
-			int ind=42;
-			while(tmp>0){
-				abit[cnt][ind]=tmp&1;
-				tmp/=2;
-				--ind;
-			}
-			++cnt;
-		}
-	}
-	vi x;
-	REP(i, cnt){
-		x.push_back(i);
-	}
-	REP(i, 43){
-		int cnt2=0;
-		vi y;
-		for(auto &xx : x){
-			if(abit[xx][i]){
-				++cnt2;
-				y.push_back(xx);
-			}
-		}
-		if(cnt2>=k){
-			sum_bit[i]=true;
-			x.erase(ALL(x));
-			for(auto &yy : y){
-				x.push_back(yy);
-			}
-		}
-	}
-	ll ans=0;
-	REP(i, 43){
-		ans*=2;
-		if(sum_bit[i]){
-			++ans;
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, k;
+  ll a[1333];
+  cin>>n>>k;
+  REP(i, n){
+    cin>>a[i];
+    sum[i+1]=sum[i]+a[i];
+  }
+  int cnt=0;
+  REP(i, n-1){
+    FOR(j, i+1, n){
+      ll tmp=sum[j+1]-sum[i];
+      int ind=42;
+      while(tmp>0){
+        abit[cnt][ind]=tmp&1;
+        tmp/=2;
+        --ind;
+      }
+      ++cnt;
+    }
+  }
+  vi x;
+  REP(i, cnt){
+    x.push_back(i);
+  }
+  REP(i, 43){
+    int cnt2=0;
+    vi y;
+    for(auto &xx : x){
+      if(abit[xx][i]){
+        ++cnt2;
+        y.push_back(xx);
+      }
+    }
+    if(cnt2>=k){
+      sum_bit[i]=true;
+      x.erase(ALL(x));
+      for(auto &yy : y){
+        x.push_back(yy);
+      }
+    }
+  }
+  ll ans=0;
+  REP(i, 43){
+    ans*=2;
+    if(sum_bit[i]){
+      ++ans;
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -31,25 +31,25 @@ const double EPS=1e-11;
 bool used[1252525];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int s;
-	cin>>s;
-	used[s]=true;
-	REP(i, 1252525){
-		if(s&1){
-			s=3*s+1;
-		}
-		else{
-			s/=2;
-		}
-		if(used[s]){
-			cout<<i+2<<'\n';
-			return 0;
-		}
-		else{
-			used[s]=true;
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int s;
+  cin>>s;
+  used[s]=true;
+  REP(i, 1252525){
+    if(s&1){
+      s=3*s+1;
+    }
+    else{
+      s/=2;
+    }
+    if(used[s]){
+      cout<<i+2<<'\n';
+      return 0;
+    }
+    else{
+      used[s]=true;
+    }
+  }
+  return 0;
 }

@@ -31,18 +31,18 @@ const double EPS=1e-11;
 int num[125252];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, k, q, a[125252];
-	cin>>n>>k>>q;
-	REP(i, q){
-		cin>>a[i];
-		--a[i];
-		++num[a[i]];
-	}
-	REP(i, n){
-		cout<<(num[i]+k>q ? "Yes" : "No")<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, k, q, a[125252];
+  cin>>n>>k>>q;
+  REP(i, q){
+    cin>>a[i];
+    --a[i];
+    ++num[a[i]];
+  }
+  REP(i, n){
+    cout<<(num[i]+k>q ? "Yes" : "No")<<'\n';
+  }
+  return 0;
 }

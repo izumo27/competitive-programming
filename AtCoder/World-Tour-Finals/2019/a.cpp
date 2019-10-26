@@ -29,40 +29,40 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, k, a[60];
-	cin>>n>>k;
-	REP(i, n){
-		cin>>a[i];
-	}
-	vi ans;
-	int pre=-1;
-	REP(i, k+1){
-		int mi=200, idx=0;
-		REP(j, n){
-			if(j!=pre && a[j]<mi){
-				if(a[j]==0){
-					cout<<-1<<'\n';
-					return 0;
-				}
-				mi=a[j];
-				idx=j;
-			}
-		}
-		REP(j, n){
-			if(j!=pre && j!=idx){
-				ans.push_back(j+1);
-				--a[j];
-			}
-		}
-		ans.push_back(idx+1);
-		--a[idx];
-		pre=idx;
-	}
-	cout<<ans.size()<<'\n';
-	REP(i, ans.size()){
-		cout<<ans[i]<<' ';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, k, a[60];
+  cin>>n>>k;
+  REP(i, n){
+    cin>>a[i];
+  }
+  vi ans;
+  int pre=-1;
+  REP(i, k+1){
+    int mi=200, idx=0;
+    REP(j, n){
+      if(j!=pre && a[j]<mi){
+        if(a[j]==0){
+          cout<<-1<<'\n';
+          return 0;
+        }
+        mi=a[j];
+        idx=j;
+      }
+    }
+    REP(j, n){
+      if(j!=pre && j!=idx){
+        ans.push_back(j+1);
+        --a[j];
+      }
+    }
+    ans.push_back(idx+1);
+    --a[idx];
+    pre=idx;
+  }
+  cout<<ans.size()<<'\n';
+  REP(i, ans.size()){
+    cout<<ans[i]<<' ';
+  }
+  return 0;
 }

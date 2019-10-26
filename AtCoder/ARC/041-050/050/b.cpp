@@ -31,23 +31,23 @@ const double EPS=1e-11;
 ll r, b, x, y;
 
 bool is_ok(ll a){
-	return (r-a)/(x-1)+(b-a)/(y-1)>=a;
+  return (r-a)/(x-1)+(b-a)/(y-1)>=a;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>r>>b>>x>>y;
-	ll lb=0, ub=min(r, b)+1;
-	while(ub-lb>1){
-		ll mid=(lb+ub)/2;
-		if(!is_ok(mid)){
-			ub=mid;
-		}
-		else{
-			lb=mid;
-		}
-	}
-	cout<<lb<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>r>>b>>x>>y;
+  ll lb=0, ub=min(r, b)+1;
+  while(ub-lb>1){
+    ll mid=(lb+ub)/2;
+    if(!is_ok(mid)){
+      ub=mid;
+    }
+    else{
+      lb=mid;
+    }
+  }
+  cout<<lb<<'\n';
+  return 0;
 }

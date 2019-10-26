@@ -29,31 +29,31 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a[60];
-	cin>>n;
-	int ma=0, idx=0;
-	REP(i, n){
-		cin>>a[i];
-		if(ma<abs(a[i])){
-			ma=abs(a[i]);
-			idx=i;
-		}
-	}
-	cout<<2*n-1<<'\n';
-	REP(i, n){
-		cout<<idx+1<<' '<<i+1<<'\n';
-	}
-	if(a[idx]>0){
-		REP(i, n-1){
-			cout<<i+1<<' '<<i+2<<'\n';
-		}
-	}
-	else{
-		FORR(i, 0, n-1){
-			cout<<i+2<<' '<<i+1<<'\n';
-		}
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a[60];
+  cin>>n;
+  int ma=0, idx=0;
+  REP(i, n){
+    cin>>a[i];
+    if(ma<abs(a[i])){
+      ma=abs(a[i]);
+      idx=i;
+    }
+  }
+  cout<<2*n-1<<'\n';
+  REP(i, n){
+    cout<<idx+1<<' '<<i+1<<'\n';
+  }
+  if(a[idx]>0){
+    REP(i, n-1){
+      cout<<i+1<<' '<<i+2<<'\n';
+    }
+  }
+  else{
+    FORR(i, 0, n-1){
+      cout<<i+2<<' '<<i+1<<'\n';
+    }
+  }
+  return 0;
 }

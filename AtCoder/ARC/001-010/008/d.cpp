@@ -31,68 +31,68 @@ const double EPS=1e-11;
 const int MAX_N=1<<17;
 
 struct SegmentTree{
-	int n;
-	vector<pair<double, double>> dat;
+  int n;
+  vector<pair<double, double>> dat;
 
-	SegmentTree(int n_=1){
-		init(n_);
-	}
+  SegmentTree(int n_=1){
+    init(n_);
+  }
 
-	// n要素で初期化
-	void init(int n_=1){
-		n=1;
-		while(n<n_){
-			n<<=1;
-		}
-		dat.resize(n*2-1);
-		REP(i, n*2-1){
-			dat[i]=make_pair(1, 0);
-		}
-	}
+  // n要素で初期化
+  void init(int n_=1){
+    n=1;
+    while(n<n_){
+      n<<=1;
+    }
+    dat.resize(n*2-1);
+    REP(i, n*2-1){
+      dat[i]=make_pair(1, 0);
+    }
+  }
 
-	void update(ll k, double a, double b){
-		k+=n-1;
-		dat[k]=make_pair(a, b);
-		while(k>0){
-			k=(k-1)/2;
-			double a1=dat[k*2+1].first, b1=dat[k*2+1].second, a2=dat[k*2+2].first, b2=dat[k*2+2].second;
-			dat[k]=make_pair(a1*a2, b1*a2+b2);
-		}
-	}
+  void update(ll k, double a, double b){
+    k+=n-1;
+    dat[k]=make_pair(a, b);
+    while(k>0){
+      k=(k-1)/2;
+      double a1=dat[k*2+1].first, b1=dat[k*2+1].second, a2=dat[k*2+2].first, b2=dat[k*2+2].second;
+      dat[k]=make_pair(a1*a2, b1*a2+b2);
+    }
+  }
 
-	double query(){
-		return dat[0].first+dat[0].second;
-	}
+  double query(){
+    return dat[0].first+dat[0].second;
+  }
 };
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int m;
-	ll n, p[114514];
-	double a[114514], b[114514];
-	cin>>n>>m;
-	vl P;
-	REP(i, m){
-		cin>>p[i]>>a[i]>>b[i];
-		P.push_back(p[i]);
-	}
-	sort(ALL(P));
-	P.erase(unique(ALL(P)), P.end());
-	REP(i, m){
-		p[i]=lower_bound(ALL(P), p[i])-P.begin();
-	}
-	SegmentTree st(m);
-	double mi=1, ma=1;
-	REP(i, m){
-		st.update(p[i], a[i], b[i]);
-		double tmp=st.query();
-		mi=min(mi, tmp);
-		ma=max(ma, tmp);
-	}
-	cout<<fixed;
-	cout<<setprecision(8);
-	cout<<mi<<'\n';
-	cout<<ma<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int m;
+  ll n, p[114514];
+  double a[114514], b[114514];
+  cin>>n>>m;
+  vl P;
+  REP(i, m){
+    cin>>p[i]>>a[i]>>b[i];
+    P.push_back(p[i]);
+  }
+  sort(ALL(P));
+  P.erase(unique(ALL(P)), P.end());
+  REP(i, m){
+    p[i]=lower_bound(ALL(P), p[i])-P.begin();
+  }
+  SegmentTree st(m);
+  double mi=1, ma=1;
+  REP(i, m){
+    st.update(p[i], a[i], b[i]);
+    double tmp=st.query();
+    mi=min(mi, tmp);
+    ma=max(ma, tmp);
+  }
+  cout<<fixed;
+  cout<<setprecision(8);
+  cout<<mi<<'\n';
+  cout<<ma<<'\n';
+  return 0;
 }

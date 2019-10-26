@@ -31,26 +31,26 @@ const double EPS=1e-11;
 double dx[4]={0, 0, 1, 1}, dy[4]={0, 1, 1, 0};
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	double n;
-	cin>>n;
-	int ans=0;
-	REP(i, n){
-		REP(j, n){
-			bool ok=true;
-			REP(k, 4){
-				double x=i+dx[k], y=j+dy[k];
-				if((y<-x+n/2) || (y<x-n/2) || (y>-x+1.5*n) || (y>x+n/2)){
-					ok=false;
-					break;
-				}
-			}
-			if(ok){
-				++ans;
-			}
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  double n;
+  cin>>n;
+  int ans=0;
+  REP(i, n){
+    REP(j, n){
+      bool ok=true;
+      REP(k, 4){
+        double x=i+dx[k], y=j+dy[k];
+        if((y<-x+n/2) || (y<x-n/2) || (y>-x+1.5*n) || (y>x+n/2)){
+          ok=false;
+          break;
+        }
+      }
+      if(ok){
+        ++ans;
+      }
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

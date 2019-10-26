@@ -29,8 +29,8 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 struct edge{
-	int to;
-	int cost;
+  int to;
+  int cost;
 };
 
 constexpr int INF=1e9;
@@ -42,49 +42,49 @@ vector<edge> g[MAX_V];
 int d[MAX_V];
 
 void add_edge(int from, int to, int cost){
-	g[from].push_back({to, cost});
-	return;
+  g[from].push_back({to, cost});
+  return;
 }
 
 void dijkstra(int s){
-	// piiのfirstは最短距離、secondは頂点の番号
-	priority_queue<pair<int, pii>, vector<pair<int, pii>>, greater<pair<int ,pii>>> que;
-	fill(d, d+V, INF);
-	d[s]=0;
-	que.push({0, {s, 0}});
-	while(!que.empty()){
-		auto p=que.top();
-		que.pop();
-		pii v=p.second;
-		if(d[v.first]<p.first){
-			continue;
-		}
-		REP(i, g[v.first].size()){
-			edge e=g[v.first][i];
-			if(d[e.to]>d[v.first]+(e.cost!=v.second)){
-				// DEBUG(d[e.to]);
-				d[e.to]=d[v.first]+(e.cost!=v.second);
-				que.push({d[e.to], {e.to, e.cost}});
-			}
-		}
-	}
+  // piiのfirstは最短距離、secondは頂点の番号
+  priority_queue<pair<int, pii>, vector<pair<int, pii>>, greater<pair<int ,pii>>> que;
+  fill(d, d+V, INF);
+  d[s]=0;
+  que.push({0, {s, 0}});
+  while(!que.empty()){
+    auto p=que.top();
+    que.pop();
+    pii v=p.second;
+    if(d[v.first]<p.first){
+      continue;
+    }
+    REP(i, g[v.first].size()){
+      edge e=g[v.first][i];
+      if(d[e.to]>d[v.first]+(e.cost!=v.second)){
+        // DEBUG(d[e.to]);
+        d[e.to]=d[v.first]+(e.cost!=v.second);
+        que.push({d[e.to], {e.to, e.cost}});
+      }
+    }
+  }
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n, m, k, a, b, c;
-	cin>>n>>m>>k;
-	REP(i, m){
-		cin>>a>>b>>c;
-		--a;
-		--b;
-		add_edge(a, b, c);
-		add_edge(b, a, c);
-	}
-	V=n;
-	dijkstra(0);
-	cout<<(d[n-1]<INF ? d[n-1]*k : -1)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n, m, k, a, b, c;
+  cin>>n>>m>>k;
+  REP(i, m){
+    cin>>a>>b>>c;
+    --a;
+    --b;
+    add_edge(a, b, c);
+    add_edge(b, a, c);
+  }
+  V=n;
+  dijkstra(0);
+  cout<<(d[n-1]<INF ? d[n-1]*k : -1)<<'\n';
+  return 0;
 }

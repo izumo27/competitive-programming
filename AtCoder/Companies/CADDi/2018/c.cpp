@@ -30,40 +30,40 @@ const double EPS=1e-11;
 
 // 素因数分解
 vector<pll> prime_factor(ll n){
-	vector<pll> res;
-	for(ll i=2; i*i<=n; ++i){
-		if(n%i!=0){
-			continue;
-		}
-		ll num=0;
-		while(n%i==0){
-			++num;
-			n/=i;
-		}
-		res.push_back(pii(i, num));
-	}
-	if(n!=1){
-		res.push_back(pii(n, 1));
-	}
-	return res;
+  vector<pll> res;
+  for(ll i=2; i*i<=n; ++i){
+    if(n%i!=0){
+      continue;
+    }
+    ll num=0;
+    while(n%i==0){
+      ++num;
+      n/=i;
+    }
+    res.push_back(pii(i, num));
+  }
+  if(n!=1){
+    res.push_back(pii(n, 1));
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	ll n, p;
-	cin>>n>>p;
-	if(n==1){
-		cout<<p<<'\n';
-		return 0;
-	}
-	vector<pll> x=prime_factor(p);
-	ll ans=1;
-	for(auto &y : x){
-		for(ll i=0; i<y.second/n; ++i){
-			ans*=y.first;
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  ll n, p;
+  cin>>n>>p;
+  if(n==1){
+    cout<<p<<'\n';
+    return 0;
+  }
+  vector<pll> x=prime_factor(p);
+  ll ans=1;
+  for(auto &y : x){
+    for(ll i=0; i<y.second/n; ++i){
+      ans*=y.first;
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

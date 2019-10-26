@@ -32,22 +32,22 @@ ll n;
 int ans;
 
 void dfs(ll a, int flag){
-	if(a>n){
-		return;
-	}
-	if(flag==7){
-		++ans;
-	}
-	dfs(a*10+3, flag | 1);
-	dfs(a*10+5, flag | 1<<1);
-	dfs(a*10+7, flag | 1<<2);
+  if(a>n){
+    return;
+  }
+  if(flag==7){
+    ++ans;
+  }
+  dfs(a*10+3, flag | 1);
+  dfs(a*10+5, flag | 1<<1);
+  dfs(a*10+7, flag | 1<<2);
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n;
-	dfs(0, 0);
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n;
+  dfs(0, 0);
+  cout<<ans<<'\n';
+  return 0;
 }

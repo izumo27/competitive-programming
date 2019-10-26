@@ -33,38 +33,38 @@ const double INF=1e9;
 double dp[1<<10];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout<<setprecision(10)<<fixed;
-	cin>>n>>m;
-	REP(i, m){
-		cin>>c[i]>>cost[i];
-		REP(j, c[i]){
-			cin>>idol>>p;
-			pr[i][idol-1]=p;
-		}
-	}
-	REP(i, 1<<n){
-		dp[i]=INF;
-	}
-	dp[(1<<n)-1]=0;
-	FORR(i, 0, (1<<n)-1){
-		REP(j, m){
-			int tmp=0;
-			double sum=0;
-			REP(k, n){
-				if(i>>k&1){
-					tmp+=pr[j][k];
-				}
-				else{
-					sum+=pr[j][k]*dp[1<<k|i];
-				}
-			}
-			if(tmp!=100){
-				CHMIN(dp[i], (sum+cost[j]*100)/(100-tmp));
-			}
-		}
-	}
-	cout<<dp[0]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout<<setprecision(10)<<fixed;
+  cin>>n>>m;
+  REP(i, m){
+    cin>>c[i]>>cost[i];
+    REP(j, c[i]){
+      cin>>idol>>p;
+      pr[i][idol-1]=p;
+    }
+  }
+  REP(i, 1<<n){
+    dp[i]=INF;
+  }
+  dp[(1<<n)-1]=0;
+  FORR(i, 0, (1<<n)-1){
+    REP(j, m){
+      int tmp=0;
+      double sum=0;
+      REP(k, n){
+        if(i>>k&1){
+          tmp+=pr[j][k];
+        }
+        else{
+          sum+=pr[j][k]*dp[1<<k|i];
+        }
+      }
+      if(tmp!=100){
+        CHMIN(dp[i], (sum+cost[j]*100)/(100-tmp));
+      }
+    }
+  }
+  cout<<dp[0]<<'\n';
+  return 0;
 }

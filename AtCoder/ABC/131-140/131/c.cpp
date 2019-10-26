@@ -29,24 +29,24 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 ll gcd(ll a, ll b){
-	if(b==0){
-		return a;
-	}
-	return gcd(b, a%b);
+  if(b==0){
+    return a;
+  }
+  return gcd(b, a%b);
 }
 
 ll lcm(ll a, ll b){
-	return a/gcd(a, b)*b;
+  return a/gcd(a, b)*b;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	ll a, b, c, d;
-	cin>>a>>b>>c>>d;
-	ll tmp=lcm(c, d);
-	--a;
-	cout<<b-a-(b/c-a/c)-(b/d-a/d)+(b/tmp-a/tmp)<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  ll a, b, c, d;
+  cin>>a>>b>>c>>d;
+  ll tmp=lcm(c, d);
+  --a;
+  cout<<b-a-(b/c-a/c)-(b/d-a/d)+(b/tmp-a/tmp)<<'\n';
+  return 0;
 }

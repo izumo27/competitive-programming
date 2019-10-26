@@ -31,80 +31,80 @@ const double EPS=1e-11;
 const int MAX_N=114514;
 
 template<typename T> struct BinaryIndexedTree{
-	// [1,n]
-	int n;
-	vector<T> bit;
+  // [1,n]
+  int n;
+  vector<T> bit;
 
-	BinaryIndexedTree(int n_=1, T d=0){
-		init(n_, d);
-	}
+  BinaryIndexedTree(int n_=1, T d=0){
+    init(n_, d);
+  }
 
-	void init(int n_=1, T d=0){
-		n=n_;
-		bit.resize(n+1);
-		REP(i, n+1){
-			bit[i]=d;
-		}
-	}
+  void init(int n_=1, T d=0){
+    n=n_;
+    bit.resize(n+1);
+    REP(i, n+1){
+      bit[i]=d;
+    }
+  }
 
-	// a_1からa_iまでの和
-	T sum(int i){
-		T s=bit[0];
-		while(i>0){
-			s+=bit[i];
-			i-=i&-i;
-		}
-		return s;
-	}
+  // a_1からa_iまでの和
+  T sum(int i){
+    T s=bit[0];
+    while(i>0){
+      s+=bit[i];
+      i-=i&-i;
+    }
+    return s;
+  }
 
-	// a_iにxを加える
-	void add(int i, T x){
-		while(i<=n){
-			bit[i]+=x;
-			i+=i&-i;
-		}
-	}
+  // a_iにxを加える
+  void add(int i, T x){
+    while(i<=n){
+      bit[i]+=x;
+      i+=i&-i;
+    }
+  }
 };
 
 ll cnt[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	pll ba[364364];
-	cin>>n;
-	REP(i, n){
-		cin>>ba[i].second>>ba[i].first;
-	}
-	sort(ba, ba+n);
-	BinaryIndexedTree<ll> bit1(MAX_N, 0), bit2(MAX_N, 0);
-	ll ans=0;
-	FORR(i, 0, n){
-		ll b=ba[i].first, a=ba[i].second;
-		bit1.add(a, a);
-		bit2.add(a, 1);
-		++cnt[a];
-		ll lb=0, ub=114514;
-		while(ub-lb>1){
-			ll mid=(lb+ub)/2;
-			if(b*bit2.sum(mid)>=bit1.sum(mid)){
-				lb=mid;
-			}
-			else{
-				ub=mid;
-			}
-		}
-		ll tmp1=bit1.sum(lb), tmp2=bit2.sum(lb);
-		REP(i, cnt[lb+1]){
-			tmp1+=lb+1;
-			if(b*(tmp2+1)<tmp1){
-				break;
-			}
-			++tmp2;
-		}
-		CHMAX(ans, tmp2);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  pll ba[364364];
+  cin>>n;
+  REP(i, n){
+    cin>>ba[i].second>>ba[i].first;
+  }
+  sort(ba, ba+n);
+  BinaryIndexedTree<ll> bit1(MAX_N, 0), bit2(MAX_N, 0);
+  ll ans=0;
+  FORR(i, 0, n){
+    ll b=ba[i].first, a=ba[i].second;
+    bit1.add(a, a);
+    bit2.add(a, 1);
+    ++cnt[a];
+    ll lb=0, ub=114514;
+    while(ub-lb>1){
+      ll mid=(lb+ub)/2;
+      if(b*bit2.sum(mid)>=bit1.sum(mid)){
+        lb=mid;
+      }
+      else{
+        ub=mid;
+      }
+    }
+    ll tmp1=bit1.sum(lb), tmp2=bit2.sum(lb);
+    REP(i, cnt[lb+1]){
+      tmp1+=lb+1;
+      if(b*(tmp2+1)<tmp1){
+        break;
+      }
+      ++tmp2;
+    }
+    CHMAX(ans, tmp2);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

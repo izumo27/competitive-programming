@@ -29,19 +29,19 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	string s;
-	cin>>s;
-	if(s[0]=='S'){
-		cout<<"Cloudy"<<'\n';
-	}
-	if(s[0]=='C'){
-		cout<<"Rainy"<<'\n';
-	}
-	if(s[0]=='R'){
-		cout<<"Sunny"<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  string s;
+  cin>>s;
+  if(s[0]=='S'){
+    cout<<"Cloudy"<<'\n';
+  }
+  if(s[0]=='C'){
+    cout<<"Rainy"<<'\n';
+  }
+  if(s[0]=='R'){
+    cout<<"Sunny"<<'\n';
+  }
+  return 0;
 }

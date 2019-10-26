@@ -29,45 +29,45 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	ll n;
-	cin>>n;
-	int cnt=0;
-	ll m=n;
-	while(m>0){
-		cnt+=m%10;
-		m/=10;
-	}
-	ll ans=cnt%9;
-	REP(i, cnt/9){
-		ans*=10;
-		ans+=9;
-	}
-	if(ans!=n){
-		cout<<ans<<'\n';
-		return 0;
-	}
-	if(cnt%9==0 || cnt/9==0){
-		cout<<1;
-		ll tmp=1;
-		REP(i, cnt/9){
-			tmp*=10;
-		}
-		if(cnt%9==0){
-			tmp/=10;
-		}
-		cout<<ans-tmp<<'\n';
-	}
-	else{
-		ll tmp=1;
-		REP(i, cnt/9){
-			tmp*=10;
-		}
-		ans+=tmp;
-		ans-=tmp/10;
-		cout<<ans<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  ll n;
+  cin>>n;
+  int cnt=0;
+  ll m=n;
+  while(m>0){
+    cnt+=m%10;
+    m/=10;
+  }
+  ll ans=cnt%9;
+  REP(i, cnt/9){
+    ans*=10;
+    ans+=9;
+  }
+  if(ans!=n){
+    cout<<ans<<'\n';
+    return 0;
+  }
+  if(cnt%9==0 || cnt/9==0){
+    cout<<1;
+    ll tmp=1;
+    REP(i, cnt/9){
+      tmp*=10;
+    }
+    if(cnt%9==0){
+      tmp/=10;
+    }
+    cout<<ans-tmp<<'\n';
+  }
+  else{
+    ll tmp=1;
+    REP(i, cnt/9){
+      tmp*=10;
+    }
+    ans+=tmp;
+    ans-=tmp/10;
+    cout<<ans<<'\n';
+  }
+  return 0;
 }

@@ -31,44 +31,44 @@ const double EPS=1e-11;
 bool used[1333][1333];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	cin>>n;
-	char ans[1333][1333];
-	REP(i, n){
-		REP(j, n){
-			ans[i][j]='.';
-		}
-	}
-	int k=3;
-	REP(i, n){
-		k=(k+2)%5;
-		for(int j=k; j<n; j+=5){
-			ans[i][j]='X';
-			used[i][j]=true;
-			if(i-1>=0){
-				used[i-1][j]=true;
-			}
-			if(j-1>=0){
-				used[i][j-1]=true;
-			}
-			if(j+1<n){
-				used[i][j+1]=true;
-			}
-			if(i+1<n){
-				used[i+1][j]=true;
-			}
-		}
-	}
-	REP(i, n){
-		REP(j, n){
-			if(!used[i][j]){
-				ans[i][j]='X';
-			}
-			cout<<ans[i][j];
-		}
-		cout<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  cin>>n;
+  char ans[1333][1333];
+  REP(i, n){
+    REP(j, n){
+      ans[i][j]='.';
+    }
+  }
+  int k=3;
+  REP(i, n){
+    k=(k+2)%5;
+    for(int j=k; j<n; j+=5){
+      ans[i][j]='X';
+      used[i][j]=true;
+      if(i-1>=0){
+        used[i-1][j]=true;
+      }
+      if(j-1>=0){
+        used[i][j-1]=true;
+      }
+      if(j+1<n){
+        used[i][j+1]=true;
+      }
+      if(i+1<n){
+        used[i+1][j]=true;
+      }
+    }
+  }
+  REP(i, n){
+    REP(j, n){
+      if(!used[i][j]){
+        ans[i][j]='X';
+      }
+      cout<<ans[i][j];
+    }
+    cout<<'\n';
+  }
+  return 0;
 }

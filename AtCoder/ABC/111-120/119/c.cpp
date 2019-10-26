@@ -31,45 +31,45 @@ const double EPS=1e-11;
 int n, A, B, C, l[10];
 
 int solve(int bit, int X){
-	vi cand;
-	int res=1e9;
-	REP(i, n){
-		if(bit>>i&1){
-			cand.push_back(l[i]);
-		}
-	}
-	int sz=cand.size();
-	FOR(i, 1, 1<<sz){
-		int tmp=0;
-		REP(j, sz){
-			if(i>>j&1){
-				tmp+=cand[j];
-			}
-		}
-		int mp=10*(sz-1);
-		CHMIN(res, mp+abs(tmp-X));
-	}
-	return res;
+  vi cand;
+  int res=1e9;
+  REP(i, n){
+    if(bit>>i&1){
+      cand.push_back(l[i]);
+    }
+  }
+  int sz=cand.size();
+  FOR(i, 1, 1<<sz){
+    int tmp=0;
+    REP(j, sz){
+      if(i>>j&1){
+        tmp+=cand[j];
+      }
+    }
+    int mp=10*(sz-1);
+    CHMIN(res, mp+abs(tmp-X));
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n>>A>>B>>C;
-	REP(i, n){
-		cin>>l[i];
-	}
-	int ans=1e9;
-	FOR(i, 1, 1<<n){
-		FOR(j, 1, 1<<n){
-			FOR(k, 1, 1<<n){
-				if(i&j || j&k || k&i){
-					continue;
-				}
-				CHMIN(ans, solve(i, A)+solve(j, B)+solve(k, C));
-			}
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n>>A>>B>>C;
+  REP(i, n){
+    cin>>l[i];
+  }
+  int ans=1e9;
+  FOR(i, 1, 1<<n){
+    FOR(j, 1, 1<<n){
+      FOR(k, 1, 1<<n){
+        if(i&j || j&k || k&i){
+          continue;
+        }
+        CHMIN(ans, solve(i, A)+solve(j, B)+solve(k, C));
+      }
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

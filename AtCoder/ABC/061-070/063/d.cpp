@@ -32,33 +32,33 @@ int n, a, b;
 ll h[114514];
 
 bool is_ok(ll x){
-	ll y=x;
-	REP(i, n){
-		ll tmp=h[i]-x*b;
-		if(tmp>0){
-			y-=(tmp-1)/(a-b)+1;
-		}
-	}
-	return y>=0;
+  ll y=x;
+  REP(i, n){
+    ll tmp=h[i]-x*b;
+    if(tmp>0){
+      y-=(tmp-1)/(a-b)+1;
+    }
+  }
+  return y>=0;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>n>>a>>b;
-	REP(i, n){
-		cin>>h[i];
-	}
-	ll lb=0, ub=1e9;
-	while(ub-lb>1){
-		ll mid=(lb+ub)/2;
-		if(is_ok(mid)){
-			ub=mid;
-		}
-		else{
-			lb=mid;
-		}
-	}
-	cout<<ub<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>n>>a>>b;
+  REP(i, n){
+    cin>>h[i];
+  }
+  ll lb=0, ub=1e9;
+  while(ub-lb>1){
+    ll mid=(lb+ub)/2;
+    if(is_ok(mid)){
+      ub=mid;
+    }
+    else{
+      lb=mid;
+    }
+  }
+  cout<<ub<<'\n';
+  return 0;
 }

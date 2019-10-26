@@ -32,8 +32,8 @@ const int INF=1e9;
 const int MAX_V=114514;
 
 struct edge{
-	int to;
-	int cost;
+  int to;
+  int cost;
 };
 
 int V;
@@ -42,36 +42,36 @@ vector<edge> g[MAX_V];
 int d[MAX_V];
 
 void add_edge(int from, int to, int cost){
-	g[from].push_back({to, cost});
-	return;
+  g[from].push_back({to, cost});
+  return;
 }
 
 void dijkstra(int s){
-	// piiのfirstは最短距離、secondは頂点の番号
-	priority_queue<pii, vector<pii>, greater<pii>> que;
-	fill(d, d+V, INF);
-	d[s]=0;
-	que.push({0, s});
-	while(!que.empty()){
-		pii p=que.top();
-		que.pop();
-		int v=p.second;
-		if(d[v]<p.first){
-			continue;
-		}
-		REP(i, g[v].size()){
-			edge e=g[v][i];
-			if(d[e.to]>d[v]+e.cost){
-				d[e.to]=d[v]+e.cost;
-				que.push({d[e.to], e.to});
-			}
-		}
-	}
+  // piiのfirstは最短距離、secondは頂点の番号
+  priority_queue<pii, vector<pii>, greater<pii>> que;
+  fill(d, d+V, INF);
+  d[s]=0;
+  que.push({0, s});
+  while(!que.empty()){
+    pii p=que.top();
+    que.pop();
+    int v=p.second;
+    if(d[v]<p.first){
+      continue;
+    }
+    REP(i, g[v].size()){
+      edge e=g[v][i];
+      if(d[e.to]>d[v]+e.cost){
+        d[e.to]=d[v]+e.cost;
+        que.push({d[e.to], e.to});
+      }
+    }
+  }
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
+  ios::sync_with_stdio(false);
+  cin.tie(0);
 
-	return 0;
+  return 0;
 }

@@ -36,37 +36,37 @@ bool is_prime[MAX_N+1];
 // エラトステネスの篩
 // is_prime[i]=true⇔iが素数
 void sieve(int n){
-	int res=0;
-	REP(i, n+1){
-		is_prime[i]=true;
-	}
-	is_prime[0]=is_prime[1]=false;
-	FOR(i, 2, n+1){
-		if(is_prime[i]){
-			prime[res++]=i;
-			for(int j=2*i; j<=n; j+=i){
-				is_prime[j]=false;
-			}
-		}
-	}
+  int res=0;
+  REP(i, n+1){
+    is_prime[i]=true;
+  }
+  is_prime[0]=is_prime[1]=false;
+  FOR(i, 2, n+1){
+    if(is_prime[i]){
+      prime[res++]=i;
+      for(int j=2*i; j<=n; j+=i){
+        is_prime[j]=false;
+      }
+    }
+  }
 }
 
 int s[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int q, l, r;
-	cin>>q;
-	sieve(1e5);
-	for(int i=3; i<1e5; i+=2){
-		s[i]=s[i-2]+(is_prime[i] && is_prime[(i+1)/2] ? 1 : 0);
-	}
-	REP(i, q){
-		cin>>l>>r;
-		cout<<s[r]-s[l-2]<<'\n';
-		// DEBUG(s[r]);
-		// DEBUG(s[l]);
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int q, l, r;
+  cin>>q;
+  sieve(1e5);
+  for(int i=3; i<1e5; i+=2){
+    s[i]=s[i-2]+(is_prime[i] && is_prime[(i+1)/2] ? 1 : 0);
+  }
+  REP(i, q){
+    cin>>l>>r;
+    cout<<s[r]-s[l-2]<<'\n';
+    // DEBUG(s[r]);
+    // DEBUG(s[l]);
+  }
+  return 0;
 }

@@ -29,36 +29,36 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n;
-	ll a[334][334];
-	cin>>n;
-	REP(i, n){
-		REP(j, n){
-			cin>>a[i][j];
-		}
-	}
-	ll ans=0;
-	REP(i, n){
-		FOR(j, i+1, n){
-			ll mi=1e18;
-			REP(k, n){
-				if(k==i || k==j){
-					continue;
-				}
-				CHMIN(mi, a[i][k]+a[k][j]);
-			}
-			if(mi<a[i][j]){
-				cout<<-1<<'\n';
-				return 0;
-			}
-			if(mi>a[i][j]){
-				ans+=a[i][j];
-			}
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n;
+  ll a[334][334];
+  cin>>n;
+  REP(i, n){
+    REP(j, n){
+      cin>>a[i][j];
+    }
+  }
+  ll ans=0;
+  REP(i, n){
+    FOR(j, i+1, n){
+      ll mi=1e18;
+      REP(k, n){
+        if(k==i || k==j){
+          continue;
+        }
+        CHMIN(mi, a[i][k]+a[k][j]);
+      }
+      if(mi<a[i][j]){
+        cout<<-1<<'\n';
+        return 0;
+      }
+      if(mi>a[i][j]){
+        ans+=a[i][j];
+      }
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -34,53 +34,53 @@ int h, w;
 string s[404];
 
 pll bfs(int sx, int sy){
-	queue<pair<pii, bool>> q;
-	q.push(make_pair(pii(sx, sy), true));
-	ll cnt1=0, cnt2=0;
-	while(q.size()){
-		pair<pii, bool> p=q.front();
-		q.pop();
-		REP(i, 4){
-			int nx=p.first.first+dx[i];
-			int ny=p.first.second+dy[i];
-			if(nx>=0 && nx<h && ny>=0 && ny<w && !used[nx][ny]){
-				if(p.second){
-					if(s[nx][ny]=='.'){
-						++cnt2;
-						q.push(make_pair(pii(nx, ny), false));
-						used[nx][ny]=true;
-					}
-				}
-				else{
-					if(s[nx][ny]=='#'){
-						++cnt1;
-						q.push(make_pair(pii(nx, ny), true));
-						used[nx][ny]=true;
-					}
-				}
-			}
-		}
-	}
-	return pll(cnt1, cnt2);
+  queue<pair<pii, bool>> q;
+  q.push(make_pair(pii(sx, sy), true));
+  ll cnt1=0, cnt2=0;
+  while(q.size()){
+    pair<pii, bool> p=q.front();
+    q.pop();
+    REP(i, 4){
+      int nx=p.first.first+dx[i];
+      int ny=p.first.second+dy[i];
+      if(nx>=0 && nx<h && ny>=0 && ny<w && !used[nx][ny]){
+        if(p.second){
+          if(s[nx][ny]=='.'){
+            ++cnt2;
+            q.push(make_pair(pii(nx, ny), false));
+            used[nx][ny]=true;
+          }
+        }
+        else{
+          if(s[nx][ny]=='#'){
+            ++cnt1;
+            q.push(make_pair(pii(nx, ny), true));
+            used[nx][ny]=true;
+          }
+        }
+      }
+    }
+  }
+  return pll(cnt1, cnt2);
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cin>>h>>w;
-	REP(i, h){
-		cin>>s[i];
-	}
-	ll ans=0;
-	REP(i, h){
-		REP(j, w){
-			if(s[i][j]!='#'){
-				continue;
-			}
-			pll cnt=bfs(i, j);
-			ans+=cnt.first*cnt.second;
-		}
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cin>>h>>w;
+  REP(i, h){
+    cin>>s[i];
+  }
+  ll ans=0;
+  REP(i, h){
+    REP(j, w){
+      if(s[i][j]!='#'){
+        continue;
+      }
+      pll cnt=bfs(i, j);
+      ans+=cnt.first*cnt.second;
+    }
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

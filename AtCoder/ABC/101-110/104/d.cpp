@@ -31,32 +31,32 @@ const double EPS=1e-11;
 ll dp[114514][4];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	string s;
-	cin>>s;
-	dp[s.size()][3]=1;
-	FORR(i, 0, s.size()){
-		FORR(j, 0, 4){
-			if(j==3){
-				if(s[i]=='?'){
-					dp[i][j]=(dp[i+1][j]*3)%MOD;
-				}
-				else{
-					dp[i][j]=dp[i+1][j];
-				}
-			}
-			else if(s[i]=='?'){
-				dp[i][j]=(dp[i+1][j]*3+dp[i+1][j+1])%MOD;
-			}
-			else if(s[i]-'A'==j){
-				dp[i][j]=(dp[i+1][j]+dp[i+1][j+1])%MOD;
-			}
-			else{
-				dp[i][j]=dp[i+1][j];
-			}
-		}
-	}
-	cout<<dp[0][0]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  string s;
+  cin>>s;
+  dp[s.size()][3]=1;
+  FORR(i, 0, s.size()){
+    FORR(j, 0, 4){
+      if(j==3){
+        if(s[i]=='?'){
+          dp[i][j]=(dp[i+1][j]*3)%MOD;
+        }
+        else{
+          dp[i][j]=dp[i+1][j];
+        }
+      }
+      else if(s[i]=='?'){
+        dp[i][j]=(dp[i+1][j]*3+dp[i+1][j+1])%MOD;
+      }
+      else if(s[i]-'A'==j){
+        dp[i][j]=(dp[i+1][j]+dp[i+1][j+1])%MOD;
+      }
+      else{
+        dp[i][j]=dp[i+1][j];
+      }
+    }
+  }
+  cout<<dp[0][0]<<'\n';
+  return 0;
 }

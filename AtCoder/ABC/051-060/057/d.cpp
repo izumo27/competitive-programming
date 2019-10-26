@@ -31,50 +31,50 @@ const double EPS=1e-11;
 ll comb[60][60];
 
 void COMinit(int n){
-	REP(i, n+1){
-		REP(j, i+1){
-			if(j==0 || j==i){
-				comb[i][j]=1;
-			}
-			else{
-				comb[i][j]=comb[i-1][j-1]+comb[i-1][j];
-			}
-		}
-	}
+  REP(i, n+1){
+    REP(j, i+1){
+      if(j==0 || j==i){
+        comb[i][j]=1;
+      }
+      else{
+        comb[i][j]=comb[i-1][j-1]+comb[i-1][j];
+      }
+    }
+  }
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a, b;
-	ll v[60];
-	cin>>n>>a>>b;
-	REP(i, n){
-		cin>>v[i];
-	}
-	sort(v, v+n, greater<ll>());
-	double sum=0.0;
-	int c=0;
-	REP(i, a){
-		sum+=v[i];
-		if(i>0 && v[i-1]!=v[i]){
-			c=i;
-		}
-	}
-	COMinit(n);
-	ll ans=0;
-	ll d=upper_bound(v, v+n, v[a-1], greater<ll>())-lower_bound(v, v+n, v[a-1], greater<ll>());
-	if(c!=0){
-		ans=comb[d][a-c];
-	}
-	else{
-		FOR(i, a, b+1){
-			ans+=comb[d][i];
-		}
-	}
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a, b;
+  ll v[60];
+  cin>>n>>a>>b;
+  REP(i, n){
+    cin>>v[i];
+  }
+  sort(v, v+n, greater<ll>());
+  double sum=0.0;
+  int c=0;
+  REP(i, a){
+    sum+=v[i];
+    if(i>0 && v[i-1]!=v[i]){
+      c=i;
+    }
+  }
+  COMinit(n);
+  ll ans=0;
+  ll d=upper_bound(v, v+n, v[a-1], greater<ll>())-lower_bound(v, v+n, v[a-1], greater<ll>());
+  if(c!=0){
+    ans=comb[d][a-c];
+  }
+  else{
+    FOR(i, a, b+1){
+      ans+=comb[d][i];
+    }
+  }
 
-	cout.precision(10);
-	cout<<fixed<<sum/a<<'\n';
-	cout<<ans<<'\n';
-	return 0;
+  cout.precision(10);
+  cout<<fixed<<sum/a<<'\n';
+  cout<<ans<<'\n';
+  return 0;
 }

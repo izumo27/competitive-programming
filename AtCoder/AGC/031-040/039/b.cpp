@@ -29,47 +29,47 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n;
-	string s[252];
-	int t[252][252];
-	cin>>n;
-	REP(i, n){
-		cin>>s[i];
-		REP(j, n){
-			t[i][j]=s[i][j]-'0';
-		}
-	}
-	int ans=0;
-	REP(x, n){
-		queue<pii> q;
-		q.push(pii(x, 1));
-		int deg[252];
-		int tmp=0;
-		REP(i, n){
-			deg[i]=-1;
-		}
-		while(q.size()){
-			pii a=q.front();
-			q.pop();
-			if(deg[a.first]>0){
-				continue;
-			}
-			deg[a.first]=tmp=a.second;
-			REP(i, n){
-				if(t[a.first][i]){
-					if(deg[i]>0 && (deg[a.first]==deg[i] || abs(deg[a.first]-deg[i])>1)){
-						cout<<-1<<'\n';
-						return 0;
-					}
-					q.push(pii(i, a.second+1));
-				}
-			}
-		}
-		CHMAX(ans, tmp);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n;
+  string s[252];
+  int t[252][252];
+  cin>>n;
+  REP(i, n){
+    cin>>s[i];
+    REP(j, n){
+      t[i][j]=s[i][j]-'0';
+    }
+  }
+  int ans=0;
+  REP(x, n){
+    queue<pii> q;
+    q.push(pii(x, 1));
+    int deg[252];
+    int tmp=0;
+    REP(i, n){
+      deg[i]=-1;
+    }
+    while(q.size()){
+      pii a=q.front();
+      q.pop();
+      if(deg[a.first]>0){
+        continue;
+      }
+      deg[a.first]=tmp=a.second;
+      REP(i, n){
+        if(t[a.first][i]){
+          if(deg[i]>0 && (deg[a.first]==deg[i] || abs(deg[a.first]-deg[i])>1)){
+            cout<<-1<<'\n';
+            return 0;
+          }
+          q.push(pii(i, a.second+1));
+        }
+      }
+    }
+    CHMAX(ans, tmp);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

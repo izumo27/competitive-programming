@@ -31,27 +31,27 @@ const double EPS=1e-11;
 int b[114514];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, a[114514];
-	cin>>n;
-	REP(i, n){
-		cin>>a[i];
-	}
-	int s=0;
-	b[0]=1;
-	REP(i, n-1){
-		if(a[i]!=a[i+1]){
-			++b[s];
-		}
-		else{
-			++b[++s];
-		}
-	}
-	int ans=0;
-	REP(i, s+1){
-		ans=max(ans, b[i]+b[i+1]+b[i+2]);
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, a[114514];
+  cin>>n;
+  REP(i, n){
+    cin>>a[i];
+  }
+  int s=0;
+  b[0]=1;
+  REP(i, n-1){
+    if(a[i]!=a[i+1]){
+      ++b[s];
+    }
+    else{
+      ++b[++s];
+    }
+  }
+  int ans=0;
+  REP(i, s+1){
+    ans=max(ans, b[i]+b[i+1]+b[i+2]);
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

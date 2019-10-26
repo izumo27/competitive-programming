@@ -31,39 +31,39 @@ const double EPS=1e-11;
 int dp[11][2334], sum[11][2334];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n, k, c, g;
-	cin>>n>>k;
-	vi cg[10];
-	REP(i, n){
-		cin>>c>>g;
-		cg[g-1].push_back(c);
-	}
-	REP(i, 10){
-		if(!cg[i].size()){
-			break;
-		}
-		sort(ALL(cg[i]), greater<int>());
-		REP(j, cg[i].size()){
-			sum[i][j+1]=sum[i][j]+cg[i][j];
-		}
-	}
-	int tmp=0;
-	REP(i, 10){
-		if(!cg[i].size()){
-			break;
-		}
-		tmp=i+1;
-		REP(j, k+1){
-			REP(l, cg[i].size()){
-				if(j+l+1>k){
-					break;
-				}
-				dp[i+1][j+l+1]=max({dp[i+1][j+l+1], dp[i][j+l+1], dp[i][j]+sum[i][l+1]+(l+1)*l});
-			}
-		}
-	}
-	cout<<dp[tmp][k]<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n, k, c, g;
+  cin>>n>>k;
+  vi cg[10];
+  REP(i, n){
+    cin>>c>>g;
+    cg[g-1].push_back(c);
+  }
+  REP(i, 10){
+    if(!cg[i].size()){
+      break;
+    }
+    sort(ALL(cg[i]), greater<int>());
+    REP(j, cg[i].size()){
+      sum[i][j+1]=sum[i][j]+cg[i][j];
+    }
+  }
+  int tmp=0;
+  REP(i, 10){
+    if(!cg[i].size()){
+      break;
+    }
+    tmp=i+1;
+    REP(j, k+1){
+      REP(l, cg[i].size()){
+        if(j+l+1>k){
+          break;
+        }
+        dp[i+1][j+l+1]=max({dp[i+1][j+l+1], dp[i][j+l+1], dp[i][j]+sum[i][l+1]+(l+1)*l});
+      }
+    }
+  }
+  cout<<dp[tmp][k]<<'\n';
+  return 0;
 }

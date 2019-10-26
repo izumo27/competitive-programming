@@ -29,29 +29,29 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 bool cmp(const pair<pair<string, int>, int> &a, const pair<pair<string, int>, int> &b){
-	if(a.first.first<b.first.first){
-		return true;
-	}
-	else if(a.first.first>b.first.first){
-		return false;
-	}
-	return a.first.second>b.first.second;
+  if(a.first.first<b.first.first){
+    return true;
+  }
+  else if(a.first.first>b.first.first){
+    return false;
+  }
+  return a.first.second>b.first.second;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	int n;
-	pair<pair<string, int>, int> p[114];
-	cin>>n;
-	REP(i, n){
-		cin>>p[i].first.first>>p[i].first.second;
-		p[i].second=i;
-	}
-	sort(p, p+n, cmp);
-	REP(i, n){
-		cout<<p[i].second+1<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  int n;
+  pair<pair<string, int>, int> p[114];
+  cin>>n;
+  REP(i, n){
+    cin>>p[i].first.first>>p[i].first.second;
+    p[i].second=i;
+  }
+  sort(p, p+n, cmp);
+  REP(i, n){
+    cout<<p[i].second+1<<'\n';
+  }
+  return 0;
 }

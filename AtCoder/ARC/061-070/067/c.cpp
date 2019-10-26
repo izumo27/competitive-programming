@@ -31,28 +31,28 @@ const double EPS=1e-11;
 map<int, int> res;
 
 void prime_factor(int n){
-	for(int i=2; i*i<=n; ++i){
-		while(n%i==0){
-			++res[i];
-			n/=i;
-		}
-	}
-	++res[n];
-	return;
+  for(int i=2; i*i<=n; ++i){
+    while(n%i==0){
+      ++res[i];
+      n/=i;
+    }
+  }
+  ++res[n];
+  return;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	int n;
-	cin>>n;
-	FOR(i, 2, n+1){
-		prime_factor(i);
-	}
-	ll ans=1;
-	FOR(i, 2, n+1){
-		ans=ans*(res[i]+1)%MOD;
-	}
-	cout<<ans<<'\n';
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  int n;
+  cin>>n;
+  FOR(i, 2, n+1){
+    prime_factor(i);
+  }
+  ll ans=1;
+  FOR(i, 2, n+1){
+    ans=ans*(res[i]+1)%MOD;
+  }
+  cout<<ans<<'\n';
+  return 0;
 }

@@ -29,24 +29,24 @@ const double EPS=1e-11;
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	string s, t;
-	int q, a, b, c, d;
-	cin>>s>>t>>q;
-	int snum[114514], tnum[114514];
-	snum[0]=0;
-	REP(i, s.size()){
-		snum[i+1]+=snum[i]+(s[i]=='A' ? 1 : 2);
-	}
-	tnum[0]=0;
-	REP(i, t.size()){
-		tnum[i+1]+=tnum[i]+(t[i]=='A' ? 1 : 2);
-	}
-	REP(i, q){
-		cin>>a>>b>>c>>d;
-		cout<<((snum[b]-snum[a-1])%3==(tnum[d]-tnum[c-1])%3 ? "YES" : "NO")<<'\n';
-	}
-	return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  string s, t;
+  int q, a, b, c, d;
+  cin>>s>>t>>q;
+  int snum[114514], tnum[114514];
+  snum[0]=0;
+  REP(i, s.size()){
+    snum[i+1]+=snum[i]+(s[i]=='A' ? 1 : 2);
+  }
+  tnum[0]=0;
+  REP(i, t.size()){
+    tnum[i+1]+=tnum[i]+(t[i]=='A' ? 1 : 2);
+  }
+  REP(i, q){
+    cin>>a>>b>>c>>d;
+    cout<<((snum[b]-snum[a-1])%3==(tnum[d]-tnum[c-1])%3 ? "YES" : "NO")<<'\n';
+  }
+  return 0;
 }

@@ -31,10 +31,10 @@ const double EPS=1e-11;
 static const double pi = 3.141592653589793;
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout<<setprecision(10)<<fixed;
-	double a, b, x;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout<<setprecision(10)<<fixed;
+  double a, b, x;
   cin>>a>>b>>x;
   if(a*a*b==x){
     cout<<0<<'\n';
@@ -66,5 +66,5 @@ int main(){
     }
     cout<<90-ub<<'\n';
   }
-	return 0;
+  return 0;
 }

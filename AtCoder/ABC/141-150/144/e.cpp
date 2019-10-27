@@ -43,9 +43,9 @@ bool is_ok(ll mid){
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
   cin>>n>>k;
   REP(i, n){
     cin>>a[i];
@@ -66,5 +66,5 @@ int main(){
     }
   }
   cout<<ub<<'\n';
-	return 0;
+  return 0;
 }

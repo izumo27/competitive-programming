@@ -30,20 +30,20 @@ const double EPS=1e-11;
 
 ll divisor(ll n){
   ll res=1e18;
-	for(ll i=1; i*i<=n; ++i){
-		if(n%i==0){
+  for(ll i=1; i*i<=n; ++i){
+    if(n%i==0){
       CHMIN(res, i-1+n/i-1);
-		}
-	}
-	return res;
+    }
+  }
+  return res;
 }
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	// cout<<setprecision(10)<<fixed;
-	ll n;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  // cout<<setprecision(10)<<fixed;
+  ll n;
   cin>>n;
   cout<<divisor(n)<<'\n';
-	return 0;
+  return 0;
 }

@@ -31,8 +31,8 @@ const double EPS=1e-11;
 ll ans[125252];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
+  ios::sync_with_stdio(false);
+  cin.tie(0);
   int n;
   vl a(125252);
   cin>>n;
@@ -63,5 +63,5 @@ int main(){
   REP(i, n){
     cout<<ans[i]<<'\n';
   }
-	return 0;
+  return 0;
 }

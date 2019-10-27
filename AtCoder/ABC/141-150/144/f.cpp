@@ -32,10 +32,10 @@ pair<double, double> dis[625];
 double d[625][625];
 
 int main(){
-	ios::sync_with_stdio(false);
-	cin.tie(0);
-	cout<<setprecision(10)<<fixed;
-	int n, m;
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout<<setprecision(10)<<fixed;
+  int n, m;
   cin>>n>>m;
   vi g[625], h[625];
   REP(i, m){
@@ -114,5 +114,5 @@ int main(){
     CHMIN(ans, dis[n-1].second);
   }
   cout<<ans<<'\n';
-	return 0;
+  return 0;
 }

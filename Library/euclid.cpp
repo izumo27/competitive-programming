@@ -28,19 +28,19 @@ const double EPS=1e-11;
 #define EQ0(x) (abs((x))<EPS)
 #define EQ(a, b) (abs((a)-(b))<EPS)
 
-int gcd(int a, int b){
+template<typename T> T gcd(T a, T b){
   if(b==0){
     return a;
   }
   return gcd(b, a%b);
 }
 
-int lcm(int a, int b){
+template<typename T> T lcm(T a, T b){
   return a/gcd(a, b)*b;
 }
 
-int extgcd(int a, int b, int& x, int& y){
-  int d=a;
+template<typename T> T extgcd(T a, T b, T& x, T& y){
+  T d=a;
   if(b>0){
     d=extgcd(b, a%b, y, x);
     y-=a/b*x;

@@ -42,7 +42,7 @@ int mincost[MAX_V];
 
 void add_edge(int from, int to, int cost){
   g[from].push_back({to, cost});
-  return e;
+  return;
 }
 
 int prim(int s){

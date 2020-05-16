@@ -1,0 +1,7 @@
+ox:
+xo:
+oo:o
+xx:x
+o::win
+x::lose
+::draw

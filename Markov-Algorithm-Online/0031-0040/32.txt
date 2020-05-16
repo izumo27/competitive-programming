@@ -1,0 +1,8 @@
+xo:x
+x::
+oooooooooooooooooooooooooooooooo:5x
+oooooooooooooooo:4x
+oooooooo:3x
+oooo:2x
+oo:1x
+o:0x
